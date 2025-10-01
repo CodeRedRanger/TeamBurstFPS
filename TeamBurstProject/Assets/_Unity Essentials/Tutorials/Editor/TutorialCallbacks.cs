@@ -1,4 +1,7 @@
 ﻿using UnityEngine;
+
+/*
+
 using Unity.Tutorials.Core.Editor;
 using UnityEditor;
 
@@ -56,4 +59,4 @@ namespace Unity.Tutorials
             TutorialWindowUtils.StartTutorial(tutorial);            
         }
     }
-}
+}*/
