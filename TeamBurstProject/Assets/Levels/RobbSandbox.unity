@@ -726,6 +726,8 @@ MonoBehaviour:
   menuPause: {fileID: 408488810}
   menuWin: {fileID: 0}
   menuLose: {fileID: 0}
+  player: {fileID: 0}
+  playerScript: {fileID: 0}
   isPaused: 0
 --- !u!1001 &33417900
 PrefabInstance:
@@ -3865,7 +3867,7 @@ GameObject:
   - component: {fileID: 178141896}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8343,7 +8345,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &408488811
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24811,7 +24813,7 @@ GameObject:
   - component: {fileID: 1220497213}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26996,7 +26998,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
