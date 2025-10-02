@@ -1,7 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-/*
+/
 public class gameManager : MonoBehaviour
 
 
@@ -104,4 +104,4 @@ public class gameManager : MonoBehaviour
 
     }
 
-}*/
+}
