@@ -4001,7 +4001,7 @@ GameObject:
   - component: {fileID: 178141900}
   - component: {fileID: 178141897}
   - component: {fileID: 178141896}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -4078,7 +4078,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   ignoreLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   controller: {fileID: 178141900}
   HP: 0
   speed: 4
@@ -4086,9 +4086,9 @@ MonoBehaviour:
   jumpSpeed: 12
   jumpCountMax: 1
   gravity: 35
-  shootDamage: 0
-  shootDist: 0
-  shootRate: 0
+  shootDamage: 1
+  shootDist: 15
+  shootRate: 0.5
 --- !u!4 &178141899
 Transform:
   m_ObjectHideFlags: 0
@@ -16277,7 +16277,10 @@ PrefabInstance:
     - {fileID: 3960284701172069755, guid: a04e2b9338ca5bd49a2de6b18dc50a77, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4961029322831518113, guid: a04e2b9338ca5bd49a2de6b18dc50a77, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 1529914031}
   m_SourcePrefab: {fileID: 100100000, guid: a04e2b9338ca5bd49a2de6b18dc50a77, type: 3}
 --- !u!1001 &803722030
 PrefabInstance:
@@ -22788,7 +22791,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1102213171
 RectTransform:
   m_ObjectHideFlags: 0
@@ -33371,6 +33374,25 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6399124, y: 1.8294218, z: 0.05968328}
   m_Center: {x: 1.721808e-15, y: 0.9147048, z: 0.0153988525}
+--- !u!1 &1529914027 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4961029322831518113, guid: a04e2b9338ca5bd49a2de6b18dc50a77, type: 3}
+  m_PrefabInstance: {fileID: 801420044}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1529914031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1529914027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c026d4418d24ae4bb4fd62d44814e52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
+  model: {fileID: 0}
+  HP: 3
 --- !u!4 &1530381180 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7223715977327012655, guid: fe8a65ee85ee58d4f88156542e3040f7, type: 3}
