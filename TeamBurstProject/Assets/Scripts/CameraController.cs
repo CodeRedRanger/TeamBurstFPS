@@ -5,6 +5,7 @@ public class CameraController : MonoBehaviour
 
     [SerializeField] int mouseSens;
     [SerializeField] int vertLimitLow, vertLimitHigh;
+
     [SerializeField] bool invertY;
 
     float rotX;
@@ -12,7 +13,7 @@ public class CameraController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
 
@@ -38,7 +39,9 @@ public class CameraController : MonoBehaviour
 
         transform.localRotation = Quaternion.Euler(rotX, 0, 0);
 
-        transform.parent.Rotate(Vector2.up * mouseX);
+        transform.parent.Rotate(Vector3.up * mouseX);
 
     }
+
+
 }
