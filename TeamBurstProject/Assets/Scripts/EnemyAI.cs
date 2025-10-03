@@ -15,20 +15,26 @@ public class EnemyAI : MonoBehaviour, IDamage
     float shootTimer;
     bool playerInRange;
 
+    private Animator animator;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         colorOrig = model.material.color;
         gameManager.instance.updateGameGoal(1);
+        animator = GetComponent<Animator>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        animator.SetFloat("Speed", agent.velocity.magnitude);
+
         shootTimer += Time.deltaTime;
 
-        if (!playerInRange)
+        if (playerInRange)
         {
             agent.SetDestination(gameManager.instance.player.transform.position);
 
