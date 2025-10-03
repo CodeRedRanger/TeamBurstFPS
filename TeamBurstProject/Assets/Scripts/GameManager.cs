@@ -33,7 +33,7 @@ public class gameManager : MonoBehaviour
         timeScaleOrig = Time.timeScale;
 
         //need this line before next
-       player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
        playerScript = player.GetComponent<PlayerController>();
     }
 
@@ -57,6 +57,8 @@ public class gameManager : MonoBehaviour
                 stateUnpause();
             }
         }
+
+
 
     }
 
