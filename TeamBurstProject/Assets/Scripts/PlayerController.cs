@@ -113,7 +113,7 @@ public class PlayerController : MonoBehaviour, IDamage
         if (HP <= 0)
         {
             Debug.Log("You are dead"); 
-            //Gamemanager.instance.youLose();
+            gameManager.instance.youLose();
         }
     }
 }
