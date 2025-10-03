@@ -724,7 +724,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::gameManager
   menuActive: {fileID: 0}
   menuPause: {fileID: 408488810}
-  menuWin: {fileID: 0}
+  menuWin: {fileID: 1102213170}
   menuLose: {fileID: 0}
   player: {fileID: 0}
   playerScript: {fileID: 0}
@@ -33379,6 +33379,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4961029322831518113, guid: a04e2b9338ca5bd49a2de6b18dc50a77, type: 3}
   m_PrefabInstance: {fileID: 801420044}
   m_PrefabAsset: {fileID: 0}
+--- !u!137 &1529914030 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6694304286319792505, guid: a04e2b9338ca5bd49a2de6b18dc50a77, type: 3}
+  m_PrefabInstance: {fileID: 801420044}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1529914031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33391,7 +33396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c026d4418d24ae4bb4fd62d44814e52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
-  model: {fileID: 0}
+  model: {fileID: 1529914030}
   HP: 3
 --- !u!4 &1530381180 stripped
 Transform:
