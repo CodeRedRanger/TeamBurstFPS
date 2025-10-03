@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour, IDamage
     void Start()
     {
         HPOrig = HP;
+      
     }
 
     // Update is called once per frame
