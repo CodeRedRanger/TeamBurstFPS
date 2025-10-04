@@ -22,11 +22,11 @@ public class DamageTarget : MonoBehaviour, IDamage
         _health = Mathf.Max(1f, maxHealth);
     }
 
-    public bool IsAlive => _health > 0f; //This allows other functions to ask if the target is alive. Useful for objects that are damageable but we do not want to destroy if they have 0 HP.
+    // public bool IsAlive => _health > 0f; //This allows other functions to ask if the target is alive. Useful for objects that are damageable but we do not want to destroy if they have 0 HP.
     
     public void TakeDamage(int amount)
     {
-        if (!IsAlive) return; //ignore further hits if we're already dead
+        //if (!IsAlive) return; //ignore further hits if we're already dead
 
         // Subtract damage; clamp so it never goes below 0.
         float dmg = Mathf.Max(0f, amount);
@@ -62,13 +62,13 @@ public class DamageTarget : MonoBehaviour, IDamage
 
     public void Heal(float amount)
     {
-        if (!IsAlive) return; // no healing if already dead (change if we add revive)
+        // if (!IsAlive) return; // no healing if already dead (change if we add revive)
         float heal = Mathf.Max(0f, amount);
         _health = Mathf.Min(maxHealth, _health + heal);
         Debug.Log($"{name} healed {heal}. HP: {_health}/{maxHealth}");
     }
 
-    // (Optional) Expose read-only values for UI bars later.
+    // Expose read-only values for UI bars later.
     public float CurrentHealth => _health;
     public float MaxHealth => maxHealth;
 }

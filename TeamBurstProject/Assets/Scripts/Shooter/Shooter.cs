@@ -36,7 +36,7 @@ public class Shooter : MonoBehaviour
     // NOTES: For AI, you can call CanFire/FireOnce from your AI code instead.
     private void Update()
     {
-        if (gameObject.CompareTag("Player")) return;
+        if (!gameObject.CompareTag("Player")) return;
         if (equippedGun == null || viewCamera == null) return;
 
         // 1) Tick fire-rate cooldown toward 0
@@ -47,11 +47,7 @@ public class Shooter : MonoBehaviour
        TickReloadTimer();
 
         // 3) Player input: fire
-        bool wantsToFire = equippedGun.IsAutomatic
-            ? Input.GetButton("Fire")        // hold to fire for automatic guns
-            : Input.GetButtonDown("Fire");   // click to fire for semi-auto
-
-        if (wantsToFire)
+        if (Input.GetButton("Fire1"))
         {
             TryFire();
         }
@@ -89,7 +85,7 @@ public class Shooter : MonoBehaviour
         if (Physics.Raycast(origin, direction, out RaycastHit hit, gun.Range, hitMask, QueryTriggerInteraction.Ignore))
         {
             // Try to find something damageable on what we hit (or its parents).
-            var damage = hit.collider.GetComponentInParent<IDamage>();
+            var damage = hit.collider.GetComponent<IDamage>();
             if (damage != null)
             {
                 damage.TakeDamage(gun.Damage);
