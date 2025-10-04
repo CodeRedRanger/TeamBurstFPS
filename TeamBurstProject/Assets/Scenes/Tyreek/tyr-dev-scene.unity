@@ -869,6 +869,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7656015431018952224, guid: db1b52104ecb05f4294f5ab4a5364a59, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7656015431018952224, guid: db1b52104ecb05f4294f5ab4a5364a59, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 8145832463480619351, guid: db1b52104ecb05f4294f5ab4a5364a59, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.1
@@ -912,10 +920,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7656015431018952224, guid: db1b52104ecb05f4294f5ab4a5364a59, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2106113589}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db1b52104ecb05f4294f5ab4a5364a59, type: 3}
 --- !u!1001 &1815300404
 PrefabInstance:
@@ -1036,29 +1041,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c8c782954398e84cb368a645bdb248f, type: 3}
---- !u!1 &2106113583 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7656015431018952224, guid: db1b52104ecb05f4294f5ab4a5364a59, type: 3}
-  m_PrefabInstance: {fileID: 1674878217}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2106113589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2106113583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3ba2c2eee4e3a444b7f446825941d97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Shooter
-  viewCamera: {fileID: 0}
-  equippedGun: {fileID: 11400000, guid: 371130697e04ac94eb7194d6a02e51ba, type: 2}
-  hitMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  drawDebugRay: 1
 --- !u!1001 &1052238653954372380
 PrefabInstance:
   m_ObjectHideFlags: 0
