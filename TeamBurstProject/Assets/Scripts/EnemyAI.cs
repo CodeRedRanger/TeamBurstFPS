@@ -50,7 +50,7 @@ public class EnemyAI : MonoBehaviour, IDamage
 
         if (playerInRange && canSeePlayer())
         {
-            agent.SetDestination(gameManager.instance.player.transform.position);
+            /*agent.SetDestination(gameManager.instance.player.transform.position);
 
             if (agent.remainingDistance <= agent.stoppingDistance)
             {
@@ -60,7 +60,7 @@ public class EnemyAI : MonoBehaviour, IDamage
             if (shootTimer > shootRate)
             {
                 shoot();
-            }
+            }*/
 
         }
     }
@@ -86,7 +86,7 @@ public class EnemyAI : MonoBehaviour, IDamage
             if (angleToPlayer < FOV && hit.collider.CompareTag("Player"))
             {
                 //adjusted this to make work compared to example
-                /*
+                //can try commenting out this
                 agent.SetDestination(gameManager.instance.player.transform.position);
 
                 if (agent.remainingDistance <= agent.stoppingDistance)
@@ -97,7 +97,8 @@ public class EnemyAI : MonoBehaviour, IDamage
                 if (shootTimer > shootRate)
                 {
                     shoot();
-                }*/
+                }
+                //comment out to here
 
                 return true;
             }
