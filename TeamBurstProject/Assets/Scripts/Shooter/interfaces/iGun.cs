@@ -9,7 +9,7 @@ public interface iGun
     string Id { get; }
 
     // Core ballistics / damage.
-    float Damage { get; }          // base damage per shot
+    int Damage { get; }          // base damage per shot
     float Range { get; }           // effective range in meters for hitscan; max travel for projectiles (destroy with distance instead of time)
 
     // Firing behavior.
