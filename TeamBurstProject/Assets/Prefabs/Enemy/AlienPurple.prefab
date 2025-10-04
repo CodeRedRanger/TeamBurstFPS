@@ -1039,7 +1039,7 @@ GameObject:
   - component: {fileID: 6711667498193509555}
   - component: {fileID: 573424560472112122}
   m_Layer: 7
-  m_Name: Alien
+  m_Name: AlienPurple
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1054,7 +1054,7 @@ Transform:
   m_GameObject: {fileID: 8360401713814996041}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.3410692, y: 0.18, z: 3.5372796}
+  m_LocalPosition: {x: 1.5543094, y: 0.14999989, z: 3.5423245}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1099,9 +1099,12 @@ MonoBehaviour:
   model: {fileID: 977934372738377634}
   agent: {fileID: 1130966907663610782}
   HP: 3
+  faceTargetSpeed: 8
   shootPos: {fileID: 7580754560201076598}
   bullet: {fileID: 6217216392253044819, guid: 2f74b11399043bf429b7bc7d4e5f0b52, type: 3}
   shootRate: 1
+  FOV: 90
+  headPos: {fileID: 7059779975067316451}
 --- !u!195 &1130966907663610782
 NavMeshAgent:
   m_ObjectHideFlags: 0
