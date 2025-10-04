@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI; 
 
 
 public class gameManager : MonoBehaviour
@@ -12,6 +13,9 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
+
+    //RG
+    public Image playerHPBar; 
 
     public GameObject player; //reference to player object
     public PlayerController playerScript; //reference to player script
