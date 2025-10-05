@@ -55607,6 +55607,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1131044992955909468, guid: a04727052936dbb4fa469f6ea7be27ac, type: 3}
       insertIndex: 1
       addedObject: {fileID: 3147423575294227662}
+    - targetCorrespondingSourceObject: {fileID: 1131044992955909468, guid: a04727052936dbb4fa469f6ea7be27ac, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3147423575294227668}
   m_SourcePrefab: {fileID: 100100000, guid: a04727052936dbb4fa469f6ea7be27ac, type: 3}
 --- !u!114 &3147423575294227662
 MonoBehaviour:
@@ -55622,6 +55625,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerShooting
   range: 50
   ps: {fileID: 770258011}
+--- !u!114 &3147423575294227668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792539245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7fde3663a63bef4493669d1221161a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraController
+  mouseSens: 600
+  vertLimitLow: -90
+  vertLimitHigh: 90
+  invertY: 0
 --- !u!1 &3192083840132334936
 GameObject:
   m_ObjectHideFlags: 0
