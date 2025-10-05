@@ -126,6 +126,11 @@ public class PlayerController : MonoBehaviour, IDamage
         gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig; 
     }
 
+    public void AddShootDamage(int amount)
+    {
+        shootDamage += amount;
+    }
+
     IEnumerator flashDamage()
     {
         gameManager.instance.playerDamageFlash.SetActive(true);
