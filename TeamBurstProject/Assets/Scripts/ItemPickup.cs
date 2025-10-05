@@ -1,9 +1,8 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class itemPickup : MonoBehaviour, IPickup
 {
-    [SerializeField] ItemType item;
+    [SerializeField] ItemData item;
     [SerializeField] bool destroyOnPickup;
 
     public void Pickup()

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class PlayerPickup : MonoBehaviour
 {
@@ -21,11 +20,12 @@ public class PlayerPickup : MonoBehaviour
 
     void detectItem()
     {
+        //timer = 0;
         RaycastHit hit;
         if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, range))
         {
             IPickup item = hit.collider.GetComponent<IPickup>();
-            if(item != null && Input.GetKey(useKey))
+            if(item != null && Input.GetKeyDown(useKey))
             {
                 item.Pickup();
                 /*if (item.Pickup() == Medkit)

@@ -1,23 +1,16 @@
 using UnityEngine;
 
-public enum ItemType
+enum ItemType
 {
     none,
     medkit,
     grenade
 }
 
-//public struct ItemData
-//{
-//    // image/icon
-//    public Items item;
-//    public int maxStack;
-//} 
-
-[CreateAssetMenu(menuName = "Items/Item Data")]
+[CreateAssetMenu(menuName = "Items/Item Type")]
 public class ItemData : ScriptableObject
 {
     // image/icon
-    public ItemType item;
+    ItemType type;
     public int maxStack;
 }
