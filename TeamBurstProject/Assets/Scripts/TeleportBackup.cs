@@ -12,7 +12,7 @@ public class TeleportPlayer : MonoBehaviour
         int currentgoalCount = gameManager.instance.GetGameGoalCount();
 
         // When a player enters this trigger, set their position to the teleport position.
-        if (other.CompareTag("Player") && currentgoalCount < 5)
+        if (other.CompareTag("Player") && currentgoalCount < 3)
         {
 
             gameManager.instance.player.transform.position = teleportPos.position;
