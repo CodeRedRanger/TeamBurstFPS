@@ -7,36 +7,105 @@ public class EnemyAI : MonoBehaviour, IDamage
     [SerializeField] Renderer model;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] int HP;
+    [SerializeField] int faceTargetSpeed; 
+
+
     [SerializeField] Transform shootPos;
     [SerializeField] GameObject bullet;
     [SerializeField] float shootRate;
+
+
+    [SerializeField] int FOV;
+    [SerializeField] Transform headPos; 
+
     Color colorOrig;
 
     float shootTimer;
+
+    float angleToPlayer; 
+
     bool playerInRange;
+
+    Vector3 playerDir; 
+
+    private Animator animator;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         colorOrig = model.material.color;
         gameManager.instance.updateGameGoal(1);
+        animator = GetComponent<Animator>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        shootTimer += Time.deltaTime;
 
-        if (!playerInRange)
+        animator.SetFloat("Speed", agent.velocity.magnitude);
+
+        shootTimer += Time.deltaTime;
+      
+
+        if (playerInRange && canSeePlayer())
         {
-            agent.SetDestination(gameManager.instance.player.transform.position);
+            /*agent.SetDestination(gameManager.instance.player.transform.position);
+
+            if (agent.remainingDistance <= agent.stoppingDistance)
+            {
+                faceTarget();
+            }
 
             if (shootTimer > shootRate)
             {
                 shoot();
-            }
+            }*/
+
         }
+    }
+
+    void faceTarget()
+    {
+        Quaternion rot = Quaternion.LookRotation(new Vector3(playerDir.x, transform.position.y, playerDir.z));
+        transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * faceTargetSpeed);
+    }
+
+    bool canSeePlayer()
+    {
+        playerDir = gameManager.instance.player.transform.position - headPos.position;
+        angleToPlayer = Vector3.Angle(playerDir, transform.forward);
+        Debug.DrawRay(headPos.position, playerDir, Color.red);
+
+        RaycastHit hit;
+
+        if (Physics.Raycast(headPos.position, playerDir, out hit))
+        {
+            Debug.Log("Enemy is hitting " + hit.collider.name); 
+
+            if (angleToPlayer < FOV && hit.collider.CompareTag("Player"))
+            {
+                //adjusted this to make work compared to example
+                //can try commenting out this
+                agent.SetDestination(gameManager.instance.player.transform.position);
+
+                if (agent.remainingDistance <= agent.stoppingDistance)
+                {
+                    faceTarget();
+                }
+
+                if (shootTimer > shootRate)
+                {
+                    shoot();
+                }
+                //comment out to here
+
+                return true;
+            }
+
+        }
+
+        return false; 
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -66,8 +135,9 @@ public class EnemyAI : MonoBehaviour, IDamage
         
         if(HP <= 0)
         {
-            gameManager.instance.updateGameGoal(-1);
             Destroy(gameObject);
+            gameManager.instance.updateGameGoal(-1);
+            
         }
         else
         {
