@@ -1,8 +1,7 @@
 using UnityEngine;
 
-enum ItemType
+public enum ItemType
 {
-    none,
     medkit,
     grenade
 }
@@ -10,7 +9,7 @@ enum ItemType
 [CreateAssetMenu(menuName = "Items/Item Type")]
 public class ItemData : ScriptableObject
 {
-    // image/icon
-    ItemType type;
+    public Sprite icon;
+    public ItemType type;
     public int maxStack;
 }
