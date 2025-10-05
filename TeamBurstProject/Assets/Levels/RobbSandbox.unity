@@ -39320,7 +39320,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 895943025, guid: a04e2b9338ca5bd49a2de6b18dc50a77, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4961029322831518113, guid: a04e2b9338ca5bd49a2de6b18dc50a77, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6925983613016316570, guid: a04e2b9338ca5bd49a2de6b18dc50a77, type: 3}
       insertIndex: -1
@@ -39354,11 +39355,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6925983613016316570, guid: a04e2b9338ca5bd49a2de6b18dc50a77, type: 3}
   m_PrefabInstance: {fileID: 1669733189}
   m_PrefabAsset: {fileID: 0}
---- !u!137 &1669733193 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 6694304286319792505, guid: a04e2b9338ca5bd49a2de6b18dc50a77, type: 3}
-  m_PrefabInstance: {fileID: 1669733189}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1669733194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39371,7 +39367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c026d4418d24ae4bb4fd62d44814e52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
-  model: {fileID: 1669733193}
+  model: {fileID: 0}
   agent: {fileID: 1669733201}
   HP: 10
   faceTargetSpeed: 8
