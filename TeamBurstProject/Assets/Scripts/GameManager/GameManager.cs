@@ -118,6 +118,11 @@ public class gameManager : MonoBehaviour
 
         }
     }
+
+    public int GetGameGoalCount()
+    {
+        return gameGoalCount;
+    }
     
     public void youLose()
     {
