@@ -27,12 +27,18 @@ public class PlayerController : MonoBehaviour, IDamage
 
     bool isSprinting;
 
+    //Audio
+    public AudioClip shootSound;
+    public AudioClip damageSound;
+    public AudioClip deathSound;
+    
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         HPOrig = HP;
-        updatePlayerUI(); 
-      
+        updatePlayerUI();
+
     }
 
     // Update is called once per frame
@@ -68,6 +74,7 @@ public class PlayerController : MonoBehaviour, IDamage
         if (Input.GetButton("Fire1") && shootTimer >= shootRate)
         {
             Shoot();
+            SoundManager.Instance.PlayEffect(shootSound);
         }
     }
     void Sprint()
@@ -104,7 +111,7 @@ public class PlayerController : MonoBehaviour, IDamage
                 dmg.TakeDamage(shootDamage);
             }
 
-            Debug.Log(hit.collider.name);
+            //Debug.Log(hit.collider.name);
         }
     }
 
@@ -113,11 +120,15 @@ public class PlayerController : MonoBehaviour, IDamage
         HP -= damage;
         updatePlayerUI(); 
         StartCoroutine(flashDamage());
+        SoundManager.Instance.PlayEffect(damageSound);
 
         if (HP <= 0)
         {
+            SoundManager.Instance.PlayEffect(deathSound); 
+            SoundManager.Instance.StopMusic();
             Debug.Log("You are dead"); 
             gameManager.instance.youLose();
+           
         }
     }
 
@@ -126,12 +137,18 @@ public class PlayerController : MonoBehaviour, IDamage
         gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig; 
     }
 
+    public void AddShootDamage(int amount)
+    {
+        shootDamage += amount;
+    }
+
     IEnumerator flashDamage()
     {
         gameManager.instance.playerDamageFlash.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         gameManager.instance.playerDamageFlash.SetActive(false);
     }
+
 
 
 }

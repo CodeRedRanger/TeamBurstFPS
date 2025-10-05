@@ -4,6 +4,12 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour, IDamage
 {
+
+    public AudioClip shootSound;
+    public AudioClip damageSound;
+    public AudioClip deathSound;
+    
+
     [SerializeField] Renderer model;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] int HP;
@@ -46,7 +52,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         animator.SetFloat("Speed", agent.velocity.magnitude);
 
         shootTimer += Time.deltaTime;
-        playerDir = gameManager.instance.transform.position - transform.position;
+      
 
         if (playerInRange && canSeePlayer())
         {
@@ -81,7 +87,7 @@ public class EnemyAI : MonoBehaviour, IDamage
 
         if (Physics.Raycast(headPos.position, playerDir, out hit))
         {
-            Debug.Log(hit.collider.name); 
+            Debug.Log("Enemy is hitting " + hit.collider.name); 
 
             if (angleToPlayer < FOV && hit.collider.CompareTag("Player"))
             {
@@ -96,6 +102,7 @@ public class EnemyAI : MonoBehaviour, IDamage
 
                 if (shootTimer > shootRate)
                 {
+                    SoundManager.Instance.PlayEffect(shootSound);
                     shoot();
                 }
                 //comment out to here
@@ -131,16 +138,21 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     public void TakeDamage(int amount)
     {
-        HP -= amount;
+            
+         HP -= amount;
         
-        if(HP <= 0)
+
+        if (HP <= 0)
         {
-            gameManager.instance.updateGameGoal(-1);
+            SoundManager.Instance.PlayEffect(deathSound);
             Destroy(gameObject);
+            gameManager.instance.updateGameGoal(-1);
+            
         }
         else
         {
             StartCoroutine(flashRed());
+            SoundManager.Instance.PlayEffect(damageSound);
         }
 
     }

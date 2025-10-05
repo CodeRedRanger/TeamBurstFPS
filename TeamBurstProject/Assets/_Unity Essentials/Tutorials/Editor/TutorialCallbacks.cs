@@ -1,12 +1,11 @@
-﻿using UnityEngine;
-
-/*
-
-using Unity.Tutorials.Core.Editor;
+﻿
+using UnityEngine;
+//using Unity.Tutorials.Core.Editor;
 using UnityEditor;
 
 namespace Unity.Tutorials
 {
+    /*
     /// <summary>
     /// Implement your Tutorial callbacks here.
     /// </summary>
@@ -58,5 +57,5 @@ namespace Unity.Tutorials
         {
             TutorialWindowUtils.StartTutorial(tutorial);            
         }
-    }
-}*/
+    }*/
+}
