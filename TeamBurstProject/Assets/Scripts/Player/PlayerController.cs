@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour, IDamage
     [SerializeField] int shootDist;
     [SerializeField] float shootRate;
 
+    public ParticleSystem ps;
+
     private Vector3 moveDir;
     private Vector3 playerVel;
 
@@ -75,6 +77,7 @@ public class PlayerController : MonoBehaviour, IDamage
         {
             Shoot();
             SoundManager.Instance.PlayEffect(shootSound);
+            ps.Play(); 
         }
     }
     void Sprint()
