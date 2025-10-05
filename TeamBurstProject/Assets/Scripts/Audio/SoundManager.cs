@@ -43,4 +43,13 @@ public class SoundManager : MonoBehaviour
         musicSource.Stop();
     }
 
+    public void ChangeVolumeMusic(float newVolume)
+    {
+        musicSource.volume = Mathf.Clamp(newVolume, 0f, 1f);
+
+    }
+
+  
+
+
 }

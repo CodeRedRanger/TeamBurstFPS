@@ -103,13 +103,18 @@ public class gameManager : MonoBehaviour
         gameGoalCount += amount;
         gameGoalCountText.text = gameGoalCount.ToString("F0");
 
+       
+
         if (gameGoalCount <= 0)
         {
             //win condition
             statePause();
             menuActive = menuWin;
             menuActive.SetActive(true);
-            SoundManager.Instance.PlayMusic(BGMusic, 0.5f);
+            SoundManager.Instance.PlayMusic(BGMusic, 0.2f);
+
+            //can't get to work
+            //SoundManager.Instance.ChangeVolumeMusic(0.3f);
 
         }
     }
@@ -119,7 +124,10 @@ public class gameManager : MonoBehaviour
         statePause();
         menuActive = menuLose;
         menuActive.SetActive(true);
-        SoundManager.Instance.PlayMusic(BGMusic, 0.5f);
+        SoundManager.Instance.PlayMusic(BGMusic, 0.2f);
+
+        //can't get to work
+        //SoundManager.Instance.ChangeVolumeMusic(0.3f); 
 
     }
 
