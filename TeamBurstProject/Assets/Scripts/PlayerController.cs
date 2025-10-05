@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections; 
 
 public class PlayerController : MonoBehaviour, IDamage
 {
@@ -30,6 +31,7 @@ public class PlayerController : MonoBehaviour, IDamage
     void Start()
     {
         HPOrig = HP;
+        updatePlayerUI(); 
       
     }
 
@@ -109,6 +111,8 @@ public class PlayerController : MonoBehaviour, IDamage
     public void TakeDamage(int damage)
     {
         HP -= damage;
+        updatePlayerUI(); 
+        StartCoroutine(flashDamage());
 
         if (HP <= 0)
         {
@@ -116,4 +120,18 @@ public class PlayerController : MonoBehaviour, IDamage
             gameManager.instance.youLose();
         }
     }
+
+    public void updatePlayerUI()
+    {
+        gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig; 
+    }
+
+    IEnumerator flashDamage()
+    {
+        gameManager.instance.playerDamageFlash.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        gameManager.instance.playerDamageFlash.SetActive(false);
+    }
+
+
 }
