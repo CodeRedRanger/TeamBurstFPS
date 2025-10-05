@@ -2,15 +2,19 @@ using UnityEngine;
 
 public class PowerPickup : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    // TODO: Add visual and simple bobbing up and down animation
+
+
+    [SerializeField] int damageAmount;
+
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (!other.gameObject.CompareTag("Player"))
+            return;
+
+        gameManager.instance.playerScript.AddShootDamage(damageAmount);
+
+        Destroy(gameObject);
     }
 }
