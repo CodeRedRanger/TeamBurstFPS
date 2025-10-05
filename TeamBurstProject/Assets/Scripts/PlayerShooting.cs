@@ -39,7 +39,7 @@ public class PlayerShooting : MonoBehaviour
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, range))
         {
             //Debug.Log("Hit " + hit.collider.name);
-           // Instantiate(particleObject, hit.point, Quaternion.identity); 
+           //Instantiate(particleObject, hit.point, Quaternion.identity); 
 
         }
     }
