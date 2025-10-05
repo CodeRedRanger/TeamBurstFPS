@@ -46,7 +46,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         animator.SetFloat("Speed", agent.velocity.magnitude);
 
         shootTimer += Time.deltaTime;
-        playerDir = gameManager.instance.transform.position - transform.position;
+      
 
         if (playerInRange && canSeePlayer())
         {
@@ -135,8 +135,9 @@ public class EnemyAI : MonoBehaviour, IDamage
         
         if(HP <= 0)
         {
-            gameManager.instance.updateGameGoal(-1);
             Destroy(gameObject);
+            gameManager.instance.updateGameGoal(-1);
+            
         }
         else
         {
