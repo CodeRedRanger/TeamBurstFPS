@@ -4,6 +4,12 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour, IDamage
 {
+
+    public AudioClip shootSound;
+    public AudioClip damageSound;
+    public AudioClip deathSound;
+    
+
     [SerializeField] Renderer model;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] int HP;
@@ -96,6 +102,7 @@ public class EnemyAI : MonoBehaviour, IDamage
 
                 if (shootTimer > shootRate)
                 {
+                    SoundManager.Instance.PlayEffect(shootSound);
                     shoot();
                 }
                 //comment out to here
@@ -131,10 +138,13 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     public void TakeDamage(int amount)
     {
-        HP -= amount;
+            
+         HP -= amount;
         
-        if(HP <= 0)
+
+        if (HP <= 0)
         {
+            SoundManager.Instance.PlayEffect(deathSound);
             Destroy(gameObject);
             gameManager.instance.updateGameGoal(-1);
             
@@ -142,6 +152,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         else
         {
             StartCoroutine(flashRed());
+            SoundManager.Instance.PlayEffect(damageSound);
         }
 
     }

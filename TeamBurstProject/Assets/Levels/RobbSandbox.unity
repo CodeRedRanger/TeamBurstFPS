@@ -20589,7 +20589,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &839896830
 AudioSource:
   m_ObjectHideFlags: 0
@@ -21726,6 +21726,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5179582924462051098, guid: ad8d8ed7226d3c34bb960428cc303c23, type: 3}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 4e7a9f408abdba8459fdccbeaea95215, type: 3}
+    - target: {fileID: 5179582924462051098, guid: ad8d8ed7226d3c34bb960428cc303c23, type: 3}
+      propertyPath: shootSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 06ada5590eba8d6489b36c6f3c54ff78, type: 3}
+    - target: {fileID: 5179582924462051098, guid: ad8d8ed7226d3c34bb960428cc303c23, type: 3}
+      propertyPath: damageSound
+      value: 
+      objectReference: {fileID: 8300000, guid: e4b229d1cd4c5954c982c44b6f42eb27, type: 3}
     - target: {fileID: 5780690571341306827, guid: ad8d8ed7226d3c34bb960428cc303c23, type: 3}
       propertyPath: m_AutoBraking
       value: 0
@@ -24889,6 +24901,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1704004601}
     m_Modifications:
+    - target: {fileID: 1759412261362870095, guid: ded1fb2b9bd90e8409310dab4bab8d0f, type: 3}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 4e7a9f408abdba8459fdccbeaea95215, type: 3}
+    - target: {fileID: 1759412261362870095, guid: ded1fb2b9bd90e8409310dab4bab8d0f, type: 3}
+      propertyPath: shootSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 06ada5590eba8d6489b36c6f3c54ff78, type: 3}
+    - target: {fileID: 1759412261362870095, guid: ded1fb2b9bd90e8409310dab4bab8d0f, type: 3}
+      propertyPath: damageSound
+      value: 
+      objectReference: {fileID: 8300000, guid: e4b229d1cd4c5954c982c44b6f42eb27, type: 3}
     - target: {fileID: 2419970718338169425, guid: ded1fb2b9bd90e8409310dab4bab8d0f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.29
@@ -28419,6 +28443,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1704004601}
     m_Modifications:
+    - target: {fileID: 1759412261362870095, guid: ded1fb2b9bd90e8409310dab4bab8d0f, type: 3}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 4e7a9f408abdba8459fdccbeaea95215, type: 3}
+    - target: {fileID: 1759412261362870095, guid: ded1fb2b9bd90e8409310dab4bab8d0f, type: 3}
+      propertyPath: shootSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 06ada5590eba8d6489b36c6f3c54ff78, type: 3}
+    - target: {fileID: 1759412261362870095, guid: ded1fb2b9bd90e8409310dab4bab8d0f, type: 3}
+      propertyPath: damageSound
+      value: 
+      objectReference: {fileID: 8300000, guid: e4b229d1cd4c5954c982c44b6f42eb27, type: 3}
     - target: {fileID: 2419970718338169425, guid: ded1fb2b9bd90e8409310dab4bab8d0f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.535
@@ -39856,6 +39892,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c026d4418d24ae4bb4fd62d44814e52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
+  shootSound: {fileID: 0}
+  damageSound: {fileID: 0}
+  deathSound: {fileID: 0}
   model: {fileID: 0}
   agent: {fileID: 1669733201}
   HP: 10
@@ -46020,6 +46059,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1704004601}
     m_Modifications:
+    - target: {fileID: 1759412261362870095, guid: f94f3395cf9ea2a4a9c731d18797d294, type: 3}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 4e7a9f408abdba8459fdccbeaea95215, type: 3}
+    - target: {fileID: 1759412261362870095, guid: f94f3395cf9ea2a4a9c731d18797d294, type: 3}
+      propertyPath: shootSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 06ada5590eba8d6489b36c6f3c54ff78, type: 3}
+    - target: {fileID: 1759412261362870095, guid: f94f3395cf9ea2a4a9c731d18797d294, type: 3}
+      propertyPath: damageSound
+      value: 
+      objectReference: {fileID: 8300000, guid: e4b229d1cd4c5954c982c44b6f42eb27, type: 3}
     - target: {fileID: 2419970718338169425, guid: f94f3395cf9ea2a4a9c731d18797d294, type: 3}
       propertyPath: m_LocalPosition.x
       value: 30.07
@@ -57288,6 +57339,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7997855518539285114, guid: 8daae114a45a3ef4e882adf5ec4efeb8, type: 3}
+      propertyPath: BGMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 79a0c1b5d72bfc748bc67ce6e4c6115b, type: 3}
     - target: {fileID: 8855135358082939607, guid: 8daae114a45a3ef4e882adf5ec4efeb8, type: 3}
       propertyPath: m_Name
       value: UI

@@ -25,10 +25,10 @@ public class SoundManager : MonoBehaviour
 
     }
 
-    public void PlayMusic(AudioClip clip) //float volume = 1.0f)
+    public void PlayMusic(AudioClip clip, float volume = 1.0f)
     {
         musicSource.clip = clip;
-        //musicSource.volume = volume; 
+        musicSource.volume = volume; 
         musicSource.Play();
     }
 

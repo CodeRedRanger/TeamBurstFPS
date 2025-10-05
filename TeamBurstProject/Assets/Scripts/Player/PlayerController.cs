@@ -31,14 +31,13 @@ public class PlayerController : MonoBehaviour, IDamage
     public AudioClip shootSound;
     public AudioClip damageSound;
     public AudioClip deathSound;
-    public AudioClip BGmusic; 
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         HPOrig = HP;
         updatePlayerUI();
-        SoundManager.Instance.PlayMusic(BGmusic);
 
     }
 

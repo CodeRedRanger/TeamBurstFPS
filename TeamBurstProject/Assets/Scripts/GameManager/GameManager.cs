@@ -14,7 +14,9 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
-    [SerializeField] TMP_Text gameGoalCountText; 
+    [SerializeField] TMP_Text gameGoalCountText;
+
+    public AudioClip BGMusic; 
 
     public Image playerHPBar;
     public GameObject playerDamageFlash; 
@@ -41,6 +43,9 @@ public class gameManager : MonoBehaviour
         //need this line before next
        player = GameObject.FindGameObjectWithTag("Player");
        playerScript = player.GetComponent<PlayerController>();
+
+       SoundManager.Instance.PlayMusic(BGMusic);
+
     }
 
     // Update is called once per frame
@@ -75,6 +80,7 @@ public class gameManager : MonoBehaviour
         Time.timeScale = 0;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        SoundManager.Instance.StopMusic();
 
 
 
@@ -89,6 +95,7 @@ public class gameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         menuActive.SetActive(false);
         menuActive = null;
+        SoundManager.Instance.PlayMusic(BGMusic);
     }
 
     public void updateGameGoal(int amount)
@@ -102,15 +109,17 @@ public class gameManager : MonoBehaviour
             statePause();
             menuActive = menuWin;
             menuActive.SetActive(true);
+            SoundManager.Instance.PlayMusic(BGMusic, 0.5f);
 
         }
     }
-
+    
     public void youLose()
     {
         statePause();
         menuActive = menuLose;
         menuActive.SetActive(true);
+        SoundManager.Instance.PlayMusic(BGMusic, 0.5f);
 
     }
 
