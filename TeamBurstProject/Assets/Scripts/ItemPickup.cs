@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class itemPickup : MonoBehaviour, IPickup
 {
-    [SerializeField] Items item;
+    [SerializeField] ItemType item;
     [SerializeField] bool destroyOnPickup;
 
     public void Pickup()
