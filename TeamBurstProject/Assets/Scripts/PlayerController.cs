@@ -104,7 +104,7 @@ public class PlayerController : MonoBehaviour, IDamage
                 dmg.TakeDamage(shootDamage);
             }
 
-            Debug.Log(hit.collider.name);
+            //Debug.Log(hit.collider.name);
         }
     }
 
