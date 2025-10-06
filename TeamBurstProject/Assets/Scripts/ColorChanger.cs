@@ -29,6 +29,10 @@ public class ColorChanger : MonoBehaviour
         {
             objRenderer.material.color = Color.yellow;
         }
+        else
+        {
+            objRenderer.material.color = Color.black; 
+        }
       
     }
 
