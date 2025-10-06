@@ -17,7 +17,12 @@ public class ItemPickupRobb : MonoBehaviour, IPickup
         {
             if (destroyOnPickup)
             {
-                SoundManager.Instance.PlayEffect(pickupSound);
+                Debug.Log("Picked up " + gameObject.name);
+                if (pickupSound != null)
+                {
+                    SoundManager.Instance.PlayEffect(pickupSound);
+                }
+                    
                 Destroy(gameObject);
             }
         }
