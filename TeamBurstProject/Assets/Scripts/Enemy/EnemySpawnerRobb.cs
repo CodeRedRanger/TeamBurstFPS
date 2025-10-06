@@ -81,9 +81,10 @@ public class EnemySpawnerRobb : MonoBehaviour
 
             while (currentCycle < spawnCycles)
              {
-                    // while (spawnAttempts < maxSpawnAttempts && !positionFound)
-                    {
-                        yield return new WaitForSeconds(interval);
+                //couldn't get the avoid collision to work so removed for now
+                // while (spawnAttempts < maxSpawnAttempts && !positionFound)
+                {
+                    yield return new WaitForSeconds(interval);
 
                         //int enemiesSpawnSize = Random.Range(minEnemiesPerSpawn, maxEnemiesPerSpawn);
                         Vector3 randomPoint = Random.insideUnitSphere;

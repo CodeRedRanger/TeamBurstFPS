@@ -6,6 +6,7 @@ public class ColorChanger : MonoBehaviour
 {
     private Renderer objRenderer;
     private bool enemiesSpawned = false;
+    private int requiredGoalCount = 2;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -25,7 +26,7 @@ public class ColorChanger : MonoBehaviour
             enemiesSpawned = true;
         }
 
-        if(gameManager.instance.GetGameGoalCount() < 3)
+        if(gameManager.instance.GetGameGoalCount() < requiredGoalCount)
         {
             objRenderer.material.color = Color.yellow;
         }
