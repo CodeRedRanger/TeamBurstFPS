@@ -1039,7 +1039,7 @@ GameObject:
   - component: {fileID: 6711667498193509555}
   - component: {fileID: 573424560472112122}
   m_Layer: 7
-  m_Name: AlienPurple
+  m_Name: AlienBoss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1055,7 +1055,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.5543094, y: 0.14999989, z: 3.5423245}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3.5, y: 3.5, z: 3.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1168481956193735346}
@@ -1101,10 +1101,10 @@ MonoBehaviour:
   deathSound: {fileID: 8300000, guid: 4e7a9f408abdba8459fdccbeaea95215, type: 3}
   model: {fileID: 977934372738377634}
   agent: {fileID: 1130966907663610782}
-  HP: 3
+  HP: 8
   faceTargetSpeed: 8
   shootPos: {fileID: 7580754560201076598}
-  bullet: {fileID: 4309350892994240032, guid: 0a37bb8dc95a9054aa16dce4a1387487, type: 3}
+  bullet: {fileID: 4309350892994240032, guid: 3df573bb6853cef4fb7379b9a13b248b, type: 3}
   shootRate: 1
   FOV: 90
   headPos: {fileID: 7059779975067316451}
@@ -1152,7 +1152,7 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 2.5
   m_Direction: 1
-  m_Center: {x: 0, y: 1.25, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!135 &573424560472112122
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1172,7 +1172,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 25
+  m_Radius: 5
   m_Center: {x: 0.009468883, y: 0.8597729, z: 0.05926037}
 --- !u!1 &8467968098607631163
 GameObject:

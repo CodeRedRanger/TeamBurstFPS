@@ -7,6 +7,7 @@ public class TriggerAppearObject : MonoBehaviour
 
     public GameObject objectToAppear; 
     public float delay = 1f; // Delay in seconds before the object appears
+    //[SerializeField] string tagToTrigger; 
     void Start()
     {
         if (objectToAppear != null)
@@ -18,7 +19,9 @@ public class TriggerAppearObject : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Rocket")) // Check if the colliding object has the "Rocket" tag
+        
+        if (other.CompareTag("Rocket") || other.CompareTag("Player")) // Check if the colliding object has the "Rocket" or Player tag
+        //can make a tag variable if want to use for other things
         {
             if (objectToAppear != null)
             {
