@@ -162,4 +162,10 @@ public class EnemyAI : MonoBehaviour, IDamage
         yield return new WaitForSeconds(0.1f);
         model.material.color = colorOrig;
     }
+
+    public void Heal(int amount)
+    {
+        //not implemented for enemy
+    }
+
 }

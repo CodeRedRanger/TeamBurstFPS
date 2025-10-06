@@ -60,7 +60,7 @@ public class DamageTarget : MonoBehaviour, IDamage
         }
     }
 
-    public void Heal(float amount)
+    public void Heal(int amount) //changed from float
     {
         // if (!IsAlive) return; // no healing if already dead (change if we add revive)
         float heal = Mathf.Max(0f, amount);

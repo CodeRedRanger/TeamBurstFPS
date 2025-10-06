@@ -153,5 +153,16 @@ public class PlayerController : MonoBehaviour, IDamage
     }
 
 
+    public void Heal(int amount)
+    {
+        HP += amount;
+        if (HP > HPOrig)
+        {
+            HP = HPOrig;
+        }
+        updatePlayerUI();
+    }
+
+
 
 }
