@@ -87,7 +87,7 @@ public class EnemyAI : MonoBehaviour, IDamage
 
         if (Physics.Raycast(headPos.position, playerDir, out hit))
         {
-            Debug.Log("Enemy is hitting " + hit.collider.name); 
+            //Debug.Log("Enemy is hitting " + hit.collider.name); 
 
             if (angleToPlayer < FOV && hit.collider.CompareTag("Player"))
             {
