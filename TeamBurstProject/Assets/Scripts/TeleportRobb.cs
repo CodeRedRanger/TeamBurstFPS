@@ -8,10 +8,11 @@ public class TeleportPlayer : MonoBehaviour
     [SerializeField] Transform teleportPos;
 
     private bool canTeleport = false;
+    private int currentgoalCount; 
 
     void Start()
     {
-      
+        currentgoalCount = gameManager.instance.GetGameGoalCount();
     }
 
     void Update()
@@ -27,7 +28,8 @@ public class TeleportPlayer : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        int currentgoalCount = gameManager.instance.GetGameGoalCount();
+
+        currentgoalCount = gameManager.instance.GetGameGoalCount();
 
         // When a player enters this trigger, set their position to the teleport position.
         if (other.CompareTag("Player") && currentgoalCount < 3)
