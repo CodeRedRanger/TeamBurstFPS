@@ -1,0 +1,47 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ColorChanger : MonoBehaviour
+{
+    private Renderer objRenderer;
+    private bool enemiesSpawned = false;
+    private int requiredGoalCount = 2;
+
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        objRenderer = GetComponent<Renderer>();
+        StartCoroutine(WaitForSpawn());
+    }
+
+    // Update is called once per frame
+
+    void Update()
+    {
+        if (enemiesSpawned == false)
+        {
+            StartCoroutine(WaitForSpawn());
+            enemiesSpawned = true;
+        }
+
+        if(gameManager.instance.GetGameGoalCount() < requiredGoalCount)
+        {
+            objRenderer.material.color = Color.yellow;
+        }
+        else
+        {
+            objRenderer.material.color = Color.black; 
+        }
+      
+    }
+
+    IEnumerator WaitForSpawn()
+    {
+        
+        yield return new WaitForSeconds(10.0f);
+       
+    }
+
+}
