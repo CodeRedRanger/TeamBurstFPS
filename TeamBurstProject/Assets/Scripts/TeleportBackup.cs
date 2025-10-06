@@ -7,6 +7,24 @@ public class TeleportPlayer : MonoBehaviour
     // Place an empty GameObject at the point in the world you want to send the player to.
     [SerializeField] Transform teleportPos;
 
+    private bool canTeleport = false;
+
+    void Start()
+    {
+      
+    }
+
+    void Update()
+    {
+        if(canTeleport)
+        {
+            gameManager.instance.player.transform.position = teleportPos.position;
+            canTeleport = false;
+        }
+
+    }
+
+
     private void OnTriggerEnter(Collider other)
     {
         int currentgoalCount = gameManager.instance.GetGameGoalCount();
@@ -15,7 +33,7 @@ public class TeleportPlayer : MonoBehaviour
         if (other.CompareTag("Player") && currentgoalCount < 3)
         {
 
-            gameManager.instance.player.transform.position = teleportPos.position;
+            canTeleport = true;
 
         }
 
