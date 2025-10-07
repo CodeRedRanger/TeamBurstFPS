@@ -7,7 +7,7 @@ public class PlayerPickupRobb : MonoBehaviour
     
 
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
     void Start()
     {
 
@@ -31,7 +31,7 @@ public class PlayerPickupRobb : MonoBehaviour
             {
                 item.Pickup(); 
 
-               // if (item.Pickup() == Medkit)
+                //if (item.Pickup() == Medkit)
                 {
                    //implemented in damage.cs
                    // add medkit to inventory/hotbar

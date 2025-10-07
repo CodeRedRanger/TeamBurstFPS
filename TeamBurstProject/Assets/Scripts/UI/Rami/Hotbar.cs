@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-struct HotbarSlot
+/*struct HotbarSlot
 {
     public ItemData item;
     public int amount;
@@ -78,4 +78,4 @@ public class Hotbar : MonoBehaviour
             }
         }
     }
-}
+}*/

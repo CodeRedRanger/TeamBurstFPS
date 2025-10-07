@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 
 public enum ItemType
 {
@@ -12,4 +12,4 @@ public class ItemData : ScriptableObject
     public Sprite icon;
     public ItemType type;
     public int maxStack;
-}
+}*/

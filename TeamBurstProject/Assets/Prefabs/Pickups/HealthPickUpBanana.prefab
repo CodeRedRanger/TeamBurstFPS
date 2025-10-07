@@ -57,6 +57,7 @@ MonoBehaviour:
   damageRate: 0
   speed: 0
   destroyTime: 0
+  itemSound: {fileID: 0}
 --- !u!114 &5735238960578152484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,6 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b8f93301ccabb4da065a8162cbf4fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickupRobb
+  item: {fileID: 11400000, guid: 1183f151f1fc83f4ab8d0f08b84ade62, type: 2}
   destroyOnPickup: 1
   pickupSound: {fileID: 8300000, guid: 1accd6dee6805e54f96ce4b81e92cc43, type: 3}
 --- !u!82 &2639307063614398336

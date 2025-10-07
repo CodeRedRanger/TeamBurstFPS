@@ -16,7 +16,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuLose;
     [SerializeField] TMP_Text gameGoalCountText;
 
-    public AudioClip BGMusic; 
+    public AudioClip BGMusic;
 
     public Image playerHPBar;
     public GameObject playerDamageFlash; 
@@ -103,7 +103,7 @@ public class gameManager : MonoBehaviour
         gameGoalCount += amount;
         gameGoalCountText.text = gameGoalCount.ToString("F0");
 
-       
+
 
         if (gameGoalCount <= 0)
         {

@@ -1,5 +1,6 @@
 using UnityEngine;
 
+/*
 public class itemPickup : MonoBehaviour, IPickup
 {
     [SerializeField] ItemData item;
@@ -13,4 +14,4 @@ public class itemPickup : MonoBehaviour, IPickup
             if (destroyOnPickup) Destroy(gameObject);
         }
     }
-}
+}*/

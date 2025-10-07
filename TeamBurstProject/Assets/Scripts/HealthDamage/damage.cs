@@ -67,7 +67,7 @@ bool isDamaging;
 
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Entered trigger with " + name);
+            //Debug.Log("Entered trigger with " + name);
         }
         
         //could also say if type not DOT
