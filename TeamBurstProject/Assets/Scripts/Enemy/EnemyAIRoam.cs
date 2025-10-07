@@ -2,18 +2,18 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.AI;
 
-public class EnemyAI : MonoBehaviour, IDamage
+public class EnemyAIRoam : MonoBehaviour, IDamage
 {
 
     public AudioClip shootSound;
     public AudioClip damageSound;
     public AudioClip deathSound;
-    
+
 
     [SerializeField] Renderer model;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] int HP;
-    [SerializeField] int faceTargetSpeed; 
+    [SerializeField] int faceTargetSpeed;
 
 
     [SerializeField] Transform shootPos;
@@ -22,19 +22,26 @@ public class EnemyAI : MonoBehaviour, IDamage
 
 
     [SerializeField] int FOV;
-    [SerializeField] Transform headPos; 
+    [SerializeField] Transform headPos;
 
     Color colorOrig;
 
     float shootTimer;
 
-    float angleToPlayer; 
+    float angleToPlayer;
 
     bool playerInRange;
 
-    Vector3 playerDir; 
+    Vector3 playerDir;
 
     private Animator animator;
+
+    //for roaming
+    [SerializeField] int roamDist;
+    [SerializeField] float roamPauseTime;
+    float roamTimer;
+    float stoppingDistOrig;
+    Vector3 startingPos;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -42,6 +49,8 @@ public class EnemyAI : MonoBehaviour, IDamage
         colorOrig = model.material.color;
         gameManager.instance.updateGameGoal(1);
         animator = GetComponent<Animator>();
+        stoppingDistOrig = agent.stoppingDistance; //store original stopping distance
+        startingPos = transform.position; //store starting position for roaming
 
     }
 
@@ -52,23 +61,50 @@ public class EnemyAI : MonoBehaviour, IDamage
         animator.SetFloat("Speed", agent.velocity.magnitude);
 
         shootTimer += Time.deltaTime;
-      
+
+        if(agent.remainingDistance < 0.01f)
+        {
+            roamTimer += Time.deltaTime; //only count up if not moving
+        }
+
 
         if (playerInRange && canSeePlayer())
         {
-            /*agent.SetDestination(gameManager.instance.player.transform.position);
-
-            if (agent.remainingDistance <= agent.stoppingDistance)
-            {
-                faceTarget();
-            }
-
-            if (shootTimer > shootRate)
-            {
-                shoot();
-            }*/
-
+            //below until end of function is for roam
+            checkRoam();
         }
+        else if (!playerInRange)
+        {
+            checkRoam();
+        }
+    }
+
+    //for roaming
+    void checkRoam()
+    {
+        if (roamTimer > roamPauseTime && agent.remainingDistance < 0.01f)
+        {
+            roam(); 
+        }
+    }
+
+    //for roaming
+    void roam()
+    {
+        roamTimer = 0;
+        agent.stoppingDistance = 0; 
+
+        Vector3 ranPos = startingPos + Random.insideUnitSphere * roamDist;
+        
+        ranPos += startingPos;
+
+        NavMeshHit hit;
+        if (NavMesh.SamplePosition(ranPos, out hit, roamDist, 1))
+        {
+            agent.SetDestination(hit.position);
+        }
+
+
     }
 
     void faceTarget()
@@ -91,11 +127,11 @@ public class EnemyAI : MonoBehaviour, IDamage
 
             if (angleToPlayer < FOV && hit.collider.CompareTag("Player"))
             {
-                //adjusted this to make work compared to example
-                //can try commenting out this
+               
                 agent.SetDestination(gameManager.instance.player.transform.position);
 
-                if (agent.remainingDistance <= agent.stoppingDistance)
+                //changed for roam
+                if (agent.remainingDistance <= stoppingDistOrig)    //agent.stoppingDistance)
                 {
                     faceTarget();
                 }
@@ -105,14 +141,18 @@ public class EnemyAI : MonoBehaviour, IDamage
                     SoundManager.Instance.PlayEffect(shootSound);
                     shoot();
                 }
-                //comment out to here
-
+                
+                //for roaming
+                agent.stoppingDistance = stoppingDistOrig; //reset stopping distance
                 return true;
             }
 
         }
+        //for romaing
+        //set to 0 if not chasing player, stopping point will be outer edge of enemies range
+        agent.stoppingDistance = 0; 
 
-        return false; 
+        return false;
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -138,7 +178,7 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     public void TakeDamage(int amount)
     {
-            
+
         HP -= amount;
         agent.SetDestination(gameManager.instance.player.transform.position); //chases player if hit
 
@@ -147,7 +187,7 @@ public class EnemyAI : MonoBehaviour, IDamage
             SoundManager.Instance.PlayEffect(deathSound);
             Destroy(gameObject);
             gameManager.instance.updateGameGoal(-1);
-            
+
         }
         else
         {
@@ -169,3 +209,5 @@ public class EnemyAI : MonoBehaviour, IDamage
     }
 
 }
+
+
