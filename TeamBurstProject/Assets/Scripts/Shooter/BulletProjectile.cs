@@ -15,4 +15,18 @@ public class BulletProjectile : MonoBehaviour
     private GameObject _owner;
     private Vector3 _velocity;   // meters/second
     private bool _initialized;
+
+    //Called by the Shooter right after the bullet is spawned to pass data into the projectile. (Initialize the bullet)
+    public void Init(float damage, Vector3 direction, GameObject owner, float muzzleVelocity)
+    {
+        _damage = damage;
+        _owner = owner;
+
+        // Face the movement direction and set our initial velocity.
+        direction = direction.normalized;
+        transform.rotation = Quaternion.LookRotation(direction);
+        _velocity = direction * Mathf.Max(0f, muzzleVelocity);
+
+        _initialized = true;
+    }
 }
