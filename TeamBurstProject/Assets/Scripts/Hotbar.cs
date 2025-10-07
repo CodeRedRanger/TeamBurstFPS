@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,7 +10,7 @@ struct HotbarSlot
 
 public class Hotbar : MonoBehaviour
 {
-    [SerializeField] RectTransform hotbarPanel;
+    [SerializeField] RectTransform hotbarUI;
     HotbarSlot[] slots = new HotbarSlot[5];
 
     public bool Add(ItemData item, int amount)
@@ -57,24 +58,22 @@ public class Hotbar : MonoBehaviour
     {
         for (int i = 0; i < slots.Length; i++)
         {
-            Transform currSlotUI = hotbarPanel.GetChild(i);
-            Transform icon = currSlotUI.Find("Icon");
+            Transform currSlot = hotbarUI.GetChild(i);
+            Transform icon = currSlot.Find("Icon");
 
             Image image = icon.GetComponent<Image>();
-
-            if(slots[i].item)
+            TMP_Text count = icon.Find("Count").GetComponent<TextMeshProUGUI>();
+            if (slots[i].item)
             {
                 image.sprite = slots[i].item.icon;
+                count.text = (slots[i].amount).ToString();
                 image.gameObject.SetActive(true);
-                // change number under slot UI to slot[i].amount
-                // enable number under slot UI
             }
             else
             {
                 image.sprite = null;
                 image.gameObject.SetActive(false);
-                // disable number under slot UI
-                // change number under slot UI to 1
+                count.text = ("0");
             }
         }
     }
