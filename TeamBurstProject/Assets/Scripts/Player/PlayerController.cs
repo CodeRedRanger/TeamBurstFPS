@@ -165,6 +165,13 @@ public class PlayerController : MonoBehaviour, IDamage
         jumpSpeed += amount;
     }
 
+    public void SpeedBoost(int amt)
+    {
+
+        speed += amt;
+
+    }
+
     IEnumerator flashDamage()
     {
         gameManager.instance.playerDamageFlash.SetActive(true);
