@@ -1,7 +1,11 @@
 using UnityEngine;
 
+
+
 public class YouWin : MonoBehaviour
 {
+
+    [SerializeField] AudioClip youWin; 
     private void OnTriggerEnter(Collider other)
     {
 
@@ -10,6 +14,7 @@ public class YouWin : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
+            SoundManager.Instance.PlayEffect(youWin); 
             gameManager.instance.youWin();
         }
     }
