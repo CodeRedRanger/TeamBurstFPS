@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BulletProjectile : MonoBehaviour
+public class BulletProjectile : MonoBehaviour, iProjectile
 {
     [Header("Lifetime")]
     [Tooltip("How many seconds this bullet exists before auto-destroying.")]
