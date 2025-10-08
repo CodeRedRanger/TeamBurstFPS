@@ -16,7 +16,8 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuLose;
     [SerializeField] TMP_Text gameGoalCountText;
 
-    public AudioClip BGMusic; 
+    public AudioClip BGMusic;
+    public AudioClip toSchool;
 
     public Image playerHPBar;
     public GameObject playerDamageFlash; 
@@ -103,15 +104,18 @@ public class gameManager : MonoBehaviour
         gameGoalCount += amount;
         gameGoalCountText.text = gameGoalCount.ToString("F0");
 
-       
+
 
         if (gameGoalCount <= 0)
         {
             //win condition
-            statePause();
-            menuActive = menuWin;
-            menuActive.SetActive(true);
-            SoundManager.Instance.PlayMusic(BGMusic, 0.2f);
+            //statePause();
+            //menuActive = menuWin;
+            //menuActive.SetActive(true);
+            //SoundManager.Instance.PlayMusic(BGMusic, 0.2f);
+            SoundManager.Instance.PlayEffect(toSchool);
+
+
 
             //can't get to work
             //SoundManager.Instance.ChangeVolumeMusic(0.3f);
@@ -123,7 +127,16 @@ public class gameManager : MonoBehaviour
     {
         return gameGoalCount;
     }
-    
+
+    public void youWin()
+    {
+        //win condition
+        statePause();
+        menuActive = menuWin;
+        menuActive.SetActive(true);
+        SoundManager.Instance.PlayMusic(BGMusic, 0.2f);
+    }
+
     public void youLose()
     {
         statePause();

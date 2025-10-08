@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7070356200678260526}
   - component: {fileID: 7886660896693533736}
   - component: {fileID: 5689979539744414145}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: OozeHazard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,9 +50,11 @@ MonoBehaviour:
   type: 2
   rb: {fileID: 0}
   damageAmount: 1
+  healAmount: 0
   damageRate: 0.5
   speed: 0
   destroyTime: 0
+  itemSound: {fileID: 0}
 --- !u!33 &7070356200678260526
 MeshFilter:
   m_ObjectHideFlags: 0

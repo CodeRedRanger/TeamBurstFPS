@@ -139,8 +139,8 @@ public class EnemyAI : MonoBehaviour, IDamage
     public void TakeDamage(int amount)
     {
             
-         HP -= amount;
-        
+        HP -= amount;
+        agent.SetDestination(gameManager.instance.player.transform.position); //chases player if hit
 
         if (HP <= 0)
         {
@@ -162,4 +162,10 @@ public class EnemyAI : MonoBehaviour, IDamage
         yield return new WaitForSeconds(0.1f);
         model.material.color = colorOrig;
     }
+
+    public void Heal(int amount)
+    {
+        //not implemented for enemy
+    }
+
 }

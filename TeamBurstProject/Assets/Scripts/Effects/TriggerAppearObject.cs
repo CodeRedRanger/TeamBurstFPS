@@ -8,6 +8,12 @@ public class TriggerAppearObject : MonoBehaviour
     public GameObject objectToAppear; 
     public float delay = 1f; // Delay in seconds before the object appears
     //[SerializeField] string tagToTrigger; 
+    [SerializeField] bool bossFight;
+    bool voicePlayed = false;
+
+
+    [SerializeField] AudioClip forBoss; 
+
     void Start()
     {
         if (objectToAppear != null)
@@ -28,7 +34,20 @@ public class TriggerAppearObject : MonoBehaviour
                 StartCoroutine(ShowObjectAfterDelay(delay)); // Start the coroutine to show the object after a delay
             }
         }
+
+        if (bossFight == true && other.CompareTag("Player") && voicePlayed == false)
+        {
+            if (forBoss != null)
+            {
+                SoundManager.Instance.PlayEffect(forBoss);
+                voicePlayed = true;
+
+
+            }
+        }
+
     }
+
 
     IEnumerator ShowObjectAfterDelay(float delay)
     {

@@ -53,6 +53,8 @@ public class PlayerController : MonoBehaviour, IDamage
         Movement();
 
         Sprint();
+
+        SpawnBomb();
     }
 
     void Movement()
@@ -118,6 +120,17 @@ public class PlayerController : MonoBehaviour, IDamage
         }
     }
 
+    void SpawnBomb()
+    {
+        // Im thinking of adding a keycode variable for this but for now it's q
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Vector3 spawnPos = gameManager.instance.player.transform.position;
+            spawnPos.y -= gameManager.instance.player.GetComponent<CharacterController>().height / 2f;
+            this.GetComponent<BombSpawner>().SpawnBomb(spawnPos);
+        }
+    }
+
     public void TakeDamage(int damage)
     {
         HP -= damage;
@@ -145,11 +158,29 @@ public class PlayerController : MonoBehaviour, IDamage
         shootDamage += amount;
     }
 
+    public void AddJumpSpeed(int amount)
+    {
+        int prev = jumpSpeed;
+
+        jumpSpeed += amount;
+    }
+
     IEnumerator flashDamage()
     {
         gameManager.instance.playerDamageFlash.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         gameManager.instance.playerDamageFlash.SetActive(false);
+    }
+
+
+    public void Heal(int amount)
+    {
+        HP += amount;
+        if (HP > HPOrig)
+        {
+            HP = HPOrig;
+        }
+        updatePlayerUI();
     }
 
 
