@@ -5,8 +5,9 @@ public class TriggerDisappearObject : MonoBehaviour
 {
     
 
-    [SerializeField] GameObject objectToDisappear;
+    public GameObject objectToDisappear;
     public float delay = 1f; // Delay in seconds before the object appears
+    private MeshRenderer meshRenderer; 
 
     //Options for this script
     //[SerializeField] string tagToTrigger; 
@@ -14,13 +15,17 @@ public class TriggerDisappearObject : MonoBehaviour
     //bool voicePlayed = false;
 
 
-    [SerializeField] AudioClip forBoss;
+    //[SerializeField] AudioClip forBoss;
 
     void Start()
     {
         if (objectToDisappear != null)
         {
-            objectToDisappear.SetActive(true); // Ensure the object is initially active
+            //if mesh
+            meshRenderer = objectToDisappear.GetComponent<MeshRenderer>();
+            meshRenderer.enabled = true;// Ensure the mesh is initially active
+           //if object
+           //objectToAppear.SetActive(false);
         }
     }
 
@@ -33,7 +38,12 @@ public class TriggerDisappearObject : MonoBehaviour
         {
             if (objectToDisappear != null)
             {
-                objectToDisappear.SetActive(false);
+                //if mesh
+                meshRenderer.enabled = false; 
+
+                //if object
+                //objectToAppear.SetActive(false);
+
                 //optional if want a delay
                 //StartCoroutine(RemoveObjectAfterDelay(delay)); // Start the coroutine to show the object after a delay
             }
@@ -60,8 +70,9 @@ public class TriggerDisappearObject : MonoBehaviour
         yield return new WaitForSeconds(delay);
         if (objectToDisappear != null)
         {
+            //if object
             objectToDisappear.SetActive(false); // Activate the object after the delay
         }
     }*/
 }
-}
+
