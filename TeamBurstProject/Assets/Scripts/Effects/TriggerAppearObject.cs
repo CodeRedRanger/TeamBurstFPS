@@ -9,7 +9,8 @@ public class TriggerAppearObject : MonoBehaviour
     public float delay = 1f; // Delay in seconds before the object appears
     //[SerializeField] string tagToTrigger; 
     [SerializeField] bool bossFight;
-  
+    bool voicePlayed = false;
+
 
     [SerializeField] AudioClip forBoss; 
 
@@ -34,12 +35,14 @@ public class TriggerAppearObject : MonoBehaviour
             }
         }
 
-        if (bossFight == true && other.CompareTag("Player"))
+        if (bossFight == true && other.CompareTag("Player") && voicePlayed == false)
         {
             if (forBoss != null)
             {
                 SoundManager.Instance.PlayEffect(forBoss);
-     
+                voicePlayed = true;
+
+
             }
         }
 
