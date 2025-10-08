@@ -14,7 +14,8 @@ public class YouWin : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            SoundManager.Instance.PlayEffect(youWin); 
+            SoundManager.Instance.PlayEffect(youWin);
+            SoundManager.Instance.StopMusic(); 
             gameManager.instance.youWin();
         }
     }
