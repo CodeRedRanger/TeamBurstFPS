@@ -53,6 +53,8 @@ public class PlayerController : MonoBehaviour, IDamage
         Movement();
 
         Sprint();
+
+        SpawnBomb();
     }
 
     void Movement()
@@ -115,6 +117,17 @@ public class PlayerController : MonoBehaviour, IDamage
             }
 
             //Debug.Log(hit.collider.name);
+        }
+    }
+
+    void SpawnBomb()
+    {
+        // Im thinking of adding a keycode variable for this but for now it's q
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Vector3 spawnPos = gameManager.instance.player.transform.position;
+            spawnPos.y -= gameManager.instance.player.GetComponent<CharacterController>().height / 2f;
+            this.GetComponent<BombSpawner>().SpawnBomb(spawnPos);
         }
     }
 
