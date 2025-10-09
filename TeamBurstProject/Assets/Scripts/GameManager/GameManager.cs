@@ -35,6 +35,7 @@ public class gameManager : MonoBehaviour
     float timeScaleOrig;
 
     int gameGoalCount;
+    public bool Level1 = true; 
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -129,7 +130,11 @@ public class gameManager : MonoBehaviour
             //menuActive = menuWin;
             //menuActive.SetActive(true);
             //SoundManager.Instance.PlayMusic(BGMusic, 0.2f);
-            SoundManager.Instance.PlayEffect(toSchool);
+
+            if (Level1 == true)
+            { 
+                SoundManager.Instance.PlayEffect(toSchool);
+            } 
 
 
 
