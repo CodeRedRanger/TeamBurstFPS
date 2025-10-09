@@ -14,6 +14,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
+    [SerializeField] GameObject hotBar; 
     [SerializeField] TMP_Text gameGoalCountText;
 
     public AudioClip BGMusic;
@@ -69,6 +70,20 @@ public class gameManager : MonoBehaviour
                 stateUnpause();
             }
         }
+
+        if (Input.GetButtonDown("Tab"))
+        {
+            if (hotBar.activeSelf == true)
+            {
+                hotBar.SetActive(false);
+            }
+            if (hotBar.activeSelf == false)
+            {
+                hotBar.SetActive(true);
+            }
+        }
+
+
 
 
 
