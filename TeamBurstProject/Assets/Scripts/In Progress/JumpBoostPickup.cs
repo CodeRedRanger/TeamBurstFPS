@@ -11,6 +11,8 @@ public class JumpBoostPickup : MonoBehaviour, IPickup
 
     public void Pickup()
     {
+        Debug.Log("Getting here");
+
         if (!hasBeenPickedUp)
         {
             hasBeenPickedUp = true;
@@ -20,6 +22,7 @@ public class JumpBoostPickup : MonoBehaviour, IPickup
             GetComponent<Renderer>().enabled = false;
             GetComponent<Collider>().enabled = false;
 
+            
             StartCoroutine(AddJump());
         }
 

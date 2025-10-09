@@ -34,7 +34,7 @@ public class InventoryManager : MonoBehaviour
             
             if (hotbarItems[i] == null)
             {
-                Debug.Log("Added " + item.type + " to hotbar slot " + (i + 1));
+                //Debug.Log("Added " + item.type + " to hotbar slot " + (i + 1));
                 hotbarItems[i] = item;
                 UpdateHotbarUI();
                 return;
