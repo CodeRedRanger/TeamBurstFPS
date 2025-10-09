@@ -5,18 +5,29 @@ using UnityEngine;
 public class YouWin : MonoBehaviour
 {
 
-    [SerializeField] AudioClip youWin; 
+    [SerializeField] AudioClip youWin;
+    [SerializeField] bool gameOver;
+    bool triggered = false; 
     private void OnTriggerEnter(Collider other)
     {
 
         if (other.isTrigger)
             return; //ignore other triggers
 
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && triggered == false)
         {
+            triggered = true;
             SoundManager.Instance.PlayEffect(youWin);
-            SoundManager.Instance.StopMusic(); 
-            gameManager.instance.youWin();
+            SoundManager.Instance.StopMusic();
+
+            if (gameOver == false)
+            {
+                gameManager.instance.youWin();
+            }
+            else
+            {
+                gameManager.instance.youWinEnd(); 
+            }
         }
     }
 

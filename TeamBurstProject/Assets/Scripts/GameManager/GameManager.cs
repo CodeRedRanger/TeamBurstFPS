@@ -13,6 +13,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuActive;
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
+    [SerializeField] GameObject menuWinEnd;
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject hotBar; 
     [SerializeField] TMP_Text gameGoalCountText;
@@ -148,6 +149,15 @@ public class gameManager : MonoBehaviour
         //win condition
         statePause();
         menuActive = menuWin;
+        menuActive.SetActive(true);
+        SoundManager.Instance.PlayMusic(BGMusic, 0.2f);
+    }
+
+    public void youWinEnd()
+    {
+        //win condition
+        statePause();
+        menuActive = menuWinEnd;
         menuActive.SetActive(true);
         SoundManager.Instance.PlayMusic(BGMusic, 0.2f);
     }
