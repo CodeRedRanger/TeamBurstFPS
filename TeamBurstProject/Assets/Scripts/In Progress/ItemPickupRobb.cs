@@ -16,6 +16,8 @@ public class ItemPickupRobb : MonoBehaviour, IPickup
 
     public void Pickup()
     {
+  
+
         if (hasBeenPickedUp)
         {
              return; 
