@@ -71,13 +71,13 @@ public class gameManager : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Tab"))
+        if (Input.GetButtonDown("HotBar"))
         {
             if (hotBar.activeSelf == true)
             {
                 hotBar.SetActive(false);
             }
-            if (hotBar.activeSelf == false)
+            else if (hotBar.activeSelf == false)
             {
                 hotBar.SetActive(true);
             }
