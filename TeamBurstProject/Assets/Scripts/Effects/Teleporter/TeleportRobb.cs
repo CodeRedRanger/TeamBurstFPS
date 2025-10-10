@@ -10,8 +10,8 @@ public class TeleportPlayer : MonoBehaviour
 
     
     private int currentgoalCount;
-    private int requiredGoalCount = 1;
-    
+    private int requiredGoalCount = 0; 
+
 
     void Start()
     {

@@ -9,5 +9,5 @@ public interface iProjectile
     // direction: initial forward direction
     // owner: who fired (so we can ignore self-collisions)
     // muzzleVelocity: initial speed in meters/second
-    void Init(float damage, Vector3 direction, GameObject owner, float muzzleVelocity);
+    void Init(int damage, Vector3 direction, GameObject owner, float muzzleVelocity);
 }

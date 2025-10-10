@@ -409,6 +409,28 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 100004, guid: a1b64279c34bd0a49abf18b790a099b4, type: 3}
   m_PrefabInstance: {fileID: 1008257801}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &156504943
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 156504941}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 004cc8d3ac808d34bab277e8f6467427, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &156504947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,14 +443,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d9eef1bc3efc640931e556373118e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorController
-  doorHinge: {fileID: 156504948}
+  doorHinge: {fileID: 0}
   speed: 35
   CloseTime: 10
---- !u!4 &156504948 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400004, guid: a1b64279c34bd0a49abf18b790a099b4, type: 3}
-  m_PrefabInstance: {fileID: 1008257801}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &162663371 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100016, guid: 3d58d5cb75277704fbee090d5dc98394, type: 3}
@@ -879,33 +896,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 100220, guid: 3d58d5cb75277704fbee090d5dc98394, type: 3}
   m_PrefabInstance: {fileID: 807325675}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &298912054
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 298912052}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.2, y: 2.6, z: 1}
-  m_Center: {x: -0.01, y: 1.4, z: 0}
---- !u!4 &298912055 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400220, guid: 3d58d5cb75277704fbee090d5dc98394, type: 3}
-  m_PrefabInstance: {fileID: 807325675}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &298912056
+--- !u!54 &298912053
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -932,6 +923,32 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &298912054
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298912052}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.2, y: 2.6, z: 1}
+  m_Center: {x: -0.01, y: 1.4, z: 0}
+--- !u!4 &298912055 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400220, guid: 3d58d5cb75277704fbee090d5dc98394, type: 3}
+  m_PrefabInstance: {fileID: 807325675}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &318992533
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1138,7 +1155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 427d75b951394704890045254881bb6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorTrigger
-  doorHinge: {fileID: 156504947}
+  doorHinge: {fileID: 0}
   customOpenAngle: -90
 --- !u!54 &409491977
 Rigidbody:
@@ -1497,7 +1514,6 @@ GameObject:
   m_Component:
   - component: {fileID: 493408906}
   - component: {fileID: 493408907}
-  - component: {fileID: 493408908}
   m_Layer: 0
   m_Name: BookshelfTrigger
   m_TagString: Untagged
@@ -1515,7 +1531,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.1810093, y: 0.47575, z: 0}
-  m_LocalScale: {x: 4, y: 0.1, z: 4}
+  m_LocalScale: {x: 3, y: 0.1, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 298912055}
@@ -1541,21 +1557,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &493408908
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 493408905}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05a2ca7c2794e79489e6e3a8e0dce1c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BookshelfFallTrigger
-  rb: {fileID: 298912056}
-  fallDirection: {x: 0, y: 2, z: 0}
-  fallForce: 1
 --- !u!1001 &499221436
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2697,7 +2698,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400220, guid: 3d58d5cb75277704fbee090d5dc98394, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.414929
+      value: 8.914929
       objectReference: {fileID: 0}
     - target: {fileID: 400220, guid: 3d58d5cb75277704fbee090d5dc98394, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2705,15 +2706,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400220, guid: 3d58d5cb75277704fbee090d5dc98394, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.35158
+      value: 7.40158
       objectReference: {fileID: 0}
     - target: {fileID: 400220, guid: 3d58d5cb75277704fbee090d5dc98394, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9516399
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400220, guid: 3d58d5cb75277704fbee090d5dc98394, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.30721572
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 400220, guid: 3d58d5cb75277704fbee090d5dc98394, type: 3}
       propertyPath: m_LocalRotation.y
@@ -2725,7 +2726,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400220, guid: 3d58d5cb75277704fbee090d5dc98394, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 35.783
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400220, guid: 3d58d5cb75277704fbee090d5dc98394, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -2747,7 +2748,7 @@ PrefabInstance:
       addedObject: {fileID: 298912054}
     - targetCorrespondingSourceObject: {fileID: 100220, guid: 3d58d5cb75277704fbee090d5dc98394, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 298912056}
+      addedObject: {fileID: 298912053}
     - targetCorrespondingSourceObject: {fileID: 100122, guid: 3d58d5cb75277704fbee090d5dc98394, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1835385015}
@@ -3524,7 +3525,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: a1b64279c34bd0a49abf18b790a099b4, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0000015199182
+      value: -0.00000032782552
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: a1b64279c34bd0a49abf18b790a099b4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -3538,9 +3539,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 100000, guid: a1b64279c34bd0a49abf18b790a099b4, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 100004, guid: a1b64279c34bd0a49abf18b790a099b4, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1755337054}
+      addedObject: {fileID: 156504943}
     - targetCorrespondingSourceObject: {fileID: 100004, guid: a1b64279c34bd0a49abf18b790a099b4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 156504947}
@@ -3749,14 +3750,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1062583984}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.38268226, z: -0, w: 0.92388}
+  m_LocalRotation: {x: -0, y: -0.7071072, z: -0, w: 0.7071065}
   m_LocalPosition: {x: 5.7584953, y: 0.872, z: 3.2875614}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 758528903}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!143 &1062583989
 CharacterController:
   m_ObjectHideFlags: 0
@@ -3838,6 +3839,102 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 94
   m_CollisionDetection: 0
+--- !u!1 &1120239209
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1120239210}
+  - component: {fileID: 1120239212}
+  - component: {fileID: 1120239211}
+  - component: {fileID: 1120239213}
+  m_Layer: 0
+  m_Name: TriggerOpen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1120239210
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120239209}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 10.49999, y: 0.11773002, z: 0.13964969}
+  m_LocalScale: {x: 0.45000002, y: 0.2, z: 1.3}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1120239211
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120239209}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &1120239212
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120239209}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 0.8}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1120239213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120239209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 427d75b951394704890045254881bb6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DoorTrigger
+  doorHinge: {fileID: 2993350256445647985}
+  customOpenAngle: 90
 --- !u!1001 &1155470230
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5827,38 +5924,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1 &1755337051 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100000, guid: a1b64279c34bd0a49abf18b790a099b4, type: 3}
-  m_PrefabInstance: {fileID: 1008257801}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &1755337054
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1755337051}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &1778348443 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: e2c12cc399276f34997617080b02d780, type: 3}
@@ -6212,7 +6277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 427d75b951394704890045254881bb6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorTrigger
-  doorHinge: {fileID: 156504947}
+  doorHinge: {fileID: 0}
   customOpenAngle: 90
 --- !u!54 &1854291509
 Rigidbody:
@@ -7112,6 +7177,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7157627756743933844, guid: f8edced1f93daad4ab8c724e6e5a8b04, type: 3}
   m_PrefabInstance: {fileID: 2993350256445647983}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2993350256445647985 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6725973193623120774, guid: f8edced1f93daad4ab8c724e6e5a8b04, type: 3}
+  m_PrefabInstance: {fileID: 2993350256445647983}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5d9eef1bc3efc640931e556373118e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DoorController
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -7125,5 +7201,6 @@ SceneRoots:
   - {fileID: 87393056}
   - {fileID: 1240272022}
   - {fileID: 1062583988}
+  - {fileID: 1120239210}
   - {fileID: 2993350256445647983}
   - {fileID: 807325675}

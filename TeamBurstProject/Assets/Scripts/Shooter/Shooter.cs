@@ -77,22 +77,49 @@ public class Shooter : MonoBehaviour
         _ammoInMag = Mathf.Max(0, _ammoInMag - 1);
         _cooldownTimer = 1f / Mathf.Max(0.01f, gun.FireRate);
 
-        // Optional debug ray in Scene view for visibility.
-        if (drawDebugRay)
-            Debug.DrawRay(origin, direction * gun.Range, Color.white, 0.1f);
-
-        // HITSCAN: Raycast forward to see what we hit.
-        if (Physics.Raycast(origin, direction, out RaycastHit hit, gun.Range, hitMask, QueryTriggerInteraction.Ignore))
+        if (gun.IsHitscan)
         {
-            // Try to find something damageable on what we hit (or its parents).
-            var damage = hit.collider.GetComponent<IDamage>();
-            if (damage != null)
-            {
-                damage.TakeDamage(gun.Damage);
-            }
+            // --- HITSCAN path: instant ray ---
+            if (drawDebugRay)
+                Debug.DrawRay(origin, direction * gun.Range, Color.white, 0.1f);
 
-            // TODO (optional): spawn impact VFX or decals at 'hit.point'
-            // Instantiate(impactVfx, hit.point, Quaternion.LookRotation(hit.normal));
+            if (Physics.Raycast(origin, direction, out RaycastHit hit, gun.Range, hitMask, QueryTriggerInteraction.Ignore))
+            {
+                var damage = hit.collider.GetComponentInParent<IDamage>();
+                if (damage != null)
+                    damage.TakeDamage(gun.Damage);
+
+                // TODO: impact VFX at hit.point
+            }
+        }
+        else
+        {
+            // --- PROJECTILE path: spawn a bullet prefab that implements iProjectile ---
+            if (gun.ProjectilePrefab == null)
+            {
+                Debug.LogWarning($"Gun '{gun.Id}' is projectile-based but has no ProjectilePrefab assigned.");
+            }
+            else
+            {
+                // Spawn slightly in front of the camera to avoid self-collision.
+                Vector3 spawnPos = origin + direction * 0.5f;
+                GameObject bulletGO = Instantiate(gun.ProjectilePrefab, spawnPos, Quaternion.LookRotation(direction));
+
+                var proj = bulletGO.GetComponent<iProjectile>();
+                if (proj != null)
+                {
+                    proj.Init(
+                        damage: gun.Damage,
+                        direction: direction,
+                        owner: gameObject,
+                        muzzleVelocity: gun.MuzzleVelocity
+                    );
+                }
+                else
+                {
+                    Debug.LogWarning("Projectile prefab does not implement iProjectile.");
+                }
+            }
         }
 
         // 4) Auto-reload when empty (optional but friendly).

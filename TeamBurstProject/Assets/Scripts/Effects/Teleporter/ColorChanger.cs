@@ -6,7 +6,9 @@ public class ColorChanger : MonoBehaviour
 {
     private Renderer objRenderer;
     private bool enemiesSpawned = false;
-    private int requiredGoalCount = 2;
+    private int requiredGoalCount = 0;
+    //public AudioClip GetToSchool;
+   bool hasPlayedSound = false;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -26,9 +28,16 @@ public class ColorChanger : MonoBehaviour
             enemiesSpawned = true;
         }
 
-        if(gameManager.instance.GetGameGoalCount() < requiredGoalCount)
+        if(gameManager.instance.GetGameGoalCount() <= requiredGoalCount)
         {
             objRenderer.material.color = Color.yellow;
+            /*
+            if (hasPlayedSound == false)
+            {
+                SoundManager.Instance.PlayEffect(GetToSchool, 1.0f);
+                hasPlayedSound = true;
+            }*/
+         
         }
         else
         {
