@@ -3808,6 +3808,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4550297383652059964, guid: 3f4669239800bf24597cc619c71973cb, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4733006078813356818, guid: 3f4669239800bf24597cc619c71973cb, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4762167251460011258, guid: 3f4669239800bf24597cc619c71973cb, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3888,6 +3896,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7091972991048791994, guid: 3f4669239800bf24597cc619c71973cb, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8827266635502654798, guid: 3f4669239800bf24597cc619c71973cb, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3916,6 +3928,21 @@ PrefabInstance:
 --- !u!224 &363517041 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4762167251460011258, guid: 3f4669239800bf24597cc619c71973cb, type: 3}
+  m_PrefabInstance: {fileID: 363517040}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &363517042 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 460406366331198282, guid: 3f4669239800bf24597cc619c71973cb, type: 3}
+  m_PrefabInstance: {fileID: 363517040}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &363517043 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7849892544197807933, guid: 3f4669239800bf24597cc619c71973cb, type: 3}
+  m_PrefabInstance: {fileID: 363517040}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &363517044 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1136312829562369235, guid: 3f4669239800bf24597cc619c71973cb, type: 3}
   m_PrefabInstance: {fileID: 363517040}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &373361252
@@ -21508,9 +21535,9 @@ MonoBehaviour:
   hotbarItems: []
   hotbarSize: 3
   hotbarSlots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 363517044}
+  - {fileID: 363517043}
+  - {fileID: 363517042}
 --- !u!4 &1788205972
 Transform:
   m_ObjectHideFlags: 0
