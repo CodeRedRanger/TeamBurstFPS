@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.UI; 
+
 
 public class InventoryManager : MonoBehaviour
 {
@@ -34,7 +36,7 @@ public class InventoryManager : MonoBehaviour
             
             if (hotbarItems[i] == null)
             {
-                //Debug.Log("Added " + item.type + " to hotbar slot " + (i + 1));
+                Debug.Log("Added " + item.type + " to hotbar slot " + (i + 1));
                 hotbarItems[i] = item;
                 UpdateHotbarUI();
                 return;
@@ -46,13 +48,15 @@ public class InventoryManager : MonoBehaviour
             
         }
         
-        //Debug.Log("Hotbar is full!");
+        Debug.Log("Hotbar is full!");
         
     }
 
     public void UpdateHotbarUI()
     {
-       /* for (int i = 0; i < hotbarSlots.Length; i++)
+
+
+        for (int i = 0; i < hotbarSlots.Length; i++)
         {
             var slot = hotbarSlots[i].GetComponent<HotbarSlot>();
             if (hotbarItems[i] != null)
@@ -62,7 +66,7 @@ public class InventoryManager : MonoBehaviour
             else
             {
                 hotbarSlots[i].GetComponent<HotbarSlot>().ClearSlot();
-            }*/
+            }
         }
-    
+    }
 }

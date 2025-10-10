@@ -29,6 +29,7 @@ public class PlayerPickupRobb : MonoBehaviour
             IPickup item = hit.collider.GetComponent<IPickup>();
             if (item != null)     // && Input.GetKeyDown(useKey))
             {
+           
                 item.Pickup(); 
 
                 //if (item.Pickup() == Medkit)

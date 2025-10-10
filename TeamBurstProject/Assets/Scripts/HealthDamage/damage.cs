@@ -93,6 +93,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
             }
 
             dmg.Heal(healAmount);
+            //because they are destroyed here, you don't destroy health objects on pick up
             Destroy(gameObject);
         }
 
