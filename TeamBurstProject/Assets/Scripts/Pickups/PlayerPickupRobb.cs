@@ -27,9 +27,10 @@ public class PlayerPickupRobb : MonoBehaviour
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, range))
         {
             IPickup item = hit.collider.GetComponent<IPickup>();
+         
             if (item != null)     // && Input.GetKeyDown(useKey))
             {
-           
+                Debug.Log("Detected item"); 
                 item.Pickup(); 
 
                 //if (item.Pickup() == Medkit)

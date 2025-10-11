@@ -13,8 +13,8 @@ public class JumpBoostPickup : MonoBehaviour, IPickup
 
     public void Pickup()
     {
-        
 
+        Debug.Log("Picked up boost"); 
         if (!hasBeenPickedUp)
         {
             hasBeenPickedUp = true;

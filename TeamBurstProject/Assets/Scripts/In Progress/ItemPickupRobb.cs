@@ -6,12 +6,12 @@ public class ItemPickupRobb : MonoBehaviour, IPickup
 
     [SerializeField] ItemData item;
     [SerializeField] bool destroyOnPickup;//only chosen if not a health item
+    [SerializeField] bool healthItem; 
    
     [SerializeField] AudioClip pickupSound;
 
     bool hasBeenPickedUp = false; // To prevent multiple pickups
-
-
+   
 
 
 
@@ -33,7 +33,7 @@ public class ItemPickupRobb : MonoBehaviour, IPickup
         {
           
 
-            if (destroyOnPickup)
+            if (destroyOnPickup && !healthItem)
             {            
                 if (pickupSound != null)
                 {

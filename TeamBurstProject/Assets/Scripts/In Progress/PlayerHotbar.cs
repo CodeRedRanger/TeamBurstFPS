@@ -1,5 +1,7 @@
 using UnityEngine;
 
+
+//not used yet but incorporate into HotBarRobb
 public class PlayerHotbar : MonoBehaviour
 {
     public InventoryManager inventoryManager;
