@@ -122,8 +122,8 @@ public class PlayerController : MonoBehaviour, IDamage
 
     void SpawnBomb()
     {
-        // Im thinking of adding a keycode variable for this but for now it's q
-        if (Input.GetKeyDown(KeyCode.Q))
+        // Im thinking of adding a keycode variable for this but for now it's q//Robb: changed to E
+        if (Input.GetKeyDown(KeyCode.E))
         {
             Vector3 spawnPos = gameManager.instance.player.transform.position;
             spawnPos.y -= gameManager.instance.player.GetComponent<CharacterController>().height / 2f;
@@ -153,6 +153,7 @@ public class PlayerController : MonoBehaviour, IDamage
         gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig; 
     }
 
+    //Isaac scripts
     public void AddShootDamage(int amount)
     {
         shootDamage += amount;

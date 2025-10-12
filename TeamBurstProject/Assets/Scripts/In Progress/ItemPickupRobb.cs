@@ -24,10 +24,15 @@ public class ItemPickupRobb : MonoBehaviour, IPickup
              return; 
         }
 
-        hasBeenPickedUp = true; 
-        //Debug.Log("Picking up " + item.type);
+        hasBeenPickedUp = true;
+        Debug.Log("Picking up " + item.type);
 
-        InventoryManager.Instance.AddItem(item);
+        //probably should have separate health pick up script if no health items are added to inventory
+        if (!healthItem)
+        {
+            Debug.Log("Adding " + item.type + " to inventory!");
+            InventoryManager.Instance.AddItem(item);
+        }
         
         //if (hotbar.Add(item, 1))
         {

@@ -30,7 +30,7 @@ public class PlayerPickupRobb : MonoBehaviour
          
             if (item != null)     // && Input.GetKeyDown(useKey))
             {
-                Debug.Log("Detected item"); 
+                //Debug.Log("Detected item"); 
                 item.Pickup(); 
 
                 //if (item.Pickup() == Medkit)
