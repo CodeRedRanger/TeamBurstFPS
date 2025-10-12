@@ -180,9 +180,8 @@ public class EnemyAI : MonoBehaviour, IDamage, IStunnable
     private IEnumerator StunCoroutine(float duration)
     {
         isStunned = true;
-        Debug.Log(name + " stunned for " + duration + " seconds!");
 
-        UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        NavMeshAgent agent = GetComponent<NavMeshAgent>();
         if (agent != null) agent.isStopped = true;
 
         yield return new WaitForSeconds(duration);
@@ -190,5 +189,4 @@ public class EnemyAI : MonoBehaviour, IDamage, IStunnable
         if (agent != null) agent.isStopped = false;
         isStunned = false;
     }
-
 }
