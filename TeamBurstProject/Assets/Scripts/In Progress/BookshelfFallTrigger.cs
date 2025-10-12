@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FallingObject : MonoBehaviour
+public class BookShelfFallTrigger : MonoBehaviour
 {
 
 
