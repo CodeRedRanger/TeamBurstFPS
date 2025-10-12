@@ -8,7 +8,6 @@ public class Bomb : MonoBehaviour
     [SerializeField] float explosionRadius;
     [SerializeField] float timer;
     [SerializeField] GameObject explosionEffect;
-    [SerializeField] AudioClip explosionSound;
 
     void Start()
     {
@@ -35,9 +34,6 @@ public class Bomb : MonoBehaviour
                 {
                     damageable.TakeDamage(damage);
                     damagedEnemies.Add(damageable);
-
-                    if (explosionSound != null)
-                        SoundManager.Instance.PlayEffect(explosionSound); 
                 }
             }
         }

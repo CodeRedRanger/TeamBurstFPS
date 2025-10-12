@@ -32,7 +32,10 @@ public class BombRobb : MonoBehaviour
 
             //Debug.Log("About to take damage");
 
-            IDamage damageable = hit.transform.root.GetComponent<IDamage>();
+            IDamage damageable = hit.transform.GetComponent<IDamage>();
+            if (damageable == null)
+                Debug.Log("Damageable is null!"); 
+
             if (damageable != null && !damagedEnemies.Contains(damageable))
             {
                 Debug.Log("Damaging");
