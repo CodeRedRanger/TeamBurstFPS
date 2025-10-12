@@ -69,7 +69,7 @@ public class EnemyAIRoam : MonoBehaviour, IDamage
         }
 
 
-        if (playerInRange && canSeePlayer())
+        if (playerInRange && !canSeePlayer()) //added ! to canSeePlayer
         {
             //below until end of function is for roam
             checkRoam();
