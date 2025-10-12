@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bomb : MonoBehaviour
+public class BombRobb : MonoBehaviour
 {
+
     [SerializeField] int damage;
     [SerializeField] float explosionRadius;
     [SerializeField] float timer;
@@ -23,13 +24,18 @@ public class Bomb : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, explosionRadius);
         HashSet<IDamage> damagedEnemies = new HashSet<IDamage>();
 
+        //Debug.Log("About to explode");
+
         foreach (Collider hit in hitColliders)
         {
             if (hit.CompareTag("Player")) continue;
-            
+
+            //Debug.Log("About to take damage");
+
             IDamage damageable = hit.transform.root.GetComponent<IDamage>();
             if (damageable != null && !damagedEnemies.Contains(damageable))
             {
+                Debug.Log("Damaging");
                 float distance = Vector3.Distance(hit.transform.position, transform.position);
                 if (distance <= explosionRadius)
                 {
@@ -37,7 +43,7 @@ public class Bomb : MonoBehaviour
                     damagedEnemies.Add(damageable);
 
                     if (explosionSound != null)
-                        SoundManager.Instance.PlayEffect(explosionSound); 
+                        SoundManager.Instance.PlayEffect(explosionSound);
                 }
             }
         }
