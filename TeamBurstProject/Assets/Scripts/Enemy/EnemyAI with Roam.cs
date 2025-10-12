@@ -46,6 +46,7 @@ public class EnemyAIRoam : MonoBehaviour, IDamage
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        
         colorOrig = model.material.color;
         gameManager.instance.updateGameGoal(1);
         animator = GetComponent<Animator>();
@@ -62,7 +63,7 @@ public class EnemyAIRoam : MonoBehaviour, IDamage
 
         shootTimer += Time.deltaTime;
 
-        if(agent.remainingDistance < 0.01f)
+        if(agent.remainingDistance <= 0.01f)
         {
             roamTimer += Time.deltaTime; //only count up if not moving
         }
@@ -92,14 +93,17 @@ public class EnemyAIRoam : MonoBehaviour, IDamage
     void roam()
     {
         roamTimer = 0;
-        agent.stoppingDistance = 0; 
+        agent.stoppingDistance = 0;
 
         Vector3 ranPos = startingPos + Random.insideUnitSphere * roamDist;
-        
+        //kept Y consistent
+        ranPos.y = startingPos.y; 
+
         ranPos += startingPos;
 
         NavMeshHit hit;
-        if (NavMesh.SamplePosition(ranPos, out hit, roamDist, 1))
+        Debug.Log(agent.areaMask); //changed 1 to agent.areaMask
+        if (NavMesh.SamplePosition(ranPos, out hit, roamDist, agent.areaMask))
         {
             agent.SetDestination(hit.position);
         }
@@ -131,7 +135,7 @@ public class EnemyAIRoam : MonoBehaviour, IDamage
                 agent.SetDestination(gameManager.instance.player.transform.position);
 
                 //changed for roam
-                if (agent.remainingDistance <= stoppingDistOrig)    //agent.stoppingDistance)
+                if (agent.remainingDistance <= agent.stoppingDistance)    //agent.stoppingDistance)
                 {
                     faceTarget();
                 }
@@ -167,6 +171,7 @@ public class EnemyAIRoam : MonoBehaviour, IDamage
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
+            agent.stoppingDistance = 0; 
         }
     }
 

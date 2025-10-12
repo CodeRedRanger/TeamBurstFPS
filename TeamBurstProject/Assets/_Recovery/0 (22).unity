@@ -792,7 +792,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!114 &234405298
 MonoBehaviour:
@@ -815,7 +815,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_UseGeometry: 0
-  m_DefaultArea: 0
+  m_DefaultArea: 3
   m_GenerateLinks: 0
   m_IgnoreNavMeshAgent: 1
   m_IgnoreNavMeshObstacle: 1
@@ -967,7 +967,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &395716582
 Transform:
@@ -1003,9 +1003,9 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 4294967295
   m_UseGeometry: 0
-  m_DefaultArea: 0
+  m_DefaultArea: 4
   m_GenerateLinks: 0
   m_IgnoreNavMeshAgent: 1
   m_IgnoreNavMeshObstacle: 1
@@ -3612,8 +3612,8 @@ Transform:
   m_GameObject: {fileID: 1358062187}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -108, y: -1.8100002, z: -18.1}
-  m_LocalScale: {x: 27.511086, y: 2.8244898, z: 12.212711}
+  m_LocalPosition: {x: -111.543, y: -1.8100002, z: -18.1}
+  m_LocalScale: {x: 30, y: 5, z: 15.283899}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -4186,17 +4186,13 @@ PrefabInstance:
       propertyPath: m_AgentTypeID
       value: -334000983
       objectReference: {fileID: 0}
-    - target: {fileID: 1130966907663610782, guid: f94f3395cf9ea2a4a9c731d18797d294, type: 3}
-      propertyPath: m_WalkableMask
-      value: 4294967295
-      objectReference: {fileID: 0}
     - target: {fileID: 1759412261362870095, guid: f94f3395cf9ea2a4a9c731d18797d294, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2419970718338169425, guid: f94f3395cf9ea2a4a9c731d18797d294, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -132.64
+      value: -151.06244
       objectReference: {fileID: 0}
     - target: {fileID: 2419970718338169425, guid: f94f3395cf9ea2a4a9c731d18797d294, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4204,7 +4200,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2419970718338169425, guid: f94f3395cf9ea2a4a9c731d18797d294, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -16.3
+      value: -1.9877964
       objectReference: {fileID: 0}
     - target: {fileID: 2419970718338169425, guid: f94f3395cf9ea2a4a9c731d18797d294, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4236,7 +4232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8360401713814996041, guid: f94f3395cf9ea2a4a9c731d18797d294, type: 3}
       propertyPath: m_Name
-      value: AlienGreenRoam2
+      value: AlienGreen
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5607,7 +5603,7 @@ PrefabInstance:
       objectReference: {fileID: 151715340}
     - target: {fileID: 862148589583578295, guid: ab804748c09267343a52f7ce487a4138, type: 3}
       propertyPath: roamDist
-      value: 100
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 862148589583578295, guid: ab804748c09267343a52f7ce487a4138, type: 3}
       propertyPath: m_Enabled
@@ -5635,7 +5631,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7185578583322714233, guid: ab804748c09267343a52f7ce487a4138, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.25
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 7185578583322714233, guid: ab804748c09267343a52f7ce487a4138, type: 3}
       propertyPath: m_LocalPosition.z
