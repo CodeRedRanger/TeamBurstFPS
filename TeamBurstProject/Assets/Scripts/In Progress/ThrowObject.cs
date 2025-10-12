@@ -2,17 +2,23 @@ using UnityEngine;
 
 public class ThrowObject : MonoBehaviour
 {
+    public GameObject grenadePrefab;
+    public GameObject stunGrenadePrefab;
     public GameObject objectToThrowPrefab;
     public Transform throwPoint;
+    public KeyCode key;
     public float throwForce;
-    public KeyCode throwKey;
+
+    private void Start()
+    {
+        objectToThrowPrefab = grenadePrefab;
+    }
 
     void Update()
     {
-        if (Input.GetKeyDown(throwKey))
-        {
-            Throw();
-        }
+        if (Input.GetKeyDown(KeyCode.Alpha2)) objectToThrowPrefab = grenadePrefab;
+        if (Input.GetKeyDown(KeyCode.Alpha3)) objectToThrowPrefab = stunGrenadePrefab;
+        if (Input.GetKeyDown(key)) Throw();
     }
 
     void Throw()

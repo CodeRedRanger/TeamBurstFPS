@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 6847864046560496087}
   - component: {fileID: 6424237920961475026}
   - component: {fileID: 329803167882175887}
-  - component: {fileID: 4142503594037938638}
+  - component: {fileID: -3939593036537108442}
   - component: {fileID: 4247569489463093566}
   - component: {fileID: -9215043530162699382}
   m_Layer: 0
-  m_Name: Test Grenade
+  m_Name: Test StunGrenade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,7 +92,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4142503594037938638
+--- !u!114 &-3939593036537108442
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,12 +101,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6886974748621363485}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a906531af6974444a684d3d8b55d96c, type: 3}
+  m_Script: {fileID: 11500000, guid: dda0cf766dd7766408cf86f61049c68d, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Bomb
-  damage: 3
+  m_EditorClassIdentifier: Assembly-CSharp::StunGrenade
   explosionRadius: 10
-  timer: 2
+  stunDuration: 2
+  timer: 0.5
   explosionEffect: {fileID: 0}
 --- !u!54 &4247569489463093566
 Rigidbody:

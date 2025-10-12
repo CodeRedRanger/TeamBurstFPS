@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.AI;
 
-public class EnemyAI : MonoBehaviour, IDamage
+public class EnemyAI : MonoBehaviour, IDamage, IStunnable
 {
 
     public AudioClip shootSound;
@@ -31,6 +31,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     float angleToPlayer; 
 
     bool playerInRange;
+    bool isStunned;
 
     Vector3 playerDir; 
 
@@ -95,12 +96,12 @@ public class EnemyAI : MonoBehaviour, IDamage
                 //can try commenting out this
                 agent.SetDestination(gameManager.instance.player.transform.position);
 
-                if (agent.remainingDistance <= agent.stoppingDistance)
+                if (agent.remainingDistance <= agent.stoppingDistance && !isStunned)
                 {
                     faceTarget();
                 }
 
-                if (shootTimer > shootRate)
+                if (shootTimer > shootRate && !isStunned)
                 {
                     SoundManager.Instance.PlayEffect(shootSound);
                     shoot();
@@ -166,6 +167,28 @@ public class EnemyAI : MonoBehaviour, IDamage
     public void Heal(int amount)
     {
         //not implemented for enemy
+    }
+
+    public void Stun(float duration)
+    {
+        if (!isStunned)
+        {
+            StartCoroutine(StunCoroutine(duration));
+        }
+    }
+
+    private IEnumerator StunCoroutine(float duration)
+    {
+        isStunned = true;
+        Debug.Log(name + " stunned for " + duration + " seconds!");
+
+        UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        if (agent != null) agent.isStopped = true;
+
+        yield return new WaitForSeconds(duration);
+
+        if (agent != null) agent.isStopped = false;
+        isStunned = false;
     }
 
 }
