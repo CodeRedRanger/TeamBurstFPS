@@ -26,7 +26,7 @@ public class Bomb : MonoBehaviour
         {
             if (hit.CompareTag("Player")) continue;
 
-            IDamage damageable = hit.transform.root.GetComponent<IDamage>();
+            IDamage damageable = hit.transform.GetComponent<IDamage>();
             if (damageable != null && !damagedEnemies.Contains(damageable))
             {
                 float distance = Vector3.Distance(hit.transform.position, transform.position);
@@ -37,7 +37,6 @@ public class Bomb : MonoBehaviour
                 }
             }
         }
-
         Destroy(gameObject);
     }
 

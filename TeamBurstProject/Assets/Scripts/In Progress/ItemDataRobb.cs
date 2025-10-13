@@ -3,9 +3,10 @@ using UnityEngine;
 
 public enum ItemType
 {
-    medkit,
+    bomb,
     grenade,
-    bomb
+    stunner,
+    medkit
 }
 
 [CreateAssetMenu(menuName = "Inventory/Item")]
