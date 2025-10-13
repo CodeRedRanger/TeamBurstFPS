@@ -8,7 +8,7 @@ public class ColorChanger : MonoBehaviour
     private bool enemiesSpawned = false;
     private int requiredGoalCount = 0;
     //public AudioClip GetToSchool;
-   bool hasPlayedSound = false;
+   //bool hasPlayedSound = false;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

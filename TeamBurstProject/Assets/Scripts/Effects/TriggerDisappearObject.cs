@@ -5,7 +5,7 @@ public class TriggerDisappearObject : MonoBehaviour
 {
     
 
-    public GameObject objectToDisappear;
+    [SerializeField] GameObject objectToDisappear;
     public float delay = 1f; // Delay in seconds before the object appears
     private MeshRenderer meshRenderer; 
 
