@@ -1,5 +1,8 @@
 using UnityEngine;
-
+//
+//commented out because created simplier gunData for this project
+//Can use this later
+/*
 //Creates a Unity Menu to create a new Gun Data file
 [CreateAssetMenu(
     fileName = "NewGun",
@@ -85,4 +88,4 @@ public class GunData : ScriptableObject, iGun
     }
 #endif
 
-}
+}*/

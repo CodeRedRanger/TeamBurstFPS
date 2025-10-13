@@ -1,5 +1,6 @@
 using UnityEngine;
-using System.Collections; 
+using System.Collections;
+using System.Collections.Generic; 
 
 public class PlayerController : MonoBehaviour, IDamage
 {
@@ -33,7 +34,15 @@ public class PlayerController : MonoBehaviour, IDamage
     public AudioClip shootSound;
     public AudioClip damageSound;
     public AudioClip deathSound;
+
+    [SerializeField] List<GunData> gunList = new List<GunData>(); 
+    [SerializeField] GameObject gunModel;
     
+    int gunListPos;
+
+    public Vector3 pushBack;
+    [SerializeField] int pushBackTime; 
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -50,7 +59,10 @@ public class PlayerController : MonoBehaviour, IDamage
 
         shootTimer += Time.deltaTime;
 
-        Movement();
+        if (!gameManager.instance.isPaused)
+        {
+            Movement();
+        }
 
         Sprint();
 
@@ -81,6 +93,8 @@ public class PlayerController : MonoBehaviour, IDamage
             SoundManager.Instance.PlayEffect(shootSound);
             ps.Play(); 
         }
+        selectGun();
+        reload();
     }
     void Sprint()
     {
@@ -106,6 +120,7 @@ public class PlayerController : MonoBehaviour, IDamage
     {
         shootTimer = 0;
 
+        gunList[gunListPos].ammoCur--; 
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, ~ignoreLayer))
         {
@@ -191,6 +206,48 @@ public class PlayerController : MonoBehaviour, IDamage
         updatePlayerUI();
     }
 
+    void reload()
+    {
+        if (Input.GetButtonDown("Reload"))
+        {
+            gunList[gunListPos].ammoCur = gunList[gunListPos].ammoMax;
+            updatePlayerUI(); 
+        }
+    }
 
+    public void getGunData(GunData gun)
+    {
+        gunList.Add(gun);
+        gunListPos = gunList.Count - 1;
+
+        changeGun(); 
+    }
+
+    void selectGun()
+    {
+        if (Input.GetAxis("Mouse ScrollWheel") > 0 && gunListPos < gunList.Count - 1)
+        {
+            gunListPos++;
+            changeGun();
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && gunListPos > 0)
+        {
+            gunListPos--;
+            changeGun();
+        }
+
+
+    }
+
+    void changeGun()
+    {
+        shootDamage = gunList[gunListPos].shootDamage;
+        shootDist = gunList[gunListPos].shootDist;
+        shootRate = gunList[gunListPos].shootRate;
+
+        gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[gunListPos].gunModel.GetComponent<MeshFilter>().sharedMesh;
+        gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[gunListPos].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+        updatePlayerUI();
+    }
 
 }
