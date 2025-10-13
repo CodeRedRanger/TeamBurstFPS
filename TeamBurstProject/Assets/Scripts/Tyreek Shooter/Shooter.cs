@@ -1,7 +1,8 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
-
+//commented out to avoid errors, since GunData was commented out
+/*
 public class Shooter : MonoBehaviour
 {
     [Header("Player View / Aim")]
@@ -179,3 +180,4 @@ public class Shooter : MonoBehaviour
         return dir.normalized;
     }
 }
+*/
