@@ -1,10 +1,18 @@
 using UnityEngine;
 
+public enum GunType
+{
+    pistol,
+    smg,
+    cannon
+}
+
 [CreateAssetMenu(
     menuName = "Gun/Gun Data")]
 public class GunData : ScriptableObject
 {
     public GameObject gunModel;
+    public GunType type; 
 
     [Range(1, 10)] public int shootDamage;
     [Range(0.1f, 3)] public float shootRate;

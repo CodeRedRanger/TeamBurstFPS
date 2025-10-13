@@ -18,7 +18,9 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     [SerializeField] int shootDist;
     [SerializeField] float shootRate;
 
-    public ParticleSystem ps;
+    [SerializeField] ParticleSystem ps;
+    [SerializeField] ParticleSystem ps1; 
+    [SerializeField] ParticleSystem ps2; 
 
     private Vector3 moveDir;
     private Vector3 playerVel;
@@ -125,10 +127,23 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
             gunList[gunListPos].ammoCur--;
             updatePlayerUI(); 
             SoundManager.Instance.PlayEffect(shootSound);
-            ps.Play();
+
+            if (gunList[gunListPos].type == GunType.smg)
+            {
+                ps1.Play(); 
+            }
+
+            else if (gunList[gunListPos].type == GunType.cannon)
+            {
+                ps2.Play();
+            }
+            else
+            {
+                ps.Play(); 
+            }
 
 
-            RaycastHit hit;
+                RaycastHit hit;
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, ~ignoreLayer))
             {
                 IDamage dmg = hit.collider.GetComponent<IDamage>();
@@ -262,6 +277,8 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
 
         gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[gunListPos].gunModel.GetComponent<MeshFilter>().sharedMesh;
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[gunListPos].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+        
+        
         updatePlayerUI();
     }
 
