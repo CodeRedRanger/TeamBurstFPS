@@ -35,7 +35,9 @@ public class gameManager : MonoBehaviour
     float timeScaleOrig;
 
     int gameGoalCount;
-    public bool Level1 = true; 
+    public bool Level1 = true;
+
+    public TMP_Text ammoCur, ammoMax;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

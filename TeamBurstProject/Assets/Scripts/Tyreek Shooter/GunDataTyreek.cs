@@ -1,4 +1,10 @@
 using UnityEngine;
+
+public class GunDataTyreek : ScriptableObject //, iGun
+{
+
+}
+
 //
 //commented out because created simplier gunData for this project
 //Can use this later

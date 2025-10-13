@@ -9,8 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6981667708146631894}
+  - component: {fileID: 1114291338987840003}
   - component: {fileID: 6897428481588079894}
   - component: {fileID: 1318341682464392621}
+  - component: {fileID: 4111917313531848030}
   m_Layer: 0
   m_Name: Gun - SMGGreen
   m_TagString: Untagged
@@ -26,13 +28,26 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5934006089861120986}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.017932255, y: 0.70687944, z: 0.70687926, w: -0.017932253}
+  m_LocalRotation: {x: 0.017926862, y: 0.7067561, z: 0.7070028, w: -0.017933121}
   m_LocalPosition: {x: 7.294686, y: 0.12999716, z: -0.020256639}
-  m_LocalScale: {x: 100, y: 100.00003, z: 100.00003}
+  m_LocalScale: {x: 200, y: 200.00006, z: 200.00006}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 182.906}
+--- !u!114 &1114291338987840003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5934006089861120986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b44bb8002a522f24fbec1874c8a8109e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GunPickup
+  gun: {fileID: 11400000, guid: 54a9bf1b64524f94c9b670d846177639, type: 2}
 --- !u!33 &6897428481588079894
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -89,3 +104,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!135 &4111917313531848030
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5934006089861120986}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.004
+  m_Center: {x: 8.256709e-11, y: 0.000608897, z: -0.00021985562}

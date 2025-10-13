@@ -90,8 +90,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
         if (Input.GetButton("Fire1") && shootTimer >= shootRate)
         {
             Shoot();
-            SoundManager.Instance.PlayEffect(shootSound);
-            ps.Play(); 
+            
         }
         selectGun();
         reload();
@@ -120,18 +119,27 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     {
         shootTimer = 0;
 
-        gunList[gunListPos].ammoCur--; 
-        RaycastHit hit;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, ~ignoreLayer))
+        //I added this if statement to lecture code
+        if (gunList.Count > 0 && gunList[gunListPos].ammoCur > 0)
         {
-            IDamage dmg = hit.collider.GetComponent<IDamage>();
+            gunList[gunListPos].ammoCur--;
+            updatePlayerUI(); 
+            SoundManager.Instance.PlayEffect(shootSound);
+            ps.Play();
 
-            if (dmg != null)
+
+            RaycastHit hit;
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, ~ignoreLayer))
             {
-                dmg.TakeDamage(shootDamage);
-            }
+                IDamage dmg = hit.collider.GetComponent<IDamage>();
 
-            //Debug.Log(hit.collider.name);
+                if (dmg != null)
+                {
+                    dmg.TakeDamage(shootDamage);
+                }
+
+                //Debug.Log(hit.collider.name);
+            }
         }
     }
 
@@ -165,7 +173,13 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
 
     public void updatePlayerUI()
     {
-        gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig; 
+        gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
+
+        if (gunList.Count > 0)
+        {
+            gameManager.instance.ammoCur.text = gunList[gunListPos].ammoCur.ToString("F0");
+            gameManager.instance.ammoMax.text = gunList[gunListPos].ammoMax.ToString("F0");
+        }
     }
 
     //Isaac scripts
@@ -211,6 +225,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
         if (Input.GetButtonDown("Reload"))
         {
             gunList[gunListPos].ammoCur = gunList[gunListPos].ammoMax;
+            //I added to lecture code
             updatePlayerUI(); 
         }
     }
