@@ -102,7 +102,7 @@ public class EnemyAIRoam : MonoBehaviour, IDamage
         ranPos += startingPos;
 
         NavMeshHit hit;
-        Debug.Log(agent.areaMask); //changed 1 to agent.areaMask
+        //Debug.Log(agent.areaMask); //changed 1 to agent.areaMask
         if (NavMesh.SamplePosition(ranPos, out hit, roamDist, agent.areaMask))
         {
             agent.SetDestination(hit.position);
