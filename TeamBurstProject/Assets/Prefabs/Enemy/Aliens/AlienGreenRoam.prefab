@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7229581765301678597, guid: f94f3395cf9ea2a4a9c731d18797d294, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8360401713814996041, guid: f94f3395cf9ea2a4a9c731d18797d294, type: 3}
       propertyPath: m_Name
       value: AlienGreenRoam
@@ -75,59 +79,5 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8360401713814996041, guid: f94f3395cf9ea2a4a9c731d18797d294, type: 3}
-      insertIndex: 3
-      addedObject: {fileID: 862148589583578295}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f94f3395cf9ea2a4a9c731d18797d294, type: 3}
---- !u!4 &2581788914733017803 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7059779975067316451, guid: f94f3395cf9ea2a4a9c731d18797d294, type: 3}
-  m_PrefabInstance: {fileID: 4768532646760176168}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &3105648893393335646 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7580754560201076598, guid: f94f3395cf9ea2a4a9c731d18797d294, type: 3}
-  m_PrefabInstance: {fileID: 4768532646760176168}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3903255546932551265 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8360401713814996041, guid: f94f3395cf9ea2a4a9c731d18797d294, type: 3}
-  m_PrefabInstance: {fileID: 4768532646760176168}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &862148589583578295
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3903255546932551265}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a769c8bdb3f40aa44af2785005299ca9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyAIRoam
-  shootSound: {fileID: 8300000, guid: 06ada5590eba8d6489b36c6f3c54ff78, type: 3}
-  damageSound: {fileID: 8300000, guid: e4b229d1cd4c5954c982c44b6f42eb27, type: 3}
-  deathSound: {fileID: 8300000, guid: 4e7a9f408abdba8459fdccbeaea95215, type: 3}
-  model: {fileID: 5746427150232812938}
-  agent: {fileID: 5593254427574970806}
-  HP: 3
-  faceTargetSpeed: 8
-  shootPos: {fileID: 3105648893393335646}
-  bullet: {fileID: 4309350892994240032, guid: 3489e51d3d22ee541a7b362e78b78184, type: 3}
-  shootRate: 1
-  FOV: 90
-  headPos: {fileID: 2581788914733017803}
-  roamDist: 100
-  roamPauseTime: 0
---- !u!195 &5593254427574970806 stripped
-NavMeshAgent:
-  m_CorrespondingSourceObject: {fileID: 1130966907663610782, guid: f94f3395cf9ea2a4a9c731d18797d294, type: 3}
-  m_PrefabInstance: {fileID: 4768532646760176168}
-  m_PrefabAsset: {fileID: 0}
---- !u!137 &5746427150232812938 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 977934372738377634, guid: f94f3395cf9ea2a4a9c731d18797d294, type: 3}
-  m_PrefabInstance: {fileID: 4768532646760176168}
-  m_PrefabAsset: {fileID: 0}

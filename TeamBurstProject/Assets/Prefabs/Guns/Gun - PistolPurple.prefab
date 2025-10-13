@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 1959333241046597851}
   - component: {fileID: 1628287263799807341}
   - component: {fileID: 8112992369234045015}
+  - component: {fileID: 5124625832846358598}
+  - component: {fileID: 1569002857569773371}
   m_Layer: 0
   m_Name: Gun - PistolPurple
   m_TagString: Untagged
@@ -125,3 +127,35 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.003
   m_Center: {x: -4.9539907e-11, y: -0.00022248527, z: -0.00034099867}
+--- !u!114 &5124625832846358598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4745260351339810002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b8d5d9776f76ff45bcf3d3872e8a21b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Rotator
+  rotationSpeed: 90
+  rotateX: 0
+  rotateY: 0
+  rotateZ: 1
+--- !u!114 &1569002857569773371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4745260351339810002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b8d5d9776f76ff45bcf3d3872e8a21b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Rotator
+  rotationSpeed: 90
+  rotateX: 0
+  rotateY: 0
+  rotateZ: 1
