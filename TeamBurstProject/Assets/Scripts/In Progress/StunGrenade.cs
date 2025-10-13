@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bomb : MonoBehaviour
+
+public class StunGrenade : MonoBehaviour
 {
-    [SerializeField] int damage;
     [SerializeField] float explosionRadius;
+    [SerializeField] float stunDuration;
     [SerializeField] float timer;
     [SerializeField] GameObject explosionEffect;
 
@@ -20,23 +21,24 @@ public class Bomb : MonoBehaviour
             Instantiate(explosionEffect, transform.position, Quaternion.identity);
 
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, explosionRadius);
-        HashSet<IDamage> damagedEnemies = new HashSet<IDamage>();
+        HashSet<IStunnable> stunnedEnemies = new HashSet<IStunnable>();
 
         foreach (Collider hit in hitColliders)
         {
             if (hit.CompareTag("Player")) continue;
 
-            IDamage damageable = hit.transform.GetComponent<IDamage>();
-            if (damageable != null && !damagedEnemies.Contains(damageable))
+            IStunnable stunnable = hit.transform.GetComponent<IStunnable>();
+            if (stunnable != null && !stunnedEnemies.Contains(stunnable))
             {
                 float distance = Vector3.Distance(hit.transform.position, transform.position);
                 if (distance <= explosionRadius)
                 {
-                    damageable.TakeDamage(damage);
-                    damagedEnemies.Add(damageable);
+                    stunnable.Stun(stunDuration);
+                    stunnedEnemies.Add(stunnable);
                 }
             }
         }
+
         Destroy(gameObject);
     }
 
