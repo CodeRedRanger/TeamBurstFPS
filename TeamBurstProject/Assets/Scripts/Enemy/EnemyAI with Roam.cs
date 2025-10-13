@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.AI;
 
-public class EnemyAIRoam : MonoBehaviour, IDamage
+public class EnemyAIRoam : MonoBehaviour, IDamage, IStunnable
 {
 
     public AudioClip shootSound;
@@ -31,6 +31,7 @@ public class EnemyAIRoam : MonoBehaviour, IDamage
     float angleToPlayer;
 
     bool playerInRange;
+    bool isStunned;
 
     Vector3 playerDir;
 
@@ -135,12 +136,12 @@ public class EnemyAIRoam : MonoBehaviour, IDamage
                 agent.SetDestination(gameManager.instance.player.transform.position);
 
                 //changed for roam
-                if (agent.remainingDistance <= agent.stoppingDistance)    //agent.stoppingDistance)
+                if (agent.remainingDistance <= stoppingDistOrig && !isStunned)    //agent.stoppingDistance)
                 {
                     faceTarget();
                 }
 
-                if (shootTimer > shootRate)
+                if (shootTimer > shootRate && !isStunned)
                 {
                     SoundManager.Instance.PlayEffect(shootSound);
                     shoot();
@@ -212,7 +213,26 @@ public class EnemyAIRoam : MonoBehaviour, IDamage
     {
         //not implemented for enemy
     }
+    public void Stun(float duration)
+    {
+        if (!isStunned)
+        {
+            StartCoroutine(StunCoroutine(duration));
+        }
+    }
 
+    private IEnumerator StunCoroutine(float duration)
+    {
+        isStunned = true;
+
+        NavMeshAgent agent = GetComponent<NavMeshAgent>();
+        if (agent != null) agent.isStopped = true;
+
+        yield return new WaitForSeconds(duration);
+
+        if (agent != null) agent.isStopped = false;
+        isStunned = false;
+    }
 }
 
 
