@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 279798230191883213, guid: fd20e2fa590e6fe43869ab3ba5313762, type: 3}
       propertyPath: speed
-      value: 750
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 279798230191883213, guid: fd20e2fa590e6fe43869ab3ba5313762, type: 3}
       propertyPath: destroyTime
@@ -61,6 +61,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1444284087933043667, guid: fd20e2fa590e6fe43869ab3ba5313762, type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1444284087933043667, guid: fd20e2fa590e6fe43869ab3ba5313762, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.b
       value: 0.015686275
       objectReference: {fileID: 0}
@@ -75,6 +79,14 @@ PrefabInstance:
     - target: {fileID: 1444284087933043667, guid: fd20e2fa590e6fe43869ab3ba5313762, type: 3}
       propertyPath: m_Parameters.colorGradient.key1.g
       value: 0.92156863
+      objectReference: {fileID: 0}
+    - target: {fileID: 1444284087933043667, guid: fd20e2fa590e6fe43869ab3ba5313762, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1444284087933043667, guid: fd20e2fa590e6fe43869ab3ba5313762, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3257510727363395199, guid: fd20e2fa590e6fe43869ab3ba5313762, type: 3}
       propertyPath: m_IsKinematic

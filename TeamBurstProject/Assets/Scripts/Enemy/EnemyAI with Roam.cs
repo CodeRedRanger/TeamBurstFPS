@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.AI;
 
-public class EnemyAIRoam : MonoBehaviour, IDamage
+public class EnemyAIRoam : MonoBehaviour, IDamage, IStunnable
 {
 
     public AudioClip shootSound;
@@ -31,6 +31,7 @@ public class EnemyAIRoam : MonoBehaviour, IDamage
     float angleToPlayer;
 
     bool playerInRange;
+    bool isStunned;
 
     Vector3 playerDir;
 
@@ -46,6 +47,7 @@ public class EnemyAIRoam : MonoBehaviour, IDamage
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        
         colorOrig = model.material.color;
         gameManager.instance.updateGameGoal(1);
         animator = GetComponent<Animator>();
@@ -62,13 +64,13 @@ public class EnemyAIRoam : MonoBehaviour, IDamage
 
         shootTimer += Time.deltaTime;
 
-        if(agent.remainingDistance < 0.01f)
+        if(agent.remainingDistance <= 0.01f)
         {
             roamTimer += Time.deltaTime; //only count up if not moving
         }
 
 
-        if (playerInRange && canSeePlayer())
+        if (playerInRange && !canSeePlayer()) //added ! to canSeePlayer
         {
             //below until end of function is for roam
             checkRoam();
@@ -92,14 +94,17 @@ public class EnemyAIRoam : MonoBehaviour, IDamage
     void roam()
     {
         roamTimer = 0;
-        agent.stoppingDistance = 0; 
+        agent.stoppingDistance = 0;
 
         Vector3 ranPos = startingPos + Random.insideUnitSphere * roamDist;
-        
+        //kept Y consistent
+        ranPos.y = startingPos.y; 
+
         ranPos += startingPos;
 
         NavMeshHit hit;
-        if (NavMesh.SamplePosition(ranPos, out hit, roamDist, 1))
+        //Debug.Log(agent.areaMask); //changed 1 to agent.areaMask
+        if (NavMesh.SamplePosition(ranPos, out hit, roamDist, agent.areaMask))
         {
             agent.SetDestination(hit.position);
         }
@@ -131,12 +136,12 @@ public class EnemyAIRoam : MonoBehaviour, IDamage
                 agent.SetDestination(gameManager.instance.player.transform.position);
 
                 //changed for roam
-                if (agent.remainingDistance <= stoppingDistOrig)    //agent.stoppingDistance)
+                if (agent.remainingDistance <= stoppingDistOrig && !isStunned)    //agent.stoppingDistance)
                 {
                     faceTarget();
                 }
 
-                if (shootTimer > shootRate)
+                if (shootTimer > shootRate && !isStunned)
                 {
                     SoundManager.Instance.PlayEffect(shootSound);
                     shoot();
@@ -167,6 +172,7 @@ public class EnemyAIRoam : MonoBehaviour, IDamage
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
+            agent.stoppingDistance = 0; 
         }
     }
 
@@ -207,7 +213,26 @@ public class EnemyAIRoam : MonoBehaviour, IDamage
     {
         //not implemented for enemy
     }
+    public void Stun(float duration)
+    {
+        if (!isStunned)
+        {
+            StartCoroutine(StunCoroutine(duration));
+        }
+    }
 
+    private IEnumerator StunCoroutine(float duration)
+    {
+        isStunned = true;
+
+        NavMeshAgent agent = GetComponent<NavMeshAgent>();
+        if (agent != null) agent.isStopped = true;
+
+        yield return new WaitForSeconds(duration);
+
+        if (agent != null) agent.isStopped = false;
+        isStunned = false;
+    }
 }
 
 
