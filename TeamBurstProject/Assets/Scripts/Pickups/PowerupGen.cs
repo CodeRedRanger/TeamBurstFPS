@@ -28,13 +28,16 @@ public class PowerupGen : MonoBehaviour
             return; //ignore other triggers
 
         // Hide powerup until it is destroyed or reappears.
-        GetComponent<Renderer>().enabled = false;
-        GetComponent<Collider>().enabled = false;
-        isPickedUp = true;
+        if(!isPickedUp)
+        {        
+            GetComponent<Renderer>().enabled = false;
+            GetComponent<Collider>().enabled = false;
+            isPickedUp = true;
 
-        // Begin coroutine method.
-        SoundManager.Instance.PlayEffect(pickupSound);
-        StartCoroutine(AddPowerup());
+            // Begin coroutine method.
+            SoundManager.Instance.PlayEffect(pickupSound);
+            StartCoroutine(AddPowerup());
+        }
 
     }
 
