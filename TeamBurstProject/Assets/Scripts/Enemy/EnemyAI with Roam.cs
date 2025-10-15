@@ -70,7 +70,7 @@ public class EnemyAIRoam : MonoBehaviour, IDamage, IStunnable
         }
 
 
-        if (playerInRange && canSeePlayer())
+        if (playerInRange && !canSeePlayer()) //added ! to canSeePlayer
         {
             //below until end of function is for roam
             checkRoam();
@@ -103,7 +103,7 @@ public class EnemyAIRoam : MonoBehaviour, IDamage, IStunnable
         ranPos += startingPos;
 
         NavMeshHit hit;
-        Debug.Log(agent.areaMask); //changed 1 to agent.areaMask
+        //Debug.Log(agent.areaMask); //changed 1 to agent.areaMask
         if (NavMesh.SamplePosition(ranPos, out hit, roamDist, agent.areaMask))
         {
             agent.SetDestination(hit.position);

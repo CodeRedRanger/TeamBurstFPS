@@ -34,11 +34,11 @@ public class BombRobb : MonoBehaviour
 
             IDamage damageable = hit.transform.GetComponent<IDamage>();
             if (damageable == null)
-                Debug.Log("Damageable is null!"); 
+                //Debug.Log("Damageable is null!"); 
 
             if (damageable != null && !damagedEnemies.Contains(damageable))
             {
-                Debug.Log("Damaging");
+                //Debug.Log("Damaging");
                 float distance = Vector3.Distance(hit.transform.position, transform.position);
                 if (distance <= explosionRadius)
                 {

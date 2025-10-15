@@ -2,7 +2,14 @@ using UnityEngine;
 
 public class Rotator : MonoBehaviour
 {
+   
     public float rotationSpeed = 90f;
+
+    [Header("Rotation Axes")]
+    public bool rotateX = false;
+    public bool rotateY = false;
+    public bool rotateZ = false;
+
     void Start()
     {
         
@@ -11,6 +18,22 @@ public class Rotator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
+        Vector3 rotationVector = Vector3.zero;
+        if (rotateX)
+        {
+            rotationVector += Vector3.right;
+        }
+
+        if (rotateY)
+        {
+            rotationVector += Vector3.up;
+        }
+
+        if (rotateZ)
+        {
+            rotationVector += Vector3.forward;
+        }
+
+        transform.Rotate(rotationVector * rotationSpeed * Time.deltaTime);
     }
 }
