@@ -43,9 +43,13 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     //Jump audio
     [SerializeField] AudioClip[] audJump;
     [Range(0, 1)][SerializeField] float audJumpVol;
+    //steps audio
     [SerializeField] AudioClip[] audSteps;
     [Range(0,1)][SerializeField] float audStepsVol;
     bool isPlayingSteps;
+    //recharge audio
+    [SerializeField] AudioClip audRechargePrompt;
+    [Range(0, 1)][SerializeField] float audRechargePromptVol;
 
     [SerializeField] List<GunData> gunList = new List<GunData>(); 
     [SerializeField] GameObject gunModel;
@@ -142,6 +146,13 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
         if (gunList.Count > 0 && gunList[gunListPos].ammoCur > 0)
         {
             gunList[gunListPos].ammoCur--;
+
+            if (gunList[gunListPos].ammoCur == 0)
+            {
+                SoundManager.Instance.PlayEffect(audRechargePrompt, audRechargePromptVol);
+
+            }
+
             updatePlayerUI();
             SoundManager.Instance.PlayEffect(gunList[gunListPos].shootSound[Random.Range(0, gunList[gunListPos].shootSound.Length)], gunList[gunListPos].shootSoundVol);
             //SoundManager.Instance.PlayEffect(shootSound, 1);
