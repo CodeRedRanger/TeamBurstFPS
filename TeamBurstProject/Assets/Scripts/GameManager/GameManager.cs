@@ -135,7 +135,7 @@ public class gameManager : MonoBehaviour
 
             if (Level1 == true)
             { 
-                SoundManager.Instance.PlayEffect(toSchool);
+                SoundManager.Instance.PlayEffect(toSchool, 1);
             } 
 
 
