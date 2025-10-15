@@ -39,4 +39,50 @@ public class Jetpack : MonoBehaviour
 
     [Tooltip("AudioSource that plays while thrusting.")]
     [SerializeField] private AudioSource jetpackAudio;
+
+    //Runtime Variables
+    // Stores the current amount of fuel.
+    private float fuel;
+
+    // Whether we are thrusting right now.
+    private bool isThrusting = false;
+
+    // Used to track when thrust starts/stops (for FX).
+    private bool wasThrustingLastFrame = false;
+
+
+    private void Awake()
+    {
+        // Awake() runs once when the object first loads.
+
+        // 1) Set our starting fuel to full.
+        fuel = maxFuel;
+
+        // 2) Make sure any jetpack FX or sounds are stopped at the beginning.
+        if (jetpackFX != null) jetpackFX.Stop();
+        if (jetpackAudio != null) jetpackAudio.Stop();
+    }
+
+    public float GetFuel01()
+    {
+        return (maxFuel > 0f) ? Mathf.Clamp01(fuel / maxFuel) : 0f;
+    }
+
+    /// <summary>
+    /// Adds fuel (for pickups, etc.). Keeps value between 0 and max.
+    /// </summary>
+    public void RefillFuel(float amount)
+    {
+        fuel = Mathf.Clamp(fuel + amount, 0f, maxFuel);
+    }
+
+    /// <summary>
+    /// Sets the fuel to a specific percent of max (0 to 1).
+    /// </summary>
+    public void SetFuelPercent(float pct01)
+    {
+        fuel = Mathf.Clamp01(pct01) * maxFuel;
+    }
+}
+
 }
