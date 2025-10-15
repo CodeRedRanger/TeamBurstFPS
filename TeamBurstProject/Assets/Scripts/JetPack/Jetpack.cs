@@ -63,22 +63,18 @@ public class Jetpack : MonoBehaviour
         if (jetpackAudio != null) jetpackAudio.Stop();
     }
 
-    public float GetFuel01()
+    public float GetFuel()
     {
         return (maxFuel > 0f) ? Mathf.Clamp01(fuel / maxFuel) : 0f;
     }
 
-    /// <summary>
-    /// Adds fuel (for pickups, etc.). Keeps value between 0 and max.
-    /// </summary>
+    // Adds fuel (for pickups, etc.). Keeps value between 0 and max.   
     public void RefillFuel(float amount)
     {
         fuel = Mathf.Clamp(fuel + amount, 0f, maxFuel);
     }
-
-    /// <summary>
-    /// Sets the fuel to a specific percent of max (0 to 1).
-    /// </summary>
+   
+    // Sets the fuel to a specific percent of max (0 to 1).
     public void SetFuelPercent(float pct01)
     {
         fuel = Mathf.Clamp01(pct01) * maxFuel;
