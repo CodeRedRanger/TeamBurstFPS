@@ -64,7 +64,8 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     void Start()
     {
         HPOrig = HP;
-        updatePlayerUI();
+        //updatePlayerUI(); //called in spawn player
+        spawnPlayer(); 
 
     }
 
@@ -329,6 +330,12 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
         }
         isPlayingSteps = false; 
 
+    }
+    public void spawnPlayer()
+    {
+        controller.transform.position = gameManager.instance.playerSpawnPos.transform.position;
+        HP = HPOrig;
+        updatePlayerUI(); 
     }
 
 }
