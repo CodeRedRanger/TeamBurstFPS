@@ -44,6 +44,9 @@ public class Jetpack : MonoBehaviour
     // Stores the current amount of fuel.
     private float fuel;
 
+    // Current vertical speed in units/second (positive = going up, negative = going down).
+    private float verticalSpeed = 0f;
+
     // Whether we are thrusting right now.
     private bool isThrusting = false;
 
@@ -130,7 +133,7 @@ public class Jetpack : MonoBehaviour
                 if (jetpackAudio.isPlaying) jetpackAudio.Stop();
             }
         }
-
+        HandleVerticalMovement();
         // Remember what our thrusting state was this frame,
         // so we can detect changes on the next frame.
         wasThrustingLastFrame = isThrusting;
