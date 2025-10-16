@@ -36,6 +36,7 @@ public class EnemyAI : MonoBehaviour, IDamage, IStunnable
     Vector3 playerDir; 
 
     private Animator animator;
+    [SerializeField] int animTransSpeed; 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -53,7 +54,7 @@ public class EnemyAI : MonoBehaviour, IDamage, IStunnable
     void Update()
     {
 
-        animator.SetFloat("Speed", agent.velocity.magnitude);
+        setAnimLocomation(); 
 
         shootTimer += Time.deltaTime;
       
@@ -74,6 +75,18 @@ public class EnemyAI : MonoBehaviour, IDamage, IStunnable
 
         }
     }
+
+    void setAnimLocomation()
+    {
+        float agentSpeedCur = agent.velocity.normalized.magnitude;
+        float animSpeedCur = animator.GetFloat("Speed");
+
+        //animator.SetFloat("Speed", agent.velocity.magnitude);
+        animator.SetFloat("Speed", Mathf.Lerp(animSpeedCur,agentSpeedCur, Time.deltaTime * animTransSpeed));
+        
+    
+    }
+
 
     void faceTarget()
     {

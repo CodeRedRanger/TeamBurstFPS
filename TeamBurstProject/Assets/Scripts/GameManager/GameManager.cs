@@ -16,14 +16,14 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuWinEnd;
     [SerializeField] GameObject menuLose;
-    [SerializeField] GameObject hotBar; 
+    [SerializeField] GameObject hotBar;
     [SerializeField] TMP_Text gameGoalCountText;
 
     public AudioClip BGMusic;
     public AudioClip toSchool;
 
     public Image playerHPBar;
-    public GameObject playerDamageFlash; 
+    public GameObject playerDamageFlash;
 
     public GameObject player; //reference to player object
     public PlayerController playerScript; //reference to player script
@@ -36,16 +36,19 @@ public class gameManager : MonoBehaviour
     float timeScaleOrig;
 
     int gameGoalCount;
-    public bool Level1; 
+    public bool Level1;
 
     public TMP_Text ammoCur, ammoMax;
 
     public GameObject playerSpawnPos;
     public GameObject checkpointPopup;
 
-    private bool musicStarted = false; 
+    private bool musicStarted = false;
+    private bool firstUnpause = true; 
 
-    
+    public Scene currentScene;
+    bool skipMainMenu = false;
+
     void Awake()
     {
 
@@ -60,14 +63,22 @@ public class gameManager : MonoBehaviour
 
         //SoundManager.Instance.PlayMusic(BGMusic);
         playerSpawnPos = GameObject.FindWithTag("Player Spawn Pos");
-        
+
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (MainMenu.instance.state == GameState.Gameplay)
+        currentScene = SceneManager.GetActiveScene();
+        if (currentScene.buildIndex != 0)
+        {
+            skipMainMenu = true;
+
+        }
+    
+        //had to put skipMainMenu first or else MainMenu check will fail if not created yet
+        if (skipMainMenu || MainMenu.instance.state == GameState.Gameplay)
         {
             //needed this because don't want to start music during main menu
             if (musicStarted == false)
@@ -142,7 +153,13 @@ public class gameManager : MonoBehaviour
 
         menuActive.SetActive(false);
         menuActive = null;
-        SoundManager.Instance.PlayMusic(BGMusic);
+
+        if(firstUnpause == false)
+        { 
+            SoundManager.Instance.PlayMusic(BGMusic);
+        }
+        firstUnpause = false; 
+
     }
 
     public void updateGameGoal(int amount)
