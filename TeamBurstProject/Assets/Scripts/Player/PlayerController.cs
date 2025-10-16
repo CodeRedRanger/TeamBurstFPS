@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     
     int gunListPos;
 
+    //pushback
     public Vector3 pushBack;
     [SerializeField] int pushBackTime; 
 
@@ -86,8 +87,18 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
         SpawnBomb();
     }
 
+    //pushback
+    public void AppliedPushBack(Vector3 direction)
+    {
+        pushBack = direction; 
+    }
+
     void Movement()
     {
+        //pushback
+        pushBack = Vector3.Lerp(pushBack, Vector3.zero, Time.deltaTime * pushBackTime);
+
+
         if (controller.isGrounded)
         {
             if (moveDir.normalized.magnitude > 0.3f && !isPlayingSteps)
@@ -102,8 +113,9 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
             playerVel.y -= gravity * Time.deltaTime;
         }
 
+        //pushback
         moveDir = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward;
-        controller.Move(moveDir * speed * Time.deltaTime);
+        controller.Move((moveDir + pushBack) * speed * Time.deltaTime);
 
         Jump();
         controller.Move(playerVel * Time.deltaTime);
