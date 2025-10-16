@@ -3933,8 +3933,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 427d75b951394704890045254881bb6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorTrigger
-  doorHinge: {fileID: 0}
-  customOpenAngle: 0
+  doorHinge: {fileID: 2993350256445647985}
+  customOpenAngle: 90
 --- !u!1001 &1155470230
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7177,6 +7177,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7157627756743933844, guid: f8edced1f93daad4ab8c724e6e5a8b04, type: 3}
   m_PrefabInstance: {fileID: 2993350256445647983}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2993350256445647985 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6725973193623120774, guid: f8edced1f93daad4ab8c724e6e5a8b04, type: 3}
+  m_PrefabInstance: {fileID: 2993350256445647983}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5d9eef1bc3efc640931e556373118e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DoorController
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

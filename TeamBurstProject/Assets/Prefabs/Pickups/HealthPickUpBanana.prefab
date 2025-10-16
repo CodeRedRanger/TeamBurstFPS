@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &865217475929600065
+--- !u!1 &1346287931587750499
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,78 +8,94 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 525247808296332027}
-  - component: {fileID: 4590601706893243699}
-  - component: {fileID: 5735238960578152484}
-  - component: {fileID: 2639307063614398336}
-  - component: {fileID: 3523457081002763614}
-  - component: {fileID: 1657644371187716500}
-  - component: {fileID: 9178121237026700916}
-  - component: {fileID: 1820782142823931986}
-  m_Layer: 0
+  - component: {fileID: 1784406289383745888}
+  - component: {fileID: 15348610289600749}
+  - component: {fileID: 6033500797602518524}
+  - component: {fileID: 403927541763253579}
+  - component: {fileID: 40877837162316406}
+  - component: {fileID: 9130612037590933541}
+  - component: {fileID: 2542958236424600999}
+  - component: {fileID: 3845112758646298984}
+  - component: {fileID: 8389375806524786487}
+  m_Layer: 10
   m_Name: HealthPickUpBanana
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &525247808296332027
+--- !u!4 &1784406289383745888
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 865217475929600065}
+  m_GameObject: {fileID: 1346287931587750499}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.51077694, z: -0, w: 0.8597133}
-  m_LocalPosition: {x: -39.39, y: -0.61901, z: 29}
-  m_LocalScale: {x: 26.686, y: 26.686, z: 26.686}
+  m_LocalRotation: {x: 0, y: 0.884088, z: 0, w: 0.46732053}
+  m_LocalPosition: {x: -9.05, y: 0, z: 0.03}
+  m_LocalScale: {x: 10.489466, y: 10.489467, z: 10.489466}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 61.431, z: 0}
---- !u!114 &4590601706893243699
+  m_LocalEulerAnglesHint: {x: 0, y: 124.279, z: 0}
+--- !u!114 &15348610289600749
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 865217475929600065}
+  m_GameObject: {fileID: 1346287931587750499}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df3048c859f793b4c9be23cb44aba1fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
   type: 4
-  rb: {fileID: 1820782142823931986}
+  rb: {fileID: 8389375806524786487}
+  abnormalSizedEnemy: 0
   damageAmount: 0
   healAmount: 5
   damageRate: 0
   speed: 0
   destroyTime: 0
-  itemSound: {fileID: 0}
---- !u!114 &5735238960578152484
+  itemSound: {fileID: 8300000, guid: 1accd6dee6805e54f96ce4b81e92cc43, type: 3}
+--- !u!114 &6033500797602518524
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 865217475929600065}
+  m_GameObject: {fileID: 1346287931587750499}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77b8f93301ccabb4da065a8162cbf4fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickupRobb
-  item: {fileID: 11400000, guid: 1183f151f1fc83f4ab8d0f08b84ade62, type: 2}
-  destroyOnPickup: 1
+  item: {fileID: 11400000, guid: a9d03695f8921fe4caff2f9b9dbd3f90, type: 2}
+  destroyOnPickup: 0
+  healthItem: 1
   pickupSound: {fileID: 8300000, guid: 1accd6dee6805e54f96ce4b81e92cc43, type: 3}
---- !u!82 &2639307063614398336
+--- !u!114 &403927541763253579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346287931587750499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b8d5d9776f76ff45bcf3d3872e8a21b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Rotator
+  rotationSpeed: 90
+--- !u!82 &40877837162316406
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 865217475929600065}
+  m_GameObject: {fileID: 1346287931587750499}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -170,21 +186,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!33 &3523457081002763614
+--- !u!33 &9130612037590933541
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 865217475929600065}
+  m_GameObject: {fileID: 1346287931587750499}
   m_Mesh: {fileID: -6657874992054359402, guid: 75def7bcd833c6d48b914c8b78f48891, type: 3}
---- !u!23 &1657644371187716500
+--- !u!23 &2542958236424600999
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 865217475929600065}
+  m_GameObject: {fileID: 1346287931587750499}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -226,13 +242,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &9178121237026700916
+--- !u!135 &3845112758646298984
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 865217475929600065}
+  m_GameObject: {fileID: 1346287931587750499}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -247,13 +263,13 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.15
   m_Center: {x: 0, y: 0.07158676, z: 0.019580975}
---- !u!54 &1820782142823931986
+--- !u!54 &8389375806524786487
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 865217475929600065}
+  m_GameObject: {fileID: 1346287931587750499}
   serializedVersion: 5
   m_Mass: 1
   m_LinearDamping: 0
@@ -273,4 +289,4 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1

@@ -11,6 +11,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
     [SerializeField] DamageType type;
     [SerializeField] Rigidbody rb;
+    public bool abnormalSizedEnemy; 
 
     [SerializeField] int damageAmount;
     [SerializeField] int healAmount; //for medkit
@@ -19,25 +20,33 @@ public class NewMonoBehaviourScript : MonoBehaviour
     //bullets don't hit anything, so below is the cleanup
     [SerializeField] int destroyTime;
     [SerializeField] AudioClip itemSound;
-  
+    
 
-//used with DOT damage type
-bool isDamaging;
+
+    //used with DOT damage type
+    bool isDamaging;
  
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+ 
+        
+
         //look to see if a bullet
         if (type == DamageType.moving || type == DamageType.homing)
         {
+
+
 
             Destroy(gameObject, destroyTime);
 
             if (type == DamageType.moving)
             {
-                //just setting so don't need time.deltatime (only use in update)
-                rb.linearVelocity = transform.forward * speed;
+              
+                    //just setting so don't need time.deltatime (only use in update)
+                    rb.linearVelocity = transform.forward * speed;
+                
             }
 
         }
@@ -84,6 +93,7 @@ bool isDamaging;
             }
 
             dmg.Heal(healAmount);
+            //because they are destroyed here, you don't destroy health objects on pick up
             Destroy(gameObject);
         }
 
