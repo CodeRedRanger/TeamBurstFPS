@@ -143,7 +143,7 @@ public class EnemyAIRoam : MonoBehaviour, IDamage, IStunnable
 
                 if (shootTimer > shootRate && !isStunned)
                 {
-                    SoundManager.Instance.PlayEffect(shootSound);
+                    SoundManager.Instance.PlayEffect(shootSound, 1);
                     shoot();
                 }
                 
@@ -190,7 +190,7 @@ public class EnemyAIRoam : MonoBehaviour, IDamage, IStunnable
 
         if (HP <= 0)
         {
-            SoundManager.Instance.PlayEffect(deathSound);
+            SoundManager.Instance.PlayEffect(deathSound, 1);
             Destroy(gameObject);
             gameManager.instance.updateGameGoal(-1);
 
@@ -198,7 +198,7 @@ public class EnemyAIRoam : MonoBehaviour, IDamage, IStunnable
         else
         {
             StartCoroutine(flashRed());
-            SoundManager.Instance.PlayEffect(damageSound);
+            SoundManager.Instance.PlayEffect(damageSound, 1);
         }
 
     }

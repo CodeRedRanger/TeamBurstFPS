@@ -32,10 +32,10 @@ public class SoundManager : MonoBehaviour
         musicSource.Play();
     }
 
-    public void PlayEffect(AudioClip clip, float volume = 1.0f)
+    public void PlayEffect(AudioClip clip, float volume) //= 1.0f)
     {
         //oneshot is for sound effects that may overlap each other
-        effectsSource.PlayOneShot(clip);   //, volume);
+        effectsSource.PlayOneShot(clip, volume);
     }
 
     public void StopMusic()

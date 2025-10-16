@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: Gun - CannonAqua
   m_EditorClassIdentifier: Assembly-CSharp::GunData
   gunModel: {fileID: 4375401528090315852, guid: 6948ee1636babcb4e9043d6f86495c79, type: 3}
+  type: 2
   shootDamage: 5
   shootRate: 1.5
   shootDist: 15
-  ammoCur: 0
+  ammoCur: 3
   ammoMax: 5
-  hitEffect: {fileID: 0}
-  shootSound: []
-  shootSoundVol: 0
+  hitEffect: {fileID: 2740321307519119334, guid: 5bc9a0bf98f67d240a936bf476ba2082, type: 3}
+  shootSound:
+  - {fileID: 8300000, guid: b7a05b3dce39e524abb2b2f9dfa0decf, type: 3}
+  shootSoundVol: 1

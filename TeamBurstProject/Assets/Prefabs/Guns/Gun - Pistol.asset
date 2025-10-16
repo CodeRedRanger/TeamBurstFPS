@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: Gun - Pistol
   m_EditorClassIdentifier: Assembly-CSharp::GunData
   gunModel: {fileID: 4745260351339810002, guid: 7f516870bfe4d0647a6b12c3a7596473, type: 3}
+  type: 0
   shootDamage: 1
   shootRate: 0.5
   shootDist: 18
-  ammoCur: 0
+  ammoCur: 17
   ammoMax: 35
-  hitEffect: {fileID: 0}
-  shootSound: []
-  shootSoundVol: 0
+  hitEffect: {fileID: 8884371268655795233, guid: 20fda529c996a334da7fd65b48ea40df, type: 3}
+  shootSound:
+  - {fileID: 8300000, guid: 5db545333a06b7749b72a9e19581a084, type: 3}
+  shootSoundVol: 1

@@ -39,6 +39,8 @@ public class gameManager : MonoBehaviour
 
     public TMP_Text ammoCur, ammoMax;
 
+    public GameObject playerSpawnPos;
+    public GameObject checkpointPopup; 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -51,6 +53,7 @@ public class gameManager : MonoBehaviour
        playerScript = player.GetComponent<PlayerController>();
 
        SoundManager.Instance.PlayMusic(BGMusic);
+       playerSpawnPos = GameObject.FindWithTag("Player Spawn Pos"); 
 
     }
 
@@ -135,7 +138,7 @@ public class gameManager : MonoBehaviour
 
             if (Level1 == true)
             { 
-                SoundManager.Instance.PlayEffect(toSchool);
+                SoundManager.Instance.PlayEffect(toSchool, 1);
             } 
 
 

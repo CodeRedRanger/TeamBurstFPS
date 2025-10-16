@@ -46,7 +46,7 @@ public class BombRobb : MonoBehaviour
                     damagedEnemies.Add(damageable);
 
                     if (explosionSound != null)
-                        SoundManager.Instance.PlayEffect(explosionSound);
+                        SoundManager.Instance.PlayEffect(explosionSound, 1);
                 }
             }
         }

@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
-using System.Collections.Generic; 
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine.Audio;
 
 public class PlayerController : MonoBehaviour, IDamage, IPickupGun
 {
@@ -18,7 +20,9 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     [SerializeField] int shootDist;
     [SerializeField] float shootRate;
 
-    public ParticleSystem ps;
+    [SerializeField] ParticleSystem ps;
+    [SerializeField] ParticleSystem ps1;
+    [SerializeField] ParticleSystem ps2;
 
     private Vector3 moveDir;
     private Vector3 playerVel;
@@ -31,9 +35,21 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     bool isSprinting;
 
     //Audio
-    public AudioClip shootSound;
+    //can make these arrays
+    //public AudioClip shootSound;
     public AudioClip damageSound;
     public AudioClip deathSound;
+
+    //Jump audio
+    [SerializeField] AudioClip[] audJump;
+    [Range(0, 1)][SerializeField] float audJumpVol;
+    //steps audio
+    [SerializeField] AudioClip[] audSteps;
+    [Range(0,1)][SerializeField] float audStepsVol;
+    bool isPlayingSteps;
+    //recharge audio
+    [SerializeField] AudioClip audRechargePrompt;
+    [Range(0, 1)][SerializeField] float audRechargePromptVol;
 
     [SerializeField] List<GunData> gunList = new List<GunData>(); 
     [SerializeField] GameObject gunModel;
@@ -48,7 +64,8 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     void Start()
     {
         HPOrig = HP;
-        updatePlayerUI();
+        //updatePlayerUI(); //called in spawn player
+        spawnPlayer(); 
 
     }
 
@@ -73,6 +90,10 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     {
         if (controller.isGrounded)
         {
+            if (moveDir.normalized.magnitude > 0.3f && !isPlayingSteps)
+            {
+                StartCoroutine(playSteps());
+            }
             playerVel = Vector3.zero;
             jumpCount = 0;
         }
@@ -100,16 +121,19 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
         if (Input.GetButtonDown("Sprint"))
         {
             speed *= sprintMod;
+            isSprinting = true;
         }
         else if (Input.GetButtonUp("Sprint"))
         {
             speed /= sprintMod;
+            isSprinting = false;
         }
     }
     void Jump()
     {
         if (Input.GetButtonDown("Jump") && jumpCount < jumpCountMax)
         {
+            SoundManager.Instance.PlayEffect(audJump[Random.Range(0, audJump.Length)], audJumpVol);
             playerVel.y = jumpSpeed;
             jumpCount++;
         }
@@ -123,14 +147,37 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
         if (gunList.Count > 0 && gunList[gunListPos].ammoCur > 0)
         {
             gunList[gunListPos].ammoCur--;
-            updatePlayerUI(); 
-            SoundManager.Instance.PlayEffect(shootSound);
-            ps.Play();
+
+            if (gunList[gunListPos].ammoCur == 0)
+            {
+                SoundManager.Instance.PlayEffect(audRechargePrompt, audRechargePromptVol);
+
+            }
+
+            updatePlayerUI();
+            SoundManager.Instance.PlayEffect(gunList[gunListPos].shootSound[Random.Range(0, gunList[gunListPos].shootSound.Length)], gunList[gunListPos].shootSoundVol);
+            //SoundManager.Instance.PlayEffect(shootSound, 1);
+
+            if (gunList[gunListPos].type == GunType.smg)
+            {
+                ps1.Play(); 
+            }
+
+            else if (gunList[gunListPos].type == GunType.cannon)
+            {
+                ps2.Play();
+            }
+            else
+            {
+                ps.Play(); 
+            }
 
 
-            RaycastHit hit;
+                RaycastHit hit;
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, ~ignoreLayer))
             {
+                Instantiate(gunList[gunListPos].hitEffect, hit.point, Quaternion.identity);
+
                 IDamage dmg = hit.collider.GetComponent<IDamage>();
 
                 if (dmg != null)
@@ -159,11 +206,11 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
         HP -= damage;
         updatePlayerUI(); 
         StartCoroutine(flashDamage());
-        SoundManager.Instance.PlayEffect(damageSound);
+        SoundManager.Instance.PlayEffect(damageSound, 1);
 
         if (HP <= 0)
         {
-            SoundManager.Instance.PlayEffect(deathSound); 
+            SoundManager.Instance.PlayEffect(deathSound, 1); 
             SoundManager.Instance.StopMusic();
             Debug.Log("You are dead"); 
             gameManager.instance.youLose();
@@ -272,7 +319,33 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
 
         gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[gunListPos].gunModel.GetComponent<MeshFilter>().sharedMesh;
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[gunListPos].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+        
+        
         updatePlayerUI();
+    }
+
+    IEnumerator playSteps()
+    {
+        isPlayingSteps = true;
+        {
+            SoundManager.Instance.PlayEffect(audSteps[Random.Range(0, audSteps.Length)], audStepsVol);
+        }
+        if(isSprinting)
+        {
+            yield return new WaitForSeconds(0.3f); 
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
+        isPlayingSteps = false; 
+
+    }
+    public void spawnPlayer()
+    {
+        controller.transform.position = gameManager.instance.playerSpawnPos.transform.position;
+        HP = HPOrig;
+        updatePlayerUI(); 
     }
 
 }
