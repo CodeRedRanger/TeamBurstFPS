@@ -43,6 +43,8 @@ public class gameManager : MonoBehaviour
     public GameObject playerSpawnPos;
     public GameObject checkpointPopup;
 
+    private bool musicStarted = false; 
+
     
     void Awake()
     {
@@ -56,7 +58,7 @@ public class gameManager : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponent<PlayerController>();
 
-        SoundManager.Instance.PlayMusic(BGMusic);
+        //SoundManager.Instance.PlayMusic(BGMusic);
         playerSpawnPos = GameObject.FindWithTag("Player Spawn Pos");
         
 
@@ -67,9 +69,14 @@ public class gameManager : MonoBehaviour
     {
         if (MainMenu.instance.state == GameState.Gameplay)
         {
+            //needed this because don't want to start music during main menu
+            if (musicStarted == false)
+            {
+                SoundManager.Instance.PlayMusic(BGMusic);
+                musicStarted = true;
+            }
 
-
-            if (Input.GetButtonDown("Cancel")) //cancel is escape key by default
+                if (Input.GetButtonDown("Cancel")) //cancel is escape key by default
             {
                 if (menuActive == null)
                 {
