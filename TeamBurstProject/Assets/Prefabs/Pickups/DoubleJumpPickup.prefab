@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9168076990190475459}
+  - component: {fileID: 166366103382138056}
   - component: {fileID: 2599526471389359056}
   - component: {fileID: 2598707087994869842}
   - component: {fileID: 5325680348091846985}
@@ -36,6 +37,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 45, y: 45, z: 45}
+--- !u!114 &166366103382138056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3775208161876399084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08469bce4306de344a2ba1c813bdda53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DoubleJumpPickup
+  pickupSound: {fileID: 8300000, guid: 2fc898a1e06e6154980053b89e685b3b, type: 3}
+  value: 2
+  length: 0
+  destroyOnPickup: 1
+  isPermanent: 1
 --- !u!33 &2599526471389359056
 MeshFilter:
   m_ObjectHideFlags: 0
