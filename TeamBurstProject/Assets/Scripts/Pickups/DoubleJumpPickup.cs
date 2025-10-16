@@ -1,0 +1,60 @@
+using System.Collections;
+using UnityEngine;
+
+public class DoubleJumpPickup : MonoBehaviour, IPickup
+{
+    [SerializeField] AudioClip pickupSound;
+    [SerializeField] int value;
+    [SerializeField] float length;
+    [SerializeField] bool destroyOnPickup;
+    [SerializeField] bool isPermanent;
+
+    private bool hasBeenPickedUp = false;
+
+    public void Pickup()
+    {
+
+        Debug.Log("Picked up boost");
+        if (!hasBeenPickedUp)
+        {
+            hasBeenPickedUp = true;
+            SoundManager.Instance.PlayEffect(pickupSound);
+
+            // Hide visuals and collider
+            GetComponent<Renderer>().enabled = false;
+            GetComponent<Collider>().enabled = false;
+
+
+            StartCoroutine(DoBoost());
+        }
+
+    }
+
+    IEnumerator DoBoost()
+    {
+        if (isPermanent)
+        {
+            gameManager.instance.playerScript.SetJumpCountMax(value);
+        }
+        else
+        {
+            int prev = gameManager.instance.playerScript.GetJumpCountMax();
+            gameManager.instance.playerScript.SetJumpCountMax(value);
+            yield return new WaitForSeconds(length);
+            gameManager.instance.playerScript.SetJumpCountMax(prev);
+        }
+
+
+        if (destroyOnPickup)
+        {
+            Debug.Log("Getting Here");
+            Destroy(gameObject);
+        }
+        else
+        {
+            GetComponent<Renderer>().enabled = true;
+            GetComponent<Collider>().enabled = true;
+            hasBeenPickedUp = false;
+        }
+    }
+}

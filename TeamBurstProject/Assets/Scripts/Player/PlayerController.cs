@@ -254,6 +254,16 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
         jumpSpeed += amount;
     }
 
+    public int GetJumpCountMax()
+    {
+        return jumpCountMax;
+    }
+
+    public void SetJumpCountMax(int count)
+    {
+        jumpCountMax = count;
+    }
+
     public void SpeedBoost(int amt)
     {
 
