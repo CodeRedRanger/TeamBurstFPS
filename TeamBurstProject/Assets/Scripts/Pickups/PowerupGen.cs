@@ -35,7 +35,7 @@ public class PowerupGen : MonoBehaviour
             isPickedUp = true;
 
             // Begin coroutine method.
-            SoundManager.Instance.PlayEffect(pickupSound);
+            SoundManager.Instance.PlayEffect(pickupSound, 1);
             StartCoroutine(AddPowerup());
         }
 

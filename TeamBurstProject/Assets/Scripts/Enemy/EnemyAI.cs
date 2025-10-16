@@ -42,6 +42,9 @@ public class EnemyAI : MonoBehaviour, IDamage, IStunnable
     {
         colorOrig = model.material.color;
         gameManager.instance.updateGameGoal(1);
+        //To keep track of total to be spawned before winning
+        //comment out above and in spawner script start() put
+        //gameManager.instance.updateGameGoal(numToSpawn)
         animator = GetComponent<Animator>();
 
     }
