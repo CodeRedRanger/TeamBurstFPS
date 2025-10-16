@@ -1,13 +1,14 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro; 
+using TMPro;
+using UnityEngine.SceneManagement;
+
 
 
 public class gameManager : MonoBehaviour
-
-
 {
+
     public static gameManager instance;
     //any open menu will go into menuActive and then close active menu 
     [SerializeField] GameObject menuActive;
@@ -40,59 +41,67 @@ public class gameManager : MonoBehaviour
     public TMP_Text ammoCur, ammoMax;
 
     public GameObject playerSpawnPos;
-    public GameObject checkpointPopup; 
+    public GameObject checkpointPopup;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
     void Awake()
     {
+
         instance = this;
         timeScaleOrig = Time.timeScale;
 
         //need this line before next
-       player = GameObject.FindGameObjectWithTag("Player");
-       playerScript = player.GetComponent<PlayerController>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerScript = player.GetComponent<PlayerController>();
 
-       SoundManager.Instance.PlayMusic(BGMusic);
-       playerSpawnPos = GameObject.FindWithTag("Player Spawn Pos"); 
+        SoundManager.Instance.PlayMusic(BGMusic);
+        playerSpawnPos = GameObject.FindWithTag("Player Spawn Pos");
+        
 
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        if (Input.GetButtonDown("Cancel")) //cancel is escape key by default
+        if (MainMenu.instance.state == GameState.Gameplay)
         {
-            if (menuActive == null)
-            {
-                statePause();
-                menuActive = menuPause;
-                menuActive.SetActive(true);
 
-                //if pause menu has options, then pause menue is an array (pause, settings, audio, etc)
-                //escape goes back through the array backwards to close all submenus first
-            }
-            else if (menuActive == menuPause)
+
+            if (Input.GetButtonDown("Cancel")) //cancel is escape key by default
             {
-                stateUnpause();
+                if (menuActive == null)
+                {
+                    statePause();
+                    menuActive = menuPause;
+                    menuActive.SetActive(true);
+
+                    //if pause menu has options, then pause menue is an array (pause, settings, audio, etc)
+                    //escape goes back through the array backwards to close all submenus first
+                }
+                else if (menuActive == menuPause)
+                {
+                    stateUnpause();
+                }
             }
+
+            if (Input.GetButtonDown("HotBar"))
+            {
+                if (hotBar.activeSelf == true)
+                {
+                    hotBar.SetActive(false);
+                }
+                else if (hotBar.activeSelf == false)
+                {
+                    hotBar.SetActive(true);
+                }
+            }
+
         }
 
-        if (Input.GetButtonDown("HotBar"))
+        else
         {
-            if (hotBar.activeSelf == true)
-            {
-                hotBar.SetActive(false);
-            }
-            else if (hotBar.activeSelf == false)
-            {
-                hotBar.SetActive(true);
-            }
+            statePause(); 
         }
-
-
-
-
 
     }
 
@@ -116,6 +125,12 @@ public class gameManager : MonoBehaviour
         Time.timeScale = timeScaleOrig;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        if(MainMenu.instance.state == GameState.MainMenu)
+        {
+            menuActive = menuPause;
+            MainMenu.instance.state = GameState.Gameplay; 
+        }
+
         menuActive.SetActive(false);
         menuActive = null;
         SoundManager.Instance.PlayMusic(BGMusic);
