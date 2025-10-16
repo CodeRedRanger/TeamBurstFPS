@@ -18,7 +18,7 @@ public class DoubleJumpPickup : MonoBehaviour, IPickup
         if (!hasBeenPickedUp)
         {
             hasBeenPickedUp = true;
-            SoundManager.Instance.PlayEffect(pickupSound);
+            SoundManager.Instance.PlayEffect(pickupSound, 1);
 
             // Hide visuals and collider
             GetComponent<Renderer>().enabled = false;

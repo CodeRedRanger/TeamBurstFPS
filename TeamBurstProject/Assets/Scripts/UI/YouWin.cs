@@ -23,7 +23,8 @@ public class YouWin : MonoBehaviour
             if (gameOver == false)
             {
                 gameManager.instance.youWin();
-                gameManager.instance.Level1 = false;
+                //implemented in first flagpole script
+                //gameManager.instance.Level1 = false;
             }
             else
             {

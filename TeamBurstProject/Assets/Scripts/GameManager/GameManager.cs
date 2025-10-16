@@ -36,7 +36,7 @@ public class gameManager : MonoBehaviour
     float timeScaleOrig;
 
     int gameGoalCount;
-    public bool Level1 = true;
+    public bool Level1; 
 
     public TMP_Text ammoCur, ammoMax;
 
@@ -49,6 +49,8 @@ public class gameManager : MonoBehaviour
 
         instance = this;
         timeScaleOrig = Time.timeScale;
+
+        Level1 = true;
 
         //need this line before next
         player = GameObject.FindGameObjectWithTag("Player");
