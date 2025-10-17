@@ -227,9 +227,9 @@ public class EnemyAIRoam : MonoBehaviour, IDamage, IStunnable
 
         NavMeshAgent agent = GetComponent<NavMeshAgent>();
         if (agent != null) agent.isStopped = true;
-
+        model.material.color = Color.yellow;
         yield return new WaitForSeconds(duration);
-
+        model.material.color = colorOrig;
         if (agent != null) agent.isStopped = false;
         isStunned = false;
     }

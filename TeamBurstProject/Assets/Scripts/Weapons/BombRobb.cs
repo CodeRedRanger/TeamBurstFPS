@@ -33,8 +33,8 @@ public class BombRobb : MonoBehaviour
             //Debug.Log("About to take damage");
 
             IDamage damageable = hit.transform.GetComponent<IDamage>();
-            if (damageable == null)
-                //Debug.Log("Damageable is null!"); 
+            //if (damageable == null)
+            //    Debug.Log("Damageable is null!"); 
 
             if (damageable != null && !damagedEnemies.Contains(damageable))
             {
@@ -45,11 +45,13 @@ public class BombRobb : MonoBehaviour
                     damageable.TakeDamage(damage);
                     damagedEnemies.Add(damageable);
 
-                    if (explosionSound != null)
-                        SoundManager.Instance.PlayEffect(explosionSound, 1);
+                    //if (explosionSound != null)
+                      //  SoundManager.Instance.PlayEffect(explosionSound, 1);
                 }
             }
         }
+        if (explosionSound != null)
+            SoundManager.Instance.PlayEffect(explosionSound, 1);
         Destroy(gameObject);
     }
 

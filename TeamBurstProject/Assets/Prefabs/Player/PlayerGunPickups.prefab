@@ -10133,6 +10133,7 @@ GameObject:
   - component: {fileID: 6758465522708456511}
   - component: {fileID: 4286662896927773134}
   - component: {fileID: 7052283457906838696}
+  - component: {fileID: 4808281370421107051}
   - component: {fileID: 7639070497355642571}
   - component: {fileID: 5023131673898383478}
   - component: {fileID: 4303995708361711129}
@@ -10187,9 +10188,22 @@ MonoBehaviour:
   ps: {fileID: 6524170564279636751}
   ps1: {fileID: 5831822897527706475}
   ps2: {fileID: 7442722401587001415}
-  shootSound: {fileID: 8300000, guid: 4310474905e266640852f43bd609a1a4, type: 3}
   damageSound: {fileID: 8300000, guid: d14c998d6540344f89d98403b8d12b97, type: 3}
   deathSound: {fileID: 8300000, guid: 7ec679ad50c30444590b96f230b41938, type: 3}
+  audJump:
+  - {fileID: 8300000, guid: 6025633cf4522f5428db7d82cd25475e, type: 3}
+  - {fileID: 8300000, guid: b750411627bd4014cb5c01c0490f593c, type: 3}
+  - {fileID: 8300000, guid: 9af392febb38e054389f2d51bc1fad92, type: 3}
+  audJumpVol: 1
+  audSteps:
+  - {fileID: 8300000, guid: eec53751c4e79a7469fc34e774360128, type: 3}
+  - {fileID: 8300000, guid: dbe4405baeea2404ba3d422430b5fd3b, type: 3}
+  - {fileID: 8300000, guid: c8657061120b2da4fb645654b16201f6, type: 3}
+  - {fileID: 8300000, guid: 8ff53086d637af8478c1408b78b3dd05, type: 3}
+  - {fileID: 8300000, guid: b662731f964d624449b092d4198147de, type: 3}
+  audStepsVol: 0.3
+  audRechargePrompt: {fileID: 8300000, guid: cb777a2a8bd3b844ab1265a8cd5f01d0, type: 3}
+  audRechargePromptVol: 1
   gunList: []
   gunModel: {fileID: 4857354596902830145}
   pushBack: {x: 0, y: 0, z: 0}
@@ -10219,7 +10233,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e573b52e49f43d843abd03a7e894ad0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BombSpawner
-  bombPrefab: {fileID: 1432030995650291275, guid: 96d769824db61304593ea1fff8a8f89b, type: 3}
+  bombPrefab: {fileID: 1845495303118002295, guid: 3044519b28016124ca321ab9ac405c7b, type: 3}
+--- !u!114 &4808281370421107051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4104817386659849295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e50070dc61c22d4a8b46ec15838e36d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ThrowObject
+  grenadePrefab: {fileID: 5621635494809896130, guid: b13e28f303cf63a4bb241add07544ef3, type: 3}
+  stunGrenadePrefab: {fileID: 6886974748621363485, guid: f974ba61f50de2149b058358d85330ea, type: 3}
+  objectToThrowPrefab: {fileID: 0}
+  throwPoint: {fileID: 2265069185859297257}
+  key: 102
+  throwForce: 12
 --- !u!143 &7639070497355642571
 CharacterController:
   m_ObjectHideFlags: 0
