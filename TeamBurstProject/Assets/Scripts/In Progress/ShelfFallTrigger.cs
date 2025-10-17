@@ -28,4 +28,17 @@ public class ShelfFallTrigger : MonoBehaviour
             hasTriggered = true;
         }
     }
+
+    void Awake()
+    {
+        if (player == null)
+        {
+            GameObject foundPlayer = GameObject.FindGameObjectWithTag("Player");
+            if (foundPlayer != null)
+            {
+                player = foundPlayer.transform;
+            }
+        }
+    }
+
 }

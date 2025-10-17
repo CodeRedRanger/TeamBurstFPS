@@ -24,4 +24,16 @@ public class DoorTrigger : MonoBehaviour
             door.OpenDoor(openAngle);
         }
     }
+
+    void Awake()
+    {
+        if (player == null)
+        {
+            GameObject foundPlayer = GameObject.FindGameObjectWithTag("Player");
+            if (foundPlayer != null)
+            {
+                player = foundPlayer.transform;
+            }
+        }
+    }
 }
