@@ -74,6 +74,7 @@ public class gameManager : MonoBehaviour
         if (currentScene.buildIndex != 0)
         {
             skipMainMenu = true;
+            firstUnpause = false;
 
         }
     
@@ -145,10 +146,13 @@ public class gameManager : MonoBehaviour
         Time.timeScale = timeScaleOrig;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        if(MainMenu.instance.state == GameState.MainMenu)
+        if(skipMainMenu == true || MainMenu.instance.state == GameState.MainMenu)
         {
             menuActive = menuPause;
-            MainMenu.instance.state = GameState.Gameplay; 
+            if (MainMenu.instance != null)
+            {
+                MainMenu.instance.state = GameState.Gameplay;
+            }
         }
 
         menuActive.SetActive(false);
