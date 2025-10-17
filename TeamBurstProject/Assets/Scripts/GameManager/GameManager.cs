@@ -48,9 +48,6 @@ public class gameManager : MonoBehaviour
     //from main menu, you don't need the actions of unpause the first time, even though it is
     //called as part of load scene. 
     private bool firstUnpause = true;
-    //This variable allows the code from GameManager awake to reload once after transitioning
-    //from main menu to first level
-    private bool levelStart = false; 
 
     public Scene currentScene;
 
@@ -75,9 +72,11 @@ public class gameManager : MonoBehaviour
             //need this line before next
             player = GameObject.FindGameObjectWithTag("Player");
             playerScript = player.GetComponent<PlayerController>();
+            if (SoundManager.Instance != null ) 
             SoundManager.Instance.PlayMusic(BGMusic);
             playerSpawnPos = GameObject.FindWithTag("Player Spawn Pos");
             firstUnpause = false;
+          
 
             if (currentScene.buildIndex == 1)
             {
@@ -94,23 +93,6 @@ public class gameManager : MonoBehaviour
     {
         currentScene = SceneManager.GetActiveScene();
         
-        //level start set to true after pressing start on main menu, in unpause function (but only if coming from main menu)
-        if (currentScene.buildIndex != 0 && levelStart == true)
-        {
-            if (currentScene.buildIndex == 1)
-            {
-                Level1 = true;
-            }
-
-            //need this line before next
-            player = GameObject.FindGameObjectWithTag("Player");
-            playerScript = player.GetComponent<PlayerController>();
-
-            SoundManager.Instance.PlayMusic(BGMusic);
-            playerSpawnPos = GameObject.FindWithTag("Player Spawn Pos");
-            levelStart = false;
-
-        }
     
         if (currentScene.buildIndex != 0) 
         {
@@ -178,7 +160,6 @@ public class gameManager : MonoBehaviour
         else
         { 
             firstUnpause = false;
-            levelStart = true; 
         }
           
             
