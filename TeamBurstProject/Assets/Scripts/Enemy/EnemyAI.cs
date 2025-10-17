@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.AI;
 
-public class EnemyAI : MonoBehaviour, IDamage
+public class EnemyAI : MonoBehaviour, IDamage, IStunnable
 {
 
     public AudioClip shootSound;
@@ -31,16 +31,21 @@ public class EnemyAI : MonoBehaviour, IDamage
     float angleToPlayer; 
 
     bool playerInRange;
+    bool isStunned;
 
     Vector3 playerDir; 
 
     private Animator animator;
+    [SerializeField] int animTransSpeed; 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         colorOrig = model.material.color;
         gameManager.instance.updateGameGoal(1);
+        //To keep track of total to be spawned before winning
+        //comment out above and in spawner script start() put
+        //gameManager.instance.updateGameGoal(numToSpawn)
         animator = GetComponent<Animator>();
 
     }
@@ -49,7 +54,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     void Update()
     {
 
-        animator.SetFloat("Speed", agent.velocity.magnitude);
+        setAnimLocomation(); 
 
         shootTimer += Time.deltaTime;
       
@@ -70,6 +75,18 @@ public class EnemyAI : MonoBehaviour, IDamage
 
         }
     }
+
+    void setAnimLocomation()
+    {
+        float agentSpeedCur = agent.velocity.normalized.magnitude;
+        float animSpeedCur = animator.GetFloat("Speed");
+
+        //animator.SetFloat("Speed", agent.velocity.magnitude);
+        animator.SetFloat("Speed", Mathf.Lerp(animSpeedCur,agentSpeedCur, Time.deltaTime * animTransSpeed));
+        
+    
+    }
+
 
     void faceTarget()
     {
@@ -95,14 +112,14 @@ public class EnemyAI : MonoBehaviour, IDamage
                 //can try commenting out this
                 agent.SetDestination(gameManager.instance.player.transform.position);
 
-                if (agent.remainingDistance <= agent.stoppingDistance)
+                if (agent.remainingDistance <= agent.stoppingDistance && !isStunned)
                 {
                     faceTarget();
                 }
 
-                if (shootTimer > shootRate)
+                if (shootTimer > shootRate && !isStunned)
                 {
-                    SoundManager.Instance.PlayEffect(shootSound);
+                    SoundManager.Instance.PlayEffect(shootSound, 1);
                     shoot();
                 }
                 //comment out to here
@@ -144,7 +161,7 @@ public class EnemyAI : MonoBehaviour, IDamage
 
         if (HP <= 0)
         {
-            SoundManager.Instance.PlayEffect(deathSound);
+            SoundManager.Instance.PlayEffect(deathSound, 1);
             Destroy(gameObject);
             gameManager.instance.updateGameGoal(-1);
             
@@ -152,7 +169,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         else
         {
             StartCoroutine(flashRed());
-            SoundManager.Instance.PlayEffect(damageSound);
+            SoundManager.Instance.PlayEffect(damageSound, 1);
         }
 
     }
@@ -168,4 +185,24 @@ public class EnemyAI : MonoBehaviour, IDamage
         //not implemented for enemy
     }
 
+    public void Stun(float duration)
+    {
+        if (!isStunned)
+        {
+            StartCoroutine(StunCoroutine(duration));
+        }
+    }
+
+    private IEnumerator StunCoroutine(float duration)
+    {
+        isStunned = true;
+
+        NavMeshAgent agent = GetComponent<NavMeshAgent>();
+        if (agent != null) agent.isStopped = true;
+        model.material.color = Color.yellow;
+        yield return new WaitForSeconds(duration);
+        model.material.color = colorOrig;
+        if (agent != null) agent.isStopped = false;
+        isStunned = false;
+    }
 }

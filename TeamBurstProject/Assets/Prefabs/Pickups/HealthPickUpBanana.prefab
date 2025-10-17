@@ -32,9 +32,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1346287931587750499}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.8840865, z: -0, w: 0.46732336}
+  m_LocalRotation: {x: 0, y: 0.884088, z: 0, w: 0.46732053}
   m_LocalPosition: {x: -9.05, y: 0, z: 0.03}
-  m_LocalScale: {x: 10.489467, y: 10.489467, z: 10.489467}
+  m_LocalScale: {x: 10.489466, y: 10.489467, z: 10.489466}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -53,6 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
   type: 4
   rb: {fileID: 8389375806524786487}
+  abnormalSizedEnemy: 0
   damageAmount: 0
   healAmount: 5
   damageRate: 0
@@ -71,8 +72,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b8f93301ccabb4da065a8162cbf4fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickupRobb
-  item: {fileID: 11400000, guid: 1183f151f1fc83f4ab8d0f08b84ade62, type: 2}
+  item: {fileID: 11400000, guid: a9d03695f8921fe4caff2f9b9dbd3f90, type: 2}
   destroyOnPickup: 0
+  healthItem: 1
   pickupSound: {fileID: 8300000, guid: 1accd6dee6805e54f96ce4b81e92cc43, type: 3}
 --- !u!114 &403927541763253579
 MonoBehaviour:

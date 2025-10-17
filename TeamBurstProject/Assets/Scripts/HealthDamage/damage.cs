@@ -89,10 +89,11 @@ public class NewMonoBehaviourScript : MonoBehaviour
         {
             if (itemSound != null)
             {
-                SoundManager.Instance.PlayEffect(itemSound);
+                SoundManager.Instance.PlayEffect(itemSound, 1);
             }
 
             dmg.Heal(healAmount);
+            //because they are destroyed here, you don't destroy health objects on pick up
             Destroy(gameObject);
         }
 
