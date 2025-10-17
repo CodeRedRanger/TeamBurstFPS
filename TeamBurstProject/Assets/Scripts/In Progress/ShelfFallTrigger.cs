@@ -4,7 +4,6 @@ public class ShelfFallTrigger : MonoBehaviour
 {
     [SerializeField] Transform player;
     [SerializeField] FallingObject shelf;
-    [SerializeField] float angle = 45;
     [SerializeField] float triggerDistance;
 
     bool hasTriggered;
@@ -25,7 +24,7 @@ public class ShelfFallTrigger : MonoBehaviour
 
         if (distance <= triggerDistance)
         {
-            shelf.TiltShelf(angle);
+            shelf.TiltShelf();
             hasTriggered = true;
         }
     }

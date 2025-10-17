@@ -10,8 +10,7 @@ public class FallingObject : MonoBehaviour
     [SerializeField] Transform booksParent;
     [SerializeField] float tippingSpeed;
     [SerializeField] float fallAngle;
-    [SerializeField] float booksFallAngle; // When the books should swap then fall out
-
+    [SerializeField] float booksFallAngle; // When the books should fall out
     [SerializeField] GameObject bookPrefab;
 
     List<Rigidbody> groupedBooks = new List<Rigidbody>();
@@ -55,7 +54,7 @@ public class FallingObject : MonoBehaviour
                 ReplaceBooks();
             }
 
-            if (Mathf.Approximately(currentAngle, fallAngle))
+            if (Mathf.Abs(currentAngle - fallAngle) < 0.1f)
             {
                 rb.isKinematic = false;
                 rb.useGravity = true;
@@ -65,12 +64,11 @@ public class FallingObject : MonoBehaviour
 
     }
 
-    public void TiltShelf(float angle)
+    public void TiltShelf()
     {
         if(!isTipping)
         {
             isTipping = true;
-            fallAngle = angle;
            
         }
     }
@@ -87,12 +85,16 @@ public class FallingObject : MonoBehaviour
 
         GameObject group = Instantiate(bookPrefab, shelfTilt.position, shelfTilt.rotation, shelfTilt);
 
+
         Rigidbody[] bookRb = group.GetComponentsInChildren<Rigidbody>();
         for (int i = 0; i < bookRb.Length; i++)
         {
             Rigidbody book = bookRb[i];
             book.isKinematic = false;
             book.useGravity = true;
+            book.WakeUp();
+            book.AddForce(Vector3.down * 0.1f, ForceMode.Force);
+
         }
     }
 }
