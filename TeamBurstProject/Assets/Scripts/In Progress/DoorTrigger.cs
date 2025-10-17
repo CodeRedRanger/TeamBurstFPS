@@ -2,27 +2,38 @@ using UnityEngine;
 
 public class DoorTrigger : MonoBehaviour
 {
-    public DoorController doorHinge;
-    public float customOpenAngle;
+    [SerializeField] Transform player;
+    [SerializeField] DoorController door;
+    [SerializeField] float openAngle = 90;
+    [SerializeField] float triggerDistance;
+
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+      
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        float distance = Vector3.Distance(player.position, transform.position);
+
+        if (distance <= triggerDistance)
+        {
+            door.OpenDoor(openAngle);
+        }
     }
 
-    private void OnTriggerEnter(Collider other)
+    void Awake()
     {
-        if(other.CompareTag("Player"))
+        if (player == null)
         {
-            doorHinge.OpenDoor(customOpenAngle);
+            GameObject foundPlayer = GameObject.FindGameObjectWithTag("Player");
+            if (foundPlayer != null)
+            {
+                player = foundPlayer.transform;
+            }
         }
-        
     }
 }

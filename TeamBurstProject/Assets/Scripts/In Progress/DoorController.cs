@@ -4,11 +4,11 @@ using UnityEngine.UIElements;
 
 public class DoorController : MonoBehaviour
 {
-    [SerializeField] private Transform doorHinge;
-    [SerializeField] private float speed;
-    [SerializeField] private float CloseTime;
+    [SerializeField] Transform doorHinge;
+    [SerializeField] float speed;
+    [SerializeField] float CloseTime;
   
-    private bool isOpen = false;
+    private bool isOpen;
     private float openAngle;
     private float currentAngle;
     private float openTimer;
@@ -22,12 +22,12 @@ public class DoorController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float targetAngle = isOpen ? openAngle : 0f;
+        float targetAngle = isOpen ? openAngle : 0;
 
         if (currentAngle != targetAngle)
         {
             currentAngle = Mathf.MoveTowards(currentAngle,targetAngle, speed * Time.deltaTime);
-            doorHinge.localRotation = Quaternion.Euler(0f, currentAngle, 0f);
+            doorHinge.localRotation = Quaternion.Euler(0, currentAngle, 0);
         }
 
         if(isOpen)
@@ -46,7 +46,7 @@ public class DoorController : MonoBehaviour
         {
             isOpen = true;
             openAngle = angle;
-            openTimer = 0f;
+            openTimer = 0;
         }
     }
 
