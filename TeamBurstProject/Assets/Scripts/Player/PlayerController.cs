@@ -225,7 +225,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
         {
             SoundManager.Instance.PlayEffect(deathSound, 1); 
             SoundManager.Instance.StopMusic();
-            Debug.Log("You are dead"); 
+            //Debug.Log("You are dead"); 
             gameManager.instance.youLose();
            
         }
