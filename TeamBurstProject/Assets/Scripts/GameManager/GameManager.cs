@@ -151,7 +151,6 @@ public class gameManager : MonoBehaviour
             Time.timeScale = timeScaleOrig;
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
-            menuActive = menuPause;
             menuActive.SetActive(false);
             menuActive = null;
             SoundManager.Instance.PlayMusic(BGMusic);
