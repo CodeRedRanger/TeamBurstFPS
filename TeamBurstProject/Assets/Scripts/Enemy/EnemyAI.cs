@@ -8,6 +8,7 @@ public class EnemyAI : MonoBehaviour, IDamage, IStunnable
     public AudioClip shootSound;
     public AudioClip damageSound;
     public AudioClip deathSound;
+    public AudioClip shockSound; 
     
 
     [SerializeField] Renderer model;
@@ -200,6 +201,7 @@ public class EnemyAI : MonoBehaviour, IDamage, IStunnable
         NavMeshAgent agent = GetComponent<NavMeshAgent>();
         if (agent != null) agent.isStopped = true;
         model.material.color = Color.yellow;
+        SoundManager.Instance.PlayEffect(shockSound, 1);
         yield return new WaitForSeconds(duration);
         model.material.color = colorOrig;
         if (agent != null) agent.isStopped = false;

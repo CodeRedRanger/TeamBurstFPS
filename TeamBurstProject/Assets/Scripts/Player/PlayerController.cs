@@ -206,7 +206,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     void SpawnBomb()
     {
         // Im thinking of adding a keycode variable for this but for now it's q//Robb: changed to E
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && gameManager.instance.enableBomb == true)
         {
             Vector3 spawnPos = gameManager.instance.player.transform.position;
             spawnPos.y -= gameManager.instance.player.GetComponent<CharacterController>().height / 2f;

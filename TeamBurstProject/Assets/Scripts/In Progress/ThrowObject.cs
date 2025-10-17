@@ -11,14 +11,32 @@ public class ThrowObject : MonoBehaviour
 
     private void Start()
     {
-        objectToThrowPrefab = grenadePrefab;
+        objectToThrowPrefab = null;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha2)) objectToThrowPrefab = grenadePrefab;
-        if (Input.GetKeyDown(KeyCode.Alpha3)) objectToThrowPrefab = stunGrenadePrefab;
-        if (Input.GetKeyDown(key)) Throw();
+        
+
+        if (Input.GetKeyDown(KeyCode.Alpha2) && gameManager.instance.enableGrenade == true)
+        {
+            objectToThrowPrefab = grenadePrefab;
+        }
+        
+        if (Input.GetKeyDown(KeyCode.Alpha3) && gameManager.instance.enableStunner == true)
+        {
+            objectToThrowPrefab = stunGrenadePrefab;
+        }
+     
+
+
+        if (Input.GetKeyDown(key) && (gameManager.instance.enableGrenade || gameManager.instance.enableStunner))
+        {
+            if (objectToThrowPrefab != null)
+            {
+                Throw();
+            }
+        }
     }
 
     void Throw()

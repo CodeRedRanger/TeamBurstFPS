@@ -25,13 +25,30 @@ public class ItemPickupRobb : MonoBehaviour, IPickup
         }
 
         hasBeenPickedUp = true;
-        Debug.Log("Picking up " + item.type);
+        //Debug.Log("Picking up " + item.type);
 
         //probably should have separate health pick up script if no health items are added to inventory
         if (!healthItem)
         {
-            Debug.Log("Adding " + item.type + " to inventory!");
+            if (item.type == ItemType.bomb)
+            {
+                gameManager.instance.enableBomb = true;
+            }
+            if (item.type == ItemType.grenade)
+            {
+                gameManager.instance.enableGrenade = true;
+            }
+            if (item.type == ItemType.stunner)
+            {
+                gameManager.instance.enableStunner = true;
+            }
+
+
+            //Debug.Log("Adding " + item.type + " to inventory!");
             InventoryManager.Instance.AddItem(item);
+
+          
+
         }
         
         //if (hotbar.Add(item, 1))

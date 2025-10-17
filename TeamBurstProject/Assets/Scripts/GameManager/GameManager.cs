@@ -39,6 +39,7 @@ public class gameManager : MonoBehaviour
     public bool Level1;
 
     public TMP_Text ammoCur, ammoMax;
+    public TMP_Text hotBarSlot1, hotbarSlot2, hotbarSlot3;
 
     public GameObject playerSpawnPos;
     public GameObject checkpointPopup;
@@ -52,6 +53,10 @@ public class gameManager : MonoBehaviour
     private bool levelStart = false; 
 
     public Scene currentScene;
+
+    public bool enableBomb = false;
+    public bool enableGrenade = false;
+    public bool enableStunner = false;
    
 
     void Awake()
