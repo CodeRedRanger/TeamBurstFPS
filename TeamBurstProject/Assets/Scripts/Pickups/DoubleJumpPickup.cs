@@ -14,7 +14,7 @@ public class DoubleJumpPickup : MonoBehaviour, IPickup
     public void Pickup()
     {
 
-        Debug.Log("Picked up boost");
+        //Debug.Log("Picked up boost");
         if (!hasBeenPickedUp)
         {
             hasBeenPickedUp = true;

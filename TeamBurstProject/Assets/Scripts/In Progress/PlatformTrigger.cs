@@ -7,8 +7,10 @@ public class PlatformTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
+        {
             other.gameObject.transform.parent = platform;
-        Debug.Log("Triggered");
+            Debug.Log("Triggered");
+        }
     }
 
     private void OnTriggerExit(Collider other)
