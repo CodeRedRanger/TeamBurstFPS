@@ -1,60 +1,68 @@
+using System.Collections;
+using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class FallingObject : MonoBehaviour
 {
     [SerializeField] Rigidbody rb;
     [SerializeField] Transform shelfTilt;
-    [SerializeField] Transform books;
+    [SerializeField] Transform booksParent;
     [SerializeField] float tippingSpeed;
     [SerializeField] float fallAngle;
-    [SerializeField] float booksFallAngle;
+    [SerializeField] float booksFallAngle; // When the books should swap then fall out
+
+    [SerializeField] GameObject bookPrefab;
+
+    List<Rigidbody> groupedBooks = new List<Rigidbody>();
+
 
     bool isTipping;
-    bool isbooksFalling;
+    bool newBooksAdded;
     float currentAngle;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        rb.isKinematic = true;
-        rb.useGravity = false;
-        isbooksFalling = false;
-
-        foreach (Transform book in books)
+        if (rb != null)
         {
-            Rigidbody rbBook = book.GetComponent<Rigidbody>();
-
-            if (rbBook != null)
-            {
-                rbBook.isKinematic = true;
-                rbBook.useGravity = false;
-            }
-
+            rb.isKinematic = true;
+            rb.useGravity = false;
         }
 
+        if(booksParent != null)
+        {
+            Rigidbody[] propBooks = booksParent.GetComponentsInChildren<Rigidbody>();
+            for(int i = 0; i < propBooks.Length; i++)
+            {
+                propBooks[i].isKinematic = true;
+                propBooks[i].useGravity = false;
+            }
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(isTipping)
+        if (isTipping)
         {
             currentAngle = Mathf.MoveTowards(currentAngle, fallAngle, tippingSpeed * Time.deltaTime);
             shelfTilt.localRotation = Quaternion.Euler(currentAngle, 0, 0);
 
-            if(! isbooksFalling && Mathf.Abs(currentAngle) >= booksFallAngle)
+            if (!newBooksAdded && Mathf.Abs(currentAngle) >= booksFallAngle)
             {
-                ReleaseBooks();
+                ReplaceBooks();
             }
 
-            if(Mathf.Approximately(currentAngle, fallAngle))
+            if (Mathf.Approximately(currentAngle, fallAngle))
             {
                 rb.isKinematic = false;
                 rb.useGravity = true;
                 isTipping = false;
             }
         }
+
     }
 
     public void TiltShelf(float angle)
@@ -63,38 +71,28 @@ public class FallingObject : MonoBehaviour
         {
             isTipping = true;
             fallAngle = angle;
+           
         }
     }
 
-    void ReleaseBooks()
+    void ReplaceBooks()
     {
-        isbooksFalling = true;
-        Collider shelfCollider = rb.GetComponent<Collider>();
-        
-        foreach(Transform book in books)
+        newBooksAdded = true;
+
+        if(booksParent != null)
         {
-            Rigidbody rbBook = book.GetComponent<Rigidbody>();
-            Collider bookCollider = book.GetComponent<Collider>();
+            Destroy(booksParent.gameObject);
+            booksParent = null;
+        }
 
-            if(rbBook != null)
-            {
-                book.parent = null;
+        GameObject group = Instantiate(bookPrefab, shelfTilt.position, shelfTilt.rotation, shelfTilt);
 
-                rbBook.isKinematic =false;
-                rbBook.useGravity = true;
-            }
-
-            if (shelfCollider != null && bookCollider != null)
-                Physics.IgnoreCollision(bookCollider, shelfCollider);
+        Rigidbody[] bookRb = group.GetComponentsInChildren<Rigidbody>();
+        for (int i = 0; i < bookRb.Length; i++)
+        {
+            Rigidbody book = bookRb[i];
+            book.isKinematic = false;
+            book.useGravity = true;
         }
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.CompareTag("Player"))
-        {
-            TiltShelf(45);
-        }
-    }
-
 }
