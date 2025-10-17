@@ -1320,6 +1320,17 @@ Transform:
   - {fileID: 1608239365}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &474559818 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8952224900562249783, guid: a57245592ce90ff428ea0dfc918e0eac, type: 3}
+  m_PrefabInstance: {fileID: 3382099373706807612}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5d9eef1bc3efc640931e556373118e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DoorController
 --- !u!1 &477459546
 GameObject:
   m_ObjectHideFlags: 0
@@ -3901,6 +3912,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1497109471}
   m_Mesh: {fileID: 6955162181195954991, guid: cec105908f7354c49a9c5e00934827ac, type: 3}
+--- !u!114 &1499720413 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 21840209148742032, guid: a57245592ce90ff428ea0dfc918e0eac, type: 3}
+  m_PrefabInstance: {fileID: 3382099373706807612}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5d9eef1bc3efc640931e556373118e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DoorController
 --- !u!1 &1508047643 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8360401713814996041, guid: f94f3395cf9ea2a4a9c731d18797d294, type: 3}
@@ -7102,6 +7124,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 811133656025845736, guid: a57245592ce90ff428ea0dfc918e0eac, type: 3}
+      propertyPath: door
+      value: 
+      objectReference: {fileID: 474559818}
+    - target: {fileID: 811133656025845736, guid: a57245592ce90ff428ea0dfc918e0eac, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 811133656025845736, guid: a57245592ce90ff428ea0dfc918e0eac, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2678946641635850942, guid: a57245592ce90ff428ea0dfc918e0eac, type: 3}
       propertyPath: m_Name
       value: Library
@@ -7150,13 +7184,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4059860852962493250, guid: a57245592ce90ff428ea0dfc918e0eac, type: 3}
+      propertyPath: door
+      value: 
+      objectReference: {fileID: 1499720413}
+    - target: {fileID: 4059860852962493250, guid: a57245592ce90ff428ea0dfc918e0eac, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4940677212587933338, guid: a57245592ce90ff428ea0dfc918e0eac, type: 3}
+      propertyPath: door
+      value: 
+      objectReference: {fileID: 474559818}
+    - target: {fileID: 4940677212587933338, guid: a57245592ce90ff428ea0dfc918e0eac, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4940677212587933338, guid: a57245592ce90ff428ea0dfc918e0eac, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5788247663995716527, guid: a57245592ce90ff428ea0dfc918e0eac, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6913233755200813504, guid: a57245592ce90ff428ea0dfc918e0eac, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7063073841075873340, guid: a57245592ce90ff428ea0dfc918e0eac, type: 3}
       propertyPath: m_Name
       value: AlienPurpleLibrary
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496590141949732286, guid: a57245592ce90ff428ea0dfc918e0eac, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
