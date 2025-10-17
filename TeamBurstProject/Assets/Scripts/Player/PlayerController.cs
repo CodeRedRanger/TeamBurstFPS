@@ -64,6 +64,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+
         HPOrig = HP;
         //updatePlayerUI(); //called in spawn player
         spawnPlayer(); 

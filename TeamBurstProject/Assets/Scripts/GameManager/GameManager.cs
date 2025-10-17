@@ -43,11 +43,16 @@ public class gameManager : MonoBehaviour
     public GameObject playerSpawnPos;
     public GameObject checkpointPopup;
 
-    private bool musicStarted = false;
-    private bool firstUnpause = true; 
+  
+    //from main menu, you don't need the actions of unpause the first time, even though it is
+    //called as part of load scene. 
+    private bool firstUnpause = true;
+    //This variable allows the code from GameManager awake to reload once after transitioning
+    //from main menu to first level
+    private bool levelStart = false; 
 
     public Scene currentScene;
-    bool skipMainMenu = false;
+   
 
     void Awake()
     {
@@ -55,40 +60,56 @@ public class gameManager : MonoBehaviour
         instance = this;
         timeScaleOrig = Time.timeScale;
 
-        Level1 = true;
+        
+        currentScene = SceneManager.GetActiveScene();
 
-        //need this line before next
-        player = GameObject.FindGameObjectWithTag("Player");
-        playerScript = player.GetComponent<PlayerController>();
+        //Need if statement so this doesn't fire during main menu
+        //But is needed if testing, starting from level 1
+        if (currentScene.buildIndex != 0)
+        {
+            //need this line before next
+            player = GameObject.FindGameObjectWithTag("Player");
+            playerScript = player.GetComponent<PlayerController>();
+            SoundManager.Instance.PlayMusic(BGMusic);
+            playerSpawnPos = GameObject.FindWithTag("Player Spawn Pos");
+            firstUnpause = false;
 
-        //SoundManager.Instance.PlayMusic(BGMusic);
-        playerSpawnPos = GameObject.FindWithTag("Player Spawn Pos");
+            if (currentScene.buildIndex == 1)
+            {
+                Level1 = true;
+            }
+
+        }
+        
 
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         currentScene = SceneManager.GetActiveScene();
-        if (currentScene.buildIndex != 0)
+        
+        //level start set to true after pressing start on main menu, in unpause function (but only if coming from main menu)
+        if (currentScene.buildIndex != 0 && levelStart == true)
         {
-            skipMainMenu = true;
-            firstUnpause = false;
+            if (currentScene.buildIndex == 1)
+            {
+                Level1 = true;
+            }
+
+            //need this line before next
+            player = GameObject.FindGameObjectWithTag("Player");
+            playerScript = player.GetComponent<PlayerController>();
+
+            SoundManager.Instance.PlayMusic(BGMusic);
+            playerSpawnPos = GameObject.FindWithTag("Player Spawn Pos");
+            levelStart = false;
 
         }
     
-        //had to put skipMainMenu first or else MainMenu check will fail if not created yet
-        if (skipMainMenu || MainMenu.instance.state == GameState.Gameplay)
+        if (currentScene.buildIndex != 0) 
         {
-            //needed this because don't want to start music during main menu
-            if (musicStarted == false)
-            {
-                SoundManager.Instance.PlayMusic(BGMusic);
-                musicStarted = true;
-            }
-
-                if (Input.GetButtonDown("Cancel")) //cancel is escape key by default
+            if (Input.GetButtonDown("Cancel")) //cancel is escape key by default
             {
                 if (menuActive == null)
                 {
@@ -119,10 +140,7 @@ public class gameManager : MonoBehaviour
 
         }
 
-        else
-        {
-            statePause(); 
-        }
+   
 
     }
 
@@ -134,35 +152,32 @@ public class gameManager : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         SoundManager.Instance.StopMusic();
-
-
-
     }
 
     public void stateUnpause()
     {
-
-        isPaused = !isPaused;
-        Time.timeScale = timeScaleOrig;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        if(skipMainMenu == true || MainMenu.instance.state == GameState.MainMenu)
+        //normal pause
+        if (firstUnpause == false)
         {
+            isPaused = !isPaused;
+
+            Time.timeScale = timeScaleOrig;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
             menuActive = menuPause;
-            if (MainMenu.instance != null)
-            {
-                MainMenu.instance.state = GameState.Gameplay;
-            }
-        }
-
-        menuActive.SetActive(false);
-        menuActive = null;
-
-        if(firstUnpause == false)
-        { 
+            menuActive.SetActive(false);
+            menuActive = null;
             SoundManager.Instance.PlayMusic(BGMusic);
         }
-        firstUnpause = false; 
+        //pause out of main menu
+        else
+        { 
+            firstUnpause = false;
+            levelStart = true; 
+        }
+          
+            
+
 
     }
 
