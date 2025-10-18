@@ -1,4 +1,6 @@
+using System.Collections; 
 using UnityEngine;
+
 
 
 public class ItemPickupRobb : MonoBehaviour, IPickup
@@ -11,8 +13,6 @@ public class ItemPickupRobb : MonoBehaviour, IPickup
     [SerializeField] AudioClip pickupSound;
 
     bool hasBeenPickedUp = false; // To prevent multiple pickups
-   
-
 
 
     public void Pickup()
@@ -33,14 +33,20 @@ public class ItemPickupRobb : MonoBehaviour, IPickup
             if (item.type == ItemType.bomb)
             {
                 gameManager.instance.enableBomb = true;
+                gameManager.instance.flashBombUI = true;
+                gameManager.instance.flashItemUI(); 
             }
             if (item.type == ItemType.grenade)
             {
                 gameManager.instance.enableGrenade = true;
+                gameManager.instance.flashGrenadeUI = true;
+                gameManager.instance.flashItemUI();
             }
             if (item.type == ItemType.stunner)
             {
                 gameManager.instance.enableStunner = true;
+                gameManager.instance.flashStunnerUI = true;
+                gameManager.instance.flashItemUI();
             }
 
 
@@ -65,8 +71,10 @@ public class ItemPickupRobb : MonoBehaviour, IPickup
                 Destroy(gameObject);
             }
         }
+
     }
 
+   
 
 
 }

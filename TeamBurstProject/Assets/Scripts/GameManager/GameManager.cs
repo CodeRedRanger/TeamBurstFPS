@@ -1,8 +1,8 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Collections; 
 
 
 
@@ -48,6 +48,12 @@ public class gameManager : MonoBehaviour
     public GameObject speedboostPopup;
     public GameObject jumpboostPopup;
     public GameObject doublejumpPopup;
+    public GameObject bombPopup;
+    public GameObject grenadePopup;
+    public GameObject stunnerPopup;
+    public bool flashBombUI = false;
+    public bool flashGrenadeUI = false;
+    public bool flashStunnerUI = false;
 
 
     //from main menu, you don't need the actions of unpause the first time, even though it is
@@ -232,6 +238,35 @@ public class gameManager : MonoBehaviour
         //can't get to work
         //SoundManager.Instance.ChangeVolumeMusic(0.3f); 
 
+    }
+
+    public void flashItemUI()
+    {
+        StartCoroutine(PowerupFeedback()); 
+    }
+    public IEnumerator PowerupFeedback()
+   {
+        if (flashBombUI)
+        {
+            flashBombUI = false;
+            bombPopup.SetActive(true);
+            yield return new WaitForSeconds(3.0f);
+            bombPopup.SetActive(false);
+        }
+        if (flashGrenadeUI)
+        {
+            flashGrenadeUI = false;
+            grenadePopup.SetActive(true);
+            yield return new WaitForSeconds(3.0f);
+            grenadePopup.SetActive(false);
+        }
+        if (flashStunnerUI)
+        {
+            flashStunnerUI = false;
+            stunnerPopup.SetActive(true);
+            yield return new WaitForSeconds(3.0f);
+            stunnerPopup.SetActive(false);
+        }
     }
 
 }
