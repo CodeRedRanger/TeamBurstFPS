@@ -45,20 +45,24 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     [Range(0, 1)][SerializeField] float audJumpVol;
     //steps audio
     [SerializeField] AudioClip[] audSteps;
-    [Range(0,1)][SerializeField] float audStepsVol;
+    [Range(0, 1)][SerializeField] float audStepsVol;
     bool isPlayingSteps;
     //recharge audio
     [SerializeField] AudioClip audRechargePrompt;
     [Range(0, 1)][SerializeField] float audRechargePromptVol;
 
-    [SerializeField] List<GunData> gunList = new List<GunData>(); 
+    [SerializeField] List<GunData> gunList = new List<GunData>();
     [SerializeField] GameObject gunModel;
-    
+
     int gunListPos;
 
     //pushback
     public Vector3 pushBack;
-    [SerializeField] int pushBackTime; 
+    [SerializeField] int pushBackTime;
+
+    //UI feedback
+    bool gainHealth = false;
+    bool loseHealth = false;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -67,7 +71,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
 
         HPOrig = HP;
         //updatePlayerUI(); //called in spawn player
-        spawnPlayer(); 
+        spawnPlayer();
 
     }
 
@@ -91,7 +95,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     //pushback
     public void AppliedPushBack(Vector3 direction)
     {
-        pushBack = direction; 
+        pushBack = direction;
     }
 
     void Movement()
@@ -124,7 +128,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
         if (Input.GetButton("Fire1") && shootTimer >= shootRate)
         {
             Shoot();
-            
+
         }
         selectGun();
         reload();
@@ -173,7 +177,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
 
             if (gunList[gunListPos].type == GunType.smg)
             {
-                ps1.Play(); 
+                ps1.Play();
             }
 
             else if (gunList[gunListPos].type == GunType.cannon)
@@ -182,11 +186,11 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
             }
             else
             {
-                ps.Play(); 
+                ps.Play();
             }
 
 
-                RaycastHit hit;
+            RaycastHit hit;
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, ~ignoreLayer))
             {
                 Instantiate(gunList[gunListPos].hitEffect, hit.point, Quaternion.identity);
@@ -217,23 +221,34 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     public void TakeDamage(int damage)
     {
         HP -= damage;
-        updatePlayerUI(); 
+        loseHealth = true; 
+        updatePlayerUI();
+        loseHealth = false;   
         StartCoroutine(flashDamage());
         SoundManager.Instance.PlayEffect(damageSound, 1);
 
         if (HP <= 0)
         {
-            SoundManager.Instance.PlayEffect(deathSound, 1); 
+            SoundManager.Instance.PlayEffect(deathSound, 1);
             SoundManager.Instance.StopMusic();
             //Debug.Log("You are dead"); 
             gameManager.instance.youLose();
-           
+
         }
     }
 
     public void updatePlayerUI()
     {
+        gameManager.instance.playerHPBarUp.fillAmount = (float)HP / HPOrig;
+        gameManager.instance.playerHPBarDown.fillAmount = (float)HP / HPOrig;
+
+        if (loseHealth || gainHealth)
+        {
+            StartCoroutine(flashHPBarChange());
+        }
+        
         gameManager.instance.playerHPBar.fillAmount = (float)HP / HPOrig;
+        
 
         if (gunList.Count > 0)
         {
@@ -287,7 +302,9 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
         {
             HP = HPOrig;
         }
+        gainHealth = true;
         updatePlayerUI();
+        gainHealth = false;
     }
 
     void reload()
@@ -296,7 +313,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
         {
             gunList[gunListPos].ammoCur = gunList[gunListPos].ammoMax;
             //I added to lecture code
-            updatePlayerUI(); 
+            updatePlayerUI();
         }
     }
 
@@ -305,7 +322,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
         gunList.Add(gun);
         gunListPos = gunList.Count - 1;
 
-        changeGun(); 
+        changeGun();
     }
 
     void selectGun()
@@ -332,8 +349,8 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
 
         gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[gunListPos].gunModel.GetComponent<MeshFilter>().sharedMesh;
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[gunListPos].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
-        
-        
+
+
         updatePlayerUI();
     }
 
@@ -343,22 +360,41 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
         {
             SoundManager.Instance.PlayEffect(audSteps[Random.Range(0, audSteps.Length)], audStepsVol);
         }
-        if(isSprinting)
+        if (isSprinting)
         {
-            yield return new WaitForSeconds(0.3f); 
+            yield return new WaitForSeconds(0.3f);
         }
         else
         {
             yield return new WaitForSeconds(0.5f);
         }
-        isPlayingSteps = false; 
+        isPlayingSteps = false;
 
     }
     public void spawnPlayer()
     {
         controller.transform.position = gameManager.instance.playerSpawnPos.transform.position;
         HP = HPOrig;
-        updatePlayerUI(); 
+        updatePlayerUI();
     }
 
+
+    IEnumerator flashHPBarChange()
+    {
+        if (loseHealth)
+        {
+            gameManager.instance.playerHPBarDown.gameObject.SetActive(true);
+            yield return new WaitForSeconds(0.5f);
+            gameManager.instance.playerHPBarDown.gameObject.SetActive(false);
+        }
+
+        if (gainHealth)
+        {
+            gameManager.instance.playerHPBarUp.gameObject.SetActive(true);
+            yield return new WaitForSeconds(0.5f);
+            gameManager.instance.playerHPBarUp.gameObject.SetActive(false);
+        }
+        
+
+    }
 }

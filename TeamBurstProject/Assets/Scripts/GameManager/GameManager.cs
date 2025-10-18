@@ -23,6 +23,8 @@ public class gameManager : MonoBehaviour
     public AudioClip toSchool;
 
     public Image playerHPBar;
+    public Image playerHPBarUp;
+    public Image playerHPBarDown;
     public GameObject playerDamageFlash;
 
     public GameObject player; //reference to player object
@@ -43,9 +45,11 @@ public class gameManager : MonoBehaviour
 
     public GameObject playerSpawnPos;
     public GameObject checkpointPopup;
-    public GameObject speedboostPopup; 
+    public GameObject speedboostPopup;
+    public GameObject jumpboostPopup;
+    public GameObject doublejumpPopup;
 
-  
+
     //from main menu, you don't need the actions of unpause the first time, even though it is
     //called as part of load scene. 
     private bool firstUnpause = true;

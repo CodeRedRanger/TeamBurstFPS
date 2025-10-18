@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class DoubleJumpPickup : MonoBehaviour, IPickup
 {
@@ -35,11 +36,13 @@ public class DoubleJumpPickup : MonoBehaviour, IPickup
         if (isPermanent)
         {
             gameManager.instance.playerScript.SetJumpCountMax(value);
+            StartCoroutine(doublejumpFeedback());
         }
         else
         {
             int prev = gameManager.instance.playerScript.GetJumpCountMax();
             gameManager.instance.playerScript.SetJumpCountMax(value);
+            StartCoroutine(doublejumpFeedback());
             yield return new WaitForSeconds(length);
             gameManager.instance.playerScript.SetJumpCountMax(prev);
         }
@@ -57,4 +60,17 @@ public class DoubleJumpPickup : MonoBehaviour, IPickup
             hasBeenPickedUp = false;
         }
     }
+
+    IEnumerator doublejumpFeedback()
+    {
+        gameManager.instance.doublejumpPopup.SetActive(true);
+        yield return new WaitForSeconds(length);
+        gameManager.instance.doublejumpPopup.SetActive(false);
+    }
 }
+
+
+
+
+
+
