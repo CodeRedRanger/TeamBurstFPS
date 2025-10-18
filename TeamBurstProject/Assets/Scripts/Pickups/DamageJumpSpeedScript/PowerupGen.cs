@@ -14,15 +14,15 @@ public class PowerupGen : MonoBehaviour
     [SerializeField] AudioClip pickupSound;
 
     bool isPickedUp;
-    private int speedOrig = gameManager.instance.playerScript.speed; 
+    private int speedOrig; 
 
     // Update is called once per frame
-    void Update()
+    void Start()
     {
-        
+       speedOrig = gameManager.instance.playerScript.speed;
     }
 
-    private void OnTriggerEnter(Collider other)
+private void OnTriggerEnter(Collider other)
     {
 
         if (other.isTrigger)
