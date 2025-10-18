@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     [SerializeField] CharacterController controller;
 
     [SerializeField] int HP;
-    [SerializeField] int speed;
+    public int speed;
     [SerializeField] int sprintMod;
     [SerializeField] int jumpSpeed;
     [SerializeField] int jumpCountMax;

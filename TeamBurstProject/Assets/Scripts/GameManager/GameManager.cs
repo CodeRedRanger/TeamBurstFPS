@@ -43,6 +43,7 @@ public class gameManager : MonoBehaviour
 
     public GameObject playerSpawnPos;
     public GameObject checkpointPopup;
+    public GameObject speedboostPopup; 
 
   
     //from main menu, you don't need the actions of unpause the first time, even though it is

@@ -14,6 +14,7 @@ public class PowerupGen : MonoBehaviour
     [SerializeField] AudioClip pickupSound;
 
     bool isPickedUp;
+    private int speedOrig = gameManager.instance.playerScript.speed; 
 
     // Update is called once per frame
     void Update()
@@ -48,6 +49,7 @@ public class PowerupGen : MonoBehaviour
         {
             case PowerupType.Speed:
                 gameManager.instance.playerScript.SpeedBoost(boostAmount);
+                StartCoroutine(speedboostFeedback());
                 break;
 
             case PowerupType.Damage:
@@ -67,6 +69,11 @@ public class PowerupGen : MonoBehaviour
         {
             case PowerupType.Speed:
                 gameManager.instance.playerScript.SpeedBoost(-boostAmount);
+                if(gameManager.instance.playerScript.speed < speedOrig)
+                {
+                    gameManager.instance.playerScript.speed = speedOrig;
+                }
+
                 break;
 
             case PowerupType.Damage:
@@ -89,6 +96,13 @@ public class PowerupGen : MonoBehaviour
             isPickedUp = false;
         }
 
+    }
+
+    IEnumerator speedboostFeedback()
+    {
+        gameManager.instance.speedboostPopup.SetActive(true);
+        yield return new WaitForSeconds(length);
+        gameManager.instance.speedboostPopup.SetActive(false);
     }
 
 }

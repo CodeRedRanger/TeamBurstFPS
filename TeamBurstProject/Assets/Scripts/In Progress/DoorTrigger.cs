@@ -18,7 +18,7 @@ public class DoorTrigger : MonoBehaviour
         {
             if (door != null)
             {
-                Debug.Log("OpeningDoor!"); 
+                //Debug.Log("OpeningDoor!"); 
                 door.OpenDoor(openAngle);
             }
         }
@@ -31,7 +31,7 @@ public class DoorTrigger : MonoBehaviour
         {
             if (door != null)
             {
-                Debug.Log("ClosingDoor!");
+                //Debug.Log("ClosingDoor!");
                 door.CloseDoor(closeAngle);
                 
             }
