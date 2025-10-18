@@ -1325,7 +1325,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8952224900562249783, guid: a57245592ce90ff428ea0dfc918e0eac, type: 3}
   m_PrefabInstance: {fileID: 3382099373706807612}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 988949863}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a5d9eef1bc3efc640931e556373118e0, type: 3}
@@ -1667,11 +1667,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b18cb33aecc6a83418cade223793805f, type: 3}
---- !u!1 &552226047 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5356804396559373970, guid: a57245592ce90ff428ea0dfc918e0eac, type: 3}
-  m_PrefabInstance: {fileID: 3382099373706807612}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &657180570
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2438,11 +2433,6 @@ MonoBehaviour:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3341224840431050291, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
   m_PrefabInstance: {fileID: 2513492866045325239}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &988949863 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5788247663995716527, guid: a57245592ce90ff428ea0dfc918e0eac, type: 3}
-  m_PrefabInstance: {fileID: 3382099373706807612}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1013398549
 PrefabInstance:
@@ -3988,7 +3978,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 21840209148742032, guid: a57245592ce90ff428ea0dfc918e0eac, type: 3}
   m_PrefabInstance: {fileID: 3382099373706807612}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 552226047}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a5d9eef1bc3efc640931e556373118e0, type: 3}
@@ -7195,10 +7185,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 21840209148742032, guid: a57245592ce90ff428ea0dfc918e0eac, type: 3}
-      propertyPath: doorHinge
-      value: 
-      objectReference: {fileID: 552226047}
     - target: {fileID: 811133656025845736, guid: a57245592ce90ff428ea0dfc918e0eac, type: 3}
       propertyPath: door
       value: 
@@ -7210,14 +7196,6 @@ PrefabInstance:
     - target: {fileID: 811133656025845736, guid: a57245592ce90ff428ea0dfc918e0eac, type: 3}
       propertyPath: m_Enabled
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 811133656025845736, guid: a57245592ce90ff428ea0dfc918e0eac, type: 3}
-      propertyPath: openAngle
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 811133656025845736, guid: a57245592ce90ff428ea0dfc918e0eac, type: 3}
-      propertyPath: closeAngle
-      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 1531964001403253011, guid: a57245592ce90ff428ea0dfc918e0eac, type: 3}
       propertyPath: m_IsActive
@@ -7313,11 +7291,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4940677212587933338, guid: a57245592ce90ff428ea0dfc918e0eac, type: 3}
       propertyPath: openAngle
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 4940677212587933338, guid: a57245592ce90ff428ea0dfc918e0eac, type: 3}
-      propertyPath: closeAngle
-      value: 90
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 5788247663995716527, guid: a57245592ce90ff428ea0dfc918e0eac, type: 3}
       propertyPath: m_IsActive
@@ -7327,30 +7301,6 @@ PrefabInstance:
       propertyPath: door
       value: 
       objectReference: {fileID: 1499720413}
-    - target: {fileID: 6818915206629551557, guid: a57245592ce90ff428ea0dfc918e0eac, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 6.4595723
-      objectReference: {fileID: 0}
-    - target: {fileID: 6818915206629551557, guid: a57245592ce90ff428ea0dfc918e0eac, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 3.4585862
-      objectReference: {fileID: 0}
-    - target: {fileID: 6818915206629551557, guid: a57245592ce90ff428ea0dfc918e0eac, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2.981125
-      objectReference: {fileID: 0}
-    - target: {fileID: 6818915206629551557, guid: a57245592ce90ff428ea0dfc918e0eac, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -138.23
-      objectReference: {fileID: 0}
-    - target: {fileID: 6818915206629551557, guid: a57245592ce90ff428ea0dfc918e0eac, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.17
-      objectReference: {fileID: 0}
-    - target: {fileID: 6818915206629551557, guid: a57245592ce90ff428ea0dfc918e0eac, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -27.16
-      objectReference: {fileID: 0}
     - target: {fileID: 6913233755200813504, guid: a57245592ce90ff428ea0dfc918e0eac, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -7394,14 +7344,6 @@ PrefabInstance:
     - target: {fileID: 8952224900562249783, guid: a57245592ce90ff428ea0dfc918e0eac, type: 3}
       propertyPath: CloseTime
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8952224900562249783, guid: a57245592ce90ff428ea0dfc918e0eac, type: 3}
-      propertyPath: doorHinge
-      value: 
-      objectReference: {fileID: 988949863}
-    - target: {fileID: 8952224900562249783, guid: a57245592ce90ff428ea0dfc918e0eac, type: 3}
-      propertyPath: closeAngle
-      value: 180
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

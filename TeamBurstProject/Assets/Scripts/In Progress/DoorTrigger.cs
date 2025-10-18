@@ -2,38 +2,43 @@ using UnityEngine;
 
 public class DoorTrigger : MonoBehaviour
 {
-    [SerializeField] Transform player;
+    //[SerializeField] Transform player;
+    //public GameObject player; 
     [SerializeField] DoorController door;
     [SerializeField] float openAngle = 90;
-    [SerializeField] float triggerDistance;
+    [SerializeField] float closeAngle = 0; 
+    //[SerializeField] float triggerDistance;
 
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+
+
+    private void OnTriggerEnter(Collider other)
     {
-      
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        float distance = Vector3.Distance(player.position, transform.position);
-
-        if (distance <= triggerDistance)
+        if (other.CompareTag("Player"))
         {
-            door.OpenDoor(openAngle);
-        }
-    }
-
-    void Awake()
-    {
-        if (player == null)
-        {
-            GameObject foundPlayer = GameObject.FindGameObjectWithTag("Player");
-            if (foundPlayer != null)
+            if (door != null)
             {
-                player = foundPlayer.transform;
+                Debug.Log("OpeningDoor!"); 
+                door.OpenDoor(openAngle);
             }
         }
+
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            if (door != null)
+            {
+                Debug.Log("ClosingDoor!");
+                door.CloseDoor(closeAngle);
+                
+            }
+       
+        }
+
+    }
+
 }
+
