@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4307802970485113908}
   - component: {fileID: 5686606955091987346}
   - component: {fileID: 8622561685664405006}
-  - component: {fileID: 3355084811049562884}
   m_Layer: 0
   m_Name: soda can
   m_TagString: Untagged
@@ -112,20 +111,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.4
   m_Center: {x: 0.001010146, y: 0.05833053, z: 0.00000029798318}
---- !u!114 &3355084811049562884
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 142179781652140685}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf72d70d18fcba64cb2c3ebb6689aa8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TriggerDisappearObject
-  objectToDisappear: {fileID: 142179781652140685}
-  delay: 1
 --- !u!1 &8235697489139236623
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,6 +125,7 @@ GameObject:
   - component: {fileID: 1815749007699385353}
   - component: {fileID: 7812719516281436232}
   - component: {fileID: 2754770729462659448}
+  - component: {fileID: 6239624082601087241}
   m_Layer: 0
   m_Name: DoubleJumpPickUpWings
   m_TagString: Untagged
@@ -354,3 +340,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6239624082601087241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8235697489139236623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf72d70d18fcba64cb2c3ebb6689aa8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TriggerDisappearObject
+  objectToDisappear: {fileID: 142179781652140685}
+  delay: 1
