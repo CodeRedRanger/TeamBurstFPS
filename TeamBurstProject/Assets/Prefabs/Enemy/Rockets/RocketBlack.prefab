@@ -81,6 +81,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TriggerAppearObject
   objectToAppear: {fileID: 3318270684082987208}
   delay: 1
+  bossFight: 0
+  forBoss: {fileID: 0}
 --- !u!65 &897814534738063283
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -110,6 +112,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2836927899118795159}
     m_Modifications:
+    - target: {fileID: 1375083709270359153, guid: 4a4b2ddf201e77243bef579bfd62827f, type: 3}
+      propertyPath: animTransSpeed
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3889515278389917839, guid: 4a4b2ddf201e77243bef579bfd62827f, type: 3}
       propertyPath: m_Name
       value: AlienBlack
@@ -153,6 +159,10 @@ PrefabInstance:
     - target: {fileID: 5042010352358119554, guid: 4a4b2ddf201e77243bef579bfd62827f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098445156558791746, guid: 4a4b2ddf201e77243bef579bfd62827f, type: 3}
+      propertyPath: m_Radius
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
