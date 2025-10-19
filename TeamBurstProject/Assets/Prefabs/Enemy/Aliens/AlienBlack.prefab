@@ -543,7 +543,7 @@ Transform:
   m_GameObject: {fileID: 3889515278389917839}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.2297597, y: 8.698, z: 29.54089}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -598,7 +598,7 @@ MonoBehaviour:
   shootRate: 1
   FOV: 100
   headPos: {fileID: 7423609157941203513}
-  animTransSpeed: 0
+  animTransSpeed: 8
 --- !u!195 &9093826320417612451
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -663,7 +663,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 25
+  m_Radius: 10
   m_Center: {x: 0.009468883, y: 0.8597729, z: 0.05926037}
 --- !u!1 &4080597067589598415
 GameObject:

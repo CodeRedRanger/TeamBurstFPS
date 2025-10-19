@@ -21,13 +21,13 @@ public class MovingPlatform : MonoBehaviour
 
         if (isTravelingForward)
         {
-            newPos = Vector3.Lerp(platform.position, desination.position, movementSpeed * Time.deltaTime);
+            newPos = Vector3.MoveTowards(platform.position, desination.position, movementSpeed * Time.deltaTime);
             if (CheckIfDoneTravling(desination.position))
                 isTravelingForward = false;
         }
         else
         {
-            newPos = Vector3.Lerp(platform.position, startingPos, movementSpeed * Time.deltaTime);
+            newPos = Vector3.MoveTowards(platform.position, startingPos, movementSpeed * Time.deltaTime);
             if (CheckIfDoneTravling(startingPos))
                 isTravelingForward = true;
         }
@@ -39,7 +39,7 @@ public class MovingPlatform : MonoBehaviour
     {
         float distance = Vector3.Distance(platform.position, pointOfInterest);
 
-        if (distance <= 1)
+        if (distance <= 0.01)
             return true;
         else
             return false;
