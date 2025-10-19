@@ -6,6 +6,8 @@ public class checkpoint : MonoBehaviour
     [SerializeField] Renderer model;
     Color colorOrg;
 
+    [SerializeField] AudioClip checkpointSound; 
+
     private void Start()
     {
         Color color = model.material.color;
@@ -15,6 +17,7 @@ public class checkpoint : MonoBehaviour
         if(other.CompareTag("Player") && gameManager.instance.playerSpawnPos.transform.position != transform.position)
         {
             gameManager.instance.playerSpawnPos.transform.position = transform.position;
+            SoundManager.Instance.PlayEffect(checkpointSound, 1); 
             StartCoroutine(checkpointFeedback());
         }
     }

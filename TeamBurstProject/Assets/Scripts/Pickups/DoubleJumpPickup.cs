@@ -50,7 +50,7 @@ public class DoubleJumpPickup : MonoBehaviour, IPickup
 
         if (destroyOnPickup)
         {
-            Debug.Log("Getting Here");
+            //Debug.Log("Getting Here");
             Destroy(gameObject);
         }
         else
@@ -67,6 +67,7 @@ public class DoubleJumpPickup : MonoBehaviour, IPickup
         yield return new WaitForSeconds(length);
         gameManager.instance.doublejumpPopup.SetActive(false);
     }
+
 }
 
 
