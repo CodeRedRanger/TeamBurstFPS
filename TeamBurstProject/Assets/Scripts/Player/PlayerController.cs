@@ -23,7 +23,8 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     [SerializeField] ParticleSystem ps2;
 
     private Vector3 moveDir;
-    private Vector3 playerVel;  
+    //changed below from private to public for jetpack
+    public Vector3 playerVel;  
      
 
     int jumpCount;
