@@ -96,6 +96,9 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     public void setGravity(int _gravity) { gravity = _gravity; }
     public void setJumpSpeed(int _jumpSpeed) { jumpSpeed = _jumpSpeed; }
 
+    public int getGravity() { return gravity; }
+    public int getJumpSpeed() { return jumpSpeed; }
+
     //pushback
     public void AppliedPushBack(Vector3 direction)
     {
@@ -401,7 +404,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
         
     }
 
-    /*
+    
     public void CheckIfGrounded()
     {
         if (controller.isGrounded)
@@ -431,5 +434,5 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
         }
     }
 
-    */
+    
 }
