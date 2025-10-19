@@ -113,12 +113,9 @@ public class Jetpack : MonoBehaviour
         if (isThrusting)
         {
             // increase vertical speed by thrustSpeed each second (scaled by deltaTime)
-            verticalSpeed += (int)(thrustSpeed * Time.deltaTime);
+            verticalSpeed = Mathf.Clamp(verticalSpeed, verticalSpeed + (int)(thrustSpeed *Time.deltaTime), maxUpwardSpeed);
+            player.playerVel.y += verticalSpeed;
 
-            // limit how fast the player can go up
-            if (verticalSpeed > maxUpwardSpeed) verticalSpeed = maxUpwardSpeed;
-
-            
         }
         //This functionality is not needed as the character already has gravity applied
         /*else
@@ -131,7 +128,7 @@ public class Jetpack : MonoBehaviour
         }*/
 
         // move the player vertically
-        player.playerVel.y += verticalSpeed;
+        
 
     }
 
