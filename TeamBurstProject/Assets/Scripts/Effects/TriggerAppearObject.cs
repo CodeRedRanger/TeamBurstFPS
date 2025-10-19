@@ -39,7 +39,7 @@ public class TriggerAppearObject : MonoBehaviour
         {
             if (forBoss != null)
             {
-                SoundManager.Instance.PlayEffect(forBoss);
+                SoundManager.Instance.PlayEffect(forBoss, 1);
                 voicePlayed = true;
 
 

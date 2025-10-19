@@ -555,6 +555,7 @@ MonoBehaviour:
   shootSound: {fileID: 8300000, guid: 06ada5590eba8d6489b36c6f3c54ff78, type: 3}
   damageSound: {fileID: 8300000, guid: e4b229d1cd4c5954c982c44b6f42eb27, type: 3}
   deathSound: {fileID: 8300000, guid: 4e7a9f408abdba8459fdccbeaea95215, type: 3}
+  shockSound: {fileID: 8300000, guid: ab297b593498a6e47ba84de770477cbe, type: 3}
   model: {fileID: 5182726812053506357}
   agent: {fileID: 6143819269954212591}
   HP: 5
@@ -564,6 +565,7 @@ MonoBehaviour:
   shootRate: 1
   FOV: 100
   headPos: {fileID: 5798426376663194510}
+  animTransSpeed: 8
 --- !u!195 &6143819269954212591
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -628,7 +630,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 25
+  m_Radius: 10
   m_Center: {x: 0.009468883, y: 0.8597729, z: 0.05926037}
 --- !u!1 &2946662092343250852
 GameObject:
