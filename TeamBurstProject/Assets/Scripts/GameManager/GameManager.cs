@@ -51,9 +51,16 @@ public class gameManager : MonoBehaviour
     public GameObject bombPopup;
     public GameObject grenadePopup;
     public GameObject stunnerPopup;
+
     public bool flashBombUI = false;
     public bool flashGrenadeUI = false;
     public bool flashStunnerUI = false;
+
+    public bool enableBomb = false;
+    public bool enableGrenade = false;
+    public bool enableStunner = false;
+
+    public GameObject runPopup; 
 
 
     //from main menu, you don't need the actions of unpause the first time, even though it is
@@ -62,9 +69,7 @@ public class gameManager : MonoBehaviour
 
     public Scene currentScene;
 
-    public bool enableBomb = false;
-    public bool enableGrenade = false;
-    public bool enableStunner = false;
+    
    
 
     void Awake()
@@ -92,6 +97,11 @@ public class gameManager : MonoBehaviour
             if (currentScene.buildIndex == 1)
             {
                 Level1 = true;
+            }
+
+            if (currentScene.buildIndex == 2)
+            {
+                StartCoroutine(FlashRunUI()); 
             }
 
         }
@@ -269,4 +279,11 @@ public class gameManager : MonoBehaviour
         }
     }
 
-}
+    public IEnumerator FlashRunUI()
+    {
+         runPopup.SetActive(true);
+         yield return new WaitForSeconds(3.0f);
+         runPopup.SetActive(false);
+        
+    }
+ }
