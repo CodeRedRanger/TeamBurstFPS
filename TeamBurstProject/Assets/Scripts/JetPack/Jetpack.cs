@@ -23,11 +23,15 @@ public class Jetpack : MonoBehaviour
     [Tooltip("Optional looping sound effect.")]
     [SerializeField] private AudioSource jetpackAudio;
 
+    [SerializeField] CharacterController controller;
+    [SerializeField] PlayerController player;
+
     // ===== INTERNAL STATE =====
     private int fuel;                 // current amount of fuel
     private bool isThrusting = false; // true while Jump button is held and fuel > 0
     private bool wasThrustingLastFrame = false; // used for FX start/stop
     private int verticalSpeed = 0;    // upward movement speed (1–100)
+
 
     private void Awake()
     {
@@ -36,6 +40,12 @@ public class Jetpack : MonoBehaviour
         if (jetpackFX != null) jetpackFX.Stop();   // stop particles at start
         if (jetpackAudio != null) jetpackAudio.Stop(); // stop sound at start
     }
+
+    void Start()
+    {
+        controller = GetComponent<CharacterController>();
+        player = GetComponent<PlayerController>();
+    }  
 
     public int GetFuelPercent()
     {
@@ -55,4 +65,74 @@ public class Jetpack : MonoBehaviour
         // sets fuel directly based on a percent value (0–100)
         fuel = Mathf.Clamp(percent, 0, 100) * maxFuel / 100;
     }
+
+   
+    private void Update()
+    {
+        // check if the Jump button is held
+        bool wantsThrust = Input.GetButton("Jump") && !controller.isGrounded;
+
+        // only thrust if there is fuel
+        isThrusting = wantsThrust && fuel > 0;
+
+        // drain fuel when thrusting
+        if (isThrusting)
+        {
+            // burnRate means "units per second", so multiply by deltaTime
+            fuel -= (int)(burnRate * Time.deltaTime);
+            if (fuel < 0) fuel = 0;
+        }
+        else
+        {
+            // refill fuel when not thrusting
+            fuel += (int)(regenRate * Time.deltaTime);
+            if (fuel > maxFuel) fuel = maxFuel;
+        }
+
+        // start FX when thrusting begins
+        if (isThrusting && !wasThrustingLastFrame)
+        {
+            if (jetpackFX != null) jetpackFX.Play();
+            if (jetpackAudio != null && !jetpackAudio.isPlaying) jetpackAudio.Play();
+        }
+
+        // stop FX when thrusting stops
+        if (!isThrusting && wasThrustingLastFrame)
+        {
+            if (jetpackFX != null) jetpackFX.Stop();
+            if (jetpackAudio != null && jetpackAudio.isPlaying) jetpackAudio.Stop();
+        }
+
+        // remember thrust state for next frame
+        wasThrustingLastFrame = isThrusting;
+    }
+
+    private void LateUpdate()
+    {
+        // apply upward speed when thrusting
+        if (isThrusting)
+        {
+            // increase vertical speed by thrustSpeed each second (scaled by deltaTime)
+            verticalSpeed += (int)(thrustSpeed * Time.deltaTime);
+
+            // limit how fast the player can go up
+            if (verticalSpeed > maxUpwardSpeed) verticalSpeed = maxUpwardSpeed;
+
+            
+        }
+        //This functionality is not needed as the character already has gravity applied
+        /*else
+        {
+            // apply a simple gravity effect when not thrusting
+            verticalSpeed -= (int)(thrustSpeed * Time.deltaTime);
+
+            // limit how fast the player can go down
+            if (verticalSpeed < -maxUpwardSpeed) verticalSpeed = -maxUpwardSpeed;
+        }*/
+
+        // move the player vertically
+        player.playerVel.y += verticalSpeed;
+
+    }
+
 }
