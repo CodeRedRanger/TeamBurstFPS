@@ -1,8 +1,6 @@
-using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEngine.Audio;
+using UnityEngine;
 
 public class PlayerController : MonoBehaviour, IDamage, IPickupGun
 {
@@ -12,9 +10,9 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     [SerializeField] int HP;
     public int speed;
     [SerializeField] int sprintMod;
-    [SerializeField] int jumpSpeed;
+    [SerializeField] int jumpSpeed {  get; set; }
     [SerializeField] int jumpCountMax;
-    [SerializeField] int gravity;
+    [SerializeField] int gravity {  get; set; }
 
     [SerializeField] int shootDamage;
     [SerializeField] int shootDist;
@@ -25,7 +23,8 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     [SerializeField] ParticleSystem ps2;
 
     private Vector3 moveDir;
-    private Vector3 playerVel;
+    private Vector3 playerVel;  
+     
 
     int jumpCount;
     int HPOrig;
@@ -395,6 +394,36 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
             gameManager.instance.playerHPBarUp.gameObject.SetActive(false);
         }
         
-
     }
+
+    public void CheckIfGrounded()
+    {
+        if (controller.isGrounded)
+        {
+            if (moveDir.normalized.magnitude > 0.3f && !isPlayingSteps)
+            {
+                StartCoroutine(playSteps());
+            }
+            playerVel = Vector3.zero;
+            jumpCount = 0;
+        }
+        else
+        {
+            playerVel.y -= gravity * Time.deltaTime;
+        }
+    }
+
+    public void resetJump()
+    {
+        {
+            if (moveDir.normalized.magnitude > 0.3f && !isPlayingSteps)
+            {
+                StartCoroutine(playSteps());
+            }
+            playerVel = Vector3.zero;
+            jumpCount = 0;
+        }
+    }
+
+
 }
