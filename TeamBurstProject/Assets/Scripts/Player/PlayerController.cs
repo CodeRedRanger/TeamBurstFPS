@@ -10,9 +10,9 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     [SerializeField] int HP;
     public int speed;
     [SerializeField] int sprintMod;
-    [SerializeField] int jumpSpeed {  get; set; } //added getter and setter for anti-gravity and jet pack
+    [SerializeField] int jumpSpeed; 
     [SerializeField] int jumpCountMax;
-    [SerializeField] int gravity {  get; set; } //added getter and setter for anti-gravity and jet pack
+    [SerializeField] int gravity; 
 
     [SerializeField] int shootDamage;
     [SerializeField] int shootDist;
@@ -91,6 +91,10 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
 
         SpawnBomb();
     }
+
+    //Added for jetpack and anti-gravity boots
+    public void setGravity(int _gravity) { gravity = _gravity; }
+    public void setJumpSpeed(int _jumpSpeed) { jumpSpeed = _jumpSpeed; }
 
     //pushback
     public void AppliedPushBack(Vector3 direction)
@@ -397,6 +401,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
         
     }
 
+    /*
     public void CheckIfGrounded()
     {
         if (controller.isGrounded)
@@ -426,5 +431,5 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
         }
     }
 
-
+    */
 }
