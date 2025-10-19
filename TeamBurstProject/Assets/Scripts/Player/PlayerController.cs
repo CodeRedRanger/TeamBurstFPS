@@ -10,9 +10,9 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     [SerializeField] int HP;
     public int speed;
     [SerializeField] int sprintMod;
-    [SerializeField] int jumpSpeed {  get; set; }
+    [SerializeField] int jumpSpeed; 
     [SerializeField] int jumpCountMax;
-    [SerializeField] int gravity {  get; set; }
+    [SerializeField] int gravity; 
 
     [SerializeField] int shootDamage;
     [SerializeField] int shootDist;
@@ -23,7 +23,8 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     [SerializeField] ParticleSystem ps2;
 
     private Vector3 moveDir;
-    private Vector3 playerVel;  
+    //changed below from private to public for jetpack
+    public Vector3 playerVel;  
      
 
     int jumpCount;
@@ -90,6 +91,10 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
 
         SpawnBomb();
     }
+
+    //Added for jetpack and anti-gravity boots
+    public void setGravity(int _gravity) { gravity = _gravity; }
+    public void setJumpSpeed(int _jumpSpeed) { jumpSpeed = _jumpSpeed; }
 
     //pushback
     public void AppliedPushBack(Vector3 direction)
@@ -396,6 +401,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
         
     }
 
+    /*
     public void CheckIfGrounded()
     {
         if (controller.isGrounded)
@@ -425,5 +431,5 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
         }
     }
 
-
+    */
 }
