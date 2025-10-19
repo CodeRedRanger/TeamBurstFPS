@@ -8,6 +8,7 @@ public class EnemyAI : MonoBehaviour, IDamage, IStunnable
     public AudioClip shootSound;
     public AudioClip damageSound;
     public AudioClip deathSound;
+    public AudioClip shockSound; 
     
 
     [SerializeField] Renderer model;
@@ -36,12 +37,16 @@ public class EnemyAI : MonoBehaviour, IDamage, IStunnable
     Vector3 playerDir; 
 
     private Animator animator;
+    [SerializeField] int animTransSpeed; 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         colorOrig = model.material.color;
         gameManager.instance.updateGameGoal(1);
+        //To keep track of total to be spawned before winning
+        //comment out above and in spawner script start() put
+        //gameManager.instance.updateGameGoal(numToSpawn)
         animator = GetComponent<Animator>();
 
     }
@@ -50,7 +55,7 @@ public class EnemyAI : MonoBehaviour, IDamage, IStunnable
     void Update()
     {
 
-        animator.SetFloat("Speed", agent.velocity.magnitude);
+        setAnimLocomation(); 
 
         shootTimer += Time.deltaTime;
       
@@ -71,6 +76,18 @@ public class EnemyAI : MonoBehaviour, IDamage, IStunnable
 
         }
     }
+
+    void setAnimLocomation()
+    {
+        float agentSpeedCur = agent.velocity.normalized.magnitude;
+        float animSpeedCur = animator.GetFloat("Speed");
+
+        //animator.SetFloat("Speed", agent.velocity.magnitude);
+        animator.SetFloat("Speed", Mathf.Lerp(animSpeedCur,agentSpeedCur, Time.deltaTime * animTransSpeed));
+        
+    
+    }
+
 
     void faceTarget()
     {
@@ -103,7 +120,7 @@ public class EnemyAI : MonoBehaviour, IDamage, IStunnable
 
                 if (shootTimer > shootRate && !isStunned)
                 {
-                    SoundManager.Instance.PlayEffect(shootSound);
+                    SoundManager.Instance.PlayEffect(shootSound, 1);
                     shoot();
                 }
                 //comment out to here
@@ -145,7 +162,7 @@ public class EnemyAI : MonoBehaviour, IDamage, IStunnable
 
         if (HP <= 0)
         {
-            SoundManager.Instance.PlayEffect(deathSound);
+            SoundManager.Instance.PlayEffect(deathSound, 1);
             Destroy(gameObject);
             gameManager.instance.updateGameGoal(-1);
             
@@ -153,7 +170,7 @@ public class EnemyAI : MonoBehaviour, IDamage, IStunnable
         else
         {
             StartCoroutine(flashRed());
-            SoundManager.Instance.PlayEffect(damageSound);
+            SoundManager.Instance.PlayEffect(damageSound, 1);
         }
 
     }
@@ -183,9 +200,10 @@ public class EnemyAI : MonoBehaviour, IDamage, IStunnable
 
         NavMeshAgent agent = GetComponent<NavMeshAgent>();
         if (agent != null) agent.isStopped = true;
-
+        model.material.color = Color.yellow;
+        SoundManager.Instance.PlayEffect(shockSound, 1);
         yield return new WaitForSeconds(duration);
-
+        model.material.color = colorOrig;
         if (agent != null) agent.isStopped = false;
         isStunned = false;
     }

@@ -89,7 +89,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
         {
             if (itemSound != null)
             {
-                SoundManager.Instance.PlayEffect(itemSound);
+                SoundManager.Instance.PlayEffect(itemSound, 1);
             }
 
             dmg.Heal(healAmount);

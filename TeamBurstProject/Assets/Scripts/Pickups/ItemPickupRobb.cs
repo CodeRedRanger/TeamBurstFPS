@@ -1,4 +1,6 @@
+using System.Collections; 
 using UnityEngine;
+
 
 
 public class ItemPickupRobb : MonoBehaviour, IPickup
@@ -11,8 +13,6 @@ public class ItemPickupRobb : MonoBehaviour, IPickup
     [SerializeField] AudioClip pickupSound;
 
     bool hasBeenPickedUp = false; // To prevent multiple pickups
-   
-
 
 
     public void Pickup()
@@ -25,13 +25,36 @@ public class ItemPickupRobb : MonoBehaviour, IPickup
         }
 
         hasBeenPickedUp = true;
-        Debug.Log("Picking up " + item.type);
+        //Debug.Log("Picking up " + item.type);
 
         //probably should have separate health pick up script if no health items are added to inventory
         if (!healthItem)
         {
-            Debug.Log("Adding " + item.type + " to inventory!");
+            if (item.type == ItemType.bomb)
+            {
+                gameManager.instance.enableBomb = true;
+                gameManager.instance.flashBombUI = true;
+                gameManager.instance.flashItemUI(); 
+            }
+            if (item.type == ItemType.grenade)
+            {
+                gameManager.instance.enableGrenade = true;
+                gameManager.instance.flashGrenadeUI = true;
+                gameManager.instance.flashItemUI();
+            }
+            if (item.type == ItemType.stunner)
+            {
+                gameManager.instance.enableStunner = true;
+                gameManager.instance.flashStunnerUI = true;
+                gameManager.instance.flashItemUI();
+            }
+
+
+            //Debug.Log("Adding " + item.type + " to inventory!");
             InventoryManager.Instance.AddItem(item);
+
+          
+
         }
         
         //if (hotbar.Add(item, 1))
@@ -42,14 +65,16 @@ public class ItemPickupRobb : MonoBehaviour, IPickup
             {            
                 if (pickupSound != null)
                 {
-                    SoundManager.Instance.PlayEffect(pickupSound);
+                    SoundManager.Instance.PlayEffect(pickupSound, 1);
                 }
 
                 Destroy(gameObject);
             }
         }
+
     }
 
+   
 
 
 }

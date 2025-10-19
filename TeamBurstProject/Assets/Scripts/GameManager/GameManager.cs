@@ -1,13 +1,14 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro; 
+using TMPro;
+using UnityEngine.SceneManagement;
+using System.Collections; 
+
 
 
 public class gameManager : MonoBehaviour
-
-
 {
+
     public static gameManager instance;
     //any open menu will go into menuActive and then close active menu 
     [SerializeField] GameObject menuActive;
@@ -15,14 +16,16 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuWinEnd;
     [SerializeField] GameObject menuLose;
-    [SerializeField] GameObject hotBar; 
+    [SerializeField] GameObject hotBar;
     [SerializeField] TMP_Text gameGoalCountText;
 
     public AudioClip BGMusic;
     public AudioClip toSchool;
 
     public Image playerHPBar;
-    public GameObject playerDamageFlash; 
+    public Image playerHPBarUp;
+    public Image playerHPBarDown;
+    public GameObject playerDamageFlash;
 
     public GameObject player; //reference to player object
     public PlayerController playerScript; //reference to player script
@@ -35,61 +38,107 @@ public class gameManager : MonoBehaviour
     float timeScaleOrig;
 
     int gameGoalCount;
-    public bool Level1 = true;
+    public bool Level1;
 
     public TMP_Text ammoCur, ammoMax;
+    public TMP_Text hotBarSlot1, hotbarSlot2, hotbarSlot3;
+
+    public GameObject playerSpawnPos;
+    public GameObject checkpointPopup;
+    public GameObject speedboostPopup;
+    public GameObject jumpboostPopup;
+    public GameObject doublejumpPopup;
+    public GameObject bombPopup;
+    public GameObject grenadePopup;
+    public GameObject stunnerPopup;
+    public bool flashBombUI = false;
+    public bool flashGrenadeUI = false;
+    public bool flashStunnerUI = false;
 
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    //from main menu, you don't need the actions of unpause the first time, even though it is
+    //called as part of load scene. 
+    private bool firstUnpause = true;
+
+    public Scene currentScene;
+
+    public bool enableBomb = false;
+    public bool enableGrenade = false;
+    public bool enableStunner = false;
+   
+
     void Awake()
     {
+
         instance = this;
         timeScaleOrig = Time.timeScale;
 
-        //need this line before next
-       player = GameObject.FindGameObjectWithTag("Player");
-       playerScript = player.GetComponent<PlayerController>();
+        
+        currentScene = SceneManager.GetActiveScene();
 
-       SoundManager.Instance.PlayMusic(BGMusic);
+        //Need if statement so this doesn't fire during main menu
+        //But is needed if testing, starting from level 1
+        if (currentScene.buildIndex != 0)
+        {
+            //need this line before next
+            player = GameObject.FindGameObjectWithTag("Player");
+            playerScript = player.GetComponent<PlayerController>();
+            if (SoundManager.Instance != null ) 
+            SoundManager.Instance.PlayMusic(BGMusic);
+            playerSpawnPos = GameObject.FindWithTag("Player Spawn Pos");
+            firstUnpause = false;
+          
+
+            if (currentScene.buildIndex == 1)
+            {
+                Level1 = true;
+            }
+
+        }
+        
+
 
     }
 
-    // Update is called once per frame
     void Update()
     {
-
-        if (Input.GetButtonDown("Cancel")) //cancel is escape key by default
+        currentScene = SceneManager.GetActiveScene();
+        
+    
+        if (currentScene.buildIndex != 0) 
         {
-            if (menuActive == null)
+            if (Input.GetButtonDown("Cancel")) //cancel is escape key by default
             {
-                statePause();
-                menuActive = menuPause;
-                menuActive.SetActive(true);
+                if (menuActive == null)
+                {
+                    statePause();
+                    menuActive = menuPause;
+                    menuActive.SetActive(true);
 
-                //if pause menu has options, then pause menue is an array (pause, settings, audio, etc)
-                //escape goes back through the array backwards to close all submenus first
+                    //if pause menu has options, then pause menue is an array (pause, settings, audio, etc)
+                    //escape goes back through the array backwards to close all submenus first
+                }
+                else if (menuActive == menuPause)
+                {
+                    stateUnpause();
+                }
             }
-            else if (menuActive == menuPause)
+
+            if (Input.GetButtonDown("HotBar"))
             {
-                stateUnpause();
+                if (hotBar.activeSelf == true)
+                {
+                    hotBar.SetActive(false);
+                }
+                else if (hotBar.activeSelf == false)
+                {
+                    hotBar.SetActive(true);
+                }
             }
+
         }
 
-        if (Input.GetButtonDown("HotBar"))
-        {
-            if (hotBar.activeSelf == true)
-            {
-                hotBar.SetActive(false);
-            }
-            else if (hotBar.activeSelf == false)
-            {
-                hotBar.SetActive(true);
-            }
-        }
-
-
-
-
+   
 
     }
 
@@ -101,21 +150,31 @@ public class gameManager : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         SoundManager.Instance.StopMusic();
-
-
-
     }
 
     public void stateUnpause()
     {
+        //normal pause
+        if (firstUnpause == false)
+        {
+            isPaused = !isPaused;
 
-        isPaused = !isPaused;
-        Time.timeScale = timeScaleOrig;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
-        menuActive.SetActive(false);
-        menuActive = null;
-        SoundManager.Instance.PlayMusic(BGMusic);
+            Time.timeScale = timeScaleOrig;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            menuActive.SetActive(false);
+            menuActive = null;
+            SoundManager.Instance.PlayMusic(BGMusic);
+        }
+        //pause out of main menu
+        else
+        { 
+            firstUnpause = false;
+        }
+          
+            
+
+
     }
 
     public void updateGameGoal(int amount)
@@ -135,7 +194,7 @@ public class gameManager : MonoBehaviour
 
             if (Level1 == true)
             { 
-                SoundManager.Instance.PlayEffect(toSchool);
+                SoundManager.Instance.PlayEffect(toSchool, 1);
             } 
 
 
@@ -179,6 +238,35 @@ public class gameManager : MonoBehaviour
         //can't get to work
         //SoundManager.Instance.ChangeVolumeMusic(0.3f); 
 
+    }
+
+    public void flashItemUI()
+    {
+        StartCoroutine(PowerupFeedback()); 
+    }
+    public IEnumerator PowerupFeedback()
+   {
+        if (flashBombUI)
+        {
+            flashBombUI = false;
+            bombPopup.SetActive(true);
+            yield return new WaitForSeconds(3.0f);
+            bombPopup.SetActive(false);
+        }
+        if (flashGrenadeUI)
+        {
+            flashGrenadeUI = false;
+            grenadePopup.SetActive(true);
+            yield return new WaitForSeconds(3.0f);
+            grenadePopup.SetActive(false);
+        }
+        if (flashStunnerUI)
+        {
+            flashStunnerUI = false;
+            stunnerPopup.SetActive(true);
+            yield return new WaitForSeconds(3.0f);
+            stunnerPopup.SetActive(false);
+        }
     }
 
 }

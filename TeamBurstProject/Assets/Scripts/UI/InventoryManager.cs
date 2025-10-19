@@ -9,7 +9,8 @@ public class InventoryManager : MonoBehaviour
     public List<ItemData> hotbarItems = new List<ItemData>();
     public int hotbarSize = 3;
 
-    public GameObject[] hotbarSlots; // = new GameObject[3]; // Assign these in the Inspector of InventoryManager 
+    //Assign these in the Inspector of InventoryManager 
+    public GameObject[] hotbarSlots; // = new GameObject[3]; 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -61,11 +62,11 @@ public class InventoryManager : MonoBehaviour
             var slot = hotbarSlots[i].GetComponent<HotbarSlot>();
             if (hotbarItems[i] != null)
             {
-                hotbarSlots[i].GetComponent<HotbarSlot>().UpdateSlot(hotbarItems[i]);
+                slot.UpdateSlot(hotbarItems[i]);
             }
             else
             {
-                //hotbarSlots[i].GetComponent<HotbarSlot>().ClearSlot();
+                //slot.ClearSlot();
             }
         }
     }

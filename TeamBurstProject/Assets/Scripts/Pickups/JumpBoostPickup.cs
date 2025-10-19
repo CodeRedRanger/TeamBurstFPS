@@ -18,7 +18,7 @@ public class JumpBoostPickup : MonoBehaviour, IPickup
         if (!hasBeenPickedUp)
         {
             hasBeenPickedUp = true;
-            SoundManager.Instance.PlayEffect(pickupSound);
+            SoundManager.Instance.PlayEffect(pickupSound, 1);
 
             // Hide visuals and collider
             GetComponent<Renderer>().enabled = false;
@@ -33,6 +33,7 @@ public class JumpBoostPickup : MonoBehaviour, IPickup
     IEnumerator AddJump()
     {
         gameManager.instance.playerScript.AddJumpSpeed(value);
+        StartCoroutine(jumpboostFeedback());
         yield return new WaitForSeconds(length);
         gameManager.instance.playerScript.AddJumpSpeed(-value);
 
@@ -47,6 +48,13 @@ public class JumpBoostPickup : MonoBehaviour, IPickup
             GetComponent<Collider>().enabled = true;
             hasBeenPickedUp = false; 
         }
+    }
+
+    IEnumerator jumpboostFeedback()
+    {
+        gameManager.instance.jumpboostPopup.SetActive(true);
+        yield return new WaitForSeconds(length);
+        gameManager.instance.jumpboostPopup.SetActive(false);
     }
 }
 
