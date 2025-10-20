@@ -52,22 +52,22 @@ public class gameManager : MonoBehaviour
     public GameObject grenadePopup;
     public GameObject stunnerPopup;
 
-    public bool flashBombUI = false;
-    public bool flashGrenadeUI = false;
-    public bool flashStunnerUI = false;
+    [HideInInspector] public bool flashBombUI = false;
+    [HideInInspector] public bool flashGrenadeUI = false;
+    [HideInInspector] public bool flashStunnerUI = false;
 
-    public bool enableBomb = false;
-    public bool enableGrenade = false;
-    public bool enableStunner = false;
+    [HideInInspector] public bool enableBomb = false;
+    [HideInInspector] public bool enableGrenade = false;
+    [HideInInspector] public bool enableStunner = false;
 
-    public GameObject runPopup; 
+    public GameObject runPopup;
 
 
     //from main menu, you don't need the actions of unpause the first time, even though it is
     //called as part of load scene. 
-    private bool firstUnpause = true;
+    [HideInInspector] public bool firstUnpause = true;
 
-    public Scene currentScene;
+    [HideInInspector] public Scene currentScene;
 
     
    
@@ -83,6 +83,12 @@ public class gameManager : MonoBehaviour
 
         //Need if statement so this doesn't fire during main menu
         //But is needed if testing, starting from level 1
+
+        if (currentScene.buildIndex == 0)
+        {
+            statePause(); 
+        }
+
         if (currentScene.buildIndex != 0)
         {
             //need this line before next
@@ -162,27 +168,37 @@ public class gameManager : MonoBehaviour
         Time.timeScale = 0;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        SoundManager.Instance.StopMusic();
+
+        //if (currentScene.buildIndex != 0)
+        //{
+            SoundManager.Instance.StopMusic();
+        //}
     }
 
     public void stateUnpause()
     {
         //normal pause
-        if (firstUnpause == false)
+        //if (firstUnpause == false)
         {
             isPaused = !isPaused;
 
             Time.timeScale = timeScaleOrig;
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
-            menuActive.SetActive(false);
-            menuActive = null;
-            SoundManager.Instance.PlayMusic(BGMusic);
+
+            if (firstUnpause == false)
+            {
+                menuActive.SetActive(false);
+                menuActive = null;
+                SoundManager.Instance.PlayMusic(BGMusic);
+            }
+            
+            firstUnpause = false;
         }
         //pause out of main menu
-        else
+       //else
         { 
-            firstUnpause = false;
+       //     firstUnpause = false;
         }
           
             

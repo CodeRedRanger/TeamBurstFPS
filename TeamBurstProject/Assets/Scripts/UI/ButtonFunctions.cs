@@ -13,6 +13,7 @@ public class ButtonFunctions : MonoBehaviour
     {
         //reloads the current scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        gameManager.instance.firstUnpause = true; 
         gameManager.instance.stateUnpause(); //in case paused when restarting level
     }
 
@@ -34,6 +35,7 @@ public class ButtonFunctions : MonoBehaviour
     public void loadLevel(int lvl)
     {
         SceneManager.LoadScene(lvl);
+        gameManager.instance.firstUnpause = true;
         gameManager.instance.stateUnpause(); //in case paused when changing level
        
     }
