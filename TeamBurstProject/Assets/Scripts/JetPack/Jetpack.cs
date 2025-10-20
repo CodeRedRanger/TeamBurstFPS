@@ -70,7 +70,7 @@ public class Jetpack : MonoBehaviour
     private void Update()
     {
         // check if the Jump button is held
-        bool wantsThrust = Input.GetButton("Jump") && !controller.isGrounded;
+        bool wantsThrust = Input.GetButton("Jump") ;
 
         // only thrust if there is fuel
         isThrusting = wantsThrust && fuel > 0;
@@ -128,7 +128,7 @@ public class Jetpack : MonoBehaviour
         }*/
 
         // move the player vertically
-        
+
 
     }
 

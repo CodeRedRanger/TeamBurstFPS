@@ -680,6 +680,32 @@ MonoBehaviour:
   delay: 1
   bossFight: 0
   forBoss: {fileID: 0}
+--- !u!1 &147405012 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4104817386659849295, guid: 511026fba2ede33448c0b22e5379ebfa, type: 3}
+  m_PrefabInstance: {fileID: 7942141664779378967}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &147405013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147405012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 452a692d480e364409fcc6e30d66be0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Jetpack
+  thrustSpeed: 40
+  maxUpwardSpeed: 60
+  maxFuel: 100
+  burnRate: 10
+  regenRate: 5
+  jetpackFX: {fileID: 0}
+  jetpackAudio: {fileID: 0}
+  controller: {fileID: 0}
+  player: {fileID: 0}
 --- !u!4 &151715337 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7185578583322714233, guid: ab804748c09267343a52f7ce487a4138, type: 3}
@@ -12357,7 +12383,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4104817386659849295, guid: 511026fba2ede33448c0b22e5379ebfa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 147405013}
   m_SourcePrefab: {fileID: 100100000, guid: 511026fba2ede33448c0b22e5379ebfa, type: 3}
 --- !u!1001 &8034164603434725893
 PrefabInstance:
