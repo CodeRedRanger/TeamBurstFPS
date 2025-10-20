@@ -25,7 +25,7 @@ public class PlayerHotbar : MonoBehaviour
         {
             selectedSlotIndex = index;
             // Optionally, you can add visual feedback for the selected slot here
-            Debug.Log("Selected hotbar slot: " + inventoryManager.hotbarItems[selectedSlotIndex]?.type);
+            //Debug.Log("Selected hotbar slot: " + inventoryManager.hotbarItems[selectedSlotIndex]?.type);
         }
     }
 }

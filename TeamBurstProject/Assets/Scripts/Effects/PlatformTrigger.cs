@@ -9,7 +9,7 @@ public class PlatformTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.gameObject.transform.parent = platform;
-            Debug.Log("Triggered");
+            //Debug.Log("Triggered");
         }
     }
 

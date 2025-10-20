@@ -14,7 +14,7 @@ public class JumpBoostPickup : MonoBehaviour, IPickup
     public void Pickup()
     {
 
-        Debug.Log("Picked up boost"); 
+        //Debug.Log("Picked up boost"); 
         if (!hasBeenPickedUp)
         {
             hasBeenPickedUp = true;
@@ -39,7 +39,7 @@ public class JumpBoostPickup : MonoBehaviour, IPickup
 
        if (destroyOnPickup)
         {
-            Debug.Log("Getting Here"); 
+            //Debug.Log("Getting Here"); 
             Destroy(gameObject);
         }
         else
