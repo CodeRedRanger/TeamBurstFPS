@@ -40,7 +40,7 @@ public class gameManager : MonoBehaviour
     float timeScaleOrig;
 
     int gameGoalCount;
-    public bool Level1, Level2; 
+    [HideInInspector] public bool Level1, Level2; 
 
     public TMP_Text ammoCur, ammoMax;
     public TMP_Text hotBarSlot1, hotbarSlot2, hotbarSlot3;
@@ -50,6 +50,7 @@ public class gameManager : MonoBehaviour
     public GameObject speedboostPopup;
     public GameObject jumpboostPopup;
     public GameObject doublejumpPopup;
+    public GameObject invinciblePopup; 
     public GameObject bombPopup;
     public GameObject grenadePopup;
     public GameObject stunnerPopup;

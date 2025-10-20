@@ -61,6 +61,7 @@ private void OnTriggerEnter(Collider other)
                 break;
             case PowerupType.Invincible:
                 gameManager.instance.playerScript.SetInvincibility(true);
+                StartCoroutine(invincibleFeedback());
                 break;
         }
 
@@ -109,6 +110,13 @@ private void OnTriggerEnter(Collider other)
         gameManager.instance.speedboostPopup.SetActive(true);
         yield return new WaitForSeconds(length);
         gameManager.instance.speedboostPopup.SetActive(false);
+    }
+
+    IEnumerator invincibleFeedback()
+    {
+        gameManager.instance.invinciblePopup.SetActive(true);
+        yield return new WaitForSeconds(length);
+        gameManager.instance.invinciblePopup.SetActive(false);
     }
 
 }
