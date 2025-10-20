@@ -4,7 +4,7 @@ using UnityEngine;
 public class PowerupGen : MonoBehaviour
 {
     // Uses an enum to decide which powerup it is.
-    enum PowerupType { Speed, Damage, Jump }
+    enum PowerupType { Speed, Damage, Jump, Invincible }
 
     [SerializeField] PowerupType type;
 
@@ -59,6 +59,9 @@ private void OnTriggerEnter(Collider other)
             case PowerupType.Jump:
                 gameManager.instance.playerScript.AddJumpSpeed(boostAmount);
                 break;
+            case PowerupType.Invincible:
+                gameManager.instance.playerScript.SetInvincibility(true);
+                break;
         }
 
         // Wait for powerup to run out.
@@ -82,6 +85,9 @@ private void OnTriggerEnter(Collider other)
 
             case PowerupType.Jump:
                 gameManager.instance.playerScript.AddJumpSpeed(-boostAmount);
+                break;
+            case PowerupType.Invincible:
+                gameManager.instance.playerScript.SetInvincibility(false);
                 break;
         }
 
