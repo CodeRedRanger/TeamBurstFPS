@@ -18,10 +18,11 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject hotBar;
     [SerializeField] TMP_Text gameGoalCountText;
-    [SerializeField] AudioClip winMusic; 
+    
 
     public AudioClip BGMusic;
     public AudioClip toSchool;
+    public AudioClip winMusic;
 
     public Image playerHPBar;
     public Image playerHPBarUp;
