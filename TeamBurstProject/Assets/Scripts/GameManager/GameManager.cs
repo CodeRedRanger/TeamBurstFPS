@@ -101,6 +101,7 @@ public class gameManager : MonoBehaviour
 
             if (currentScene.buildIndex == 2)
             {
+                Level1 = false; 
                 StartCoroutine(FlashRunUI()); 
             }
 
