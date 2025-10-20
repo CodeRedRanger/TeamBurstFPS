@@ -8,7 +8,7 @@ public class ItemPickupRobb : MonoBehaviour, IPickup
 
     [SerializeField] ItemData item;
     [SerializeField] bool destroyOnPickup;//only chosen if not a health item
-    [SerializeField] bool healthItem; 
+    [SerializeField] bool healthItem;
    
     [SerializeField] AudioClip pickupSound;
 
@@ -67,7 +67,7 @@ public class ItemPickupRobb : MonoBehaviour, IPickup
                 {
                     SoundManager.Instance.PlayEffect(pickupSound, 1);
                 }
-
+               
                 Destroy(gameObject);
             }
         }

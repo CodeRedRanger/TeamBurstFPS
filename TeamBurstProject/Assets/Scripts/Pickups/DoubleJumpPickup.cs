@@ -50,7 +50,6 @@ public class DoubleJumpPickup : MonoBehaviour, IPickup
 
         if (destroyOnPickup)
         {
-            //Debug.Log("Getting Here");
             Destroy(gameObject);
         }
         else

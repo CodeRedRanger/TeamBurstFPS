@@ -18,9 +18,11 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject hotBar;
     [SerializeField] TMP_Text gameGoalCountText;
+    
 
     public AudioClip BGMusic;
     public AudioClip toSchool;
+    public AudioClip winMusic;
 
     public Image playerHPBar;
     public Image playerHPBarUp;
@@ -38,7 +40,7 @@ public class gameManager : MonoBehaviour
     float timeScaleOrig;
 
     int gameGoalCount;
-    public bool Level1;
+    [HideInInspector] public bool Level1, Level2; 
 
     public TMP_Text ammoCur, ammoMax;
     public TMP_Text hotBarSlot1, hotbarSlot2, hotbarSlot3;
@@ -48,26 +50,27 @@ public class gameManager : MonoBehaviour
     public GameObject speedboostPopup;
     public GameObject jumpboostPopup;
     public GameObject doublejumpPopup;
+    public GameObject invinciblePopup; 
     public GameObject bombPopup;
     public GameObject grenadePopup;
     public GameObject stunnerPopup;
 
-    public bool flashBombUI = false;
-    public bool flashGrenadeUI = false;
-    public bool flashStunnerUI = false;
+    [HideInInspector] public bool flashBombUI = false;
+    [HideInInspector] public bool flashGrenadeUI = false;
+    [HideInInspector] public bool flashStunnerUI = false;
 
-    public bool enableBomb = false;
-    public bool enableGrenade = false;
-    public bool enableStunner = false;
+    [HideInInspector] public bool enableBomb = false;
+    [HideInInspector] public bool enableGrenade = false;
+    [HideInInspector] public bool enableStunner = false;
 
-    public GameObject runPopup; 
+    public GameObject runPopup;
 
 
     //from main menu, you don't need the actions of unpause the first time, even though it is
     //called as part of load scene. 
-    private bool firstUnpause = true;
+    [HideInInspector] public bool firstUnpause = true;
 
-    public Scene currentScene;
+    [HideInInspector] public Scene currentScene;
 
     
    
@@ -83,7 +86,13 @@ public class gameManager : MonoBehaviour
 
         //Need if statement so this doesn't fire during main menu
         //But is needed if testing, starting from level 1
-        if (currentScene.buildIndex != 0)
+
+        if (currentScene.buildIndex == 0 || currentScene.buildIndex == 3)
+        {
+            statePause(); 
+        }
+
+        if (currentScene.buildIndex != 0 && currentScene.buildIndex != 3)
         {
             //need this line before next
             player = GameObject.FindGameObjectWithTag("Player");
@@ -97,10 +106,13 @@ public class gameManager : MonoBehaviour
             if (currentScene.buildIndex == 1)
             {
                 Level1 = true;
+                Level2 = false; 
             }
 
             if (currentScene.buildIndex == 2)
             {
+                Level1 = false;
+                Level2 = true; 
                 StartCoroutine(FlashRunUI()); 
             }
 
@@ -160,30 +172,29 @@ public class gameManager : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         SoundManager.Instance.StopMusic();
+        
     }
 
     public void stateUnpause()
     {
         //normal pause
+       
+        isPaused = !isPaused;
+
+        Time.timeScale = timeScaleOrig;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
+        //normal pause; first unpause true if new scene being loaded
         if (firstUnpause == false)
-        {
-            isPaused = !isPaused;
-
-            Time.timeScale = timeScaleOrig;
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-            menuActive.SetActive(false);
-            menuActive = null;
-            SoundManager.Instance.PlayMusic(BGMusic);
-        }
-        //pause out of main menu
-        else
-        { 
-            firstUnpause = false;
-        }
-          
+         {
+             menuActive.SetActive(false);
+             menuActive = null;
+             SoundManager.Instance.PlayMusic(BGMusic);
+         }
             
-
+         firstUnpause = false;
+     
 
     }
 
@@ -197,10 +208,15 @@ public class gameManager : MonoBehaviour
         if (gameGoalCount <= 0)
         {
             //win condition
-            //statePause();
-            //menuActive = menuWin;
-            //menuActive.SetActive(true);
-            //SoundManager.Instance.PlayMusic(BGMusic, 0.2f);
+            if (Level2 == true)
+            {
+                //statePause();
+                //menuActive = menuWin;
+                //menuActive.SetActive(true);
+                //SoundManager.Instance.PlayMusic(BGMusic, 0.2f);
+                SoundManager.Instance.PlayEffect(winMusic, 1);
+                youWinEnd(); 
+            }
 
             if (Level1 == true)
             { 

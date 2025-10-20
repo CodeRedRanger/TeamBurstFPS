@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     float shootTimer;
 
     bool isSprinting;
+    bool isInvincible;
 
     //Audio
     //can make these arrays
@@ -227,20 +228,23 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
 
     public void TakeDamage(int damage)
     {
-        HP -= damage;
-        loseHealth = true; 
-        updatePlayerUI();
-        loseHealth = false;   
-        StartCoroutine(flashDamage());
-        SoundManager.Instance.PlayEffect(damageSound, 1);
+        if (!isInvincible)
+        {       
+            HP -= damage;
+            loseHealth = true; 
+            updatePlayerUI();
+            loseHealth = false;   
+            StartCoroutine(flashDamage());
+            SoundManager.Instance.PlayEffect(damageSound, 1);
 
-        if (HP <= 0)
-        {
-            SoundManager.Instance.PlayEffect(deathSound, 1);
-            SoundManager.Instance.StopMusic();
-            //Debug.Log("You are dead"); 
-            gameManager.instance.youLose();
+            if (HP <= 0)
+            {
+                SoundManager.Instance.PlayEffect(deathSound, 1);
+                SoundManager.Instance.StopMusic();
+                //Debug.Log("You are dead"); 
+                gameManager.instance.youLose();
 
+            }
         }
     }
 
@@ -434,5 +438,9 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
         }
     }
 
+    public void SetInvincibility(bool state)
+    {
+        isInvincible = state;
+    }
     
 }

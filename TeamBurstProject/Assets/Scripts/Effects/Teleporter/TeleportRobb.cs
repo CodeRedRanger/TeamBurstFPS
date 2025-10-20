@@ -55,15 +55,15 @@ public class TeleportPlayer : MonoBehaviour
           if (gameManager.instance.player != null && teleportPos != null)
            {
                gameManager.instance.player.transform.position = teleportPos.position;
-               Debug.Log("Transported!");
+               //Debug.Log("Transported!");
            }
            else if (gameManager.instance.player == null)
            {
-               Debug.LogWarning("Player reference is null!");
+               //Debug.LogWarning("Player reference is null!");
            }
            else if (teleportPos == null)
            {
-               Debug.LogWarning("Teleport position reference is null!");
+               //Debug.LogWarning("Teleport position reference is null!");
            }
            cc.enabled = true;
         }

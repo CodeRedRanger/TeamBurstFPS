@@ -136,7 +136,7 @@ public class EnemyAIRobot : MonoBehaviour, IDamage, IStunnable
 
     void shoot()
     {
-        Debug.Log("Shooting"); 
+        //Debug.Log("Shooting"); 
         shootTimer = 0;
         Instantiate(bullet, shootPos.position, transform.rotation);
     }
