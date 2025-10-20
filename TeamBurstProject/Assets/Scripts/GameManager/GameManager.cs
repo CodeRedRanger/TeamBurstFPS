@@ -86,12 +86,12 @@ public class gameManager : MonoBehaviour
         //Need if statement so this doesn't fire during main menu
         //But is needed if testing, starting from level 1
 
-        if (currentScene.buildIndex == 0)
+        if (currentScene.buildIndex == 0 || currentScene.buildIndex == 3)
         {
             statePause(); 
         }
 
-        if (currentScene.buildIndex != 0)
+        if (currentScene.buildIndex != 0 && currentScene.buildIndex != 3)
         {
             //need this line before next
             player = GameObject.FindGameObjectWithTag("Player");
