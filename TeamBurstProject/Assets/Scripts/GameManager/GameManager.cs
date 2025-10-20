@@ -18,6 +18,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject hotBar;
     [SerializeField] TMP_Text gameGoalCountText;
+    [SerializeField] AudioClip winMusic; 
 
     public AudioClip BGMusic;
     public AudioClip toSchool;
@@ -168,41 +169,30 @@ public class gameManager : MonoBehaviour
         Time.timeScale = 0;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-
-        //if (currentScene.buildIndex != 0)
-        //{
-            SoundManager.Instance.StopMusic();
-        //}
+        SoundManager.Instance.StopMusic();
+        
     }
 
     public void stateUnpause()
     {
         //normal pause
-        //if (firstUnpause == false)
-        {
-            isPaused = !isPaused;
+       
+        isPaused = !isPaused;
 
-            Time.timeScale = timeScaleOrig;
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
+        Time.timeScale = timeScaleOrig;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
 
-            if (firstUnpause == false)
-            {
-                menuActive.SetActive(false);
-                menuActive = null;
-                SoundManager.Instance.PlayMusic(BGMusic);
-            }
+        //normal pause; first unpause true if new scene being loaded
+        if (firstUnpause == false)
+         {
+             menuActive.SetActive(false);
+             menuActive = null;
+             SoundManager.Instance.PlayMusic(BGMusic);
+         }
             
-            firstUnpause = false;
-        }
-        //pause out of main menu
-       //else
-        { 
-       //     firstUnpause = false;
-        }
-          
-            
-
+         firstUnpause = false;
+     
 
     }
 
@@ -222,6 +212,7 @@ public class gameManager : MonoBehaviour
                 //menuActive = menuWin;
                 //menuActive.SetActive(true);
                 //SoundManager.Instance.PlayMusic(BGMusic, 0.2f);
+                SoundManager.Instance.PlayEffect(winMusic, 1);
                 youWinEnd(); 
             }
 
