@@ -6,56 +6,99 @@ public class GravityBoots : MonoBehaviour
 {
     [SerializeField] int rotSpeed;
     [SerializeField] KeyCode useKey;
+    [SerializeField] bool rotatePlayer;
     
     private bool flipping;
-    private bool flipped;
+    private bool gravityFlipped;
     private float rotated;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(useKey) && !flipping)
-            flipping = true;
+        {
+            if (rotatePlayer)
+            {
+                flipping = true;
+            }
+            else
+            {
+                FlipGravity();
+            }
+        }
 
-        if (flipping)
-            FlipGravity();
 
-        //if(isGrounded())
-        //{
-        //    gameObject.GetComponent<PlayerController>().jumpCount = 0;
-        //}
+        if (rotatePlayer && flipping)
+            FlipPlayerAndGrav();
+
+
+        if (gravityFlipped && isGrounded())
+        {
+            gameManager.instance.player.GetComponent<PlayerController>().resetJump();
+        }
     }
 
-    void FlipGravity()
+    void FlipPlayerAndGrav()
     {
-        transform.localRotation *= Quaternion.Euler(0, 0, rotSpeed * Time.deltaTime);
-        //cam.transform.eulerAngles = new Vector3(0, cam.transform.eulerAngles.y, cam.transform.eulerAngles.z);
+        GameObject player = gameManager.instance.player;
+        PlayerController playerScript = gameManager.instance.playerScript;
+        player.transform.localRotation *= Quaternion.Euler(0, 0, rotSpeed * Time.deltaTime);
         rotated += rotSpeed * Time.deltaTime;
 
         if (rotated >= 180f)
         {
-            flipped = !flipped;
-            if (flipped)
+            if (!gravityFlipped)
             {
-                transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 180);
+                player.transform.eulerAngles = new Vector3(0, player.transform.eulerAngles.y, 180);;
             }
             else
             {
-                transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
+                player.transform.eulerAngles = new Vector3(0, player.transform.eulerAngles.y, 0);
             }
-            rotated = 0f;
+
+            FlipGravity();
+
             flipping = false;
+            
+            rotated = 0f;
         }
     }
 
-    //bool isGrounded()
+    void FlipGravity()
+    {
+        PlayerController playerScript = gameManager.instance.playerScript;
+
+        playerScript.setGravity(-playerScript.getGravity());
+        playerScript.setJumpSpeed(-playerScript.getJumpSpeed());
+
+        gravityFlipped = !gravityFlipped;
+    }
+
+    bool isGrounded()
+    {
+        GameObject player = gameManager.instance.player;
+        Vector3 spherePos = player.transform.position;
+        spherePos.y += (player.GetComponent<CharacterController>().height / 2) - 0.42f;
+
+        float radius = player.GetComponent<CharacterController>().radius;
+
+        int mask = LayerMask.GetMask("Default");
+
+        return Physics.CheckSphere(spherePos, radius, mask);
+    }
+
+    //void OnDrawGizmosSelected()
     //{
-    //    RaycastHit hit;
-    //    return Physics.SphereCast(transform.position, 0.5f, transform.up, out hit, (transform.localScale.y/2) + 0.2f);
+    //    Vector3 spherePos = gameManager.instance.player.transform.position;
+    //    spherePos.y += (gameManager.instance.player.GetComponent<CharacterController>().height / 2) - 0.42f;
+
+    //    Gizmos.color = Color.cyan;
+    //    Gizmos.DrawWireSphere(spherePos, gameManager.instance.player.GetComponent<CharacterController>().radius);
     //}
 }
