@@ -3,7 +3,7 @@ using UnityEngine;
 public class ActivateDoor : MonoBehaviour
 {
     private int currentgoalCount;
-    private int requiredGoalCount = 0;
+    private int requiredGoalCount = 1;
     public GameObject doorToActivate; 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

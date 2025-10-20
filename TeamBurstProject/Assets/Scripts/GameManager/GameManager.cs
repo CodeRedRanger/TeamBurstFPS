@@ -38,7 +38,7 @@ public class gameManager : MonoBehaviour
     float timeScaleOrig;
 
     int gameGoalCount;
-    public bool Level1;
+    public bool Level1, Level2; 
 
     public TMP_Text ammoCur, ammoMax;
     public TMP_Text hotBarSlot1, hotbarSlot2, hotbarSlot3;
@@ -97,11 +97,13 @@ public class gameManager : MonoBehaviour
             if (currentScene.buildIndex == 1)
             {
                 Level1 = true;
+                Level2 = false; 
             }
 
             if (currentScene.buildIndex == 2)
             {
-                Level1 = false; 
+                Level1 = false;
+                Level2 = true; 
                 StartCoroutine(FlashRunUI()); 
             }
 
@@ -198,10 +200,14 @@ public class gameManager : MonoBehaviour
         if (gameGoalCount <= 0)
         {
             //win condition
-            //statePause();
-            //menuActive = menuWin;
-            //menuActive.SetActive(true);
-            //SoundManager.Instance.PlayMusic(BGMusic, 0.2f);
+            if (Level2 == true)
+            {
+                //statePause();
+                //menuActive = menuWin;
+                //menuActive.SetActive(true);
+                //SoundManager.Instance.PlayMusic(BGMusic, 0.2f);
+                youWinEnd(); 
+            }
 
             if (Level1 == true)
             { 
