@@ -12097,22 +12097,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2114917883}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!143 &409045720 stripped
-CharacterController:
-  m_CorrespondingSourceObject: {fileID: 7639070497355642571, guid: 511026fba2ede33448c0b22e5379ebfa, type: 3}
-  m_PrefabInstance: {fileID: 625612675}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &409045724 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6758465522708456511, guid: 511026fba2ede33448c0b22e5379ebfa, type: 3}
-  m_PrefabInstance: {fileID: 625612675}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8210c8ca0f82e249988a2f10204e884, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
 --- !u!1 &409491974
 GameObject:
   m_ObjectHideFlags: 0
@@ -72380,8 +72364,8 @@ MonoBehaviour:
   regenRate: 5
   jetpackFX: {fileID: 0}
   jetpackAudio: {fileID: 7341210982431023380}
-  controller: {fileID: 409045720}
-  player: {fileID: 409045724}
+  controller: {fileID: 0}
+  player: {fileID: 0}
 --- !u!82 &7341210982431023380
 AudioSource:
   m_ObjectHideFlags: 0

@@ -21,7 +21,7 @@ public class Jetpack : MonoBehaviour
     [Tooltip("Optional particle effect (like flames).")]
     [SerializeField] private ParticleSystem jetpackFX;
     [Tooltip("Optional looping sound effect.")]
-    [SerializeField] private AudioSource jetpackAudio;
+    [SerializeField] public AudioSource jetpackAudio;
 
     [SerializeField] CharacterController controller;
     [SerializeField] PlayerController player;
