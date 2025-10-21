@@ -40,7 +40,7 @@ public class gameManager : MonoBehaviour
     float timeScaleOrig;
 
     int gameGoalCount;
-    [HideInInspector] public bool Level1, Level2; 
+    [HideInInspector] public bool Level1, Level2, Level3; 
 
     public TMP_Text ammoCur, ammoMax;
     public TMP_Text hotBarSlot1, hotbarSlot2, hotbarSlot3;
@@ -114,6 +114,14 @@ public class gameManager : MonoBehaviour
                 Level1 = false;
                 Level2 = true; 
                 StartCoroutine(FlashRunUI()); 
+            }
+
+            if (currentScene.buildIndex == 4)
+            {
+                Level1 = false;
+                Level2 = false;
+                Level3 = true;
+
             }
 
         }

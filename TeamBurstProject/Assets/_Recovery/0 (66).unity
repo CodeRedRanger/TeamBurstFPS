@@ -17485,6 +17485,7 @@ Transform:
   m_LocalScale: {x: 50, y: 3, z: 66}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1497137984}
   - {fileID: 674712871}
   - {fileID: 2052768526}
   - {fileID: 696115162}
@@ -46999,7 +47000,7 @@ GameObject:
   - component: {fileID: 1497137982}
   - component: {fileID: 1497137981}
   m_Layer: 0
-  m_Name: LaunchPad base
+  m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47033,7 +47034,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1497137980}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -47091,11 +47092,11 @@ Transform:
   m_GameObject: {fileID: 1497137980}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14.805949, y: 27.002869, z: -211.69495}
-  m_LocalScale: {x: 50, y: 3, z: 66}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1953363328}
+  m_Father: {fileID: 586095029}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1498368546
 GameObject:
@@ -62339,7 +62340,6 @@ Transform:
   - {fileID: 1009062284}
   - {fileID: 1634733981068210304}
   - {fileID: 808009455}
-  - {fileID: 1497137984}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1959371045
