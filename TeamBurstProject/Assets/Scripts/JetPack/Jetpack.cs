@@ -23,8 +23,11 @@ public class Jetpack : MonoBehaviour
     [Tooltip("Optional looping sound effect.")]
     [SerializeField] public AudioSource jetpackAudio;
 
-    [SerializeField] CharacterController controller;
-    [SerializeField] PlayerController player;
+    //[SerializeField] CharacterController controller;
+    //[SerializeField] PlayerController player;
+
+    public GameObject player; //reference to player object
+    public PlayerController playerScript; //reference to player script
 
     // ===== INTERNAL STATE =====
     private int fuel;                 // current amount of fuel
@@ -43,8 +46,10 @@ public class Jetpack : MonoBehaviour
 
     void Start()
     {
-        controller = GetComponent<CharacterController>();
-        player = GetComponent<PlayerController>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerScript = player.GetComponent<PlayerController>();
+        //controller = GetComponent<CharacterController>();
+        //player = GetComponent<PlayerController>();
     }  
 
     public int GetFuelPercent()
@@ -114,7 +119,8 @@ public class Jetpack : MonoBehaviour
         {
             // increase vertical speed by thrustSpeed each second (scaled by deltaTime)
             verticalSpeed = Mathf.Clamp(verticalSpeed, verticalSpeed + (int)(thrustSpeed *Time.deltaTime), maxUpwardSpeed);
-            player.playerVel.y += verticalSpeed;
+            //player.playerVel.y += verticalSpeed;
+            playerScript.playerVel.y += verticalSpeed;
 
         }
         //This functionality is not needed as the character already has gravity applied
