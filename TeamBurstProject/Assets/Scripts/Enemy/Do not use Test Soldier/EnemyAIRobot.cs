@@ -35,7 +35,8 @@ public class EnemyAIRobot : MonoBehaviour, IDamage, IStunnable
 
     Vector3 playerDir; 
 
-    private Animator animator;
+    [SerializeField] Animator animator;
+    [SerializeField] int animTransSpeed; 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -45,6 +46,8 @@ public class EnemyAIRobot : MonoBehaviour, IDamage, IStunnable
         //To keep track of total to be spawned before winning
         //comment out above and in spawner script start() put
         //gameManager.instance.updateGameGoal(numToSpawn)
+
+        //ANIM, is this needed with set AnimLocomotion?
         animator = GetComponent<Animator>();
 
     }
@@ -52,13 +55,12 @@ public class EnemyAIRobot : MonoBehaviour, IDamage, IStunnable
     // Update is called once per frame
     void Update()
     {
-
-        //animator.SetFloat("Speed", agent.velocity.magnitude);
+        setAnimLocomotion(); 
 
         shootTimer += Time.deltaTime;
       
 
-        if (playerInRange && canSeePlayer())
+        if (playerInRange && !canSeePlayer())
         {
             /*agent.SetDestination(gameManager.instance.player.transform.position);
 
@@ -75,6 +77,12 @@ public class EnemyAIRobot : MonoBehaviour, IDamage, IStunnable
         }
     }
 
+    void setAnimLocomotion()
+    {
+        float agentSpeedCur = agent.velocity.normalized.magnitude;
+        float animSpeedCur = animator.GetFloat("Speed");
+        animator.SetFloat("Speed", Mathf.Lerp(animSpeedCur, agentSpeedCur, Time.deltaTime * animTransSpeed)); 
+    }
     void faceTarget()
     {
         Quaternion rot = Quaternion.LookRotation(new Vector3(playerDir.x, transform.position.y, playerDir.z));
@@ -83,9 +91,11 @@ public class EnemyAIRobot : MonoBehaviour, IDamage, IStunnable
 
     bool canSeePlayer()
     {
+        
         playerDir = gameManager.instance.player.transform.position - headPos.position;
         angleToPlayer = Vector3.Angle(playerDir, transform.forward);
-        Debug.DrawRay(headPos.position, playerDir, Color.red);
+        //Debug.Log("Drawing a ray"); 
+        Debug.DrawRay(headPos.position, playerDir, Color.red, 2f);
 
         RaycastHit hit;
 
@@ -138,6 +148,16 @@ public class EnemyAIRobot : MonoBehaviour, IDamage, IStunnable
     {
         //Debug.Log("Shooting"); 
         shootTimer = 0;
+
+
+        //Instantiate(bullet, shootPos.position, transform.rotation);
+        animator.SetTrigger("Shoot"); 
+
+        
+    }
+
+    public void createBullet()
+    {
         Instantiate(bullet, shootPos.position, transform.rotation);
     }
 
@@ -164,7 +184,7 @@ public class EnemyAIRobot : MonoBehaviour, IDamage, IStunnable
     IEnumerator flashRed()
     {
         model.material.color = Color.red;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.3f); //0.1f
         model.material.color = colorOrig;
     }
 
