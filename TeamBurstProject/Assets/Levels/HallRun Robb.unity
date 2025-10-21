@@ -18041,19 +18041,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 628434512}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1773322340140157144, guid: 511026fba2ede33448c0b22e5379ebfa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.2359495
+      value: 26.73
       objectReference: {fileID: 0}
     - target: {fileID: 1773322340140157144, guid: 511026fba2ede33448c0b22e5379ebfa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.8620701
+      value: 2.19
       objectReference: {fileID: 0}
     - target: {fileID: 1773322340140157144, guid: 511026fba2ede33448c0b22e5379ebfa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 34.18767
+      value: -19.98
       objectReference: {fileID: 0}
     - target: {fileID: 1773322340140157144, guid: 511026fba2ede33448c0b22e5379ebfa, type: 3}
       propertyPath: m_LocalRotation.w
@@ -18085,18 +18085,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4104817386659849295, guid: 511026fba2ede33448c0b22e5379ebfa, type: 3}
       propertyPath: m_Name
-      value: PlayerGunPickups
+      value: PlayerNoGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 7087722342501956946, guid: 511026fba2ede33448c0b22e5379ebfa, type: 3}
+      propertyPath: mouseSens
+      value: 250
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 511026fba2ede33448c0b22e5379ebfa, type: 3}
---- !u!4 &625612676 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1773322340140157144, guid: 511026fba2ede33448c0b22e5379ebfa, type: 3}
-  m_PrefabInstance: {fileID: 625612675}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &628434511
 GameObject:
   m_ObjectHideFlags: 0
@@ -18126,7 +18125,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 625612676}
   - {fileID: 1039597133}
   - {fileID: 2047746476}
   - {fileID: 467648183}
@@ -66860,6 +66858,7 @@ SceneRoots:
   - {fileID: 1924632781}
   - {fileID: 129264055}
   - {fileID: 1556290175}
+  - {fileID: 625612675}
   - {fileID: 628434512}
   - {fileID: 1511153851}
   - {fileID: 352253238}
