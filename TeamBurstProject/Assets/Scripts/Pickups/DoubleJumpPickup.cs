@@ -22,8 +22,14 @@ public class DoubleJumpPickup : MonoBehaviour, IPickup
             SoundManager.Instance.PlayEffect(pickupSound, 1);
 
             // Hide visuals and collider
-            GetComponent<Renderer>().enabled = false;
-            GetComponent<Collider>().enabled = false;
+           MeshRenderer[] childRenderers = GetComponentsInChildren<MeshRenderer>();
+            foreach (MeshRenderer renderer in childRenderers)
+            {
+                renderer.enabled = false;   
+            }
+
+           //GetComponent<Renderer>().enabled = false;
+           //GetComponent<Collider>().enabled = false;
 
 
             StartCoroutine(DoBoost());
@@ -54,8 +60,15 @@ public class DoubleJumpPickup : MonoBehaviour, IPickup
         }
         else
         {
-            GetComponent<Renderer>().enabled = true;
-            GetComponent<Collider>().enabled = true;
+            MeshRenderer[] childRenderers = GetComponentsInChildren<MeshRenderer>();
+            foreach (MeshRenderer renderer in childRenderers)
+            {
+                renderer.enabled = true;
+            }
+
+
+            //GetComponent<Renderer>().enabled = true;
+            // GetComponent<Collider>().enabled = true;
             hasBeenPickedUp = false;
         }
     }
