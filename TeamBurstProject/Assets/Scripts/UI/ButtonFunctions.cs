@@ -22,7 +22,10 @@ public class ButtonFunctions : MonoBehaviour
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
+           //For Windows build
            Application.Quit(); //note: won't work in editor, only in build  
+           //for web build
+           //SceneManager.LoadScene(0);
 #endif
     }
 
