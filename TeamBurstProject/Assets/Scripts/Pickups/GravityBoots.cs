@@ -40,7 +40,7 @@ public class GravityBoots : MonoBehaviour
 
         if (gravityFlipped && isGrounded())
         {
-            gameManager.instance.player.GetComponent<PlayerController>().resetJump();
+            //gameManager.instance.player.GetComponent<PlayerController>().resetJump();
         }
     }
 
@@ -91,6 +91,30 @@ public class GravityBoots : MonoBehaviour
         int mask = LayerMask.GetMask("Default");
 
         return Physics.CheckSphere(spherePos, radius, mask);
+    }
+
+    public void ResetGravity()
+    {
+        if (gravityFlipped)
+        {
+            FlipGravity();
+            if (rotatePlayer)
+            {
+                GameObject player = gameManager.instance.player;
+                player.transform.eulerAngles = new Vector3(0, player.transform.eulerAngles.y, 0);
+            }
+            //flipping = false;
+            //gravityFlipped = false;
+            //rotated = 0f;
+
+        }
+        else if (flipping)
+        {
+            flipping = false;
+            rotated = 0f;
+            GameObject player = gameManager.instance.player;
+            player.transform.eulerAngles = new Vector3(0, player.transform.eulerAngles.y, 0);
+        }
     }
 
     //void OnDrawGizmosSelected()
