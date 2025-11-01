@@ -40,7 +40,7 @@ public class GravityBoots : MonoBehaviour
 
         if (gravityFlipped && isGrounded())
         {
-            //gameManager.instance.player.GetComponent<PlayerController>().resetJump();
+            gameManager.instance.player.GetComponent<PlayerController>().resetJump();
         }
     }
 
