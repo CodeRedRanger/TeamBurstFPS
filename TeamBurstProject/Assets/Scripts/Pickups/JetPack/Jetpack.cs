@@ -1,7 +1,10 @@
+
+using System.Collections;
 using UnityEngine;
 
 public class Jetpack : MonoBehaviour
 {
+    /*
     // ===== JETPACK SETTINGS =====
     [Header("Thrust Settings")]
     [Tooltip("How fast the player moves upward when using the jetpack (1–100).")]
@@ -86,6 +89,8 @@ public class Jetpack : MonoBehaviour
             // burnRate means "units per second", so multiply by deltaTime
             fuel -= (int)(burnRate * Time.deltaTime);
             if (fuel < 0) fuel = 0;
+
+
         }
         else
         {
@@ -133,9 +138,158 @@ public class Jetpack : MonoBehaviour
             if (verticalSpeed < -maxUpwardSpeed) verticalSpeed = -maxUpwardSpeed;
         }*/
 
-        // move the player vertically
+        // move the player vertically*/
 
+
+    // ===== JETPACK SETTINGS =====
+    [Header("Thrust Settings")]
+    [SerializeField] private int thrustSpeed = 50;
+    [SerializeField] private int maxUpwardSpeed = 80;
+    [SerializeField] private float maxHeight = 50f; // Maximum height the player can reach
+    [SerializeField] private int maxThrusts = 5; // Maximum number of thrust inputs allowed
+
+    [Header("Fuel Settings")]
+    [SerializeField] private int maxFuel = 100;
+    [SerializeField] private int burnRate = 10;
+    [SerializeField] private int regenRate = 5;
+
+    [Header("Optional Effects")]
+    [SerializeField] private ParticleSystem jetpackFX;
+    [SerializeField] public AudioSource jetpackAudio;
+
+    public GameObject player;
+    public PlayerController playerScript;
+
+    private int fuel;
+    private bool isThrusting = false;
+    private bool wasThrustingLastFrame = false;
+    private int verticalSpeed = 0;
+
+    private int thrustCount = 0; // Tracks the number of thrust inputs
+    private bool thrustPaused = false; // True if thrusting is paused
+    private bool jetPackActive = false; 
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+
+        if (other.CompareTag("Player"))
+        {
+            jetPackActive = true;
+
+        }
 
     }
 
+
+    private void Awake()
+    {
+        
+        fuel = maxFuel;
+        if (jetpackFX != null) jetpackFX.Stop();
+        if (jetpackAudio != null) jetpackAudio.Stop();
+    }
+
+    void Start()
+    {
+        
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerScript = player.GetComponent<PlayerController>();
+        
+    }
+
+    public int GetFuelPercent()
+    {
+        if (maxFuel <= 0) return 0;
+        return Mathf.Clamp(fuel * 100 / maxFuel, 0, 100);
+    }
+
+    public void RefillFuel(int amount)
+    {
+        fuel = Mathf.Clamp(fuel + amount, 0, maxFuel);
+    }
+
+    public void SetFuelPercent(int percent)
+    {
+        fuel = Mathf.Clamp(percent, 0, 100) * maxFuel / 100;
+    }
+
+    private void Update()
+    {
+        if (jetPackActive)
+        {
+            // Check if the Jump button is held and thrusting is not paused
+            bool wantsThrust = Input.GetButton("Jump") && !thrustPaused;
+
+            // Only thrust if there is fuel and thrusting is not paused
+            isThrusting = wantsThrust && fuel > 0;
+
+            // Drain fuel when thrusting
+            if (isThrusting)
+            {
+                fuel -= (int)(burnRate * Time.deltaTime);
+                if (fuel < 0) fuel = 0;
+
+                // Increment thrust count on the first frame of thrusting
+                if (!wasThrustingLastFrame)
+                {
+                    thrustCount++;
+                    if (thrustCount >= maxThrusts)
+                    {
+                        thrustPaused = true; // Pause thrusting after max inputs
+                        StartCoroutine(ResetThrustPause());
+                    }
+                }
+            }
+            else
+            {
+                // Refill fuel when not thrusting
+                fuel += (int)(regenRate * Time.deltaTime);
+                if (fuel > maxFuel) fuel = maxFuel;
+            }
+
+            // Start FX when thrusting begins
+            if (isThrusting && !wasThrustingLastFrame)
+            {
+                if (jetpackFX != null) jetpackFX.Play();
+                if (jetpackAudio != null && !jetpackAudio.isPlaying) jetpackAudio.Play();
+            }
+
+            // Stop FX when thrusting stops
+            if (!isThrusting && wasThrustingLastFrame)
+            {
+                if (jetpackFX != null) jetpackFX.Stop();
+                if (jetpackAudio != null && jetpackAudio.isPlaying) jetpackAudio.Stop();
+            }
+
+            // Remember thrust state for next frame
+            wasThrustingLastFrame = isThrusting;
+        }
+    }
+
+    private void LateUpdate()
+    {
+        // Apply upward speed when thrusting
+        if (isThrusting)
+        {
+            // Check if the player is below the maximum height
+            if (player.transform.position.y < maxHeight)
+            {
+                verticalSpeed = Mathf.Clamp(verticalSpeed + (int)(thrustSpeed * Time.deltaTime), 0, maxUpwardSpeed);
+                playerScript.playerVel.y += verticalSpeed;
+            }
+        }
+    }
+
+    private IEnumerator ResetThrustPause()
+    {
+        yield return new WaitForSeconds(3f); // Pause thrusting for 3 seconds
+        thrustCount = 0; // Reset thrust count
+        thrustPaused = false; // Allow thrusting again
+    }
 }
+
+
+    
+
+
