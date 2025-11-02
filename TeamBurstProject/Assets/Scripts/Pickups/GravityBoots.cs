@@ -11,6 +11,7 @@ public class GravityBoots : MonoBehaviour
     private bool flipping;
     private bool gravityFlipped;
     private float rotated;
+    private bool bootsActivated = false; 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -19,28 +20,33 @@ public class GravityBoots : MonoBehaviour
     }
 
     // Update is called once per frame
+
+
     void Update()
     {
-        if (Input.GetKeyDown(useKey) && !flipping)
+        if (bootsActivated)
         {
-            if (rotatePlayer)
+            if (Input.GetKeyDown(useKey) && !flipping)
             {
-                flipping = true;
+                if (rotatePlayer)
+                {
+                    flipping = true;
+                }
+                else
+                {
+                    FlipGravity();
+                }
             }
-            else
+
+
+            if (rotatePlayer && flipping)
+                FlipPlayerAndGrav();
+
+
+            if (gravityFlipped && isGrounded())
             {
-                FlipGravity();
+                gameManager.instance.player.GetComponent<PlayerController>().resetJump();
             }
-        }
-
-
-        if (rotatePlayer && flipping)
-            FlipPlayerAndGrav();
-
-
-        if (gravityFlipped && isGrounded())
-        {
-            gameManager.instance.player.GetComponent<PlayerController>().resetJump();
         }
     }
 
@@ -115,6 +121,16 @@ public class GravityBoots : MonoBehaviour
             GameObject player = gameManager.instance.player;
             player.transform.eulerAngles = new Vector3(0, player.transform.eulerAngles.y, 0);
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+
+        if (other.CompareTag("Player")) 
+        {
+           bootsActivated = true;
+        }
+
     }
 
     //void OnDrawGizmosSelected()
