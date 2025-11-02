@@ -100,6 +100,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     public int getGravity() { return gravity; }
     public int getJumpSpeed() { return jumpSpeed; }
 
+
     //pushback
     public void AppliedPushBack(Vector3 direction)
     {
@@ -156,6 +157,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     }
     void Jump()
     {
+
         if (Input.GetButtonDown("Jump") && jumpCount < jumpCountMax)
         {
             SoundManager.Instance.PlayEffect(audJump[Random.Range(0, audJump.Length)], audJumpVol);

@@ -1,9 +1,110 @@
-
 using System.Collections;
 using UnityEngine;
 
 public class Jetpack : MonoBehaviour
 {
+    [Header("Thrust Settings")]
+    [SerializeField] private int thrustSpeed = 50;
+    [SerializeField] private int maxUpwardSpeed = 80;
+
+    [Header("Fuel Settings")]
+    [SerializeField] private int maxFuel = 100;
+    [SerializeField] private int burnRate = 10;
+    [SerializeField] private int regenRate = 5;
+
+    [SerializeField] private float gravity = -9.81f; 
+
+    [Header("Optional Effects")]
+    [SerializeField] private ParticleSystem jetpackFX;
+
+    //added one line below
+    [HideInInspector] public AudioClip jetpackClip; 
+    //[SerializeField] public AudioSource jetpackAudio;
+
+
+    private int fuel;
+    private bool isThrusting = false;
+    private bool wasThrustingLastFrame = false;
+    private float verticalSpeed = 0f;
+
+    //Restrictions
+    //[SerializeField] private float maxHeight = 250f; // Maximum height the player can reach
+    //private Transform playerTransform;
+
+    private PlayerController playerScript;
+    private bool isInitialized = false;
+
+
+    public void Initialize(GameObject player)
+    {
+        playerScript = player.GetComponent<PlayerController>();
+        //playerTransform = player.transform;
+        fuel = maxFuel;
+
+        if (jetpackFX != null) jetpackFX.Stop();
+        //if (jetpackAudio != null) jetpackAudio.Stop();
+        isInitialized = true;
+    }
+
+    private void Update()
+    {
+        if (!isInitialized) return; 
+        bool wantsThrust = Input.GetButton("Jump");
+        isThrusting = wantsThrust && fuel > 0;
+
+        if (isThrusting)
+        {
+            fuel -= (int)(burnRate * Time.deltaTime);
+            fuel = Mathf.Max(fuel, 0);
+        }
+        else
+        {
+            fuel += (int)(regenRate * Time.deltaTime);
+            fuel = Mathf.Min(fuel, maxFuel);
+        }
+
+        if (isThrusting && fuel > 0 && !wasThrustingLastFrame)
+        {
+            if (jetpackFX != null) jetpackFX.Play();
+            //if (jetpackAudio != null && !jetpackAudio.isPlaying) jetpackAudio.Play();
+            if (jetpackClip != null) SoundManager.Instance.PlayEffect(jetpackClip, 1f);
+        }
+
+        if (!isThrusting && wasThrustingLastFrame)
+        {
+            if (jetpackFX != null) jetpackFX.Stop();
+            //if (jetpackAudio != null && jetpackAudio.isPlaying) jetpackAudio.Stop();
+            
+        }
+
+        wasThrustingLastFrame = isThrusting;
+    }
+
+    private void FixedUpdate()
+    {
+        if (isThrusting)
+        {
+            //if (playerTransform.position.y < maxHeight)
+            {
+                verticalSpeed += thrustSpeed * Time.fixedDeltaTime;
+                verticalSpeed = Mathf.Clamp(verticalSpeed, 0, maxUpwardSpeed);
+            }
+           // else
+            {
+                //verticalSpeed = Mathf.Min(verticalSpeed, 0); // Prevent further upward movement
+            }
+        }
+        else
+        {
+            verticalSpeed += gravity * Time.fixedDeltaTime;
+        }
+
+        if (playerScript != null)
+        {
+            playerScript.playerVel.y = verticalSpeed;
+        }
+    }
+
     /*
     // ===== JETPACK SETTINGS =====
     [Header("Thrust Settings")]
@@ -138,9 +239,9 @@ public class Jetpack : MonoBehaviour
             if (verticalSpeed < -maxUpwardSpeed) verticalSpeed = -maxUpwardSpeed;
         }*/
 
-        // move the player vertically*/
+    // move the player vertically*/
 
-
+    /*
     // ===== JETPACK SETTINGS =====
     [Header("Thrust Settings")]
     [SerializeField] private int thrustSpeed = 50;
@@ -161,7 +262,7 @@ public class Jetpack : MonoBehaviour
     public PlayerController playerScript;
 
     private int fuel;
-    private bool isThrusting = false;
+    [HideInInspector] public bool isThrusting = false;
     private bool wasThrustingLastFrame = false;
     private int verticalSpeed = 0;
 
@@ -170,18 +271,7 @@ public class Jetpack : MonoBehaviour
     private bool jetPackActive = false; 
 
 
-    private void OnTriggerEnter(Collider other)
-    {
-
-        if (other.CompareTag("Player"))
-        {
-            jetPackActive = true;
-
-        }
-
-    }
-
-
+  
     private void Awake()
     {
         
@@ -196,6 +286,31 @@ public class Jetpack : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponent<PlayerController>();
         
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            // Add the Jetpack script to the player
+            if (!other.gameObject.TryGetComponent<Jetpack>(out _))
+            {
+                Jetpack jetpack = other.gameObject.AddComponent<Jetpack>();
+
+                // Transfer settings to the player's jetpack
+                jetpack.thrustSpeed = thrustSpeed;
+                jetpack.maxUpwardSpeed = maxUpwardSpeed;
+                jetpack.maxFuel = maxFuel;
+                jetpack.burnRate = burnRate;
+                jetpack.regenRate = regenRate;
+                jetpack.jetpackFX = jetpackFX;
+                jetpack.jetpackAudio = jetpackAudio;
+                jetpack.jetPackActive = true; 
+
+                // Destroy the pickup object
+                Destroy(gameObject);
+            }
+        }
     }
 
     public int GetFuelPercent()
@@ -230,15 +345,12 @@ public class Jetpack : MonoBehaviour
                 fuel -= (int)(burnRate * Time.deltaTime);
                 if (fuel < 0) fuel = 0;
 
-                // Increment thrust count on the first frame of thrusting
-                if (!wasThrustingLastFrame)
+                // Apply upward speed when thrusting
+                if (player.transform.position.y < maxHeight)
                 {
-                    thrustCount++;
-                    if (thrustCount >= maxThrusts)
-                    {
-                        thrustPaused = true; // Pause thrusting after max inputs
-                        StartCoroutine(ResetThrustPause());
-                    }
+                    float gravityCompensation = Mathf.Abs(playerScript.getGravity() * Time.deltaTime);
+                    verticalSpeed = Mathf.Clamp(verticalSpeed + (int)((thrustSpeed * Time.deltaTime) - gravityCompensation), 0, maxUpwardSpeed);
+                    playerScript.playerVel.y += verticalSpeed;
                 }
             }
             else
@@ -247,9 +359,10 @@ public class Jetpack : MonoBehaviour
                 fuel += (int)(regenRate * Time.deltaTime);
                 if (fuel > maxFuel) fuel = maxFuel;
             }
+        }
 
-            // Start FX when thrusting begins
-            if (isThrusting && !wasThrustingLastFrame)
+        // Start FX when thrusting begins
+        if (isThrusting && !wasThrustingLastFrame)
             {
                 if (jetpackFX != null) jetpackFX.Play();
                 if (jetpackAudio != null && !jetpackAudio.isPlaying) jetpackAudio.Play();
@@ -262,34 +375,34 @@ public class Jetpack : MonoBehaviour
                 if (jetpackAudio != null && jetpackAudio.isPlaying) jetpackAudio.Stop();
             }
 
+
             // Remember thrust state for next frame
             wasThrustingLastFrame = isThrusting;
         }
-    }
+    }*/
 
-    private void LateUpdate()
-    {
-        // Apply upward speed when thrusting
-        if (isThrusting)
-        {
-            // Check if the player is below the maximum height
-            if (player.transform.position.y < maxHeight)
-            {
-                verticalSpeed = Mathf.Clamp(verticalSpeed + (int)(thrustSpeed * Time.deltaTime), 0, maxUpwardSpeed);
-                playerScript.playerVel.y += verticalSpeed;
-            }
-        }
-    }
+    /*  private void LateUpdate()
+      {
+          /*
+          // Apply upward speed when thrusting
+          if (isThrusting)
+          {
+              // Check if the player is below the maximum height
+              if (player.transform.position.y < maxHeight)
+              {
+                  verticalSpeed = Mathf.Clamp(verticalSpeed + (int)(thrustSpeed * Time.deltaTime), 0, maxUpwardSpeed);
+                  playerScript.playerVel.y += verticalSpeed;
+              }
+          }*/
+    //}
 
-    private IEnumerator ResetThrustPause()
-    {
-        yield return new WaitForSeconds(3f); // Pause thrusting for 3 seconds
-        thrustCount = 0; // Reset thrust count
-        thrustPaused = false; // Allow thrusting again
-    }
+    /* private IEnumerator ResetThrustPause()
+     {
+         yield return new WaitForSeconds(1f); // Pause thrusting for 3 seconds
+         thrustCount = 0; // Reset thrust count
+         thrustPaused = false; // Allow thrusting again
+     }*/
 }
 
-
-    
 
 

@@ -15908,6 +15908,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.118799366, y: 4.4218807, z: 5.3358364}
   m_Center: {x: 0.042912286, y: 2.187048, z: 0.39312506}
+--- !u!198 &496024326 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5007696969689694046, guid: cb864c817d006574d916129f451e7e53, type: 3}
+  m_PrefabInstance: {fileID: 1770641508}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &498606580
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30099,13 +30104,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 949211025}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.70710677, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -251.82306, y: 760.74615, z: -217.13321}
-  m_LocalScale: {x: 3.4336, y: 3.4336, z: 3.4336}
+  m_LocalRotation: {x: -0, y: -0.7071063, z: -0, w: -0.7071073}
+  m_LocalPosition: {x: -229.85718, y: 760.74615, z: -194.66669}
+  m_LocalScale: {x: 10.3008, y: 10.3008, z: 10.3008}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1953363328}
-  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -270, z: 0}
 --- !u!33 &950027975
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -32333,13 +32338,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1008892868}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.96592605, z: -0, w: -0.2588185}
-  m_LocalPosition: {x: -220.61066, y: 761.3962, z: -224.25955}
+  m_LocalRotation: {x: -0, y: 0.8660249, z: -0, w: 0.50000083}
+  m_LocalPosition: {x: -216.92636, y: 761.3962, z: -181.86385}
   m_LocalScale: {x: 23.329203, y: 23.3292, z: 23.329203}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1953363328}
-  m_LocalEulerAnglesHint: {x: 0, y: 210, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 120, z: 0}
 --- !u!33 &1009422763
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -40934,13 +40939,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1280521568}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0032069685, y: 0.99996614, z: 0.005346601, w: -0.005370587}
-  m_LocalPosition: {x: -57.376675, y: 195.06468, z: -52.90791}
+  m_LocalRotation: {x: 0.006048278, y: 0.7108803, z: 0.0015129413, w: 0.70328546}
+  m_LocalPosition: {x: -57.404247, y: 195.09232, z: -55.483143}
   m_LocalScale: {x: 9.162386, y: 9.162384, z: 9.162386}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 621818833}
-  m_LocalEulerAnglesHint: {x: -0.615, y: 180.613, z: 0.364}
+  m_LocalEulerAnglesHint: {x: 0.364, y: 90.617, z: 0.615}
 --- !u!1001 &1280599730
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41162,6 +41167,10 @@ PrefabInstance:
     - target: {fileID: 4704280103378101587, guid: 5c346bb37719d2e4296666d85524aa98, type: 3}
       propertyPath: m_Name
       value: SpeedPickUpDonut_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4704280103378101587, guid: 5c346bb37719d2e4296666d85524aa98, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -59912,6 +59921,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.565811, y: 2.392515, z: 0.1378709}
   m_Center: {x: -0.07434614, y: 1.1952003, z: 0.043580834}
+--- !u!1 &1820595600 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7113877690921916760, guid: bf40583efa7ab6f42b3a8964ecbc62cd, type: 3}
+  m_PrefabInstance: {fileID: 4919837354874618627}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1822495216 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100220, guid: 3d58d5cb75277704fbee090d5dc98394, type: 3}
@@ -60975,6 +60989,10 @@ PrefabInstance:
     - target: {fileID: 1346287931587750499, guid: 29983968863a77747af40e304f7631bc, type: 3}
       propertyPath: m_Name
       value: HealthPickUpBanana_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1346287931587750499, guid: 29983968863a77747af40e304f7631bc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1784406289383745888, guid: 29983968863a77747af40e304f7631bc, type: 3}
       propertyPath: m_LocalScale.x
@@ -73188,6 +73206,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: JumpBoostSoda
       objectReference: {fileID: 0}
+    - target: {fileID: 1237828094214215147, guid: 79a8f3fab23b880439a180a443e08c6a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7886016215851818703, guid: 79a8f3fab23b880439a180a443e08c6a, type: 3}
       propertyPath: m_LocalScale.x
       value: 2.2288241
@@ -75137,13 +75159,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3006748888274843243}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.70710677, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -232.66306, y: 763.72614, z: -212.94812}
-  m_LocalScale: {x: 5.4842, y: 5.4842, z: 5.4842}
+  m_LocalRotation: {x: -0, y: 0.13052548, z: -0, w: 0.991445}
+  m_LocalPosition: {x: -224.31303, y: 769.22614, z: -224.59811}
+  m_LocalScale: {x: 16.4526, y: 16.4526, z: 16.4526}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1953363328}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 15, z: 0}
 --- !u!23 &2525003054760134283
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -76605,8 +76627,12 @@ PrefabInstance:
       value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5327962686329474742, guid: bf40583efa7ab6f42b3a8964ecbc62cd, type: 3}
+      propertyPath: jetpackFX
+      value: 
+      objectReference: {fileID: 496024326}
+    - target: {fileID: 5327962686329474742, guid: bf40583efa7ab6f42b3a8964ecbc62cd, type: 3}
       propertyPath: maxHeight
-      value: 250
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 5327962686329474742, guid: bf40583efa7ab6f42b3a8964ecbc62cd, type: 3}
       propertyPath: regenRate
@@ -76617,6 +76643,10 @@ PrefabInstance:
       value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 5327962686329474742, guid: bf40583efa7ab6f42b3a8964ecbc62cd, type: 3}
+      propertyPath: jetpackClip
+      value: 
+      objectReference: {fileID: 8300000, guid: af2c78ece9c3f6a4b83fc3562a867d9c, type: 3}
+    - target: {fileID: 5327962686329474742, guid: bf40583efa7ab6f42b3a8964ecbc62cd, type: 3}
       propertyPath: thrustSpeed
       value: 50
       objectReference: {fileID: 0}
@@ -76624,6 +76654,18 @@ PrefabInstance:
       propertyPath: maxUpwardSpeed
       value: 80
       objectReference: {fileID: 0}
+    - target: {fileID: 5825463684383542350, guid: bf40583efa7ab6f42b3a8964ecbc62cd, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5825463684383542350, guid: bf40583efa7ab6f42b3a8964ecbc62cd, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5825463684383542350, guid: bf40583efa7ab6f42b3a8964ecbc62cd, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: af2c78ece9c3f6a4b83fc3562a867d9c, type: 3}
     - target: {fileID: 6124523116000873236, guid: bf40583efa7ab6f42b3a8964ecbc62cd, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.49529427
@@ -76683,13 +76725,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7113877690921916760, guid: bf40583efa7ab6f42b3a8964ecbc62cd, type: 3}
+      insertIndex: 5
+      addedObject: {fileID: 4919837354874618634}
   m_SourcePrefab: {fileID: 100100000, guid: bf40583efa7ab6f42b3a8964ecbc62cd, type: 3}
 --- !u!4 &4919837354874618628 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6124523116000873236, guid: bf40583efa7ab6f42b3a8964ecbc62cd, type: 3}
   m_PrefabInstance: {fileID: 4919837354874618627}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4919837354874618634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1820595600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da69c3a6fae879488450aed6dc30f6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JetpackPickup
 --- !u!4 &4942986334661642053
 Transform:
   m_ObjectHideFlags: 0
