@@ -10,12 +10,27 @@ public class VolumeControl : MonoBehaviour
     [SerializeField] Slider slider;
     [SerializeField] float multiplier = 30f;
     [SerializeField] private Toggle muteToggle;
-    private bool disableToggleEvent; 
+    private bool disableToggleEvent;
+    [SerializeField] AudioClip musicExample;
+    [SerializeField] AudioClip SFXExample;
+    private bool firstTime = true; 
+    
 
     private void Awake()
     {
         slider.onValueChanged.AddListener(HandleSliderValueChanged);
-        muteToggle.onValueChanged.AddListener(HandleToggelValueChanged); 
+        muteToggle.onValueChanged.AddListener(HandleToggelValueChanged);
+    }
+
+    void Start()
+    {
+        slider.value = PlayerPrefs.GetFloat(volumeParameter, slider.value);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
     }
 
     private void HandleToggelValueChanged(bool enableSound)
@@ -30,6 +45,7 @@ public class VolumeControl : MonoBehaviour
 
     private void OnDisable()
     {
+        
         PlayerPrefs.SetFloat(volumeParameter, slider.value);
 
     }
@@ -37,19 +53,29 @@ public class VolumeControl : MonoBehaviour
     private void HandleSliderValueChanged(float value)
     {
         mixer.SetFloat(volumeParameter, Mathf.Log10(value) * multiplier);
+
+        if (volumeParameter == "MasterVolume" || volumeParameter == "MusicVolume")
+        {
+            if (musicExample != null && firstTime == false)
+                SoundManager.Instance.PlayMusic(musicExample, slider.value);
+
+            firstTime = false;
+        }
+        else if (volumeParameter == "SFXVolume")
+        {
+            if (musicExample != null)
+                SoundManager.Instance.StopMusic();
+
+            if (SFXExample != null && firstTime == false)
+                SoundManager.Instance.PlayEffect(SFXExample, slider.value);
+
+            firstTime = false;
+        }
+
         disableToggleEvent = true; 
         muteToggle.isOn = slider.value > slider.minValue;
         disableToggleEvent = false;
     }
 
-    void Start()
-    {
-        slider.value = PlayerPrefs.GetFloat(volumeParameter, slider.value);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }
