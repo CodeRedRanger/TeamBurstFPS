@@ -46,8 +46,11 @@ public class gameManager : MonoBehaviour
     [SerializeField] TMP_Text kidsRescuedText;
 
     //Level 0: Main Menu; Level 1: Playground; Level 2: Hall/Library; Level 3: Credits; Level 4: Alien Ship
-    //Level 5: Lunchroom, Level 6: Launchpad, Level 7: Company. 
-    [HideInInspector] public bool Level1, Level2, Level3, LevelLunch, LevelLaunchpad, LevelCompany;
+    //Level 5: Lunchroom, Level 6: Launchpad, Leve 7: Options, Level 8: Company
+    //Rearrange all levels so that 0 is company, 1 is main menu, 2 is options, 3 is credits
+    //4 is playground, 5 is hall/library, 6 is lunchroom, 7 is launchpad, 8 is alien ship
+    //Will have to change all instances in this script and other scripts for currentScene.buildIndex
+    [HideInInspector] public bool Level1, Level2, Level3, LevelLunch, LevelLaunchpad, LevelOptions, LevelCompany;
 
     public TMP_Text ammoCur, ammoMax;
     public TMP_Text hotBarSlot1, hotbarSlot2, hotbarSlot3;
@@ -95,12 +98,15 @@ public class gameManager : MonoBehaviour
         //Need if statement so this doesn't fire during main menu
         //But is needed if testing, starting from level 1
 
-        if (currentScene.buildIndex == 0 || currentScene.buildIndex == 3)
+        if (currentScene.buildIndex == 0 || currentScene.buildIndex == 3 || currentScene.buildIndex == 7
+            || currentScene.buildIndex == 8)
         {
             statePause(); 
         }
 
-        if (currentScene.buildIndex != 0 && currentScene.buildIndex != 3)
+        //later change to 0, 1, 2, 3 (when make company, main menu, options, credits 0,1,2,3)
+        if (currentScene.buildIndex != 0 && currentScene.buildIndex != 3 && currentScene.buildIndex != 7 
+            && currentScene.buildIndex != 8)
         {
             //need this line before next
             player = GameObject.FindGameObjectWithTag("Player");
@@ -188,7 +194,7 @@ public class gameManager : MonoBehaviour
         currentScene = SceneManager.GetActiveScene();
         
     
-        if (currentScene.buildIndex != 0) 
+        if (currentScene.buildIndex != 0) //or 3, 7, 8?
         {
             if (Input.GetButtonDown("Cancel")) //cancel is escape key by default
             {
