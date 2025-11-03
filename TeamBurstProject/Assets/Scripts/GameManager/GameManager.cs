@@ -194,7 +194,8 @@ public class gameManager : MonoBehaviour
         currentScene = SceneManager.GetActiveScene();
         
     
-        if (currentScene.buildIndex != 0) //or 3, 7, 8?
+        if (currentScene.buildIndex != 0 && currentScene.buildIndex != 3 && currentScene.buildIndex != 7
+            && currentScene.buildIndex != 8)
         {
             if (Input.GetButtonDown("Cancel")) //cancel is escape key by default
             {
@@ -238,7 +239,9 @@ public class gameManager : MonoBehaviour
         Time.timeScale = 0;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        SoundManager.Instance.StopMusic();
+
+        if(SoundManager.Instance != null)
+            SoundManager.Instance.StopMusic();
         
     }
 
