@@ -40,7 +40,14 @@ public class gameManager : MonoBehaviour
     float timeScaleOrig;
 
     int gameGoalCount;
-    [HideInInspector] public bool Level1, Level2, Level3; 
+
+    //Kids rescued for lunchroom
+    int kidsRescued;
+    [SerializeField] TMP_Text kidsRescuedText;
+
+    //Level 0: Main Menu; Level 1: Playground; Level 2: Hall/Library; Level 3: Credits; Level 4: Alien Ship
+    //Level 5: Lunchroom, Level 6: Launchpad, Level 7: Company. 
+    [HideInInspector] public bool Level1, Level2, Level3, LevelLunch, LevelLaunchpad, LevelCompany;
 
     public TMP_Text ammoCur, ammoMax;
     public TMP_Text hotBarSlot1, hotbarSlot2, hotbarSlot3;
@@ -64,6 +71,7 @@ public class gameManager : MonoBehaviour
     [HideInInspector] public bool enableStunner = false;
 
     public GameObject runPopup;
+    public GameObject kidsPopup;
 
 
     //from main menu, you don't need the actions of unpause the first time, even though it is
@@ -102,27 +110,72 @@ public class gameManager : MonoBehaviour
             playerSpawnPos = GameObject.FindWithTag("Player Spawn Pos");
             firstUnpause = false;
           
-
+            //Playground
             if (currentScene.buildIndex == 1)
             {
                 Level1 = true;
-                Level2 = false; 
+                Level2 = false;
+                Level3 = false;
+                LevelLunch = false;
+                LevelLaunchpad = false;
+                LevelCompany = false;
             }
 
+            //Hall/Library
             if (currentScene.buildIndex == 2)
             {
                 Level1 = false;
-                Level2 = true; 
+                Level2 = true;
+                Level3 = false;
+                LevelLunch = false;
+                LevelLaunchpad = false;
+                LevelCompany = false;
                 StartCoroutine(FlashRunUI()); 
             }
 
+            //Alien Ship
             if (currentScene.buildIndex == 4)
             {
                 Level1 = false;
                 Level2 = false;
                 Level3 = true;
-
+                LevelLunch = false;
+                LevelLaunchpad = false;
+                LevelCompany = false;
             }
+
+            if (currentScene.buildIndex == 5)
+            {
+                Level1 = false;
+                Level2 = false;
+                Level3 = true;
+                LevelLunch = true;
+                LevelLaunchpad = false;
+                LevelCompany = false;
+                StartCoroutine(FlashKidsUI());
+            }
+
+            if (currentScene.buildIndex == 6)
+            {
+                Level1 = false;
+                Level2 = false;
+                Level3 = true;
+                LevelLunch = false;
+                LevelLaunchpad = true;
+                LevelCompany = false;
+            }
+
+            if (currentScene.buildIndex == 7)
+            {
+                Level1 = false;
+                Level2 = false;
+                Level3 = true;
+                LevelLunch = false;
+                LevelLaunchpad = false;
+                LevelCompany = true;
+            }
+
+
 
         }
         
@@ -206,6 +259,35 @@ public class gameManager : MonoBehaviour
 
     }
 
+    public void updateKidsRescued(int amount)
+    {
+        kidsRescued += amount;
+        kidsRescuedText.text = kidsRescued.ToString("F0");
+
+
+
+        if (kidsRescued <= 0)
+        {
+            //win condition
+            if (LevelLunch == true)
+            {
+                //statePause();
+                //menuActive = menuWin;
+                //menuActive.SetActive(true);
+                //SoundManager.Instance.PlayMusic(BGMusic, 0.2f);
+                SoundManager.Instance.PlayEffect(winMusic, 1);
+                youWinEnd();
+            }
+
+            //can't get to work
+            //SoundManager.Instance.ChangeVolumeMusic(0.3f);
+
+        }
+    }
+
+
+
+
     public void updateGameGoal(int amount)
     {
         gameGoalCount += amount;
@@ -237,6 +319,11 @@ public class gameManager : MonoBehaviour
             //SoundManager.Instance.ChangeVolumeMusic(0.3f);
 
         }
+    }
+
+    public int GetKidsRescued()
+    {
+        return kidsRescued;
     }
 
     public int GetGameGoalCount()
@@ -310,4 +397,13 @@ public class gameManager : MonoBehaviour
          runPopup.SetActive(false);
         
     }
- }
+
+    public IEnumerator FlashKidsUI()
+    {
+        kidsPopup.SetActive(true);
+        yield return new WaitForSeconds(3.0f);
+        kidsPopup.SetActive(false);
+
+    }
+
+}
