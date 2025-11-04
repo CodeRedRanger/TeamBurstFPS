@@ -3352,6 +3352,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb04dbe9f71ee2c47bbf577b1cd2d068, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonFunctions
+  nonStartButtonSound: {fileID: 8300000, guid: ffcacb1291716ce4392d8b18610efbc9, type: 3}
+  StartButtonSound: {fileID: 8300000, guid: 4a9e5c9f1497d944a868b8025de0aa3a, type: 3}
 --- !u!1 &2860795705833482324
 GameObject:
   m_ObjectHideFlags: 0
@@ -4982,9 +4984,15 @@ MonoBehaviour:
   menuLose: {fileID: 4799043056082376739}
   hotBar: {fileID: 8450287726465492733}
   gameGoalCountText: {fileID: 4532116621379894933}
-  BGMusic: {fileID: 8300000, guid: 79a0c1b5d72bfc748bc67ce6e4c6115b, type: 3}
   toSchool: {fileID: 8300000, guid: 61f6981cc64a3134e8ee0e8e4108ac85, type: 3}
   winMusic: {fileID: 8300000, guid: 1148f8889258dda4eaa6274d7246fbcc, type: 3}
+  MainMenuSFX: {fileID: 8300000, guid: bc8b37f229f2c9446a30ca2bf1a30cc4, type: 3}
+  MainMenuMusic: {fileID: 8300000, guid: d564f9029798d6b4bbdd905757fbeee9, type: 3}
+  PlaygroundMusic: {fileID: 8300000, guid: 79a0c1b5d72bfc748bc67ce6e4c6115b, type: 3}
+  LibraryMusic: {fileID: 8300000, guid: 8ae45a3307104e44d9cadf48168dc557, type: 3}
+  LunchroomMusic: {fileID: 8300000, guid: 81213c8eaaeaa9140823e334906571b6, type: 3}
+  LaunchpadMusic: {fileID: 8300000, guid: 28b47addb19687d48b406f9183c48933, type: 3}
+  AlienshipMusic: {fileID: 8300000, guid: 24441db8554145a4f9d14f28a76e186a, type: 3}
   playerHPBar: {fileID: 3546669834431094601}
   playerHPBarUp: {fileID: 1011853997789200390}
   playerHPBarDown: {fileID: 7650662624694873932}
@@ -4992,9 +5000,14 @@ MonoBehaviour:
   player: {fileID: 0}
   playerScript: {fileID: 0}
   isPaused: 0
+  kidsRescuedText: {fileID: 0}
   Level1: 1
   Level2: 0
   Level3: 0
+  LevelLunch: 0
+  LevelLaunchpad: 0
+  LevelOptions: 0
+  LevelCompany: 0
   ammoCur: {fileID: 7394292352514756359}
   ammoMax: {fileID: 1240489213307768248}
   hotBarSlot1: {fileID: 2158624180860442290}
@@ -5016,6 +5029,7 @@ MonoBehaviour:
   enableGrenade: 0
   enableStunner: 0
   runPopup: {fileID: 3526446517850400675}
+  kidsPopup: {fileID: 0}
   firstUnpause: 1
   currentScene:
     m_Handle: 0

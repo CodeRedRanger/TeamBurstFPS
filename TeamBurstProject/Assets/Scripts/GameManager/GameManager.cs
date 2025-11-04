@@ -20,9 +20,17 @@ public class gameManager : MonoBehaviour
     [SerializeField] TMP_Text gameGoalCountText;
     
 
-    public AudioClip BGMusic;
+    private AudioClip BGMusic;
     public AudioClip toSchool;
     public AudioClip winMusic;
+
+    [SerializeField] AudioClip MainMenuSFX;
+    [SerializeField] AudioClip MainMenuMusic;
+    [SerializeField] AudioClip PlaygroundMusic;
+    [SerializeField] AudioClip LibraryMusic;
+    [SerializeField] AudioClip LunchroomMusic;
+    [SerializeField] AudioClip LaunchpadMusic;
+    [SerializeField] AudioClip AlienshipMusic;
 
     public Image playerHPBar;
     public Image playerHPBarUp;
@@ -111,8 +119,7 @@ public class gameManager : MonoBehaviour
             //need this line before next
             player = GameObject.FindGameObjectWithTag("Player");
             playerScript = player.GetComponent<PlayerController>();
-            if (SoundManager.Instance != null ) 
-            SoundManager.Instance.PlayMusic(BGMusic);
+           
             playerSpawnPos = GameObject.FindWithTag("Player Spawn Pos");
             firstUnpause = false;
           
@@ -125,6 +132,7 @@ public class gameManager : MonoBehaviour
                 LevelLunch = false;
                 LevelLaunchpad = false;
                 LevelCompany = false;
+                BGMusic = PlaygroundMusic;
             }
 
             //Hall/Library
@@ -136,6 +144,7 @@ public class gameManager : MonoBehaviour
                 LevelLunch = false;
                 LevelLaunchpad = false;
                 LevelCompany = false;
+                BGMusic = LibraryMusic;
                 StartCoroutine(FlashRunUI()); 
             }
 
@@ -148,6 +157,7 @@ public class gameManager : MonoBehaviour
                 LevelLunch = false;
                 LevelLaunchpad = false;
                 LevelCompany = false;
+                BGMusic = AlienshipMusic;
             }
 
             if (currentScene.buildIndex == 5)
@@ -158,6 +168,7 @@ public class gameManager : MonoBehaviour
                 LevelLunch = true;
                 LevelLaunchpad = false;
                 LevelCompany = false;
+                BGMusic = LunchroomMusic;
                 StartCoroutine(FlashKidsUI());
             }
 
@@ -169,17 +180,12 @@ public class gameManager : MonoBehaviour
                 LevelLunch = false;
                 LevelLaunchpad = true;
                 LevelCompany = false;
+                BGMusic = LaunchpadMusic;
             }
 
-            if (currentScene.buildIndex == 7)
-            {
-                Level1 = false;
-                Level2 = false;
-                Level3 = true;
-                LevelLunch = false;
-                LevelLaunchpad = false;
-                LevelCompany = true;
-            }
+
+            if (SoundManager.Instance != null)
+                SoundManager.Instance.PlayMusic(BGMusic);
 
 
 
@@ -414,5 +420,6 @@ public class gameManager : MonoBehaviour
         kidsPopup.SetActive(false);
 
     }
+
 
 }
