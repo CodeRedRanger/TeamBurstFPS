@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
+
 public class VolumeControl : MonoBehaviour
 {
     [SerializeField] string volumeParameter = "MasterVolume";
@@ -25,6 +26,8 @@ public class VolumeControl : MonoBehaviour
     void Start()
     {
         slider.value = PlayerPrefs.GetFloat(volumeParameter, slider.value);
+
+      
     }
 
     // Update is called once per frame
@@ -45,14 +48,16 @@ public class VolumeControl : MonoBehaviour
 
     private void OnDisable()
     {
-        
-        PlayerPrefs.SetFloat(volumeParameter, slider.value);
+        //Changed
+        //PlayerPrefs.SetFloat(volumeParameter, slider.value);
+        //PlayerPrefs.Save(); 
 
     }
 
     private void HandleSliderValueChanged(float value)
     {
         mixer.SetFloat(volumeParameter, Mathf.Log10(value) * multiplier);
+        SetMasterVolumeFromSlider(value); 
 
         if (volumeParameter == "MasterVolume" || volumeParameter == "MusicVolume")
         {
@@ -77,5 +82,13 @@ public class VolumeControl : MonoBehaviour
         disableToggleEvent = false;
     }
 
-    
+    public void SetMasterVolumeFromSlider(float value)
+    {
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.SetMasterVolume(value);
+        }
+
+    }
 }
+

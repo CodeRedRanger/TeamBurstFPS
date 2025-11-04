@@ -59,6 +59,15 @@ public class gameManager : MonoBehaviour
     //4 is playground, 5 is hall/library, 6 is lunchroom, 7 is launchpad, 8 is alien ship
     //Will have to change all instances in this script and other scripts for currentScene.buildIndex
     [HideInInspector] public bool Level1, Level2, Level3, LevelLunch, LevelLaunchpad, LevelOptions, LevelCompany;
+    private int mainMenu = 0;
+    private int playground = 1;
+    private int library = 2;
+    private int lunchroom = 5;
+    private int launchpad = 6;
+    private int alienship = 4;
+    private int credits = 3;
+    private int options = 7;
+    private int company = 8;
 
     public TMP_Text ammoCur, ammoMax;
     public TMP_Text hotBarSlot1, hotbarSlot2, hotbarSlot3;
@@ -97,8 +106,19 @@ public class gameManager : MonoBehaviour
     void Awake()
     {
 
-        instance = this;
-        timeScaleOrig = Time.timeScale;
+        //instance = this;
+        if (instance != null)
+        {
+            return;
+
+        }
+        else
+        {
+            instance = this;
+        }
+
+
+            timeScaleOrig = Time.timeScale;
 
         
         currentScene = SceneManager.GetActiveScene();
@@ -106,15 +126,30 @@ public class gameManager : MonoBehaviour
         //Need if statement so this doesn't fire during main menu
         //But is needed if testing, starting from level 1
 
-        if (currentScene.buildIndex == 0 || currentScene.buildIndex == 3 || currentScene.buildIndex == 7
-            || currentScene.buildIndex == 8)
+        if (currentScene.buildIndex == mainMenu || currentScene.buildIndex == credits || currentScene.buildIndex == options
+            || currentScene.buildIndex == company)
         {
+
             statePause(); 
+
+            if(currentScene.buildIndex == mainMenu)
+            {
+                //SoundManager.Instance.PlayEffect(MainMenuSFX, 1);
+                SoundManager.Instance.PlayEffectDelayed(MainMenuSFX, 1, 0.5f); 
+            }
+
+            if (currentScene.buildIndex == mainMenu || currentScene.buildIndex == credits) // || currentScene.buildIndex == 7)
+            {
+                if (!SoundManager.Instance.MusicIsPlaying())
+                    SoundManager.Instance.PlayMusic(MainMenuMusic);
+            }
+
+
         }
 
         //later change to 0, 1, 2, 3 (when make company, main menu, options, credits 0,1,2,3)
-        if (currentScene.buildIndex != 0 && currentScene.buildIndex != 3 && currentScene.buildIndex != 7 
-            && currentScene.buildIndex != 8)
+        if (currentScene.buildIndex != mainMenu && currentScene.buildIndex != credits && currentScene.buildIndex != options 
+            && currentScene.buildIndex != company)
         {
             //need this line before next
             player = GameObject.FindGameObjectWithTag("Player");
@@ -124,7 +159,7 @@ public class gameManager : MonoBehaviour
             firstUnpause = false;
           
             //Playground
-            if (currentScene.buildIndex == 1)
+            if (currentScene.buildIndex == playground)
             {
                 Level1 = true;
                 Level2 = false;
@@ -136,7 +171,7 @@ public class gameManager : MonoBehaviour
             }
 
             //Hall/Library
-            if (currentScene.buildIndex == 2)
+            if (currentScene.buildIndex == library)
             {
                 Level1 = false;
                 Level2 = true;
@@ -149,7 +184,7 @@ public class gameManager : MonoBehaviour
             }
 
             //Alien Ship
-            if (currentScene.buildIndex == 4)
+            if (currentScene.buildIndex == alienship)
             {
                 Level1 = false;
                 Level2 = false;
@@ -160,7 +195,7 @@ public class gameManager : MonoBehaviour
                 BGMusic = AlienshipMusic;
             }
 
-            if (currentScene.buildIndex == 5)
+            if (currentScene.buildIndex == lunchroom)
             {
                 Level1 = false;
                 Level2 = false;
@@ -172,7 +207,7 @@ public class gameManager : MonoBehaviour
                 StartCoroutine(FlashKidsUI());
             }
 
-            if (currentScene.buildIndex == 6)
+            if (currentScene.buildIndex == launchpad)
             {
                 Level1 = false;
                 Level2 = false;
@@ -200,8 +235,8 @@ public class gameManager : MonoBehaviour
         currentScene = SceneManager.GetActiveScene();
         
     
-        if (currentScene.buildIndex != 0 && currentScene.buildIndex != 3 && currentScene.buildIndex != 7
-            && currentScene.buildIndex != 8)
+        if (currentScene.buildIndex != mainMenu && currentScene.buildIndex != credits && currentScene.buildIndex != options
+            && currentScene.buildIndex != company)
         {
             if (Input.GetButtonDown("Cancel")) //cancel is escape key by default
             {
@@ -246,8 +281,13 @@ public class gameManager : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
-        if(SoundManager.Instance != null)
-            SoundManager.Instance.StopMusic();
+        if (currentScene.buildIndex != mainMenu && currentScene.buildIndex != credits)
+        //&& currentScene.buildIndex != 7)&& currentScene.buildIndex != 8)
+        {
+
+            if (SoundManager.Instance != null)
+                SoundManager.Instance.StopMusic();
+        }
         
     }
 
