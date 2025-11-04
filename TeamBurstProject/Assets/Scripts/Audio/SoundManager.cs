@@ -1,5 +1,4 @@
 using System;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -11,6 +10,9 @@ public class SoundManager : MonoBehaviour
 
     public AudioSource musicSource;
     public AudioSource effectsSource;
+    [HideInInspector] public float masterValue;
+    [HideInInspector] public float musicValue;
+    [HideInInspector] public float SFXValue;
 
     //NEW
     public AudioMixer masterMixer;
@@ -28,10 +30,18 @@ public class SoundManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
 
+            LoadVolumes(); 
+
             //NEW
+            /*
             float masterValue = PlayerPrefs.GetFloat("MasterVolume", 1);
             float masterVolume = Mathf.Log10(masterValue) * 30f; 
+            if (masterVolume < -80)
+                masterVolume = -80; 
             masterMixer.SetFloat("MasterVolume", masterVolume);
+            //Debug.Log("MasterVolume set to " + masterVolume);
+            if(masterMixer.GetFloat("MasterVolume", out float value))
+                Debug.Log($"Current volume of '{"MasterVolume"}' is {value} dB");*/
 
         }
 
@@ -42,6 +52,7 @@ public class SoundManager : MonoBehaviour
 
     public void PlayMusic(AudioClip clip, float volume = 0.6f)
     {
+        volume = PlayerPrefs.GetFloat("MusicVolume", 0.6f);
         musicSource.clip = clip;
         musicSource.volume = volume;
         musicSource.Play();
@@ -49,12 +60,14 @@ public class SoundManager : MonoBehaviour
 
     public void PlayEffect(AudioClip clip, float volume) //= 1.0f)
     {
+        volume = PlayerPrefs.GetFloat("SFXVolume", volume); 
         //oneshot is for sound effects that may overlap each other
         effectsSource.PlayOneShot(clip, volume);
     }
 
     public void PlayEffectDelayed(AudioClip clip, float volume, float delay)
     {
+        volume = PlayerPrefs.GetFloat("SFXVolume", volume);
         effectsSource.PlayDelayed(delay);
         effectsSource.PlayOneShot(clip, volume);
     }
@@ -80,13 +93,45 @@ public class SoundManager : MonoBehaviour
     public void SetMasterVolume(float value)
     {
         float volume = Mathf.Log10(value) * 30f; 
-        masterMixer.SetFloat("MasterVolume", volume);
+        bool result = masterMixer.SetFloat("MasterVolume", volume);
         //masterMixer.SetFloat("MasterVolume", volume);
         //mixer.SetFloat(volumeParameter, Mathf.Log10(value) * multiplier);
-        PlayerPrefs.SetFloat("MasterVolume", value);
+        if (!result)
+        {
+            Debug.LogError("Failed to set MasterVolume on AudioMixer");
+        }
+        else
+            Debug.Log("MasterVolume set to " + volume);
         PlayerPrefs.Save();
 
     }
+
+    public void LoadVolumes()
+    {
+        masterValue = PlayerPrefs.GetFloat("MasterVolume", 1);
+        float masterVolume = Mathf.Log10(masterValue) * 30f;
+        if (masterVolume < -80)
+            masterVolume = -80;
+        masterMixer.SetFloat("MasterVolume", masterVolume);
+        //Debug.Log("MasterVolume set to " + masterVolume);
+        //if (masterMixer.GetFloat("MasterVolume", out float value))
+        //    Debug.Log($"Current volume of '{"MasterVolume"}' is {value} dB");
+
+        musicValue = PlayerPrefs.GetFloat("MusicVolume", 1);
+        float musicVolume = Mathf.Log10(musicValue) * 30f;
+        if (musicVolume < -80)
+            musicVolume = -80;
+        masterMixer.SetFloat("MusicVolume", musicVolume);
+
+        SFXValue = PlayerPrefs.GetFloat("SFXVolume", 1);
+        float SFXVolume = Mathf.Log10(SFXValue) * 30f;
+        if (SFXVolume < -80)
+            SFXVolume = -80;
+        masterMixer.SetFloat("SFXVolume", SFXVolume);
+
+    }
+
+
 
     private void OnApplicationQuit()
     {

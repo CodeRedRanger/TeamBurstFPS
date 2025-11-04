@@ -48,6 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
   musicSource: {fileID: 9103312755950752377}
   effectsSource: {fileID: 9173078758077706931}
+  masterValue: 0
+  masterMixer: {fileID: 24100000, guid: 6f1e2d96fb242f14a92cff389c600d47, type: 2}
 --- !u!82 &9103312755950752377
 AudioSource:
   m_ObjectHideFlags: 0
@@ -63,7 +65,7 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

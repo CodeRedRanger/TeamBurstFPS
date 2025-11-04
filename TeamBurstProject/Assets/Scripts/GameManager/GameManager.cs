@@ -22,6 +22,7 @@ public class gameManager : MonoBehaviour
 
     private AudioClip BGMusic;
     public AudioClip toSchool;
+    public AudioClip run; 
     public AudioClip winMusic;
 
     [SerializeField] AudioClip MainMenuSFX;
@@ -141,7 +142,15 @@ public class gameManager : MonoBehaviour
             if (currentScene.buildIndex == mainMenu || currentScene.buildIndex == credits) // || currentScene.buildIndex == 7)
             {
                 if (!SoundManager.Instance.MusicIsPlaying())
+                {
+                    SoundManager.Instance.LoadVolumes();
+                    //if (SoundManager.Instance.masterMixer.GetFloat("MasterVolume", out float volume))
+                    //    Debug.Log($"Current VOLUME of '{"MasterVolume"}' is {volume} dB");
+                    
+                    float value = PlayerPrefs.GetFloat("MusicVolume", 1);
+                    //Debug.Log($"Current VOLUME of '{"MusicVolume"}' is {value}");
                     SoundManager.Instance.PlayMusic(MainMenuMusic);
+                }
             }
 
 
@@ -447,6 +456,7 @@ public class gameManager : MonoBehaviour
 
     public IEnumerator FlashRunUI()
     {
+        SoundManager.Instance.PlayEffect(run, 1); 
          runPopup.SetActive(true);
          yield return new WaitForSeconds(3.0f);
          runPopup.SetActive(false);

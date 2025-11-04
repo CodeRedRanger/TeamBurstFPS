@@ -62,7 +62,10 @@ public class VolumeControl : MonoBehaviour
         if (volumeParameter == "MasterVolume" || volumeParameter == "MusicVolume")
         {
             if (musicExample != null && firstTime == false)
-                SoundManager.Instance.PlayMusic(musicExample, slider.value);
+            {
+                PlayerPrefs.SetFloat(volumeParameter, slider.value);
+                SoundManager.Instance.PlayMusic(musicExample);
+            }
 
             firstTime = false;
         }
@@ -72,7 +75,10 @@ public class VolumeControl : MonoBehaviour
                 SoundManager.Instance.StopMusic();
 
             if (SFXExample != null && firstTime == false)
+            {
+                PlayerPrefs.SetFloat(volumeParameter, slider.value);
                 SoundManager.Instance.PlayEffect(SFXExample, slider.value);
+            }
 
             firstTime = false;
         }
@@ -82,6 +88,7 @@ public class VolumeControl : MonoBehaviour
         disableToggleEvent = false;
     }
 
+    /*
     public void SetMasterVolumeFromSlider(float value)
     {
         if (SoundManager.Instance != null)
@@ -89,6 +96,6 @@ public class VolumeControl : MonoBehaviour
             SoundManager.Instance.SetMasterVolume(value);
         }
 
-    }
+    }*/
 }
 
