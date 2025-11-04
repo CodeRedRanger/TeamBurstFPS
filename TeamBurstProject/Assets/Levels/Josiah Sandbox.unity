@@ -355,7 +355,7 @@ Transform:
   m_GameObject: {fileID: 736099627}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.7, y: 1.01, z: -7.23}
+  m_LocalPosition: {x: 0.7, y: 1.67, z: -7.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -462,8 +462,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c794da92faa0f8f48b4658cda0c285fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StaticRotationTurret_State
-  nextState: {fileID: 487242222}
+  shootState: {fileID: 0}
   objectToRotate: {fileID: 736099627}
+  rotationSpeed: 0.4
+  minRotation: {x: 0, y: -45, z: 0}
+  maxRotation: {x: 0, y: 45, z: 0}
+  pauseDuration: 1
 --- !u!4 &1172797878
 Transform:
   m_ObjectHideFlags: 0
@@ -887,7 +891,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8186923946824962572, guid: b18cb33aecc6a83418cade223793805f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.5
+      value: -1.37
       objectReference: {fileID: 0}
     - target: {fileID: 8186923946824962572, guid: b18cb33aecc6a83418cade223793805f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -895,7 +899,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8186923946824962572, guid: b18cb33aecc6a83418cade223793805f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.31
+      value: 8.66
       objectReference: {fileID: 0}
     - target: {fileID: 8186923946824962572, guid: b18cb33aecc6a83418cade223793805f, type: 3}
       propertyPath: m_LocalRotation.w
