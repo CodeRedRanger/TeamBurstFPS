@@ -40,7 +40,8 @@ public class SoundManager : MonoBehaviour
 
     public void StopMusic()
     {
-        musicSource.Stop();
+        if (musicSource != null)
+            musicSource.Stop();
     }
 
     public void ChangeVolumeMusic(float newVolume)

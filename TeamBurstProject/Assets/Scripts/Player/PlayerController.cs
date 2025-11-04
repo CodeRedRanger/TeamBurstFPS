@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     public int speed;
     [SerializeField] int sprintMod;
     [SerializeField] int jumpSpeed; 
+    [SerializeField] float maxJumpSpeed;
     [SerializeField] int jumpCountMax;
     [SerializeField] int gravity; 
 
@@ -65,6 +66,8 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     bool gainHealth = false;
     bool loseHealth = false;
 
+    // For Variable Jump
+    bool isMaxJumpSpeed = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -157,13 +160,27 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     }
     void Jump()
     {
-
         if (Input.GetButtonDown("Jump") && jumpCount < jumpCountMax)
         {
             SoundManager.Instance.PlayEffect(audJump[Random.Range(0, audJump.Length)], audJumpVol);
             playerVel.y = jumpSpeed;
             jumpCount++;
+
+            isMaxJumpSpeed = false;
         }
+
+        if (Input.GetButton("Jump") && !isMaxJumpSpeed)
+        {
+            // this magic number can not be < 1
+            playerVel.y += 1;
+
+            if (playerVel.y > maxJumpSpeed)
+                isMaxJumpSpeed = true;
+        }
+
+        if (Input.GetButtonUp("Jump"))
+            isMaxJumpSpeed = true;
+
     }
 
     void Shoot()
