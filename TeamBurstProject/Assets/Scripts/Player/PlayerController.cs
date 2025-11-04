@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     public int speed;
     [SerializeField] int sprintMod;
     [SerializeField] int jumpSpeed; 
+    [SerializeField] float maxJumpSpeed;
     [SerializeField] int jumpCountMax;
     [SerializeField] int gravity; 
 
@@ -65,8 +66,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     bool gainHealth = false;
     bool loseHealth = false;
 
-    // Hold jump vars
-    [SerializeField] float maxJumpSpeed;
+    // For Variable Jump
     bool isMaxJumpSpeed = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
