@@ -65,6 +65,9 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     bool gainHealth = false;
     bool loseHealth = false;
 
+    // Hold jump vars
+    [SerializeField] float maxJumpSpeed;
+    bool isMaxJumpSpeed = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -157,13 +160,27 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     }
     void Jump()
     {
-
         if (Input.GetButtonDown("Jump") && jumpCount < jumpCountMax)
         {
             SoundManager.Instance.PlayEffect(audJump[Random.Range(0, audJump.Length)], audJumpVol);
             playerVel.y = jumpSpeed;
             jumpCount++;
+
+            isMaxJumpSpeed = false;
         }
+
+        if (Input.GetButton("Jump") && !isMaxJumpSpeed)
+        {
+            // this magic number can not be < 1
+            playerVel.y += 1;
+
+            if (playerVel.y > maxJumpSpeed)
+                isMaxJumpSpeed = true;
+        }
+
+        if (Input.GetButtonUp("Jump"))
+            isMaxJumpSpeed = true;
+
     }
 
     void Shoot()
