@@ -1,4 +1,5 @@
-using System; 
+using System;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -26,8 +27,12 @@ public class SoundManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            float masterVolume = PlayerPrefs.GetFloat("MasterVolume", 0f);
+
+            //NEW
+            float masterValue = PlayerPrefs.GetFloat("MasterVolume", 1);
+            float masterVolume = Mathf.Log10(masterValue) * 30f; 
             masterMixer.SetFloat("MasterVolume", masterVolume);
+
         }
 
        
