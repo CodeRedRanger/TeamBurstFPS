@@ -1,13 +1,14 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
-using Unity.VisualScripting;
+
 
 
 
 
 public class ButtonFunctions : MonoBehaviour
 {
+    //make enum later
     private int mainMenu = 0;
     private int playground = 1;
     //private int library = 2;
@@ -16,7 +17,7 @@ public class ButtonFunctions : MonoBehaviour
     //private int alienship = 4;
     private int credits = 3;
     //private int options = 7;
-    private int company = 8; 
+    private int company = 8;
 
 
 
@@ -37,13 +38,13 @@ public class ButtonFunctions : MonoBehaviour
         SoundManager.Instance.PlayEffect(nonStartButtonSound, 1f);
         //reloads the current scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        gameManager.instance.firstUnpause = true; 
+        gameManager.instance.firstUnpause = true;
         gameManager.instance.stateUnpause(); //in case paused when restarting level
     }
 
     public void quit()
     {
-    
+
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
@@ -58,8 +59,16 @@ public class ButtonFunctions : MonoBehaviour
     {
         SoundManager.Instance.PlayEffect(nonStartButtonSound, 1f);
         gameManager.instance.playerScript.spawnPlayer();
-        gameManager.instance.stateUnpause();    
+        gameManager.instance.stateUnpause();
     }
+
+    public void nextLevel()
+    {
+        int lvl = gameManager.instance.currentScene.buildIndex; 
+        lvl += 1;
+        loadLevel(lvl);
+    }
+
 
     public void loadLevel(int lvl)
     {

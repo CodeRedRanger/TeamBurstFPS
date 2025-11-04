@@ -2,7 +2,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
-using System.Collections; 
+using System.Collections;
+using UnityEngine.EventSystems;
 
 
 
@@ -11,15 +12,22 @@ public class gameManager : MonoBehaviour
 
     public static gameManager instance;
     //any open menu will go into menuActive and then close active menu 
+    //Menu variables
     [SerializeField] GameObject menuActive;
     [SerializeField] GameObject menuPause;
+    public GameObject firstSelectedPause; //first selected button in pause menu
     [SerializeField] GameObject menuWin;
+    private bool continueMenu = false; 
+    public GameObject firstSelectedContinue; 
     [SerializeField] GameObject menuWinEnd;
+    private bool endMenu = false;
+    public GameObject firstSelectedEnd; 
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject hotBar;
-    [SerializeField] TMP_Text gameGoalCountText;
-    
 
+
+    
+    //Sound variables
     private AudioClip BGMusic;
     public AudioClip toSchool;
     public AudioClip run; 
@@ -33,10 +41,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] AudioClip LaunchpadMusic;
     [SerializeField] AudioClip AlienshipMusic;
 
-    public Image playerHPBar;
-    public Image playerHPBarUp;
-    public Image playerHPBarDown;
-    public GameObject playerDamageFlash;
+    
 
     public GameObject player; //reference to player object
     public PlayerController playerScript; //reference to player script
@@ -48,6 +53,7 @@ public class gameManager : MonoBehaviour
     //input won't work and enemies won't move when timeScale is 0
     float timeScaleOrig;
 
+    //Game goal variables
     int gameGoalCount;
 
     //Kids rescued for lunchroom
@@ -70,11 +76,20 @@ public class gameManager : MonoBehaviour
     private int options = 7;
     private int company = 8;
 
+    //HUD variables
+    [SerializeField] TMP_Text gameGoalCountText;
     public TMP_Text ammoCur, ammoMax;
     public TMP_Text hotBarSlot1, hotbarSlot2, hotbarSlot3;
+    public Image playerHPBar;
+    public Image playerHPBarUp;
+    public Image playerHPBarDown;
+    public GameObject playerDamageFlash;
 
+    //Spawn point variables 
     public GameObject playerSpawnPos;
     public GameObject checkpointPopup;
+
+    //Powerup variables
     public GameObject speedboostPopup;
     public GameObject jumpboostPopup;
     public GameObject doublejumpPopup;
@@ -91,6 +106,7 @@ public class gameManager : MonoBehaviour
     [HideInInspector] public bool enableGrenade = false;
     [HideInInspector] public bool enableStunner = false;
 
+    //Level specific popups
     public GameObject runPopup;
     public GameObject kidsPopup;
 
@@ -290,6 +306,16 @@ public class gameManager : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
+        if (continueMenu)
+            EventSystem.current.SetSelectedGameObject(firstSelectedContinue);
+        else if (endMenu)
+            EventSystem.current.SetSelectedGameObject(firstSelectedEnd);
+        else
+            EventSystem.current.SetSelectedGameObject(firstSelectedPause);
+
+        continueMenu = false;
+        endMenu = false;
+
         if (currentScene.buildIndex != mainMenu && currentScene.buildIndex != credits)
         //&& currentScene.buildIndex != 7)&& currentScene.buildIndex != 8)
         {
@@ -309,6 +335,7 @@ public class gameManager : MonoBehaviour
         Time.timeScale = timeScaleOrig;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        EventSystem.current.SetSelectedGameObject(null);
 
         //normal pause; first unpause true if new scene being loaded
         if (firstUnpause == false)
@@ -398,6 +425,7 @@ public class gameManager : MonoBehaviour
     public void youWin()
     {
         //win condition
+        continueMenu = true;
         statePause();
         menuActive = menuWin;
         menuActive.SetActive(true);
@@ -407,6 +435,7 @@ public class gameManager : MonoBehaviour
     public void youWinEnd()
     {
         //win condition
+        endMenu = true;
         statePause();
         menuActive = menuWinEnd;
         menuActive.SetActive(true);
