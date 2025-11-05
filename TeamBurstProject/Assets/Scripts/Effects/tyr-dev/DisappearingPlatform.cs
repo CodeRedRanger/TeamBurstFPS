@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class DisappearingPlatform : MonoBehaviour
@@ -46,6 +47,28 @@ public class DisappearingPlatform : MonoBehaviour
         if (!disappearOnStep && !isRunningCycle)
         {
             StartCoroutine(LoopingCycle());
+        }
+    }
+
+    private void HidePlatform() { }
+    private void ShowPlatform() { }
+    private IEnumerator LoopingCycle()
+    {
+        // Mark that a cycle is running so we do not start another one by mistake
+        isRunningCycle = true;
+        while (true)
+        {
+            // Make sure the platform is visible and solid
+            ShowPlatform();
+
+            // Stay visible for the chosen time
+            yield return new WaitForSeconds(visibleTime);
+
+            // Hide the platform so it cannot be used
+            HidePlatform();
+
+            // Stay hidden for the chosen time
+            yield return new WaitForSeconds(hiddenTime);
         }
     }
 }
