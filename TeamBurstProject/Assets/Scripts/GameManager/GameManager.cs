@@ -1,5 +1,6 @@
 using System.Collections;
 using TMPro;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -182,9 +183,9 @@ public class gameManager : MonoBehaviour
             || currentScene.buildIndex == company)
         {
 
-            statePause(); 
+            statePause();
 
-            if(currentScene.buildIndex == mainMenu)
+            if (currentScene.buildIndex == mainMenu)
             {
                 EventSystem.current.SetSelectedGameObject(firstSelectedMain);
                 //SoundManager.Instance.PlayEffect(MainMenuSFX, 1);
@@ -200,7 +201,7 @@ public class gameManager : MonoBehaviour
                     SoundManager.Instance.LoadVolumes();
                     //if (SoundManager.Instance.masterMixer.GetFloat("MasterVolume", out float volume))
                     //    Debug.Log($"Current VOLUME of '{"MasterVolume"}' is {volume} dB");
-                    
+
                     float value = PlayerPrefs.GetFloat("MusicVolume", 1);
                     //Debug.Log($"Current VOLUME of '{"MusicVolume"}' is {value}");
                     SoundManager.Instance.PlayMusic(MainMenuMusic);
@@ -292,7 +293,13 @@ public class gameManager : MonoBehaviour
 
 
             if (SoundManager.Instance != null)
+            {
+                //added this to change back volume when level changed
+                float currentMusicValue = PlayerPrefs.GetFloat("MusicVolume", 0.6f);
+                float currentMusicVolume = Mathf.Log10(currentMusicValue) * 30f;
+                SoundManager.Instance.masterMixer.SetFloat("MusicVolume", currentMusicVolume);
                 SoundManager.Instance.PlayMusic(BGMusic);
+            }
 
 
 
@@ -495,9 +502,15 @@ public class gameManager : MonoBehaviour
         statePause();
         menuActive = menuWin;
         menuActive.SetActive(true);
+      
+       
+
         currentMusicVolume = PlayerPrefs.GetFloat("MusicVolume", 0.6f);
-        PlayerPrefs.SetFloat("MusicVolume", 0.2f);
-        SoundManager.Instance.PlayMusic(BGMusic, 0.2f);
+
+        //need to only change volume if scene is the same; need to stop it if going to a new scene
+        //SoundManager.Instance.PlayMusic(BGMusic, 0.2f);
+        //SoundManager.Instance.ChangeVolumeMusic(0.2f);
+        SoundManager.Instance.LowerVolumeInstantly();
         PlayerPrefs.SetFloat("MusicVolume", currentMusicVolume);
 
     }
@@ -509,9 +522,13 @@ public class gameManager : MonoBehaviour
         statePause();
         menuActive = menuWinEnd;
         menuActive.SetActive(true);
+
         currentMusicVolume = PlayerPrefs.GetFloat("MusicVolume", 0.6f);
-        PlayerPrefs.SetFloat("MusicVolume", 0.2f);
-        SoundManager.Instance.PlayMusic(BGMusic, 0.2f);
+
+        //need to only change volume if scene is the same; need to stop it if going to a new scene
+        //SoundManager.Instance.PlayMusic(BGMusic, 0.2f);
+        //SoundManager.Instance.ChangeVolumeMusic(0.2f);
+        SoundManager.Instance.LowerVolumeInstantly();
         PlayerPrefs.SetFloat("MusicVolume", currentMusicVolume);
     }
 
@@ -521,13 +538,14 @@ public class gameManager : MonoBehaviour
         statePause();
         menuActive = menuLose;
         menuActive.SetActive(true);
-        currentMusicVolume = PlayerPrefs.GetFloat("MusicVolume", 0.6f);
-        PlayerPrefs.SetFloat("MusicVolume", 0.2f);
-        SoundManager.Instance.PlayMusic(BGMusic, 0.2f);
-        PlayerPrefs.SetFloat("MusicVolume", currentMusicVolume);
 
-        //can't get to work
-        //SoundManager.Instance.ChangeVolumeMusic(0.3f); 
+        currentMusicVolume = PlayerPrefs.GetFloat("MusicVolume", 0.6f);
+
+        //need to only change volume if scene is the same; need to stop it if going to a new scene
+        //SoundManager.Instance.PlayMusic(BGMusic, 0.2f);
+        //SoundManager.Instance.ChangeVolumeMusic(0.2f);
+        SoundManager.Instance.LowerVolumeInstantly();
+        PlayerPrefs.SetFloat("MusicVolume", currentMusicVolume);
 
     }
 

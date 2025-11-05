@@ -62,6 +62,7 @@ public class ButtonFunctions : MonoBehaviour
         gameManager.instance.stateUnpause();
     }
 
+    //continue button
     public void nextLevel()
     {
         int lvl = gameManager.instance.currentScene.buildIndex; 
