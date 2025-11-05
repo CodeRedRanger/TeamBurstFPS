@@ -12,6 +12,8 @@ public class FallingObject : MonoBehaviour
     [SerializeField] float fallAngle;
     [SerializeField] float booksFallAngle; // When the books should fall out
     [SerializeField] GameObject bookPrefab;
+    [SerializeField] float damageDelay;
+    [SerializeField] GameObject damageTrigger;
 
     List<Rigidbody> groupedBooks = new List<Rigidbody>();
 
@@ -64,12 +66,18 @@ public class FallingObject : MonoBehaviour
 
     }
 
+    IEnumerator DelayDamage()
+    {
+        yield return new WaitForSeconds(damageDelay);
+        damageTrigger.SetActive(true);
+    }
+
     public void TiltShelf()
     {
         if(!isTipping)
         {
             isTipping = true;
-           
+           StartCoroutine(DelayDamage());
         }
     }
 
