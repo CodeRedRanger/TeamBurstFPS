@@ -30,4 +30,22 @@ public class DisappearingPlatform : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        // Set initial state based on startHidden
+        if (startHidden)
+        {
+            HidePlatform();
+        }
+        else
+        {
+            ShowPlatform();
+        }
+
+        // If we want the platform to loop by itself, start the looping routine now
+        if (!disappearOnStep && !isRunningCycle)
+        {
+            StartCoroutine(LoopingCycle());
+        }
+    }
 }
