@@ -101,24 +101,62 @@ public class DisappearingPlatform : MonoBehaviour
         // Mark that we are running a cycle so we do not start it twice
         isRunningCycle = true;
 
-        // Keep the platform visible/solid for the chosen time after the player steps on it
+        // Make sure we are fully visible and solid for the chosen time
+        yield return StartCoroutine(FadeToAlpha(1f, fadeDuration));
+        setColliders(true);
         yield return new WaitForSeconds(visibleTime);
 
-        // Hide the platform so the player falls if they are still on it
-       
+        // Fade out to fully invisible, then disable the collider
+        yield return StartCoroutine(FadeToAlpha(0f, fadeDuration));
+        setColliders(false);
 
-        // Keep it hidden for the chosen time
+        // Stay invisible for the chosen time
         yield return new WaitForSeconds(hiddenTime);
 
-        // Show the platform again so it can be used another time
-        
+        // Fade back in to fully visible, then re-enable the collider
+        yield return StartCoroutine(FadeToAlpha(1f, fadeDuration));
+        setColliders(true);
 
-        // Mark that the cycle is finished so the platform can respond again later
         isRunningCycle = false;
     }
     private IEnumerator FadeToAlpha(float alpha, float duration) 
     {
+        // Make sure duration is never zero or negative to avoid division problems
+        float time = Mathf.Max(0.0001f, duration);
 
+        // For each renderer, remember where we start so we can blend to the target
+        float[] startAlphas = new float[renderers.Length];
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            startAlphas[i] = renderers[i].material.color.a;
+        }
+
+        // t goes from 0 to 1 over "time" seconds
+        float t = 0f;
+        while (t < 1f)
+        {
+            // Increase t based on how much time passed since last frame
+            t += Time.deltaTime / time;
+
+            // Lerp (blend) each renderer's alpha from start to target
+            for (int i = 0; i < renderers.Length; i++)
+            {
+                // Read current color
+                Color c = renderers[i].material.color;
+
+                // Blend from the start alpha to the target alpha
+                c.a = Mathf.Lerp(startAlphas[i], Mathf.Clamp01(alpha), t);
+
+                // Write color back to the material
+                renderers[i].material.color = c;
+            }
+
+            // Wait until the next frame and continue the loop
+            yield return null;
+        }
+
+        // After the loop, force the exact final alpha value (avoids tiny rounding errors)
+        SetAllMaterialsAlpha(alpha);
     }
 
     private void SetAllMaterialsAlpha(float alpha)
