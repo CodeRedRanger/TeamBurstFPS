@@ -52,7 +52,11 @@ public class DisappearingPlatform : MonoBehaviour
 
     private void HidePlatform()
     {
+        // Turn off the visual part if it exists
+        if (meshRenderer != null) meshRenderer.enabled = false;
 
+        // Turn off the collider so the player falls through
+        if (col != null) col.enabled = false;
     }
     private void ShowPlatform() { }
     private IEnumerator LoopingCycle()
