@@ -4,7 +4,7 @@ using UnityEngine;
 public class DisappearingPlatform : MonoBehaviour
 {
     [SerializeField] bool disappearOnStep = false, startHidden = false;
-    [SerializeField] float visibleTime = 3.0f, hiddenTime = 2.0f;
+    [SerializeField] float visibleTime = 3.0f, hiddenTime = 2.0f, fadeDuration = 0.5f;
 
     private Renderer meshRenderer;
     private Collider col;
@@ -53,12 +53,12 @@ public class DisappearingPlatform : MonoBehaviour
     private void HidePlatform()
     {
         // Turn off the visual part if it exists
-        if (meshRenderer != null) meshRenderer.enabled = false;
+        if (meshRenderer != null) SetAllMaterialsAlpha(0f);
 
         // Turn off the collider so the player falls through
         if (col != null) col.enabled = false;
     }
-    private void ShowPlatform() 
+    private void ShowPlatform()
     {
         if (meshRenderer != null) meshRenderer.enabled = true;
         if (col != null) col.enabled = true;
@@ -97,7 +97,7 @@ public class DisappearingPlatform : MonoBehaviour
             }
         }
     }
-    private IEnumerator StepTriggeredCycle() 
+    private IEnumerator StepTriggeredCycle()
     {
         // Mark that we are running a cycle so we do not start it twice
         isRunningCycle = true;
@@ -116,5 +116,22 @@ public class DisappearingPlatform : MonoBehaviour
 
         // Mark that the cycle is finished so the platform can respond again later
         isRunningCycle = false;
+    }
+
+    private void SetAllMaterialsAlpha(float alpha)
+    {
+        // If there is no renderer, stop safely
+        if (meshRenderer == null) return;
+
+        // Get all materials on this renderer
+        Material[] mats = meshRenderer.materials;
+
+        // Go through each material and set its color alpha
+        for (int i = 0; i < mats.Length; i++)
+        {
+            Color c = mats[i].color;
+            c.a = alpha;
+            mats[i].color = c;
+        }
     }
 }
