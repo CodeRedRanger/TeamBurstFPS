@@ -50,7 +50,10 @@ public class DisappearingPlatform : MonoBehaviour
         }
     }
 
-    private void HidePlatform() { }
+    private void HidePlatform()
+    {
+
+    }
     private void ShowPlatform() { }
     private IEnumerator LoopingCycle()
     {
@@ -70,5 +73,40 @@ public class DisappearingPlatform : MonoBehaviour
             // Stay hidden for the chosen time
             yield return new WaitForSeconds(hiddenTime);
         }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        // Only react in the "disappear on step" mode
+        if (!disappearOnStep) return;
+
+        // Check if the thing that touched us is the player (the player should have the "Player" tag)
+        if (collision.collider.CompareTag("Player"))
+        {
+            // Start the disappear/reappear routine if it's not already running
+            if (!isRunningCycle)
+            {
+                StartCoroutine(StepTriggeredCycle());
+            }
+        }
+    }
+    private IEnumerator StepTriggeredCycle() 
+    {
+        // Mark that we are running a cycle so we do not start it twice
+        isRunningCycle = true;
+
+        // Keep the platform visible/solid for the chosen time after the player steps on it
+        yield return new WaitForSeconds(visibleTime);
+
+        // Hide the platform so the player falls if they are still on it
+        HidePlatform();
+
+        // Keep it hidden for the chosen time
+        yield return new WaitForSeconds(hiddenTime);
+
+        // Show the platform again so it can be used another time
+        ShowPlatform();
+
+        // Mark that the cycle is finished so the platform can respond again later
+        isRunningCycle = false;
     }
 }
