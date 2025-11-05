@@ -262,7 +262,8 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
             if (HP <= 0)
             {
                 SoundManager.Instance.PlayEffect(deathSound, 1);
-                SoundManager.Instance.StopMusic();
+                //not needed anymore because reducing sound instead. 
+                //SoundManager.Instance.StopMusic();
                 //Debug.Log("You are dead"); 
                 gameManager.instance.youLose();
 

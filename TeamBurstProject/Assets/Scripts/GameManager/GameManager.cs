@@ -1,6 +1,5 @@
 using System.Collections;
 using TMPro;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -58,7 +57,7 @@ public class gameManager : MonoBehaviour
     public PlayerController playerScript; //reference to player script
 
     //could use getter and setter
-    public bool isPaused;
+    [HideInInspector] public bool isPaused;
 
     //when paused, timeScale is 0, when unpaused, timeScale is 1
     //input won't work and enemies won't move when timeScale is 0
@@ -408,12 +407,16 @@ public class gameManager : MonoBehaviour
         //normal pause; first unpause true if new scene being loaded
         if (firstUnpause == false)
          {
-             menuActive.SetActive(false);
+
+            
+
+            menuActive.SetActive(false);
              menuActive = null;
             //SoundManager.Instance.PlayMusic(BGMusic);
-
             //only need to raise volume if unpausing in same scene, need to play new music if changing scenes
             SoundManager.Instance.ChangeVolumeMusic(currentMusicVolume);
+
+
         }
             
          firstUnpause = false;
@@ -539,13 +542,15 @@ public class gameManager : MonoBehaviour
         menuActive = menuLose;
         menuActive.SetActive(true);
 
-        currentMusicVolume = PlayerPrefs.GetFloat("MusicVolume", 0.6f);
+        //currentMusicVolume = PlayerPrefs.GetFloat("MusicVolume", 0.6f);
 
         //need to only change volume if scene is the same; need to stop it if going to a new scene
         //SoundManager.Instance.PlayMusic(BGMusic, 0.2f);
         //SoundManager.Instance.ChangeVolumeMusic(0.2f);
-        SoundManager.Instance.LowerVolumeInstantly();
-        PlayerPrefs.SetFloat("MusicVolume", currentMusicVolume);
+
+
+        //SoundManager.Instance.LowerVolumeInstantly();
+        //PlayerPrefs.SetFloat("MusicVolume", currentMusicVolume);
 
     }
 
