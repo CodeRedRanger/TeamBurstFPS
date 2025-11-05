@@ -7,7 +7,7 @@ public class Climb : MonoBehaviour
     [SerializeField] float climbSpeed = 15;
     [SerializeField] bool autoClimb;
     [SerializeField] bool stickToClimb = true;
-    [SerializeField] bool isRope;
+    //[SerializeField] bool isRope;
 
     bool onLadder;
     int speedOrig;
@@ -70,11 +70,11 @@ public class Climb : MonoBehaviour
                 playerController.setGravity(0);
             }
 
-            if (!isRope)
-            {
-                Vector3 newPos = new Vector3(gameObject.transform.position.x, characterController.transform.position.y, characterController.transform.position.z);
-                characterController.transform.position = newPos;
-            }
+            //if (!isRope)
+            //{
+            //    Vector3 newPos = new Vector3(gameObject.transform.position.x, characterController.transform.position.y, characterController.transform.position.z);
+            //    characterController.transform.position = newPos;
+            //}
 
             onLadder = true;
         }
