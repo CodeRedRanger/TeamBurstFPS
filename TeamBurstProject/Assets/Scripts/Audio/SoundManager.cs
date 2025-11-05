@@ -16,6 +16,8 @@ public class SoundManager : MonoBehaviour
 
     //NEW
     public AudioMixer masterMixer;
+    private const float MinVolumeLinear = 0.0001f;
+    private const float MaxVolumeLinear = 1f; 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
@@ -81,10 +83,17 @@ public class SoundManager : MonoBehaviour
             musicSource.Stop();
     }
 
-    public void ChangeVolumeMusic(float newVolume)
+    public void ChangeVolumeMusic(float linearVolume)
     {
-        musicSource.volume = Mathf.Clamp(newVolume, 0f, 1f);
+        float clampedVolume = Mathf.Clamp(linearVolume, MinVolumeLinear, MaxVolumeLinear);
+        float dbVolume = Mathf.Log10(clampedVolume) * 30f;
+        masterMixer.SetFloat("MusicVolume", dbVolume); 
 
+    }
+
+    public void LowerVolumeInstantly()
+    {
+        ChangeVolumeMusic(0.25f); 
     }
 
     public bool MusicIsPlaying()
@@ -148,12 +157,12 @@ public class SoundManager : MonoBehaviour
         if (effectsSource != null && effectsSource.enabled && effectsSource.gameObject.activeInHierarchy)
         {
             PlayEffect(hoverSound, 1.0f);
-            Debug.Log("Playing sound!");
+            //Debug.Log("Playing sound!");
 
         }
         else
         {
-            Debug.Log("effectsSource is null or disabled, cannot play sound.");
+            //Debug.Log("effectsSource is null or disabled, cannot play sound.");
         }
 
 
