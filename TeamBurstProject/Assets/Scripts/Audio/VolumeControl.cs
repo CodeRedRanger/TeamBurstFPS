@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
+
 public class VolumeControl : MonoBehaviour
 {
     [SerializeField] string volumeParameter = "MasterVolume";
@@ -10,12 +11,29 @@ public class VolumeControl : MonoBehaviour
     [SerializeField] Slider slider;
     [SerializeField] float multiplier = 30f;
     [SerializeField] private Toggle muteToggle;
-    private bool disableToggleEvent; 
+    private bool disableToggleEvent;
+    [SerializeField] AudioClip musicExample;
+    [SerializeField] AudioClip SFXExample;
+    private bool firstTime = true; 
+    
 
     private void Awake()
     {
         slider.onValueChanged.AddListener(HandleSliderValueChanged);
-        muteToggle.onValueChanged.AddListener(HandleToggelValueChanged); 
+        muteToggle.onValueChanged.AddListener(HandleToggelValueChanged);
+    }
+
+    void Start()
+    {
+        slider.value = PlayerPrefs.GetFloat(volumeParameter, slider.value);
+
+      
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
     }
 
     private void HandleToggelValueChanged(bool enableSound)
@@ -30,26 +48,54 @@ public class VolumeControl : MonoBehaviour
 
     private void OnDisable()
     {
+        //Changed
         PlayerPrefs.SetFloat(volumeParameter, slider.value);
+        PlayerPrefs.Save(); 
 
     }
 
     private void HandleSliderValueChanged(float value)
     {
         mixer.SetFloat(volumeParameter, Mathf.Log10(value) * multiplier);
+        //SetMasterVolumeFromSlider(value); 
+
+        if (volumeParameter == "MasterVolume" || volumeParameter == "MusicVolume")
+        {
+            if (musicExample != null && firstTime == false)
+            {
+                PlayerPrefs.SetFloat(volumeParameter, slider.value);
+                SoundManager.Instance.PlayMusic(musicExample);
+            }
+
+            firstTime = false;
+        }
+        else if (volumeParameter == "SFXVolume")
+        {
+            if (musicExample != null)
+                SoundManager.Instance.StopMusic();
+
+            if (SFXExample != null && firstTime == false)
+            {
+                PlayerPrefs.SetFloat(volumeParameter, slider.value);
+                SoundManager.Instance.PlayEffect(SFXExample, slider.value);
+            }
+
+            firstTime = false;
+        }
+
         disableToggleEvent = true; 
         muteToggle.isOn = slider.value > slider.minValue;
         disableToggleEvent = false;
     }
 
-    void Start()
+    /*
+    public void SetMasterVolumeFromSlider(float value)
     {
-        slider.value = PlayerPrefs.GetFloat(volumeParameter, slider.value);
-    }
+        if (SoundManager.Instance != null)
+        {
+            SoundManager.Instance.SetMasterVolume(value);
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    }*/
 }
+

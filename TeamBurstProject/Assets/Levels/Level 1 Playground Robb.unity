@@ -1383,6 +1383,17 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: c4a0b7c081bdb6749b6b998d5df3ff2b, type: 2}
   m_BuildHeightMesh: 0
+--- !u!114 &399318625 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4522461006613265888, guid: a3a9177f637b8474a9d4c93b6f1ee50e, type: 3}
+  m_PrefabInstance: {fileID: 7636448578452763795}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda28b665925c48478c64b1a33800066, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundManager
 --- !u!1001 &404050236
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6475,13 +6486,189 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 290020444605640206, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 610175360486375949, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 399318625}
+    - target: {fileID: 610175360486375949, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 399318625}
+    - target: {fileID: 610175360486375949, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayButtonSelectedSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 610175360486375949, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayButtonSelectedSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 2769321201983422940, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3043241137791801221, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3335101712964208371, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3586937788407426076, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.7997998
+      objectReference: {fileID: 0}
+    - target: {fileID: 3586937788407426076, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3630788045220638853, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3922244939532068476, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 399318625}
+    - target: {fileID: 3922244939532068476, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 399318625}
+    - target: {fileID: 3922244939532068476, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayButtonSelectedSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 3922244939532068476, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayButtonSelectedSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297809458786181726, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.7997998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297809458786181726, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4413074452995137496, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.7997998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4413074452995137496, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4413074452995137496, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.7997998
+      objectReference: {fileID: 0}
     - target: {fileID: 4998969205941902043, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 5092604542718860236, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5411211273313380848, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5497295782940939855, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.7997998
+      objectReference: {fileID: 0}
+    - target: {fileID: 5497295782940939855, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6440987275831861573, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -80
+      objectReference: {fileID: 0}
+    - target: {fileID: 6782770222297583154, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 399318625}
+    - target: {fileID: 6782770222297583154, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 399318625}
+    - target: {fileID: 6782770222297583154, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayButtonSelectedSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 6782770222297583154, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayButtonSelectedSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 7017722854453837827, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.7997998
+      objectReference: {fileID: 0}
+    - target: {fileID: 7017722854453837827, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7017722854453837827, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.7997998
+      objectReference: {fileID: 0}
+    - target: {fileID: 8064853671689181561, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.7997998
+      objectReference: {fileID: 0}
+    - target: {fileID: 8064853671689181561, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8064853671689181561, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.7997998
+      objectReference: {fileID: 0}
+    - target: {fileID: 8173974355199420652, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8478334407042960583, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 399318625}
+    - target: {fileID: 8478334407042960583, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 399318625}
+    - target: {fileID: 8478334407042960583, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayButtonSelectedSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 8478334407042960583, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayButtonSelectedSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 8918967308845559037, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 399318625}
+    - target: {fileID: 8918967308845559037, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 399318625}
+    - target: {fileID: 8918967308845559037, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayButtonSelectedSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 8918967308845559037, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PlayButtonSelectedSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 8926391022362217718, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8954725009945230171, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
       propertyPath: m_Pivot.x
@@ -6853,6 +7040,10 @@ PrefabInstance:
       objectReference: {fileID: 5863655545279253477}
     - target: {fileID: 3775788154510195498, guid: b3ded5327dcfffe42a6f6978015feabc, type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7204301226793850206, guid: b3ded5327dcfffe42a6f6978015feabc, type: 3}
+      propertyPath: gameOver
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7448672019300480022, guid: b3ded5327dcfffe42a6f6978015feabc, type: 3}
