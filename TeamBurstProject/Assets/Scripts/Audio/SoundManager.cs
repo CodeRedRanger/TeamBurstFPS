@@ -20,6 +20,8 @@ public class SoundManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
+
+
         if (Instance != null && Instance != this)
         {
             //so only one instance of SoundManager exists at any time
@@ -29,6 +31,7 @@ public class SoundManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            //GetComponent<AudioSource>().ignoreListenerPause = true; 
 
             LoadVolumes(); 
 
@@ -132,13 +135,29 @@ public class SoundManager : MonoBehaviour
     }
 
 
-
     private void OnApplicationQuit()
     {
         PlayerPrefs.Save(); 
     }
 
     //END NEW
+
+    //Wrapper functions for button hover
+    public void PlayButtonSelectedSound(AudioClip hoverSound)
+    {
+        if (effectsSource != null && effectsSource.enabled && effectsSource.gameObject.activeInHierarchy)
+        {
+            PlayEffect(hoverSound, 1.0f);
+            Debug.Log("Playing sound!");
+
+        }
+        else
+        {
+            Debug.Log("effectsSource is null or disabled, cannot play sound.");
+        }
+
+
+    }
 }
 
 

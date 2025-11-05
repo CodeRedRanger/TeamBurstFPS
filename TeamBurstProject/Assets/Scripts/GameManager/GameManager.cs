@@ -11,6 +11,7 @@ public class gameManager : MonoBehaviour
 {
 
     public static gameManager instance;
+    public EventSystem eventSystem; 
     //any open menu will go into menuActive and then close active menu 
     //Menu variables
     [SerializeField] GameObject menuActive;
@@ -24,13 +25,18 @@ public class gameManager : MonoBehaviour
     public GameObject firstSelectedEnd; 
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject hotBar;
+    public GameObject firstSelectedMain;
+    public GameObject firstSelectedOptions;
+    public GameObject firstSelectedCredits; 
 
 
-    
+
     //Sound variables
     private AudioClip BGMusic;
     public AudioClip toSchool;
-    public AudioClip run; 
+    public AudioClip run;
+    private bool kidsSpawned = false;
+    public AudioClip thankYou;
     public AudioClip winMusic;
 
     [SerializeField] AudioClip MainMenuSFX;
@@ -122,16 +128,38 @@ public class gameManager : MonoBehaviour
 
     void Awake()
     {
+        if (instance == null)
+        {
+            /*
+            if (transform.parent != null)
+            {
+                transform.parent = null;
+            }*/
 
+            instance = this;
+            //DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject); 
+        }
         //instance = this;
+
+        /*
         if (instance != null)
         {
-            return;
+            Destroy(gameObject);
+            //return;
 
         }
         else
         {
             instance = this;
+        }*/
+
+        if (eventSystem == null)
+        {
+            eventSystem = GetComponentInChildren<EventSystem>();
         }
 
 
@@ -151,6 +179,7 @@ public class gameManager : MonoBehaviour
 
             if(currentScene.buildIndex == mainMenu)
             {
+                EventSystem.current.SetSelectedGameObject(firstSelectedMain);
                 //SoundManager.Instance.PlayEffect(MainMenuSFX, 1);
                 SoundManager.Instance.PlayEffectDelayed(MainMenuSFX, 1, 0.5f); 
             }
@@ -167,6 +196,15 @@ public class gameManager : MonoBehaviour
                     //Debug.Log($"Current VOLUME of '{"MusicVolume"}' is {value}");
                     SoundManager.Instance.PlayMusic(MainMenuMusic);
                 }
+            }
+
+            if (currentScene.buildIndex == credits)
+            {
+                EventSystem.current.SetSelectedGameObject(firstSelectedCredits);
+            }
+            else if (currentScene.buildIndex == options)
+            {
+                EventSystem.current.SetSelectedGameObject(firstSelectedOptions);
             }
 
 
@@ -303,6 +341,8 @@ public class gameManager : MonoBehaviour
 
         isPaused = !isPaused;
         Time.timeScale = 0;
+        //ADDED THIS
+        //AudioListener.pause = true;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
@@ -352,6 +392,8 @@ public class gameManager : MonoBehaviour
 
     public void updateKidsRescued(int amount)
     {
+       
+        StartCoroutine(WaitForKidsToSpawn());
         kidsRescued += amount;
         kidsRescuedText.text = kidsRescued.ToString("F0");
 
@@ -491,13 +533,22 @@ public class gameManager : MonoBehaviour
          runPopup.SetActive(false);
         
     }
-
+    
     public IEnumerator FlashKidsUI()
     {
         kidsPopup.SetActive(true);
         yield return new WaitForSeconds(3.0f);
         kidsPopup.SetActive(false);
 
+    }
+
+    public IEnumerator WaitForKidsToSpawn()
+    {
+        if (!kidsSpawned)
+            yield return new WaitForSeconds(2.0f);
+        else
+            SoundManager.Instance.PlayEffect(thankYou, 1);
+        kidsSpawned = true;
     }
 
 

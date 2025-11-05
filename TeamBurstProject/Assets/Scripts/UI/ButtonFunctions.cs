@@ -108,17 +108,19 @@ public class ButtonFunctions : MonoBehaviour
         else if (lvl == mainMenu)
         {
             SoundManager.Instance.PlayEffect(nonStartButtonSound, 1f);
-            yield return new WaitForSeconds(2.0f);
+            yield return new WaitForSeconds(0.2f);
 
             if (gameManager.instance.currentScene.buildIndex != credits)
                 SoundManager.Instance.StopMusic();
             
             SceneManager.LoadScene(lvl);
+
+            
         }
         else if (lvl != company)
         {
             SoundManager.Instance.PlayEffect(nonStartButtonSound, 1f);
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(0.2f);
             SceneManager.LoadScene(lvl);
 
         }
