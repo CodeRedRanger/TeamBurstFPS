@@ -51,6 +51,8 @@ public class DisappearingPlatform : MonoBehaviour
         }
         else
         {
+            SetAllMaterialsAlpha(1f);
+            setColliders(true);
             
         }
 
@@ -64,19 +66,21 @@ public class DisappearingPlatform : MonoBehaviour
     {
         foreach (var collider in colliders) { collider.enabled = state; }
     }
-    private IEnumerator LoopingCycle()
+    private System.Collections.IEnumerator LoopingCycle()
     {
-        // Mark that a cycle is running so we do not start another one by mistake
         isRunningCycle = true;
+
+        // Repeat forever
         while (true)
         {
-            // Stay visible for the chosen time
+            // Ensure fully visible and solid before waiting
+            yield return StartCoroutine(FadeToAlpha(1f, fadeDuration));
+            setColliders(true);
             yield return new WaitForSeconds(visibleTime);
 
-            // Hide the platform so it cannot be used
-            HidePlatform();
-
-            // Stay hidden for the chosen time
+            // Fade to invisible and then disable the collider
+            yield return StartCoroutine(FadeToAlpha(0f, fadeDuration));
+            setColliders(false);
             yield return new WaitForSeconds(hiddenTime);
         }
     }
@@ -111,6 +115,10 @@ public class DisappearingPlatform : MonoBehaviour
 
         // Mark that the cycle is finished so the platform can respond again later
         isRunningCycle = false;
+    }
+    private IEnumerator FadeToAlpha(float alpha, float duration) 
+    {
+
     }
 
     private void SetAllMaterialsAlpha(float alpha)
