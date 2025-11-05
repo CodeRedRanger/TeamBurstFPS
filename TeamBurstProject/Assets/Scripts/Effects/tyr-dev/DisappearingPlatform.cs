@@ -15,10 +15,10 @@ public class DisappearingPlatform : MonoBehaviour
     private void Awake()
     {
         // Get the Renderer so we can turn the platform's visibility on/off
-        renderers = GetComponents<Renderer>();
+        renderers = GetComponentsInChildren<Renderer>();
 
         // Get the Collider so we can enable/disable standing on the platform
-        colliders = GetComponents<Collider>();
+        colliders = GetComponentsInChildren<Collider>();
 
         // Warn in the Console if required components are missing so you know what to add
         if (renderers == null || renderers.Length == 0)
