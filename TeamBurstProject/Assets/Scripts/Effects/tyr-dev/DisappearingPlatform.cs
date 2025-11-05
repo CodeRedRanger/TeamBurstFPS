@@ -10,15 +10,24 @@ public class DisappearingPlatform : MonoBehaviour
 
     private bool isRunningCycle = false;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void Awake()
     {
-        
+        // Get the Renderer so we can turn the platform's visibility on/off
+        meshRenderer = GetComponent<Renderer>();
+
+        // Get the Collider so we can enable/disable standing on the platform
+        col = GetComponent<Collider>();
+
+        // Warn in the Console if required components are missing so you know what to add
+        if (meshRenderer == null)
+        {
+            Debug.LogWarning("DisappearingPlatform: No Renderer found. Add a MeshRenderer to this platform.");
+        }
+
+        if (col == null)
+        {
+            Debug.LogWarning("DisappearingPlatform: No Collider found. Add a Collider (like BoxCollider) to this platform.");
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
