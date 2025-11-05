@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 487242223}
   - component: {fileID: 487242222}
   m_Layer: 12
-  m_Name: DetectPlayerState
+  m_Name: WaitForPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -187,6 +187,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 736099631}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &510267910
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2419970718338169425, guid: ded1fb2b9bd90e8409310dab4bab8d0f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.085644
+      objectReference: {fileID: 0}
+    - target: {fileID: 2419970718338169425, guid: ded1fb2b9bd90e8409310dab4bab8d0f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2419970718338169425, guid: ded1fb2b9bd90e8409310dab4bab8d0f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.345609
+      objectReference: {fileID: 0}
+    - target: {fileID: 2419970718338169425, guid: ded1fb2b9bd90e8409310dab4bab8d0f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2419970718338169425, guid: ded1fb2b9bd90e8409310dab4bab8d0f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2419970718338169425, guid: ded1fb2b9bd90e8409310dab4bab8d0f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2419970718338169425, guid: ded1fb2b9bd90e8409310dab4bab8d0f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2419970718338169425, guid: ded1fb2b9bd90e8409310dab4bab8d0f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2419970718338169425, guid: ded1fb2b9bd90e8409310dab4bab8d0f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2419970718338169425, guid: ded1fb2b9bd90e8409310dab4bab8d0f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8360401713814996041, guid: ded1fb2b9bd90e8409310dab4bab8d0f, type: 3}
+      propertyPath: m_Name
+      value: AlienPurple
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ded1fb2b9bd90e8409310dab4bab8d0f, type: 3}
 --- !u!1001 &662492694
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -262,8 +319,9 @@ GameObject:
   - component: {fileID: 736099629}
   - component: {fileID: 736099628}
   - component: {fileID: 736099632}
+  - component: {fileID: 736099633}
   m_Layer: 0
-  m_Name: Example State-Controlled Enemy
+  m_Name: Fixed Rotation Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -361,6 +419,7 @@ Transform:
   m_Children:
   - {fileID: 487242224}
   - {fileID: 1172797878}
+  - {fileID: 787513272}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &736099632
@@ -376,6 +435,59 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FiniteStateMachine
   firstState: {fileID: 487242222}
+--- !u!95 &736099633
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736099627}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8cddc27fb79e24f4bbbd8526e51d32cd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &787513271
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 787513272}
+  m_Layer: 0
+  m_Name: ShootState
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &787513272
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787513271}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 736099631}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1020498176
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -444,7 +556,7 @@ GameObject:
   - component: {fileID: 1172797878}
   - component: {fileID: 1172797877}
   m_Layer: 0
-  m_Name: WhilePlayerCloseState
+  m_Name: StaticRotationTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1056,3 +1168,4 @@ SceneRoots:
   - {fileID: 1020498176}
   - {fileID: 736099631}
   - {fileID: 1897025944}
+  - {fileID: 510267910}
