@@ -58,7 +58,11 @@ public class DisappearingPlatform : MonoBehaviour
         // Turn off the collider so the player falls through
         if (col != null) col.enabled = false;
     }
-    private void ShowPlatform() { }
+    private void ShowPlatform() 
+    {
+        if (meshRenderer != null) meshRenderer.enabled = true;
+        if (col != null) col.enabled = true;
+    }
     private IEnumerator LoopingCycle()
     {
         // Mark that a cycle is running so we do not start another one by mistake
