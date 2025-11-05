@@ -11,12 +11,14 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     public int speed;
     [SerializeField] int sprintMod;
     [SerializeField] int jumpSpeed; 
+    [SerializeField] float maxJumpSpeed;
     [SerializeField] int jumpCountMax;
     [SerializeField] int gravity; 
 
     [SerializeField] int shootDamage;
     [SerializeField] int shootDist;
     [SerializeField] float shootRate;
+    [SerializeField] float invincibleDur;
 
     [SerializeField] ParticleSystem ps;
     [SerializeField] ParticleSystem ps1;
@@ -34,6 +36,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
 
     bool isSprinting;
     bool isInvincible;
+
 
     //Audio
     //can make these arrays
@@ -65,6 +68,8 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     bool gainHealth = false;
     bool loseHealth = false;
 
+    // For Variable Jump
+    bool isMaxJumpSpeed = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -157,13 +162,27 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     }
     void Jump()
     {
-
         if (Input.GetButtonDown("Jump") && jumpCount < jumpCountMax)
         {
             SoundManager.Instance.PlayEffect(audJump[Random.Range(0, audJump.Length)], audJumpVol);
             playerVel.y = jumpSpeed;
             jumpCount++;
+
+            isMaxJumpSpeed = false;
         }
+
+        if (Input.GetButton("Jump") && !isMaxJumpSpeed)
+        {
+            // this magic number can not be < 1
+            playerVel.y += 1;
+
+            if (playerVel.y > maxJumpSpeed)
+                isMaxJumpSpeed = true;
+        }
+
+        if (Input.GetButtonUp("Jump"))
+            isMaxJumpSpeed = true;
+
     }
 
     void Shoot()
@@ -238,6 +257,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
             loseHealth = false;   
             StartCoroutine(flashDamage());
             SoundManager.Instance.PlayEffect(damageSound, 1);
+            StartCoroutine(invincible());
 
             if (HP <= 0)
             {
@@ -443,6 +463,15 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     public void SetInvincibility(bool state)
     {
         isInvincible = state;
+    }
+
+    IEnumerator invincible()
+    {
+        isInvincible = true;
+        //enable visual indicator here
+        yield return new WaitForSeconds(invincibleDur);
+        //disable visual indicator here
+        isInvincible = false;
     }
     
 }
