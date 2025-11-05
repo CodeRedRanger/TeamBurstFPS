@@ -7,7 +7,8 @@ public enum ItemType
     bomb,
     grenade,
     stunner,
-    medkit
+    medkit,
+    key
 }
 
 [CreateAssetMenu(menuName = "Inventory/Item")]

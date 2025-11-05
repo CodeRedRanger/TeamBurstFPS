@@ -28,7 +28,8 @@ public class ItemPickupRobb : MonoBehaviour, IPickup
         //Debug.Log("Picking up " + item.type);
 
         //probably should have separate health pick up script if no health items are added to inventory
-        if (!healthItem)
+        //WILL HANDLE ADDING KEY TO THE INVENTORY LATER...MAY BE ABLE TO ADD TO HOTBAR TOO BUT HAVE TO TRACK NUMBER OF KEYS
+        if (!healthItem && item.type != ItemType.key)
         {
             if (item.type == ItemType.bomb)
             {
@@ -48,6 +49,8 @@ public class ItemPickupRobb : MonoBehaviour, IPickup
                 gameManager.instance.flashStunnerUI = true;
                 gameManager.instance.flashItemUI();
             }
+
+
 
 
             //Debug.Log("Adding " + item.type + " to inventory!");

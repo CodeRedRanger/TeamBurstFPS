@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 92703954707613498}
   - component: {fileID: 2291263785281569812}
   - component: {fileID: 2531040074520295936}
+  - component: {fileID: -6961183638855368585}
   m_Layer: 0
   m_Name: Key
   m_TagString: Untagged
@@ -155,3 +156,19 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.95002496
   m_Center: {x: -0.1860658, y: 0.022766173, z: -0.0000012218952}
+--- !u!114 &-6961183638855368585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8677405666576753640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77b8f93301ccabb4da065a8162cbf4fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ItemPickupRobb
+  item: {fileID: 0}
+  destroyOnPickup: 1
+  healthItem: 0
+  pickupSound: {fileID: 8300000, guid: b1b9c1f0ea1fcae439ed1a4d44ff05fd, type: 3}
