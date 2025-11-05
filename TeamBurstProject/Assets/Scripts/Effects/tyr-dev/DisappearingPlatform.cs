@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class DisappearingPlatform : MonoBehaviour
 {
-    [SerializeField] bool disappearOnStep = true, startHidden = false;
-    [SerializeField] float visibleTime = 1.0f, hiddenTime = 1.0f;
+    [SerializeField] bool disappearOnStep = false, startHidden = false;
+    [SerializeField] float visibleTime = 3.0f, hiddenTime = 2.0f;
 
     private Renderer meshRenderer;
     private Collider col;
