@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     [SerializeField] int shootDamage;
     [SerializeField] int shootDist;
     [SerializeField] float shootRate;
+    [SerializeField] float invincibleDur;
 
     [SerializeField] ParticleSystem ps;
     [SerializeField] ParticleSystem ps1;
@@ -35,6 +36,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
 
     bool isSprinting;
     bool isInvincible;
+
 
     //Audio
     //can make these arrays
@@ -255,6 +257,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
             loseHealth = false;   
             StartCoroutine(flashDamage());
             SoundManager.Instance.PlayEffect(damageSound, 1);
+            StartCoroutine(invincible());
 
             if (HP <= 0)
             {
@@ -460,6 +463,15 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     public void SetInvincibility(bool state)
     {
         isInvincible = state;
+    }
+
+    IEnumerator invincible()
+    {
+        isInvincible = true;
+        //enable visual indicator here
+        yield return new WaitForSeconds(invincibleDur);
+        //disable visual indicator here
+        isInvincible = false;
     }
     
 }
