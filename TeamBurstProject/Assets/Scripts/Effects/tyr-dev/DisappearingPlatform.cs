@@ -6,62 +6,63 @@ public class DisappearingPlatform : MonoBehaviour
     [SerializeField] bool disappearOnStep = false, startHidden = false;
     [SerializeField] float visibleTime = 3.0f, hiddenTime = 2.0f, fadeDuration = 0.5f;
 
-    private Renderer meshRenderer;
-    private Collider col;
+    private Renderer[] renderers;
+    private Collider[] colliders;
+    private Color[] originalColors;
 
     private bool isRunningCycle = false;
 
     private void Awake()
     {
         // Get the Renderer so we can turn the platform's visibility on/off
-        meshRenderer = GetComponent<Renderer>();
+        renderers = GetComponents<Renderer>();
 
         // Get the Collider so we can enable/disable standing on the platform
-        col = GetComponent<Collider>();
+        colliders = GetComponents<Collider>();
 
         // Warn in the Console if required components are missing so you know what to add
-        if (meshRenderer == null)
+        if (renderers == null || renderers.Length == 0)
         {
             Debug.LogWarning("DisappearingPlatform: No Renderer found. Add a MeshRenderer to this platform.");
         }
 
-        if (col == null)
+        if (colliders == null || colliders.Length == 0)
         {
             Debug.LogWarning("DisappearingPlatform: No Collider found. Add a Collider (like BoxCollider) to this platform.");
+        }
+
+        // Save the starting colors for each renderer so we can restore alpha later
+        originalColors = new Color[renderers.Length];
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            // We read the color from the first material on the renderer
+            // This is simple and beginner friendly (advanced setups can have multiple materials)
+            originalColors[i] = renderers[i].material.color;
         }
     }
 
     private void OnEnable()
     {
-        // Set initial state based on startHidden
+        // If we should start hidden, set our visuals to fully transparent and disable collider
         if (startHidden)
         {
-            HidePlatform();
+            SetAllMaterialsAlpha(0f);
+            setColliders(false);
         }
         else
         {
-            ShowPlatform();
+            
         }
 
-        // If we want the platform to loop by itself, start the looping routine now
+        // If we are not waiting for the player, start the automatic loop
         if (!disappearOnStep && !isRunningCycle)
         {
             StartCoroutine(LoopingCycle());
         }
     }
-
-    private void HidePlatform()
+    private void setColliders(bool state)
     {
-        // Turn off the visual part if it exists
-        if (meshRenderer != null) SetAllMaterialsAlpha(0f);
-
-        // Turn off the collider so the player falls through
-        if (col != null) col.enabled = false;
-    }
-    private void ShowPlatform()
-    {
-        if (meshRenderer != null) meshRenderer.enabled = true;
-        if (col != null) col.enabled = true;
+        foreach (var collider in colliders) { collider.enabled = state; }
     }
     private IEnumerator LoopingCycle()
     {
@@ -69,9 +70,6 @@ public class DisappearingPlatform : MonoBehaviour
         isRunningCycle = true;
         while (true)
         {
-            // Make sure the platform is visible and solid
-            ShowPlatform();
-
             // Stay visible for the chosen time
             yield return new WaitForSeconds(visibleTime);
 
@@ -82,19 +80,16 @@ public class DisappearingPlatform : MonoBehaviour
             yield return new WaitForSeconds(hiddenTime);
         }
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        // Only react in the "disappear on step" mode
+        // Only do anything if we are using the "disappear when stepped on" mode
         if (!disappearOnStep) return;
 
-        // Check if the thing that touched us is the player (the player should have the "Player" tag)
-        if (collision.collider.CompareTag("Player"))
+        // Check if the thing that entered the trigger is the player (by tag)
+        if (other.CompareTag("Player") && !isRunningCycle)
         {
-            // Start the disappear/reappear routine if it's not already running
-            if (!isRunningCycle)
-            {
-                StartCoroutine(StepTriggeredCycle());
-            }
+            // Start the disappear/reappear routine one time
+            StartCoroutine(StepTriggeredCycle());
         }
     }
     private IEnumerator StepTriggeredCycle()
@@ -106,13 +101,13 @@ public class DisappearingPlatform : MonoBehaviour
         yield return new WaitForSeconds(visibleTime);
 
         // Hide the platform so the player falls if they are still on it
-        HidePlatform();
+       
 
         // Keep it hidden for the chosen time
         yield return new WaitForSeconds(hiddenTime);
 
         // Show the platform again so it can be used another time
-        ShowPlatform();
+        
 
         // Mark that the cycle is finished so the platform can respond again later
         isRunningCycle = false;
@@ -120,18 +115,16 @@ public class DisappearingPlatform : MonoBehaviour
 
     private void SetAllMaterialsAlpha(float alpha)
     {
-        // If there is no renderer, stop safely
-        if (meshRenderer == null) return;
-
-        // Get all materials on this renderer
-        Material[] mats = meshRenderer.materials;
-
-        // Go through each material and set its color alpha
-        for (int i = 0; i < mats.Length; i++)
+        for (int i = 0; i < renderers.Length; i++)
         {
-            Color c = mats[i].color;
+            // Read the current color from the material
+            Color c = renderers[i].material.color;
+
+            // Keep the same RGB (red, green, blue) values but replace the alpha
             c.a = alpha;
-            mats[i].color = c;
+
+            // Write the new color back to the material
+            renderers[i].material.color = c;
         }
     }
 }
