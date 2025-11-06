@@ -32,7 +32,7 @@ public class ItemPickupRobb : MonoBehaviour, IPickup
         if (!healthItem && item.type != ItemType.key)
         {
             //not condition is so you can't pick up same item twice, since items now persist between levels
-            if (item.type == ItemType.bomb && !gameManager.instance.enableBomb)
+            if (item.type == ItemType.bomb) // && !gameManager.instance.enableBomb)
             {
                 gameManager.instance.enableBomb = true;
                 gameManager.instance.flashBombUI = true;

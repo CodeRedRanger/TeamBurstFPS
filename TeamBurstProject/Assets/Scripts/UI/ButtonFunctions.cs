@@ -89,8 +89,8 @@ public class ButtonFunctions : MonoBehaviour
     {
         //save your items
         gameManager.instance.SaveItemStatus(gameManager.instance.bomb, gameManager.instance.enableBomb);
-        gameManager.instance.SaveItemStatus(gameManager.instance.grenade, gameManager.instance.enableBomb);
-        gameManager.instance.SaveItemStatus(gameManager.instance.stunner, gameManager.instance.enableBomb);
+        gameManager.instance.SaveItemStatus(gameManager.instance.grenade, gameManager.instance.enableGrenade);
+        gameManager.instance.SaveItemStatus(gameManager.instance.stunner, gameManager.instance.enableStunner);
 
         gameManager.instance.SaveItemStatus(gameManager.instance.pistol, gameManager.instance.hasPistol);  
         gameManager.instance.SaveItemStatus(gameManager.instance.smgun, gameManager.instance.hasSMG);

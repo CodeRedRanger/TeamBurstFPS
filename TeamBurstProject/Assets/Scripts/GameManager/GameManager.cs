@@ -81,10 +81,13 @@ public class gameManager : MonoBehaviour
     private int mainMenu = 0;
     private int playground = 1;
     private int library = 2;
-    private int lunchroom = 5;
-    private int launchpad = 6;
-    private int alienship = 4;
-    private int credits = 3;
+    private int lunchroom = 3;
+    //launch pad 6 to 4
+    private int launchpad = 4;
+    //alienship 4 to 5
+    private int alienship = 5;
+    //credits 5 to 6
+    private int credits = 6;
     private int options = 7;
     private int company = 8;
 
