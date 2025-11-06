@@ -18,7 +18,7 @@ public class Climb : MonoBehaviour
     {
         speedOrig = gameManager.instance.player.GetComponent<PlayerController>().speed;
         gravOrig = gameManager.instance.player.GetComponent<PlayerController>().getGravity();
-        Debug.Log(speedOrig);
+        //Debug.Log(speedOrig);
     }
 
     // Update is called once per frame
@@ -92,7 +92,7 @@ public class Climb : MonoBehaviour
     {
         gameManager.instance.player.GetComponent<PlayerController>().speed = speedOrig;
         gameManager.instance.player.GetComponent<PlayerController>().setGravity(gravOrig);
-        Debug.Log(gameManager.instance.player.GetComponent<PlayerController>().speed);
+        //Debug.Log(gameManager.instance.player.GetComponent<PlayerController>().speed);
         onLadder = false;
     }
 }
