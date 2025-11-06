@@ -10,6 +10,7 @@ public class GravityBoots : MonoBehaviour
     
     private bool flipping;
     private bool gravityFlipped;
+  
     private float rotated;
     private bool bootsActivated = false; 
 
@@ -84,6 +85,7 @@ public class GravityBoots : MonoBehaviour
         playerScript.setJumpSpeed(-playerScript.getJumpSpeed());
 
         gravityFlipped = !gravityFlipped;
+        playerScript.gravityFlipped = gravityFlipped;
     }
 
     bool isGrounded()

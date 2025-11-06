@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     [SerializeField] int sprintMod;
     [SerializeField] int jumpSpeed; 
     [SerializeField] float maxJumpSpeed;
+    private float origMaxJumpSpeed;
     [SerializeField] int jumpCountMax;
     [SerializeField] int gravity; 
 
@@ -74,6 +75,10 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
 
     // For Variable Jump
     bool isMaxJumpSpeed = false;
+ 
+
+    //For gravity boots to work with variable jump
+    [HideInInspector] public bool gravityFlipped = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -82,6 +87,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
         HPOrig = HP;
         //updatePlayerUI(); //called in spawn player
         spawnPlayer();
+        origMaxJumpSpeed = maxJumpSpeed;
 
     }
 
@@ -166,19 +172,36 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     }
     void Jump()
     {
+        
         if (Input.GetButtonDown("Jump") && jumpCount < jumpCountMax)
         {
             SoundManager.Instance.PlayEffect(audJump[Random.Range(0, audJump.Length)], audJumpVol);
-            playerVel.y = jumpSpeed;
+            
+            if (gravityFlipped)
+            {
+                maxJumpSpeed = -maxJumpSpeed;
+            }
+            else
+            {
+                maxJumpSpeed = origMaxJumpSpeed;
+            }
+
+
+                playerVel.y = jumpSpeed;
             jumpCount++;
 
             isMaxJumpSpeed = false;
         }
 
-        if (Input.GetButton("Jump") && !isMaxJumpSpeed)
+        if (Input.GetButton("Jump")  && !isMaxJumpSpeed)
         {
             // this magic number can not be < 1
-            playerVel.y += 1;
+            if(gravityFlipped)
+            {   
+                playerVel.y -= 2;
+            }
+            else
+                playerVel.y += 2;
 
             if (playerVel.y > maxJumpSpeed)
                 isMaxJumpSpeed = true;

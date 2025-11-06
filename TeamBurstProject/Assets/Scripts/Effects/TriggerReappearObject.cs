@@ -8,8 +8,8 @@ public class TriggerReappearObject : MonoBehaviour
     public float delay = 1f; // Delay in seconds before the object appears
     //[SerializeField] string tagToTrigger; 
     [SerializeField] bool bossFight;
-    bool voicePlayed = false;
-    [SerializeField] AudioClip forBoss;
+    //bool voicePlayed = false;
+    //[SerializeField] AudioClip forBoss;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
