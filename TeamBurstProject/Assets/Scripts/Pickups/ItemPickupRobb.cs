@@ -31,19 +31,20 @@ public class ItemPickupRobb : MonoBehaviour, IPickup
         //WILL HANDLE ADDING KEY TO THE INVENTORY LATER...MAY BE ABLE TO ADD TO HOTBAR TOO BUT HAVE TO TRACK NUMBER OF KEYS
         if (!healthItem && item.type != ItemType.key)
         {
-            if (item.type == ItemType.bomb)
+            //not condition is so you can't pick up same item twice, since items now persist between levels
+            if (item.type == ItemType.bomb && !gameManager.instance.enableBomb)
             {
                 gameManager.instance.enableBomb = true;
                 gameManager.instance.flashBombUI = true;
                 gameManager.instance.flashItemUI(); 
             }
-            if (item.type == ItemType.grenade)
+            if (item.type == ItemType.grenade && !gameManager.instance.enableGrenade)
             {
                 gameManager.instance.enableGrenade = true;
                 gameManager.instance.flashGrenadeUI = true;
                 gameManager.instance.flashItemUI();
             }
-            if (item.type == ItemType.stunner)
+            if (item.type == ItemType.stunner && !gameManager.instance.enableStunner)
             {
                 gameManager.instance.enableStunner = true;
                 gameManager.instance.flashStunnerUI = true;

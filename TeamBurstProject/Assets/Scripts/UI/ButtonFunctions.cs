@@ -38,6 +38,18 @@ public class ButtonFunctions : MonoBehaviour
         SoundManager.Instance.PlayEffect(nonStartButtonSound, 1f);
         //reloads the current scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        //load items from beginning of level here
+        gameManager.instance.LoadItemStatus(gameManager.instance.bomb);
+        gameManager.instance.LoadItemStatus(gameManager.instance.grenade);
+        gameManager.instance.LoadItemStatus(gameManager.instance.stunner);
+        gameManager.instance.LoadItemStatus(gameManager.instance.pistol);
+        gameManager.instance.LoadItemStatus(gameManager.instance.smgun);
+        gameManager.instance.LoadItemStatus(gameManager.instance.cannon);
+        gameManager.instance.LoadItemStatus(gameManager.instance.flamethrower);
+        gameManager.instance.GivePlayerItems();
+
+
         gameManager.instance.firstUnpause = true;
         gameManager.instance.stateUnpause(); //in case paused when restarting level
     }

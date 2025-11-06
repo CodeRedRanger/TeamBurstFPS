@@ -118,6 +118,10 @@ public class gameManager : MonoBehaviour
     [HideInInspector] public bool enableGrenade = false;
     [HideInInspector] public bool enableStunner = false;
 
+    [SerializeField] public ItemData bombObj;
+    [SerializeField] public ItemData grenadeObj;
+    [SerializeField] public ItemData stunnerObj;
+
     [HideInInspector] public string bomb = "Bomb";
     [HideInInspector] public string grenade = "Grenade";
     [HideInInspector] public string stunner = "Stunner";
@@ -203,6 +207,7 @@ public class gameManager : MonoBehaviour
             || currentScene.buildIndex == company)
         {
 
+            
             statePause();
 
             if (currentScene.buildIndex == mainMenu)
@@ -214,21 +219,27 @@ public class gameManager : MonoBehaviour
 
                 //SoundManager.Instance.PlayEffect(MainMenuSFX, 1);
                 //if (SoundManager.Instance != null)
-                SoundManager.Instance.PlayEffectDelayed(MainMenuSFX, 1, 0.5f); 
+                //    SoundManager.Instance.PlayEffectDelayed(MainMenuSFX, 1, 0.5f);
+               
+                
             }
 
             if (currentScene.buildIndex == mainMenu || currentScene.buildIndex == credits) // || currentScene.buildIndex == 7)
             {
-                //if (SoundManager.Instance != null)
-                if (!SoundManager.Instance.MusicIsPlaying())
-                {
-                    SoundManager.Instance.LoadVolumes();
-                    //if (SoundManager.Instance.masterMixer.GetFloat("MasterVolume", out float volume))
+                BGMusic = MainMenuMusic;
+                if (SoundManager.Instance != null)
+                { 
+                  
+                    if (!SoundManager.Instance.MusicIsPlaying())
+                    {
+                        SoundManager.Instance.LoadVolumes();
+                        //if (SoundManager.Instance.masterMixer.GetFloat("MasterVolume", out float volume))
                     //    Debug.Log($"Current VOLUME of '{"MasterVolume"}' is {volume} dB");
 
-                    float value = PlayerPrefs.GetFloat("MusicVolume", 1);
-                    //Debug.Log($"Current VOLUME of '{"MusicVolume"}' is {value}");
-                    SoundManager.Instance.PlayMusic(MainMenuMusic);
+                        float value = PlayerPrefs.GetFloat("MusicVolume", 1);
+                        //Debug.Log($"Current VOLUME of '{"MusicVolume"}' is {value}");
+                        SoundManager.Instance.PlayMusic(MainMenuMusic);
+                     }
                 }
             }
 
@@ -318,7 +329,7 @@ public class gameManager : MonoBehaviour
                 BGMusic = LaunchpadMusic;
             }
 
-
+            /*
             if (SoundManager.Instance != null)
             {
                 //added this to change back volume when level changed
@@ -331,9 +342,26 @@ public class gameManager : MonoBehaviour
             {
                 startMusic = true; 
             }
+            */
 
 
+        }
 
+        if (SoundManager.Instance != null)
+        {
+            
+            //added this to change back volume when level changed on pause or win/lose menu
+            float currentMusicValue = PlayerPrefs.GetFloat("MusicVolume", 0.6f);
+            float currentMusicVolume = Mathf.Log10(currentMusicValue) * 30f;
+            SoundManager.Instance.masterMixer.SetFloat("MusicVolume", currentMusicVolume);
+
+            if (currentScene.buildIndex != mainMenu && currentScene.buildIndex != credits && currentScene.buildIndex != options)
+            SoundManager.Instance.PlayMusic(BGMusic);
+
+        }
+        else
+        {
+            startMusic = true;
         }
 
         LoadItemStatus(bomb);
@@ -347,6 +375,45 @@ public class gameManager : MonoBehaviour
 
     }
 
+    private void Start()
+    {
+        if (currentScene.buildIndex == mainMenu)
+        {
+            if (SoundManager.Instance != null)
+                SoundManager.Instance.PlayEffectDelayed(MainMenuSFX, 1, 0.5f);
+        }
+
+        /*
+        if (currentScene.buildIndex == mainMenu || currentScene.buildIndex == credits || currentScene.buildIndex == options
+           || currentScene.buildIndex == company)
+        {
+
+            if (SoundManager.Instance != null)
+                SoundManager.Instance.PlayEffectDelayed(MainMenuSFX, 1, 0.5f);
+
+            if (currentScene.buildIndex == mainMenu || currentScene.buildIndex == credits)
+            {
+                if (SoundManager.Instance != null)
+
+                {
+                    if (!SoundManager.Instance.MusicIsPlaying())
+                    {
+                        SoundManager.Instance.LoadVolumes();
+                        //if (SoundManager.Instance.masterMixer.GetFloat("MasterVolume", out float volume))
+                        //    Debug.Log($"Current VOLUME of '{"MasterVolume"}' is {volume} dB");
+
+                        float value = PlayerPrefs.GetFloat("MusicVolume", 1);
+                        //Debug.Log($"Current VOLUME of '{"MusicVolume"}' is {value}");
+                        SoundManager.Instance.PlayMusic(MainMenuMusic);
+                    }
+                }
+            }
+        }*/
+
+
+
+    }
+
     void Update()
     {
 
@@ -354,6 +421,7 @@ public class gameManager : MonoBehaviour
         {
             float currentMusicValue = PlayerPrefs.GetFloat("MusicVolume", 0.6f);
             float currentMusicVolume = Mathf.Log10(currentMusicValue) * 30f;
+
             SoundManager.Instance.masterMixer.SetFloat("MusicVolume", currentMusicVolume);
             SoundManager.Instance.PlayMusic(BGMusic);
             startMusic = false; 
@@ -503,6 +571,13 @@ public class gameManager : MonoBehaviour
         if (LoadItemStatus(bomb))
         {
             //update hotbar UI
+
+            /*
+            if(InventoryManager.Instance != null && bombObj != null)
+            {
+                InventoryManager.Instance.AddItem(bombObj);
+            }*/
+
             enableBomb = true;
         }
         if (LoadItemStatus(grenade))
@@ -571,6 +646,17 @@ public class gameManager : MonoBehaviour
         SaveItemStatus(smgun, hasPistol = false);
         SaveItemStatus(cannon, hasCannon = false);
         SaveItemStatus(flamethrower, hasPistol = false);
+       
+
+        if (InventoryManager.Instance != null)
+        {
+            
+            InventoryManager.Instance.hotbarItems.Clear();
+            for (int i = 0; i < InventoryManager.Instance.hotbarSize; i++)
+            {
+                InventoryManager.Instance.hotbarItems.Add(null);
+            }
+        }
 
     }
 
