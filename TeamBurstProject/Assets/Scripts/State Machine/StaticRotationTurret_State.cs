@@ -27,10 +27,10 @@ public class StaticRotationTurret_State : FiniteState
 
         HandleFiring();
 
-        Rotate(); // DELETE LATER. JUST FOR STATE MACHINE TESTING
+        Rotate();
     }
 
-    private void Rotate() // DELETE LATER. JUST FOR STATE MACHINE TESTING
+    private void Rotate()
     {
         if (rotationPaused) return;
         rotationProgress = Mathf.Clamp(rotationProgress + rotationSpeed * currentRotationDirection * Time.deltaTime, 0, 1);

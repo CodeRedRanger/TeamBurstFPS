@@ -4,10 +4,10 @@ using UnityEngine.Events;
 public class Destructible : MonoBehaviour, IDamage
 {
     [SerializeField] int maxHP;
+    [SerializeField] GameObject objectToDestroy;
     int currentHP;
     [SerializeField] UnityEvent destroyedEvent;
     [SerializeField] UnityEvent takeDamageEvent;
-    [SerializeField] GameObject objectToDestroy;
 
     private void Start()
     {
