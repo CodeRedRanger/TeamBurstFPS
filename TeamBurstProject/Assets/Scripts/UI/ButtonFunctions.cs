@@ -15,7 +15,7 @@ public class ButtonFunctions : MonoBehaviour
     //private int lunchroom = 5;
     //private int launchpad = 6;
     //private int alienship = 4;
-    private int credits = 3;
+    private int credits = 6;
     //private int options = 7;
     private int company = 8;
 
