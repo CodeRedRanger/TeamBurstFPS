@@ -528,5 +528,11 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
         //disable visual indicator here
         isInvincible = false;
     }
+
+    public void instantDeath()
+    {
+        isInvincible = false;
+        TakeDamage(HP);
+    }
     
 }
