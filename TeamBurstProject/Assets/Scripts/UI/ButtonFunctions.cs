@@ -45,7 +45,7 @@ public class ButtonFunctions : MonoBehaviour
     public void quit()
     {
         //reset you items
-        gameManager.instance.SaveItemStatus("Bomb", false);
+        gameManager.instance.ResetAllItems(); 
 
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
@@ -77,6 +77,8 @@ public class ButtonFunctions : MonoBehaviour
     {
         //save your items
         gameManager.instance.SaveItemStatus("Bomb", gameManager.instance.enableBomb);
+        gameManager.instance.SaveItemStatus("Grenade", gameManager.instance.enableBomb);
+        gameManager.instance.SaveItemStatus("Stunner", gameManager.instance.enableBomb);
 
         StartCoroutine(WaitForSoundEffect(lvl));
         /*

@@ -117,6 +117,10 @@ public class gameManager : MonoBehaviour
     [HideInInspector] public bool enableGrenade = false;
     [HideInInspector] public bool enableStunner = false;
 
+    [HideInInspector] string bomb = "Bomb";
+    [HideInInspector] string grenade = "Grenade";
+    [HideInInspector] string stunner = "Stunner";
+
     //Level specific popups
     public GameObject runPopup;
     public GameObject kidsPopup;
@@ -171,7 +175,9 @@ public class gameManager : MonoBehaviour
         }*/
 
 
-        LoadItemStatus("Bomb");
+        LoadItemStatus(bomb);
+        LoadItemStatus(grenade);
+        LoadItemStatus(stunner);
         GivePlayerItems(); 
         timeScaleOrig = Time.timeScale;
         currentScene = SceneManager.GetActiveScene();
@@ -188,8 +194,8 @@ public class gameManager : MonoBehaviour
             if (currentScene.buildIndex == mainMenu)
             {
                 //reset you items
-                enableBomb = false;
-                SaveItemStatus("Bomb", false);
+                ResetAllItems(); 
+
                 EventSystem.current.SetSelectedGameObject(firstSelectedMain);
 
                 //SoundManager.Instance.PlayEffect(MainMenuSFX, 1);
@@ -239,8 +245,8 @@ public class gameManager : MonoBehaviour
             if (currentScene.buildIndex == playground)
             {
                 //reset items for all levels (reset in each level below, the items you would get on those levels)
-                enableBomb = false;
-                SaveItemStatus("Bomb", false); 
+                ResetAllItems();
+
                 Level1 = true;
                 Level2 = false;
                 Level3 = false;
@@ -490,13 +496,13 @@ public class gameManager : MonoBehaviour
         if (LoadItemStatus("Grenade"))
         {
             //update hotbar UI
-            //enableGrenade = true
+            enableGrenade = true; 
         }
 
         if (LoadItemStatus("Stunner"))
         {
             //update hotbar UI
-            //enableStunner = true
+            enableStunner = true; 
         }
 
         if (LoadItemStatus("Pistol"))
@@ -514,6 +520,16 @@ public class gameManager : MonoBehaviour
             //add the rifle to inventory through script?
 
         }
+    }
+
+    public void ResetAllItems()
+    {
+        SaveItemStatus(bomb, enableBomb = false);
+        SaveItemStatus(grenade, enableGrenade = false);
+        SaveItemStatus(stunner, enableStunner = false);
+        //SaveItemStatus("Pistol", false);
+        //SaveItemStatus("SMGun", false);
+        //SaveItemStatus("Cannon", false);
     }
 
 
