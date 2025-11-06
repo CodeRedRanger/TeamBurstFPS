@@ -42,6 +42,7 @@ public class gameManager : MonoBehaviour
     private bool kidsSpawned = false;
     public AudioClip thankYou;
     public AudioClip winMusic;
+    private bool startMusic = false; 
 
     [SerializeField] AudioClip MainMenuSFX;
     [SerializeField] AudioClip MainMenuMusic;
@@ -170,9 +171,9 @@ public class gameManager : MonoBehaviour
         }*/
 
 
-            timeScaleOrig = Time.timeScale;
-
-        
+        LoadItemStatus("Bomb");
+        GivePlayerItems(); 
+        timeScaleOrig = Time.timeScale;
         currentScene = SceneManager.GetActiveScene();
 
         //Need if statement so this doesn't fire during main menu
@@ -186,7 +187,11 @@ public class gameManager : MonoBehaviour
 
             if (currentScene.buildIndex == mainMenu)
             {
+                //reset you items
+                enableBomb = false;
+                SaveItemStatus("Bomb", false);
                 EventSystem.current.SetSelectedGameObject(firstSelectedMain);
+
                 //SoundManager.Instance.PlayEffect(MainMenuSFX, 1);
                 //if (SoundManager.Instance != null)
                 SoundManager.Instance.PlayEffectDelayed(MainMenuSFX, 1, 0.5f); 
@@ -233,6 +238,9 @@ public class gameManager : MonoBehaviour
             //Playground
             if (currentScene.buildIndex == playground)
             {
+                //reset items for all levels (reset in each level below, the items you would get on those levels)
+                enableBomb = false;
+                SaveItemStatus("Bomb", false); 
                 Level1 = true;
                 Level2 = false;
                 Level3 = false;
@@ -299,6 +307,10 @@ public class gameManager : MonoBehaviour
                 SoundManager.Instance.masterMixer.SetFloat("MusicVolume", currentMusicVolume);
                 SoundManager.Instance.PlayMusic(BGMusic);
             }
+            else
+            {
+                startMusic = true; 
+            }
 
 
 
@@ -310,6 +322,16 @@ public class gameManager : MonoBehaviour
 
     void Update()
     {
+
+        if (startMusic)
+        {
+            float currentMusicValue = PlayerPrefs.GetFloat("MusicVolume", 0.6f);
+            float currentMusicVolume = Mathf.Log10(currentMusicValue) * 30f;
+            SoundManager.Instance.masterMixer.SetFloat("MusicVolume", currentMusicVolume);
+            SoundManager.Instance.PlayMusic(BGMusic);
+            startMusic = false; 
+        }
+
         currentScene = SceneManager.GetActiveScene();
         
     
@@ -404,6 +426,12 @@ public class gameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         EventSystem.current.SetSelectedGameObject(null);
 
+        //Can load settings for guns and items here, put in Awake
+        if (firstUnpause)
+        {
+            //LoadItemStatus("Bomb"); 
+        }
+
         //normal pause; first unpause true if new scene being loaded
         if (firstUnpause == false)
          {
@@ -423,6 +451,71 @@ public class gameManager : MonoBehaviour
      
 
     }
+
+
+    public void SaveItemStatus(string itemName, bool hasItem)
+    {
+        int saveValue = hasItem ? 1 : 0;
+        PlayerPrefs.SetInt("Has_" + itemName, saveValue);
+        PlayerPrefs.Save();
+
+
+        /*
+         bool enableBomb = false;
+         bool enableGrenade = false;
+         bool enableStunner = false;
+         inventory item 1, 2 and 3 (some might be null)
+         
+         */
+
+    }
+
+    public bool LoadItemStatus(string itemName)
+    {
+        int savedValue = PlayerPrefs.GetInt("Has_" + itemName, 0);
+
+        return savedValue == 1;
+
+    }
+
+    public void GivePlayerItems()
+    {
+
+
+        if (LoadItemStatus("Bomb"))
+        {
+            //update hotbar UI
+            enableBomb = true;
+        }
+        if (LoadItemStatus("Grenade"))
+        {
+            //update hotbar UI
+            //enableGrenade = true
+        }
+
+        if (LoadItemStatus("Stunner"))
+        {
+            //update hotbar UI
+            //enableStunner = true
+        }
+
+        if (LoadItemStatus("Pistol"))
+        {
+            //add the pistol to inventory through script?
+        }
+
+        if (LoadItemStatus("SMGun"))
+        {
+            //add the medkit to inventory through script?
+        }
+
+        if (LoadItemStatus("Cannon"))
+        {
+            //add the rifle to inventory through script?
+
+        }
+    }
+
 
     public void updateKidsRescued(int amount)
     {
@@ -553,6 +646,7 @@ public class gameManager : MonoBehaviour
         //PlayerPrefs.SetFloat("MusicVolume", currentMusicVolume);
 
     }
+
 
     public void flashItemUI()
     {

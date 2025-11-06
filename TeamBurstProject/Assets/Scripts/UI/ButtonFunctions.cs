@@ -44,6 +44,8 @@ public class ButtonFunctions : MonoBehaviour
 
     public void quit()
     {
+        //reset you items
+        gameManager.instance.SaveItemStatus("Bomb", false);
 
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
@@ -73,6 +75,8 @@ public class ButtonFunctions : MonoBehaviour
 
     public void loadLevel(int lvl)
     {
+        //save your items
+        gameManager.instance.SaveItemStatus("Bomb", gameManager.instance.enableBomb);
 
         StartCoroutine(WaitForSoundEffect(lvl));
         /*
@@ -108,6 +112,8 @@ public class ButtonFunctions : MonoBehaviour
         }
         else if (lvl == mainMenu)
         {
+
+           
             SoundManager.Instance.PlayEffect(nonStartButtonSound, 1f);
             yield return new WaitForSeconds(0.2f);
 

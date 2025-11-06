@@ -837,7 +837,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4224545896670344271}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7071071, z: -0, w: 0.70710653}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 36.08597, y: 0, z: 5.910943}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -887,7 +887,7 @@ MonoBehaviour:
   shockSound: {fileID: 8300000, guid: ab297b593498a6e47ba84de770477cbe, type: 3}
   model: {fileID: 970806409372250460}
   agent: {fileID: 6371199901884235604}
-  HP: 3
+  HP: 1000
   faceTargetSpeed: 7
   shootPos: {fileID: 3053079910697449106}
   bullet: {fileID: 4309350892994240032, guid: 2fbda81a9e086bd47a31718184fa0793, type: 3}
@@ -905,7 +905,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.8899571
-  m_Speed: 3.5
+  m_Speed: 5
   m_Acceleration: 32
   avoidancePriority: 50
   m_AngularSpeed: 600
@@ -959,7 +959,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 10
+  m_Radius: 100
   m_Center: {x: 0.009468883, y: 0.8597729, z: 0.05926037}
 --- !u!1 &4305472868689564106
 GameObject:
