@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -117,9 +118,26 @@ public class gameManager : MonoBehaviour
     [HideInInspector] public bool enableGrenade = false;
     [HideInInspector] public bool enableStunner = false;
 
-    [HideInInspector] string bomb = "Bomb";
-    [HideInInspector] string grenade = "Grenade";
-    [HideInInspector] string stunner = "Stunner";
+    [HideInInspector] public string bomb = "Bomb";
+    [HideInInspector] public string grenade = "Grenade";
+    [HideInInspector] public string stunner = "Stunner";
+    [HideInInspector] public string pistol = "Pistol";
+    [HideInInspector] public string smgun = "SMGun";
+    [HideInInspector] public string cannon = "Cannon";
+    [HideInInspector] public string flamethrower = "Flamethrower";
+
+    [HideInInspector] public bool hasPistol = false;
+    [HideInInspector] public bool hasSMG = false;
+    [HideInInspector] public bool hasCannon = false;
+    [HideInInspector] public bool hasFlameThrower = false;
+
+
+    [SerializeField] GunData pistolObj;
+    [SerializeField] GunData smgObj;
+    [SerializeField] GunData cannonObj;
+    [SerializeField] GunData flamethrowerObj;
+   
+
 
     //Level specific popups
     public GameObject runPopup;
@@ -175,10 +193,6 @@ public class gameManager : MonoBehaviour
         }*/
 
 
-        LoadItemStatus(bomb);
-        LoadItemStatus(grenade);
-        LoadItemStatus(stunner);
-        GivePlayerItems(); 
         timeScaleOrig = Time.timeScale;
         currentScene = SceneManager.GetActiveScene();
 
@@ -321,8 +335,15 @@ public class gameManager : MonoBehaviour
 
 
         }
-        
 
+        LoadItemStatus(bomb);
+        LoadItemStatus(grenade);
+        LoadItemStatus(stunner);
+        LoadItemStatus(pistol);
+        LoadItemStatus(smgun);
+        LoadItemStatus(cannon);
+        LoadItemStatus(flamethrower);
+        GivePlayerItems();
 
     }
 
@@ -465,15 +486,6 @@ public class gameManager : MonoBehaviour
         PlayerPrefs.SetInt("Has_" + itemName, saveValue);
         PlayerPrefs.Save();
 
-
-        /*
-         bool enableBomb = false;
-         bool enableGrenade = false;
-         bool enableStunner = false;
-         inventory item 1, 2 and 3 (some might be null)
-         
-         */
-
     }
 
     public bool LoadItemStatus(string itemName)
@@ -488,36 +500,64 @@ public class gameManager : MonoBehaviour
     {
 
 
-        if (LoadItemStatus("Bomb"))
+        if (LoadItemStatus(bomb))
         {
             //update hotbar UI
             enableBomb = true;
         }
-        if (LoadItemStatus("Grenade"))
+        if (LoadItemStatus(grenade))
         {
             //update hotbar UI
             enableGrenade = true; 
         }
 
-        if (LoadItemStatus("Stunner"))
+        if (LoadItemStatus(stunner))
         {
             //update hotbar UI
             enableStunner = true; 
         }
 
-        if (LoadItemStatus("Pistol"))
+        
+        if (LoadItemStatus(pistol))
         {
-            //add the pistol to inventory through script?
+            GunData gun = pistolObj; 
+            playerScript.gunList.Add(gun);
+            hasPistol = true;
+            
+        }
+        
+        if (LoadItemStatus(smgun))
+        {
+            GunData gun = smgObj;
+            playerScript.gunList.Add(gun);
+            hasSMG = true;
+        }
+       
+        if (LoadItemStatus(cannon))
+        {
+            GunData gun = cannonObj;
+            playerScript.gunList.Add(gun);
+            hasCannon = true; 
         }
 
-        if (LoadItemStatus("SMGun"))
+        if (LoadItemStatus(flamethrower))
         {
-            //add the medkit to inventory through script?
+            GunData gun = flamethrowerObj;
+            playerScript.gunList.Add(gun);
+            hasFlameThrower = true;
         }
 
-        if (LoadItemStatus("Cannon"))
+  
+        if (playerScript != null && playerScript.gunList.Count > 0)
         {
-            //add the rifle to inventory through script?
+            //try deleting below
+            //playerScript.gunListPos = 0;
+            //try changing position to 0
+            //playerScript.gunModel.GetComponent<MeshFilter>().sharedMesh = playerScript.gunList[playerScript.gunListPos].gunModel.GetComponent<MeshFilter>().sharedMesh;
+            //playerScript.gunModel.GetComponent<MeshRenderer>().sharedMaterial = playerScript.gunList[playerScript.gunListPos].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+
+            playerScript.gunModel.GetComponent<MeshFilter>().sharedMesh = playerScript.gunList[0].gunModel.GetComponent<MeshFilter>().sharedMesh;
+            playerScript.gunModel.GetComponent<MeshRenderer>().sharedMaterial = playerScript.gunList[0].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
 
         }
     }
@@ -527,9 +567,11 @@ public class gameManager : MonoBehaviour
         SaveItemStatus(bomb, enableBomb = false);
         SaveItemStatus(grenade, enableGrenade = false);
         SaveItemStatus(stunner, enableStunner = false);
-        //SaveItemStatus("Pistol", false);
-        //SaveItemStatus("SMGun", false);
-        //SaveItemStatus("Cannon", false);
+        SaveItemStatus(pistol, hasPistol = false); 
+        SaveItemStatus(smgun, hasPistol = false);
+        SaveItemStatus(cannon, hasCannon = false);
+        SaveItemStatus(flamethrower, hasPistol = false);
+
     }
 
 

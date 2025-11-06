@@ -76,9 +76,14 @@ public class ButtonFunctions : MonoBehaviour
     public void loadLevel(int lvl)
     {
         //save your items
-        gameManager.instance.SaveItemStatus("Bomb", gameManager.instance.enableBomb);
-        gameManager.instance.SaveItemStatus("Grenade", gameManager.instance.enableBomb);
-        gameManager.instance.SaveItemStatus("Stunner", gameManager.instance.enableBomb);
+        gameManager.instance.SaveItemStatus(gameManager.instance.bomb, gameManager.instance.enableBomb);
+        gameManager.instance.SaveItemStatus(gameManager.instance.grenade, gameManager.instance.enableBomb);
+        gameManager.instance.SaveItemStatus(gameManager.instance.stunner, gameManager.instance.enableBomb);
+
+        gameManager.instance.SaveItemStatus(gameManager.instance.pistol, gameManager.instance.hasPistol);  
+        gameManager.instance.SaveItemStatus(gameManager.instance.smgun, gameManager.instance.hasSMG);
+        gameManager.instance.SaveItemStatus(gameManager.instance.cannon, gameManager.instance.hasCannon);
+        gameManager.instance.SaveItemStatus(gameManager.instance.flamethrower, gameManager.instance.hasFlameThrower);
 
         StartCoroutine(WaitForSoundEffect(lvl));
         /*

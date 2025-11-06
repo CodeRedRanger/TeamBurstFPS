@@ -55,10 +55,14 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     [SerializeField] AudioClip audRechargePrompt;
     [Range(0, 1)][SerializeField] float audRechargePromptVol;
 
-    [SerializeField] List<GunData> gunList = new List<GunData>();
-    [SerializeField] GameObject gunModel;
+    [SerializeField] public List<GunData> gunList = new List<GunData>();
+    [SerializeField] public GameObject gunModel;
 
-    int gunListPos;
+    [HideInInspector] public int gunListPos;
+    //[HideInInspector] public bool hasPistol;
+    //[HideInInspector] public bool hasSMG;
+    //[HideInInspector] public bool hasCannon;
+    //[HideInInspector] public bool hasFlameThrower;
 
     //pushback
     public Vector3 pushBack;
@@ -353,8 +357,35 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
 
     public void getGunData(GunData gun)
     {
+        if ((gun.type == GunType.pistol && gameManager.instance.hasPistol == true) || 
+            (gun.type == GunType.smg && gameManager.instance.hasSMG == true) ||
+            (gun.type == GunType.cannon && gameManager.instance.hasCannon == true) ||
+            (gun.type == GunType.flamethrower && gameManager.instance.hasFlameThrower == true))
+        {
+            return; //already have this gun, do nothing
+        }
+
         gunList.Add(gun);
+
+
         gunListPos = gunList.Count - 1;
+
+        if (gun.type == GunType.pistol)
+        {
+            gameManager.instance.hasPistol = true;
+        }
+        else if (gun.type == GunType.smg)
+        {
+            gameManager.instance.hasSMG = true;
+        }
+        else if (gun.type == GunType.cannon)
+        {
+            gameManager.instance.hasCannon = true;
+        }
+        else if (gun.type == GunType.flamethrower)
+        {
+            gameManager.instance.hasFlameThrower = true;
+        }
 
         changeGun();
     }

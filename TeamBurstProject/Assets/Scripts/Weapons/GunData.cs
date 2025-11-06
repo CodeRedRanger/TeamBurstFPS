@@ -4,7 +4,8 @@ public enum GunType
 {
     pistol,
     smg,
-    cannon
+    cannon,
+    flamethrower
 }
 
 [CreateAssetMenu(
