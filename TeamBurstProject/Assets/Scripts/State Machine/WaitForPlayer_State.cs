@@ -3,24 +3,22 @@ using UnityEngine;
 public class WaitForPlayer_State : FiniteState
 {
     [SerializeField] FiniteState nextState;
-    [SerializeField] GameObject objectToRotate; // DELETE LATER. JUST FOR STATE MACHINE TESTING
-    public override void OnUpdate()
-    {
-        base.OnUpdate();
+    [SerializeField] Transform lineOfSightPos;
+    [SerializeField] LayerMask ignoreLayers;
+    [SerializeField] float maxSightDistance;
 
-        RotateObjectClockwise(); // DELETE LATER. JUST FOR STATE MACHINE TESTING
-    }
-
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
+        if (!isCurrentState) return;
+
         if (other.gameObject == gameManager.instance.player)
         {
-            fsMachine.ChangeToState(nextState);
+            RaycastHit hit;
+            Physics.Raycast(lineOfSightPos.position, gameManager.instance.player.transform.position - lineOfSightPos.position, out hit, maxSightDistance, ~ignoreLayers);
+            if (hit.collider != null && hit.collider.gameObject == gameManager.instance.player)
+            {
+                fsMachine.ChangeToState(nextState);
+            }
         }
-    }
-
-    private void RotateObjectClockwise() // DELETE LATER. JUST FOR STATE MACHINE TESTING
-    {
-        objectToRotate.transform.localEulerAngles = new Vector3(0, objectToRotate.transform.eulerAngles.y + 20 * Time.deltaTime, 0); 
     }
 }

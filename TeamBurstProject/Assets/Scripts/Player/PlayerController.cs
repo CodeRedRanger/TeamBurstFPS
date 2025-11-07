@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour, IDamage, IPickupGun
+public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
 {
     [SerializeField] LayerMask ignoreLayer;
     [SerializeField] CharacterController controller;
@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     [SerializeField] int sprintMod;
     [SerializeField] int jumpSpeed; 
     [SerializeField] float maxJumpSpeed;
+    private float origMaxJumpSpeed;
     [SerializeField] int jumpCountMax;
     [SerializeField] int gravity; 
 
@@ -37,6 +38,8 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     bool isSprinting;
     bool isInvincible;
 
+    int numOfKeys;
+
 
     //Audio
     //can make these arrays
@@ -55,10 +58,14 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     [SerializeField] AudioClip audRechargePrompt;
     [Range(0, 1)][SerializeField] float audRechargePromptVol;
 
-    [SerializeField] List<GunData> gunList = new List<GunData>();
-    [SerializeField] GameObject gunModel;
+    [SerializeField] public List<GunData> gunList = new List<GunData>();
+    [SerializeField] public GameObject gunModel;
 
-    int gunListPos;
+    [HideInInspector] public int gunListPos;
+    //[HideInInspector] public bool hasPistol;
+    //[HideInInspector] public bool hasSMG;
+    //[HideInInspector] public bool hasCannon;
+    //[HideInInspector] public bool hasFlameThrower;
 
     //pushback
     public Vector3 pushBack;
@@ -70,6 +77,10 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
 
     // For Variable Jump
     bool isMaxJumpSpeed = false;
+ 
+
+    //For gravity boots to work with variable jump
+    [HideInInspector] public bool gravityFlipped = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -78,6 +89,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
         HPOrig = HP;
         //updatePlayerUI(); //called in spawn player
         spawnPlayer();
+        origMaxJumpSpeed = maxJumpSpeed;
 
     }
 
@@ -162,19 +174,36 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
     }
     void Jump()
     {
+        
         if (Input.GetButtonDown("Jump") && jumpCount < jumpCountMax)
         {
             SoundManager.Instance.PlayEffect(audJump[Random.Range(0, audJump.Length)], audJumpVol);
-            playerVel.y = jumpSpeed;
+            
+            if (gravityFlipped)
+            {
+                maxJumpSpeed = -maxJumpSpeed;
+            }
+            else
+            {
+                maxJumpSpeed = origMaxJumpSpeed;
+            }
+
+
+                playerVel.y = jumpSpeed;
             jumpCount++;
 
             isMaxJumpSpeed = false;
         }
 
-        if (Input.GetButton("Jump") && !isMaxJumpSpeed)
+        if (Input.GetButton("Jump")  && !isMaxJumpSpeed)
         {
             // this magic number can not be < 1
-            playerVel.y += 1;
+            if(gravityFlipped)
+            {   
+                playerVel.y -= 2;
+            }
+            else
+                playerVel.y += 2;
 
             if (playerVel.y > maxJumpSpeed)
                 isMaxJumpSpeed = true;
@@ -238,7 +267,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
 
     void SpawnBomb()
     {
-        // Im thinking of adding a keycode variable for this but for now it's q//Robb: changed to E
+      
         if (Input.GetKeyDown(KeyCode.E) && gameManager.instance.enableBomb == true)
         {
             Vector3 spawnPos = gameManager.instance.player.transform.position;
@@ -262,7 +291,8 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
             if (HP <= 0)
             {
                 SoundManager.Instance.PlayEffect(deathSound, 1);
-                SoundManager.Instance.StopMusic();
+                //not needed anymore because reducing sound instead. 
+                //SoundManager.Instance.StopMusic();
                 //Debug.Log("You are dead"); 
                 gameManager.instance.youLose();
 
@@ -352,8 +382,35 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
 
     public void getGunData(GunData gun)
     {
+        if ((gun.type == GunType.pistol && gameManager.instance.hasPistol == true) || 
+            (gun.type == GunType.smg && gameManager.instance.hasSMG == true) ||
+            (gun.type == GunType.cannon && gameManager.instance.hasCannon == true) ||
+            (gun.type == GunType.flamethrower && gameManager.instance.hasFlameThrower == true))
+        {
+            return; //already have this gun, do nothing
+        }
+
         gunList.Add(gun);
+
+
         gunListPos = gunList.Count - 1;
+
+        if (gun.type == GunType.pistol)
+        {
+            gameManager.instance.hasPistol = true;
+        }
+        else if (gun.type == GunType.smg)
+        {
+            gameManager.instance.hasSMG = true;
+        }
+        else if (gun.type == GunType.cannon)
+        {
+            gameManager.instance.hasCannon = true;
+        }
+        else if (gun.type == GunType.flamethrower)
+        {
+            gameManager.instance.hasFlameThrower = true;
+        }
 
         changeGun();
     }
@@ -473,5 +530,17 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
         //disable visual indicator here
         isInvincible = false;
     }
-    
+
+    public void instantDeath()
+    {
+        isInvincible = false;
+        TakeDamage(HP);
+    }
+
+    public void pickupKey(int amount)
+    {
+        numOfKeys += amount;
+    }
+
+    public int getNumOfKeys() { return  numOfKeys; }
 }
