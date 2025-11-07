@@ -108,7 +108,9 @@ public class gameManager : MonoBehaviour
     public GameObject speedboostPopup;
     public GameObject jumpboostPopup;
     public GameObject doublejumpPopup;
-    public GameObject invinciblePopup; 
+    public GameObject invinciblePopup;
+    public GameObject jetpackPopup;
+    public GameObject gravityBootsPopup; 
     public GameObject bombPopup;
     public GameObject grenadePopup;
     public GameObject stunnerPopup;
@@ -149,6 +151,7 @@ public class gameManager : MonoBehaviour
     //Level specific popups
     public GameObject runPopup;
     public GameObject kidsPopup;
+    public GameObject launchpadPopup; 
 
 
     //from main menu, you don't need the actions of unpause the first time, even though it is
@@ -330,6 +333,7 @@ public class gameManager : MonoBehaviour
                 LevelLaunchpad = true;
                 LevelCompany = false;
                 BGMusic = LaunchpadMusic;
+                StartCoroutine(FlashLaunchpadUI());
             }
 
             /*
@@ -838,6 +842,14 @@ public class gameManager : MonoBehaviour
         kidsPopup.SetActive(true);
         yield return new WaitForSeconds(3.0f);
         kidsPopup.SetActive(false);
+
+    }
+
+    public IEnumerator FlashLaunchpadUI()
+    {
+        launchpadPopup.SetActive(true);
+        yield return new WaitForSeconds(3.0f);
+        launchpadPopup.SetActive(false);
 
     }
 

@@ -7,7 +7,7 @@ public class GravityBootsCancel : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -21,6 +21,7 @@ public class GravityBootsCancel : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            gameManager.instance.gravityBootsPopup.SetActive(false);
             gravityBoots.GetComponent<GravityBoots>().ResetGravity();
             gravityBoots.GetComponent<GravityBoots>().enabled = false;
         }

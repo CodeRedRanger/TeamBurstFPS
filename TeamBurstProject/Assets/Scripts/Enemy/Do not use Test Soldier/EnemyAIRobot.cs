@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.AI;
+using Unity.VisualScripting;
 
 public class EnemyAIRobot : MonoBehaviour, IDamage, IStunnable
 {
@@ -13,7 +14,9 @@ public class EnemyAIRobot : MonoBehaviour, IDamage, IStunnable
     [SerializeField] Renderer model;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] int HP;
-    [SerializeField] int faceTargetSpeed; 
+    [SerializeField] int faceTargetSpeed;
+    [SerializeField] bool isFinalBoss;
+    [SerializeField] GameObject finalGoal; 
 
 
     [SerializeField] Transform shootPos;
@@ -65,6 +68,8 @@ public class EnemyAIRobot : MonoBehaviour, IDamage, IStunnable
 
         if (playerInRange && !canSeePlayer())
         {
+
+            //This is for roam logic, see roaming alien script for example
             /*agent.SetDestination(gameManager.instance.player.transform.position);
 
             if (agent.remainingDistance <= agent.stoppingDistance)
@@ -161,7 +166,15 @@ public class EnemyAIRobot : MonoBehaviour, IDamage, IStunnable
 
     public void createBullet()
     {
-        Instantiate(bullet, shootPos.position, transform.rotation);
+        //gets enemy to aim at player's base no matter player's height 
+        Vector3 playerPosition = gameManager.instance.player.transform.position;
+        Vector3 directionToTarget = (playerPosition - shootPos.position).normalized;
+        
+        Instantiate(bullet, shootPos.position, Quaternion.LookRotation(directionToTarget));
+
+        //original code
+        //Instantiate(bullet, shootPos.position, transform.rotation);
+
     }
 
     public void TakeDamage(int amount)
@@ -177,6 +190,12 @@ public class EnemyAIRobot : MonoBehaviour, IDamage, IStunnable
             if (itemSpawner && itemToSpawn != null)
             {
                 Instantiate(itemToSpawn, transform.position + Vector3.up, Quaternion.identity);
+            }
+
+            if (isFinalBoss)
+            {
+                if(finalGoal != null)
+                    finalGoal.SetActive(true);
             }
 
             Destroy(gameObject);

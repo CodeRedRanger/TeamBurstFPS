@@ -1,7 +1,18 @@
 using UnityEngine;
+using UnityEngine.Audio;
+using System.Collections;
 
 public class StartBossMusic : MonoBehaviour
+    
 {
+    [SerializeField] public AudioMixer musicMixer;
+    [SerializeField] public AudioClip bossMusic;
+    [SerializeField] GameObject musicTrigger; 
+    public string volumParamName = "MusicVolume";
+    public float fadeDuration = 2.0f;
+    private float currentVolume;
+    private bool isFadingOut = false; 
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -13,4 +24,53 @@ public class StartBossMusic : MonoBehaviour
     {
         
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+
+     
+
+        if (other.CompareTag("Player"))
+        {
+            FadeOutMusic();
+
+        }
+
+    }
+
+    public void FadeOutMusic()
+    {
+        if (!isFadingOut)
+        {
+            StartCoroutine(FadeOutCoroutine());
+        }
+    }
+
+    private IEnumerator FadeOutCoroutine()
+    {
+        isFadingOut = true;
+        musicMixer.GetFloat(volumParamName, out currentVolume);
+
+        float timer = 0f;
+
+        while (timer < fadeDuration)
+        {
+            
+            float newVolume = Mathf.Lerp(currentVolume, -80f, timer / fadeDuration);
+            musicMixer.SetFloat(volumParamName, newVolume);
+
+            timer += Time.deltaTime;
+            yield return null;
+        }
+
+        musicMixer.SetFloat(volumParamName, -80f); 
+        isFadingOut = false;
+        musicMixer.SetFloat(volumParamName, currentVolume);
+        SoundManager.Instance.PlayMusic(bossMusic);
+        musicTrigger.SetActive(false);
+
+    }
+
+
+
 }
