@@ -28,6 +28,33 @@ public class InventoryManager : MonoBehaviour
                 hotbarItems.Add(null);
             }
         }
+
+
+        if (gameManager.instance.LoadItemStatus(gameManager.instance.bomb))
+        {
+            if (gameManager.instance.bombObj != null)
+            {
+                AddItem(gameManager.instance.bombObj);
+            }
+        }
+
+        if (gameManager.instance.LoadItemStatus(gameManager.instance.grenade))
+        {
+            if (gameManager.instance.grenadeObj != null)
+            {
+                AddItem(gameManager.instance.grenadeObj);
+            }
+        }
+
+        if (gameManager.instance.LoadItemStatus(gameManager.instance.stunner))
+        {
+            if (gameManager.instance.stunnerObj != null)
+            {
+                AddItem(gameManager.instance.stunnerObj);
+            }
+        }
+
+
     }
 
     public void AddItem(ItemData item)

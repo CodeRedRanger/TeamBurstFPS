@@ -98,7 +98,13 @@ public class SoundManager : MonoBehaviour
 
     public bool MusicIsPlaying()
     {
-        return musicSource.isPlaying;
+        bool isPlaying = false; 
+        if(musicSource.isPlaying)
+        {
+            isPlaying = true;
+        }
+
+        return isPlaying; 
     }
 
     //NEW

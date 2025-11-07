@@ -15,7 +15,7 @@ public class ButtonFunctions : MonoBehaviour
     //private int lunchroom = 5;
     //private int launchpad = 6;
     //private int alienship = 4;
-    private int credits = 3;
+    private int credits = 6;
     //private int options = 7;
     private int company = 8;
 
@@ -38,12 +38,26 @@ public class ButtonFunctions : MonoBehaviour
         SoundManager.Instance.PlayEffect(nonStartButtonSound, 1f);
         //reloads the current scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        //load items from beginning of level here
+        gameManager.instance.LoadItemStatus(gameManager.instance.bomb);
+        gameManager.instance.LoadItemStatus(gameManager.instance.grenade);
+        gameManager.instance.LoadItemStatus(gameManager.instance.stunner);
+        gameManager.instance.LoadItemStatus(gameManager.instance.pistol);
+        gameManager.instance.LoadItemStatus(gameManager.instance.smgun);
+        gameManager.instance.LoadItemStatus(gameManager.instance.cannon);
+        gameManager.instance.LoadItemStatus(gameManager.instance.flamethrower);
+        gameManager.instance.GivePlayerItems();
+
+
         gameManager.instance.firstUnpause = true;
         gameManager.instance.stateUnpause(); //in case paused when restarting level
     }
 
     public void quit()
     {
+        //reset you items
+        gameManager.instance.ResetAllItems(); 
 
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
@@ -73,6 +87,15 @@ public class ButtonFunctions : MonoBehaviour
 
     public void loadLevel(int lvl)
     {
+        //save your items
+        gameManager.instance.SaveItemStatus(gameManager.instance.bomb, gameManager.instance.enableBomb);
+        gameManager.instance.SaveItemStatus(gameManager.instance.grenade, gameManager.instance.enableGrenade);
+        gameManager.instance.SaveItemStatus(gameManager.instance.stunner, gameManager.instance.enableStunner);
+
+        gameManager.instance.SaveItemStatus(gameManager.instance.pistol, gameManager.instance.hasPistol);  
+        gameManager.instance.SaveItemStatus(gameManager.instance.smgun, gameManager.instance.hasSMG);
+        gameManager.instance.SaveItemStatus(gameManager.instance.cannon, gameManager.instance.hasCannon);
+        gameManager.instance.SaveItemStatus(gameManager.instance.flamethrower, gameManager.instance.hasFlameThrower);
 
         StartCoroutine(WaitForSoundEffect(lvl));
         /*
@@ -108,6 +131,8 @@ public class ButtonFunctions : MonoBehaviour
         }
         else if (lvl == mainMenu)
         {
+
+           
             SoundManager.Instance.PlayEffect(nonStartButtonSound, 1f);
             yield return new WaitForSeconds(0.2f);
 

@@ -1,6 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -43,6 +43,7 @@ public class gameManager : MonoBehaviour
     private bool kidsSpawned = false;
     public AudioClip thankYou;
     public AudioClip winMusic;
+    private bool startMusic = false; 
 
     [SerializeField] AudioClip MainMenuSFX;
     [SerializeField] AudioClip MainMenuMusic;
@@ -58,7 +59,7 @@ public class gameManager : MonoBehaviour
     public PlayerController playerScript; //reference to player script
 
     //could use getter and setter
-    public bool isPaused;
+    [HideInInspector] public bool isPaused;
 
     //when paused, timeScale is 0, when unpaused, timeScale is 1
     //input won't work and enemies won't move when timeScale is 0
@@ -80,10 +81,13 @@ public class gameManager : MonoBehaviour
     private int mainMenu = 0;
     private int playground = 1;
     private int library = 2;
-    private int lunchroom = 5;
-    private int launchpad = 6;
-    private int alienship = 4;
-    private int credits = 3;
+    private int lunchroom = 3;
+    //launch pad 6 to 4
+    private int launchpad = 4;
+    //alienship 4 to 5
+    private int alienship = 5;
+    //credits 5 to 6
+    private int credits = 6;
     private int options = 7;
     private int company = 8;
 
@@ -116,6 +120,31 @@ public class gameManager : MonoBehaviour
     [HideInInspector] public bool enableBomb = false;
     [HideInInspector] public bool enableGrenade = false;
     [HideInInspector] public bool enableStunner = false;
+
+    [SerializeField] public ItemData bombObj;
+    [SerializeField] public ItemData grenadeObj;
+    [SerializeField] public ItemData stunnerObj;
+
+    [HideInInspector] public string bomb = "Bomb";
+    [HideInInspector] public string grenade = "Grenade";
+    [HideInInspector] public string stunner = "Stunner";
+    [HideInInspector] public string pistol = "Pistol";
+    [HideInInspector] public string smgun = "SMGun";
+    [HideInInspector] public string cannon = "Cannon";
+    [HideInInspector] public string flamethrower = "Flamethrower";
+
+    [HideInInspector] public bool hasPistol = false;
+    [HideInInspector] public bool hasSMG = false;
+    [HideInInspector] public bool hasCannon = false;
+    [HideInInspector] public bool hasFlameThrower = false;
+
+
+    [SerializeField] GunData pistolObj;
+    [SerializeField] GunData smgObj;
+    [SerializeField] GunData cannonObj;
+    [SerializeField] GunData flamethrowerObj;
+   
+
 
     //Level specific popups
     public GameObject runPopup;
@@ -171,9 +200,7 @@ public class gameManager : MonoBehaviour
         }*/
 
 
-            timeScaleOrig = Time.timeScale;
-
-        
+        timeScaleOrig = Time.timeScale;
         currentScene = SceneManager.GetActiveScene();
 
         //Need if statement so this doesn't fire during main menu
@@ -183,28 +210,39 @@ public class gameManager : MonoBehaviour
             || currentScene.buildIndex == company)
         {
 
+            
             statePause();
 
             if (currentScene.buildIndex == mainMenu)
             {
+                //reset you items
+                ResetAllItems(); 
+
                 EventSystem.current.SetSelectedGameObject(firstSelectedMain);
+
                 //SoundManager.Instance.PlayEffect(MainMenuSFX, 1);
                 //if (SoundManager.Instance != null)
-                SoundManager.Instance.PlayEffectDelayed(MainMenuSFX, 1, 0.5f); 
+                //    SoundManager.Instance.PlayEffectDelayed(MainMenuSFX, 1, 0.5f);
+               
+                
             }
 
             if (currentScene.buildIndex == mainMenu || currentScene.buildIndex == credits) // || currentScene.buildIndex == 7)
             {
-                //if (SoundManager.Instance != null)
-                if (!SoundManager.Instance.MusicIsPlaying())
-                {
-                    SoundManager.Instance.LoadVolumes();
-                    //if (SoundManager.Instance.masterMixer.GetFloat("MasterVolume", out float volume))
+                BGMusic = MainMenuMusic;
+                if (SoundManager.Instance != null)
+                { 
+                  
+                    if (!SoundManager.Instance.MusicIsPlaying())
+                    {
+                        SoundManager.Instance.LoadVolumes();
+                        //if (SoundManager.Instance.masterMixer.GetFloat("MasterVolume", out float volume))
                     //    Debug.Log($"Current VOLUME of '{"MasterVolume"}' is {volume} dB");
 
-                    float value = PlayerPrefs.GetFloat("MusicVolume", 1);
-                    //Debug.Log($"Current VOLUME of '{"MusicVolume"}' is {value}");
-                    SoundManager.Instance.PlayMusic(MainMenuMusic);
+                        float value = PlayerPrefs.GetFloat("MusicVolume", 1);
+                        //Debug.Log($"Current VOLUME of '{"MusicVolume"}' is {value}");
+                        SoundManager.Instance.PlayMusic(MainMenuMusic);
+                     }
                 }
             }
 
@@ -234,6 +272,9 @@ public class gameManager : MonoBehaviour
             //Playground
             if (currentScene.buildIndex == playground)
             {
+                //reset items for all levels (reset in each level below, the items you would get on those levels)
+                ResetAllItems();
+
                 Level1 = true;
                 Level2 = false;
                 Level3 = false;
@@ -291,7 +332,7 @@ public class gameManager : MonoBehaviour
                 BGMusic = LaunchpadMusic;
             }
 
-
+            /*
             if (SoundManager.Instance != null)
             {
                 //added this to change back volume when level changed
@@ -300,17 +341,95 @@ public class gameManager : MonoBehaviour
                 SoundManager.Instance.masterMixer.SetFloat("MusicVolume", currentMusicVolume);
                 SoundManager.Instance.PlayMusic(BGMusic);
             }
-
+            else
+            {
+                startMusic = true; 
+            }
+            */
 
 
         }
-        
+
+        if (SoundManager.Instance != null)
+        {
+            
+            //added this to change back volume when level changed on pause or win/lose menu
+            float currentMusicValue = PlayerPrefs.GetFloat("MusicVolume", 0.6f);
+            float currentMusicVolume = Mathf.Log10(currentMusicValue) * 30f;
+            SoundManager.Instance.masterMixer.SetFloat("MusicVolume", currentMusicVolume);
+
+            if (currentScene.buildIndex != mainMenu && currentScene.buildIndex != credits && currentScene.buildIndex != options)
+            SoundManager.Instance.PlayMusic(BGMusic);
+
+        }
+        else
+        {
+            startMusic = true;
+        }
+
+        LoadItemStatus(bomb);
+        LoadItemStatus(grenade);
+        LoadItemStatus(stunner);
+        LoadItemStatus(pistol);
+        LoadItemStatus(smgun);
+        LoadItemStatus(cannon);
+        LoadItemStatus(flamethrower);
+        GivePlayerItems();
+
+    }
+
+    private void Start()
+    {
+        if (currentScene.buildIndex == mainMenu)
+        {
+            if (SoundManager.Instance != null)
+                SoundManager.Instance.PlayEffectDelayed(MainMenuSFX, 1, 0.5f);
+        }
+
+        /*
+        if (currentScene.buildIndex == mainMenu || currentScene.buildIndex == credits || currentScene.buildIndex == options
+           || currentScene.buildIndex == company)
+        {
+
+            if (SoundManager.Instance != null)
+                SoundManager.Instance.PlayEffectDelayed(MainMenuSFX, 1, 0.5f);
+
+            if (currentScene.buildIndex == mainMenu || currentScene.buildIndex == credits)
+            {
+                if (SoundManager.Instance != null)
+
+                {
+                    if (!SoundManager.Instance.MusicIsPlaying())
+                    {
+                        SoundManager.Instance.LoadVolumes();
+                        //if (SoundManager.Instance.masterMixer.GetFloat("MasterVolume", out float volume))
+                        //    Debug.Log($"Current VOLUME of '{"MasterVolume"}' is {volume} dB");
+
+                        float value = PlayerPrefs.GetFloat("MusicVolume", 1);
+                        //Debug.Log($"Current VOLUME of '{"MusicVolume"}' is {value}");
+                        SoundManager.Instance.PlayMusic(MainMenuMusic);
+                    }
+                }
+            }
+        }*/
+
 
 
     }
 
     void Update()
     {
+
+        if (startMusic)
+        {
+            float currentMusicValue = PlayerPrefs.GetFloat("MusicVolume", 0.6f);
+            float currentMusicVolume = Mathf.Log10(currentMusicValue) * 30f;
+
+            SoundManager.Instance.masterMixer.SetFloat("MusicVolume", currentMusicVolume);
+            SoundManager.Instance.PlayMusic(BGMusic);
+            startMusic = false; 
+        }
+
         currentScene = SceneManager.GetActiveScene();
         
     
@@ -405,21 +524,145 @@ public class gameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         EventSystem.current.SetSelectedGameObject(null);
 
+        //Can load settings for guns and items here, put in Awake
+        if (firstUnpause)
+        {
+            //LoadItemStatus("Bomb"); 
+        }
+
         //normal pause; first unpause true if new scene being loaded
         if (firstUnpause == false)
          {
-             menuActive.SetActive(false);
+
+            
+
+            menuActive.SetActive(false);
              menuActive = null;
             //SoundManager.Instance.PlayMusic(BGMusic);
-
             //only need to raise volume if unpausing in same scene, need to play new music if changing scenes
             SoundManager.Instance.ChangeVolumeMusic(currentMusicVolume);
+
+
         }
             
          firstUnpause = false;
      
 
     }
+
+
+    public void SaveItemStatus(string itemName, bool hasItem)
+    {
+        int saveValue = hasItem ? 1 : 0;
+        PlayerPrefs.SetInt("Has_" + itemName, saveValue);
+        PlayerPrefs.Save();
+
+    }
+
+    public bool LoadItemStatus(string itemName)
+    {
+        int savedValue = PlayerPrefs.GetInt("Has_" + itemName, 0);
+
+        return savedValue == 1;
+
+    }
+
+    public void GivePlayerItems()
+    {
+
+
+        if (LoadItemStatus(bomb))
+        {
+            //update hotbar UI
+
+            /*
+            if(InventoryManager.Instance != null && bombObj != null)
+            {
+                InventoryManager.Instance.AddItem(bombObj);
+            }*/
+
+            enableBomb = true;
+        }
+        if (LoadItemStatus(grenade))
+        {
+            //update hotbar UI
+            enableGrenade = true; 
+        }
+
+        if (LoadItemStatus(stunner))
+        {
+            //update hotbar UI
+            enableStunner = true; 
+        }
+
+        
+        if (LoadItemStatus(pistol))
+        {
+            GunData gun = pistolObj; 
+            playerScript.gunList.Add(gun);
+            hasPistol = true;
+            
+        }
+        
+        if (LoadItemStatus(smgun))
+        {
+            GunData gun = smgObj;
+            playerScript.gunList.Add(gun);
+            hasSMG = true;
+        }
+       
+        if (LoadItemStatus(cannon))
+        {
+            GunData gun = cannonObj;
+            playerScript.gunList.Add(gun);
+            hasCannon = true; 
+        }
+
+        if (LoadItemStatus(flamethrower))
+        {
+            GunData gun = flamethrowerObj;
+            playerScript.gunList.Add(gun);
+            hasFlameThrower = true;
+        }
+
+  
+        if (playerScript != null && playerScript.gunList.Count > 0)
+        {
+            //try deleting below
+            //playerScript.gunListPos = 0;
+            //try changing position to 0
+            //playerScript.gunModel.GetComponent<MeshFilter>().sharedMesh = playerScript.gunList[playerScript.gunListPos].gunModel.GetComponent<MeshFilter>().sharedMesh;
+            //playerScript.gunModel.GetComponent<MeshRenderer>().sharedMaterial = playerScript.gunList[playerScript.gunListPos].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+
+            playerScript.gunModel.GetComponent<MeshFilter>().sharedMesh = playerScript.gunList[0].gunModel.GetComponent<MeshFilter>().sharedMesh;
+            playerScript.gunModel.GetComponent<MeshRenderer>().sharedMaterial = playerScript.gunList[0].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+
+        }
+    }
+
+    public void ResetAllItems()
+    {
+        SaveItemStatus(bomb, enableBomb = false);
+        SaveItemStatus(grenade, enableGrenade = false);
+        SaveItemStatus(stunner, enableStunner = false);
+        SaveItemStatus(pistol, hasPistol = false); 
+        SaveItemStatus(smgun, hasPistol = false);
+        SaveItemStatus(cannon, hasCannon = false);
+        SaveItemStatus(flamethrower, hasPistol = false);
+       
+
+        if (InventoryManager.Instance != null)
+        {
+            
+            InventoryManager.Instance.hotbarItems.Clear();
+            for (int i = 0; i < InventoryManager.Instance.hotbarSize; i++)
+            {
+                InventoryManager.Instance.hotbarItems.Add(null);
+            }
+        }
+
+    }
+
 
     public void updateKidsRescued(int amount)
     {
@@ -539,15 +782,18 @@ public class gameManager : MonoBehaviour
         menuActive = menuLose;
         menuActive.SetActive(true);
 
-        currentMusicVolume = PlayerPrefs.GetFloat("MusicVolume", 0.6f);
+        //currentMusicVolume = PlayerPrefs.GetFloat("MusicVolume", 0.6f);
 
         //need to only change volume if scene is the same; need to stop it if going to a new scene
         //SoundManager.Instance.PlayMusic(BGMusic, 0.2f);
         //SoundManager.Instance.ChangeVolumeMusic(0.2f);
-        SoundManager.Instance.LowerVolumeInstantly();
-        PlayerPrefs.SetFloat("MusicVolume", currentMusicVolume);
+
+
+        //SoundManager.Instance.LowerVolumeInstantly();
+        //PlayerPrefs.SetFloat("MusicVolume", currentMusicVolume);
 
     }
+
 
     public void flashItemUI()
     {

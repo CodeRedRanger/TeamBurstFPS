@@ -10179,15 +10179,18 @@ MonoBehaviour:
   HP: 10
   speed: 4
   sprintMod: 3
-  jumpSpeed: 12
+  jumpSpeed: 5
+  maxJumpSpeed: 12
   jumpCountMax: 1
   gravity: 35
   shootDamage: 1
   shootDist: 18
   shootRate: 0.5
+  invincibleDur: 0
   ps: {fileID: 6524170564279636751}
   ps1: {fileID: 5831822897527706475}
   ps2: {fileID: 7442722401587001415}
+  playerVel: {x: 0, y: 0, z: 0}
   damageSound: {fileID: 8300000, guid: d14c998d6540344f89d98403b8d12b97, type: 3}
   deathSound: {fileID: 8300000, guid: 7ec679ad50c30444590b96f230b41938, type: 3}
   audJump:
@@ -10206,8 +10209,10 @@ MonoBehaviour:
   audRechargePromptVol: 1
   gunList: []
   gunModel: {fileID: 4857354596902830145}
+  gunListPos: 0
   pushBack: {x: 0, y: 0, z: 0}
   pushBackTime: 0
+  gravityFlipped: 0
 --- !u!114 &4286662896927773134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10247,7 +10252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ThrowObject
   grenadePrefab: {fileID: 5621635494809896130, guid: b13e28f303cf63a4bb241add07544ef3, type: 3}
-  stunGrenadePrefab: {fileID: 6886974748621363485, guid: f974ba61f50de2149b058358d85330ea, type: 3}
+  stunGrenadePrefab: {fileID: 7019084519649617347, guid: ee1adebf74d927d4e873b8b25b0b3b58, type: 3}
   objectToThrowPrefab: {fileID: 0}
   throwPoint: {fileID: 2265069185859297257}
   key: 102

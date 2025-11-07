@@ -7,7 +7,9 @@ public class TriggerDisappearObject3 : MonoBehaviour
 
     [SerializeField] GameObject objectToDisappear;
     public float delay = 1f; // Delay in seconds before the object appears
+    public bool destroy = false; 
     //private MeshRenderer meshRenderer; 
+    //private MeshCollider meshCollider;
 
     //Options for this script
     //[SerializeField] string tagToTrigger; 
@@ -25,7 +27,7 @@ public class TriggerDisappearObject3 : MonoBehaviour
             //meshRenderer = objectToDisappear.GetComponent<MeshRenderer>();
             //meshRenderer.enabled = true;// Ensure the mesh is initially active
             //if object
-            //objectToAppear.SetActive(false);
+            //objectToDisappear.SetActive(true);
         }
     }
 
@@ -38,9 +40,17 @@ public class TriggerDisappearObject3 : MonoBehaviour
         {
             if (objectToDisappear != null)
             {
+                if(destroy)
+                    Destroy(objectToDisappear);
+                else
+                {
+                    objectToDisappear.SetActive(false);
+                    //meshRenderer.enabled = false;
+                    //meshCollider.enabled = false;
+                }
                 //if mesh
-                //meshRenderer.enabled = false; 
-                Destroy(objectToDisappear);
+                //
+
 
                 //if object
                 //objectToAppear.SetActive(false);

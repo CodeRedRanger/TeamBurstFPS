@@ -36,7 +36,10 @@ public class EnemyAIRobot : MonoBehaviour, IDamage, IStunnable
     Vector3 playerDir; 
 
     [SerializeField] Animator animator;
-    [SerializeField] int animTransSpeed; 
+    [SerializeField] int animTransSpeed;
+
+    [SerializeField] bool itemSpawner;
+    [SerializeField] public GameObject itemToSpawn; 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -170,6 +173,12 @@ public class EnemyAIRobot : MonoBehaviour, IDamage, IStunnable
         if (HP <= 0)
         {
             SoundManager.Instance.PlayEffect(deathSound, 1);
+
+            if (itemSpawner && itemToSpawn != null)
+            {
+                Instantiate(itemToSpawn, transform.position + Vector3.up, Quaternion.identity);
+            }
+
             Destroy(gameObject);
             gameManager.instance.updateGameGoal(-1);
             

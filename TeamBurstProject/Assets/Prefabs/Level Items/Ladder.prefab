@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &182489095039317452
+--- !u!1 &8070650596662398980
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,62 +8,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3428128738423174884}
-  - component: {fileID: 1496261854703622808}
-  - component: {fileID: 8244950471225664593}
-  - component: {fileID: 3097064181012175515}
-  - component: {fileID: 1251877577263876183}
-  - component: {fileID: 6708425091876118426}
+  - component: {fileID: 712362151672302976}
+  - component: {fileID: 4325415331803126439}
+  - component: {fileID: 6473412061640383247}
+  - component: {fileID: 8751091570448306304}
+  - component: {fileID: 7867159879379873587}
+  - component: {fileID: 1748715158728721459}
   m_Layer: 0
-  m_Name: Gun - CannonOrange
+  m_Name: Ladder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3428128738423174884
+--- !u!4 &712362151672302976
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 182489095039317452}
+  m_GameObject: {fileID: 8070650596662398980}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.017926862, y: 0.7067561, z: 0.7070028, w: -0.017933121}
-  m_LocalPosition: {x: 5.553631, y: 0.17327935, z: -1.2370048}
-  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_LocalRotation: {x: 0.000000014901161, y: 0.7071068, z: -0.000000014901161, w: 0.7071068}
+  m_LocalPosition: {x: 22.77104, y: 0.020799875, z: -341.74725}
+  m_LocalScale: {x: 2.5792, y: 2.5792, z: 2.5792}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -89.98, y: 0, z: 182.906}
---- !u!114 &1496261854703622808
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 182489095039317452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b44bb8002a522f24fbec1874c8a8109e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GunPickup
-  gun: {fileID: 11400000, guid: 55b29d2f26cf98d4d9788dfb12e7a274, type: 2}
---- !u!33 &8244950471225664593
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!33 &4325415331803126439
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 182489095039317452}
-  m_Mesh: {fileID: 1488625083895574940, guid: 57bd024ef1e18d3448642a4711e73d0e, type: 3}
---- !u!23 &3097064181012175515
+  m_GameObject: {fileID: 8070650596662398980}
+  m_Mesh: {fileID: 4300000, guid: e9671205b5c307944a4c1715dbd3cf31, type: 3}
+--- !u!23 &6473412061640383247
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 182489095039317452}
+  m_GameObject: {fileID: 8070650596662398980}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -82,7 +69,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9504c921b7e175942b851dc8f2c4a1e7, type: 2}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -105,13 +92,49 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &1251877577263876183
-SphereCollider:
+--- !u!65 &8751091570448306304
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 182489095039317452}
+  m_GameObject: {fileID: 8070650596662398980}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.60000026, y: 2.0000002, z: 0.10000013}
+  m_Center: {x: 0.3, y: 1.0000001, z: 0.050000064}
+--- !u!114 &7867159879379873587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8070650596662398980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e13c96b0fa90ae4f8fe53dbf456efe1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Climb
+  climbSpeed: 15
+  autoClimb: 1
+  stickToClimb: 1
+--- !u!65 &1748715158728721459
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8070650596662398980}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -124,21 +147,5 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.01
-  m_Center: {x: -0.00069319084, y: -0.0019545818, z: 0.000057530986}
---- !u!114 &6708425091876118426
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 182489095039317452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b8d5d9776f76ff45bcf3d3872e8a21b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Rotator
-  rotationSpeed: 90
-  rotateX: 0
-  rotateY: 0
-  rotateZ: 1
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0.30000007, y: 1, z: 0.05000003}

@@ -11008,6 +11008,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1481902253740779801, guid: d25d1cb5381ca3f4db5dfc3f1fb17293, type: 3}
+      propertyPath: damageAmount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3267601180100821658, guid: d25d1cb5381ca3f4db5dfc3f1fb17293, type: 3}
       propertyPath: player
       value: 
@@ -11024,7 +11028,8 @@ PrefabInstance:
       propertyPath: booksFallAngle
       value: -20
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1481902253740779801, guid: d25d1cb5381ca3f4db5dfc3f1fb17293, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -17954,6 +17959,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerNoGun
       objectReference: {fileID: 0}
+    - target: {fileID: 4808281370421107051, guid: 511026fba2ede33448c0b22e5379ebfa, type: 3}
+      propertyPath: stunGrenadePrefab
+      value: 
+      objectReference: {fileID: 7019084519649617347, guid: ee1adebf74d927d4e873b8b25b0b3b58, type: 3}
     - target: {fileID: 7087722342501956946, guid: 511026fba2ede33448c0b22e5379ebfa, type: 3}
       propertyPath: mouseSens
       value: 250
@@ -20865,6 +20874,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1481902253740779801, guid: d25d1cb5381ca3f4db5dfc3f1fb17293, type: 3}
+      propertyPath: damageAmount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3267601180100821658, guid: d25d1cb5381ca3f4db5dfc3f1fb17293, type: 3}
       propertyPath: player
       value: 
@@ -20881,7 +20894,8 @@ PrefabInstance:
       propertyPath: booksFallAngle
       value: -20
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1481902253740779801, guid: d25d1cb5381ca3f4db5dfc3f1fb17293, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -31334,7 +31348,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 0.11879937, y: 2, z: 5.3358364}
   m_Center: {x: -0.00313879, y: 3.4, z: -0.10978067}
@@ -31711,6 +31725,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1481902253740779801, guid: d25d1cb5381ca3f4db5dfc3f1fb17293, type: 3}
+      propertyPath: damageAmount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3267601180100821658, guid: d25d1cb5381ca3f4db5dfc3f1fb17293, type: 3}
       propertyPath: player
       value: 
@@ -31727,7 +31745,8 @@ PrefabInstance:
       propertyPath: booksFallAngle
       value: -20
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1481902253740779801, guid: d25d1cb5381ca3f4db5dfc3f1fb17293, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -38147,6 +38166,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1481902253740779801, guid: d25d1cb5381ca3f4db5dfc3f1fb17293, type: 3}
+      propertyPath: damageAmount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3267601180100821658, guid: d25d1cb5381ca3f4db5dfc3f1fb17293, type: 3}
       propertyPath: player
       value: 
@@ -38163,7 +38186,8 @@ PrefabInstance:
       propertyPath: booksFallAngle
       value: -20
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1481902253740779801, guid: d25d1cb5381ca3f4db5dfc3f1fb17293, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -40025,7 +40049,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: e2c12cc399276f34997617080b02d780, type: 3}
       propertyPath: m_Name
-      value: BlockHallTrigger
+      value: DestroySilverAlienTrigger
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e2c12cc399276f34997617080b02d780, type: 3}
       propertyPath: m_LocalScale.x
@@ -40097,31 +40121,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100000, guid: e2c12cc399276f34997617080b02d780, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1374414855}
-    - targetCorrespondingSourceObject: {fileID: 100000, guid: e2c12cc399276f34997617080b02d780, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1374414850}
   m_SourcePrefab: {fileID: 100100000, guid: e2c12cc399276f34997617080b02d780, type: 3}
 --- !u!1 &1374414849 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: e2c12cc399276f34997617080b02d780, type: 3}
   m_PrefabInstance: {fileID: 1374414848}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1374414850
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1374414849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0588ca19d081a3b4ab2aa7c132696004, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TriggerAppearObject
-  objectToAppear: {fileID: 412670647}
-  delay: 1
-  bossFight: 0
-  forBoss: {fileID: 0}
 --- !u!65 &1374414851
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -44167,10 +44172,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AlienSilver
       objectReference: {fileID: 0}
-    - target: {fileID: 4224545896670344271, guid: a6acd7f6f38496547adb84cc71eb79a9, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5799629576141047456, guid: a6acd7f6f38496547adb84cc71eb79a9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.319804
@@ -44210,14 +44211,6 @@ PrefabInstance:
     - target: {fileID: 5799629576141047456, guid: a6acd7f6f38496547adb84cc71eb79a9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6371199901884235604, guid: a6acd7f6f38496547adb84cc71eb79a9, type: 3}
-      propertyPath: m_Speed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8539184820195621954, guid: a6acd7f6f38496547adb84cc71eb79a9, type: 3}
-      propertyPath: m_Radius
-      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -46165,7 +46158,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 61c528fa8911c6941a49dfb0ef7bbc2f, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: da71a53067f86d649903582f63361f0f, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &1556290175
 Transform:
@@ -46700,6 +46693,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1481902253740779801, guid: d25d1cb5381ca3f4db5dfc3f1fb17293, type: 3}
+      propertyPath: damageAmount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3267601180100821658, guid: d25d1cb5381ca3f4db5dfc3f1fb17293, type: 3}
       propertyPath: player
       value: 
@@ -46716,7 +46713,8 @@ PrefabInstance:
       propertyPath: booksFallAngle
       value: 20
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1481902253740779801, guid: d25d1cb5381ca3f4db5dfc3f1fb17293, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -49702,6 +49700,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1481902253740779801, guid: d25d1cb5381ca3f4db5dfc3f1fb17293, type: 3}
+      propertyPath: damageAmount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3267601180100821658, guid: d25d1cb5381ca3f4db5dfc3f1fb17293, type: 3}
       propertyPath: player
       value: 
@@ -49718,7 +49720,8 @@ PrefabInstance:
       propertyPath: booksFallAngle
       value: 20
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1481902253740779801, guid: d25d1cb5381ca3f4db5dfc3f1fb17293, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -51372,6 +51375,22 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0.7997998
       objectReference: {fileID: 0}
+    - target: {fileID: 4532116621379894933, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4532116621379894933, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4532116621379894933, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4532116621379894933, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 4998969205941902043, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
       propertyPath: m_Name
       value: UI
@@ -52783,6 +52802,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1481902253740779801, guid: d25d1cb5381ca3f4db5dfc3f1fb17293, type: 3}
+      propertyPath: damageAmount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3267601180100821658, guid: d25d1cb5381ca3f4db5dfc3f1fb17293, type: 3}
       propertyPath: player
       value: 
@@ -52799,7 +52822,8 @@ PrefabInstance:
       propertyPath: booksFallAngle
       value: 20
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1481902253740779801, guid: d25d1cb5381ca3f4db5dfc3f1fb17293, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
