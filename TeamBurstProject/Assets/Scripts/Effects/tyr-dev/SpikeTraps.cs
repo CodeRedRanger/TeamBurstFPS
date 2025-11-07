@@ -4,6 +4,8 @@ public class SpikeTraps : MonoBehaviour
 {
     [SerializeField] private bool autoTriggered = false, retractOnExit = true, isDud = false;
 
+    public Animator spikeAnim;
+
     public Collider activationZone;
     public float raiseDelay = 0f, lowerDelay = 0f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -22,6 +24,7 @@ public class SpikeTraps : MonoBehaviour
                 }
             }
         }
+        spikeAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
