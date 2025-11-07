@@ -72,6 +72,12 @@ public class gameManager : MonoBehaviour
     int kidsRescued;
     [SerializeField] TMP_Text kidsRescuedText;
 
+    //Keys collected for launchpad level
+    public GameObject keysCollected;
+    private int keysRequired;
+    int keysCount;
+    [SerializeField] TMP_Text keysCollectedText;
+
     //Level 0: Main Menu; Level 1: Playground; Level 2: Hall/Library; Level 3: Credits; Level 4: Alien Ship
     //Level 5: Lunchroom, Level 6: Launchpad, Leve 7: Options, Level 8: Company
     //Rearrange all levels so that 0 is company, 1 is main menu, 2 is options, 3 is credits
@@ -151,8 +157,10 @@ public class gameManager : MonoBehaviour
     //Level specific popups
     public GameObject runPopup;
     public GameObject kidsPopup;
-    public GameObject launchpadPopup; 
+    public GameObject launchpadPopup;
 
+
+    
 
     //from main menu, you don't need the actions of unpause the first time, even though it is
     //called as part of load scene. 
@@ -333,6 +341,9 @@ public class gameManager : MonoBehaviour
                 LevelLaunchpad = true;
                 LevelCompany = false;
                 BGMusic = LaunchpadMusic;
+                keysCollected.SetActive(true);
+                keysCount = 0;
+                keysRequired = 3; //UI updated below in UpdateKeysCollected
                 StartCoroutine(FlashLaunchpadUI());
             }
 
@@ -667,6 +678,11 @@ public class gameManager : MonoBehaviour
 
     }
 
+    public void updateKeysCollected(int amount)
+    {
+        keysCount += amount;
+        keysCollectedText.text = keysCount.ToString("F0");
+    }
 
     public void updateKidsRescued(int amount)
     {
