@@ -6,8 +6,8 @@ public class Destructible : MonoBehaviour, IDamage
     [SerializeField] int maxHP;
     [SerializeField] GameObject objectToDestroy;
     int currentHP;
-    [SerializeField] UnityEvent destroyedEvent;
-    [SerializeField] UnityEvent takeDamageEvent;
+    [SerializeField] public UnityEvent destroyedEvent;
+    [SerializeField] public UnityEvent takeDamageEvent;
 
     private void Start()
     {
