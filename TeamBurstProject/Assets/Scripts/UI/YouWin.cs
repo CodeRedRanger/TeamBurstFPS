@@ -16,7 +16,12 @@ public class YouWin : MonoBehaviour
 
         if (other.CompareTag("Player") && triggered == false)
         {
-            triggered = true;
+            if (gameManager.instance.currentScene.buildIndex == 4 && gameManager.instance.keysRequired != gameManager.instance.keysCount)
+            {
+                return; 
+            }
+
+                triggered = true;
             SoundManager.Instance.PlayEffect(youWin, 1);
             SoundManager.Instance.StopMusic();
 

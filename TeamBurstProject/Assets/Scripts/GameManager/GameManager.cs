@@ -74,8 +74,8 @@ public class gameManager : MonoBehaviour
 
     //Keys collected for launchpad level
     public GameObject keysCollected;
-    private int keysRequired;
-    int keysCount;
+    [HideInInspector] public int keysRequired; //set below in Awake for launchpad level
+    [HideInInspector] public int keysCount;
     [SerializeField] TMP_Text keysCollectedText;
 
     //Level 0: Main Menu; Level 1: Playground; Level 2: Hall/Library; Level 3: Credits; Level 4: Alien Ship
