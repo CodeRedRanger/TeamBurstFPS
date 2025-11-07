@@ -1,3 +1,5 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpikeTraps : MonoBehaviour
@@ -7,9 +9,12 @@ public class SpikeTraps : MonoBehaviour
     public Animator spikeAnim;
 
     public Collider activationZone;
-    public float raiseDelay = 0f, lowerDelay = 0f;
+    public float raiseDelay = 0f, lowerDelay = 3f;
+
+    private bool isActive=false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Awake()
+    private void Awake()
     {
         // Try to find a trigger collider under this object
         if (activationZone == null)
@@ -27,9 +32,44 @@ public class SpikeTraps : MonoBehaviour
         spikeAnim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
+        if (autoTriggered) StartCoroutine(LoopingCycle());
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.isTrigger) return;
+        if (other.CompareTag("Player")) StartCoroutine(OpenCloseTrap());
+    }
+
+    private IEnumerator LoopingCycle()
+    {
+        //repeat forever
+        while (autoTriggered)
+        {
+            yield return StartCoroutine(OpenCloseTrap());
+        }
+    }
+
+    private IEnumerator OpenCloseTrap()
+    {
+        if (!isActive)
+        {
+            isActive = true;
+            //Wait for Raise Delay
+            yield return new WaitForSeconds(raiseDelay);
+            
+            //Raise The Trap
+            spikeAnim.SetTrigger("open");
+
+            //Wait for Lower Delay
+            yield return new WaitForSeconds(lowerDelay);
+            spikeAnim.SetTrigger("close");
+            isActive = false;
+        }
         
+
     }
 }
