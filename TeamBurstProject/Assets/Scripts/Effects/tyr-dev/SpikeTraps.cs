@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpikeTraps : MonoBehaviour
 {
-    [SerializeField] private bool autoTriggered = false, retractOnExit = true, isDud = false;
+    [SerializeField] private bool autoTriggered = false; //, retractOnExit = true, isDud = false;
 
     public Animator spikeAnim;
 

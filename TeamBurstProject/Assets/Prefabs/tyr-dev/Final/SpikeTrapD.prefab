@@ -413,6 +413,7 @@ GameObject:
   - component: {fileID: 95846521961778924}
   - component: {fileID: 2605230548368786}
   - component: {fileID: 4509670358107735920}
+  - component: {fileID: 4930213653146385204}
   m_Layer: 0
   m_Name: SpikeTrapD
   m_TagString: Untagged
@@ -548,13 +549,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fbf364bca6405a488f0d97c7260f35b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpikeTraps
-  autoTriggered: 1
-  retractOnExit: 0
-  isDud: 0
+  autoTriggered: 0
   spikeAnim: {fileID: 0}
   activationZone: {fileID: 0}
-  raiseDelay: 0
-  lowerDelay: 3
+  raiseDelay: 0.5
+  lowerDelay: 2
+--- !u!54 &4930213653146385204
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1498791207746926}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1533954398984724
 GameObject:
   m_ObjectHideFlags: 0
@@ -1363,7 +1389,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6446718062904291061}
   - component: {fileID: 6146123346723363673}
-  - component: {fileID: 2919948736131029124}
   m_Layer: 0
   m_Name: ActivationZone
   m_TagString: Untagged
@@ -1407,30 +1432,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2, y: 1, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &2919948736131029124
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8022609045275451454}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
