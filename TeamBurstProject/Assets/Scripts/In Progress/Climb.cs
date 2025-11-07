@@ -8,6 +8,7 @@ public class Climb : MonoBehaviour
     [SerializeField] bool autoClimb;
     [SerializeField] bool stickToClimb = true;
     //[SerializeField] bool isRope;
+ 
 
     bool onLadder;
     int speedOrig;
@@ -59,10 +60,19 @@ public class Climb : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("enter");
+        //Debug.Log("enter");
         if (other.CompareTag("Player"))
         {
-            PlayerController playerController = other.GetComponent<PlayerController>();
+            if (other.TryGetComponent<Jetpack>(out Jetpack jp))
+            {
+                jp.enabled = false; //then reenable on exit
+                //Debug.Log("disable jetpack pickup");
+            }
+            else
+            {
+                //Debug.Log("no jetpack assigned");
+            }
+                PlayerController playerController = other.GetComponent<PlayerController>();
             CharacterController characterController = other.GetComponent<CharacterController>();
             playerController.speed = 0;
             if (stickToClimb)
@@ -85,6 +95,15 @@ public class Climb : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             dismount();
+            if (other.TryGetComponent<Jetpack>(out Jetpack jp))
+                {
+                jp.GetComponent<Jetpack>().enabled = true; //then reenable on exit
+                //Debug.Log("enable jetpack pickup");
+            }
+            else
+            {
+                //Debug.Log("no jetpack assigned");
+            }
         }
     }
 

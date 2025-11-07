@@ -1,16 +1,29 @@
 using UnityEngine;
 using UnityEngine.Events;
+using System.Collections;
 
 public class Destructible : MonoBehaviour, IDamage
 {
     [SerializeField] int maxHP;
     [SerializeField] GameObject objectToDestroy;
+
+    //Robb added
+    [SerializeField] Renderer model;
+    private Color colorOrig;
+    [SerializeField] AudioClip damageSound;
+    [SerializeField] AudioClip destroySound;
+
     int currentHP;
     [SerializeField] UnityEvent destroyedEvent;
     [SerializeField] UnityEvent takeDamageEvent;
 
+    
+
     private void Start()
     {
+        //Robb added
+        colorOrig = model.material.color;
+
         currentHP = maxHP;
     }
 
@@ -22,9 +35,28 @@ public class Destructible : MonoBehaviour, IDamage
 
     public void TakeDamage(int amount)
     {
+        //Robb added
+        //SimpleDamageFlash(); 
+        StartCoroutine(flashDamage());
+        SoundManager.Instance.PlayEffect(damageSound, 1f);
+
         currentHP -= amount;
-        takeDamageEvent.Invoke();
-        if(currentHP <= 0) destroyedEvent.Invoke();
+
+        if (takeDamageEvent != null)
+            takeDamageEvent.Invoke();
+
+        //Robb added: if and else wrapper
+        //if (destroyedEvent != null)
+        //{
+        //    if (currentHP <= 0) destroyedEvent.Invoke();
+        //}
+        //else
+
+        if (currentHP <= 0)
+        {
+            SoundManager.Instance.PlayEffect(destroySound, 1f);
+            SimpleDestroy();
+        }
     }
 
 
@@ -33,7 +65,14 @@ public class Destructible : MonoBehaviour, IDamage
 
     public void SimpleDamageFlash()
     {
+        
+    }
 
+    private IEnumerator flashDamage()
+    {
+        model.material.color = Color.blue;
+        yield return new WaitForSeconds(0.3f); //0.1f
+        model.material.color = colorOrig;
     }
 
 

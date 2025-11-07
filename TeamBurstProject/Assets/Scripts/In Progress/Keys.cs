@@ -1,7 +1,10 @@
 using UnityEngine;
 
 public class Keys : MonoBehaviour
+
 {
+
+    [SerializeField] AudioClip pickupSound; 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,8 +21,10 @@ public class Keys : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Destroy(gameObject);
+            SoundManager.Instance.PlayEffect(pickupSound, 1); 
             gameManager.instance.updateKeysCollected(1);
+            Destroy(gameObject);
+            
         }
     }
 
