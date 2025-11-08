@@ -17,4 +17,9 @@ public class LavaAttack_State : FiniteState
             fsMachine.ChangeToState(nextState);
         }
     }
+
+    public void MoveToNextState()
+    {
+        fsMachine.ChangeToState(nextState);
+    }
 }
