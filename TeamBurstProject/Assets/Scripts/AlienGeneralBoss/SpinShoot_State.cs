@@ -12,6 +12,7 @@ public class SpinShoot_State : FiniteState
 
     float shootTimer;
     int BULLETS_TO_FIRE = 20; // Be wary of modifying this value. Calculations may be off
+    bool isShooting = false;
 
     public override void OnEnter(FiniteStateMachine _calledByMachine)
     {
@@ -28,7 +29,7 @@ public class SpinShoot_State : FiniteState
 
         // Spawn bullets
 
-        if (shootTimer > timeBetweenShots)
+        if (shootTimer > timeBetweenShots && isShooting)
         {
             int bulletCount = 0;
             shootTimer = 0;
@@ -44,11 +45,12 @@ public class SpinShoot_State : FiniteState
 
     public void MoveToNextState()
     {
+        isShooting = false;
         fsMachine.ChangeToState(nextState);
     }
 
-    public void FastShoot()
+    public void SpinShoot()
     {
-
+        isShooting = true;
     }
 }

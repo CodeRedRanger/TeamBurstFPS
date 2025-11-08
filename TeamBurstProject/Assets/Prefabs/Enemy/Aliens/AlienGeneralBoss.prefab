@@ -1086,7 +1086,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1782656694056463061}
         m_TargetAssemblyTypeName: SpinShoot_State, Assembly-CSharp
-        m_MethodName: FastShoot
+        m_MethodName: SpinShoot
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1519,7 +1519,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1382996551424496661}
   - component: {fileID: 1095652683969185774}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: SpawnEnemyState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2294,6 +2294,10 @@ PrefabInstance:
     - target: {fileID: 5680079023319193929, guid: 2b6e70f3b4f0c2b4e9b4ed66557bc3c5, type: 3}
       propertyPath: m_Name
       value: Spawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 5680079023319193929, guid: 2b6e70f3b4f0c2b4e9b4ed66557bc3c5, type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 8388859145008326119, guid: 2b6e70f3b4f0c2b4e9b4ed66557bc3c5, type: 3}
       propertyPath: numToSpawn
