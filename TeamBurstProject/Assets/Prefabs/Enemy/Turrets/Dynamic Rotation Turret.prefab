@@ -240,6 +240,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Destructible
   maxHP: 5
   objectToDestroy: {fileID: 3476773545778484307}
+  model: {fileID: 2275378207244212100}
+  damageSound: {fileID: 8300000, guid: e4b229d1cd4c5954c982c44b6f42eb27, type: 3}
+  destroySound: {fileID: 8300000, guid: 4e7a9f408abdba8459fdccbeaea95215, type: 3}
   destroyedEvent:
     m_PersistentCalls:
       m_Calls:
@@ -291,13 +294,13 @@ GameObject:
   - component: {fileID: 8194646238097932734}
   - component: {fileID: 180340386209066921}
   - component: {fileID: 756043025050746272}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Dynamic Rotation Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5592852679556714625
 Transform:
   m_ObjectHideFlags: 0
