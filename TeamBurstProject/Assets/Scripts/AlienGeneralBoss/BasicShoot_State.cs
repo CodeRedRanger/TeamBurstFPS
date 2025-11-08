@@ -5,18 +5,20 @@ public class BasicShoot_State : FiniteState
     [SerializeField] int faceTargetSpeed;
     [SerializeField] Transform shootPos;
     [SerializeField] GameObject bullet;
+    [SerializeField] float fireRate;
 
     Vector3 playerDir;
-    
+    float shootTimer;
 
     public override void OnEnter(FiniteStateMachine _calledByMachine) {
-        base.OnEnter(_calledByMachine); 
+        base.OnEnter(_calledByMachine);
+        shootTimer = 0;
     }
     public override void OnUpdate()
     {
-        faceTarget();
+        shootTimer += Time.deltaTime;
 
-        // Shoot basic bullet at player
+        faceTarget();
         ShootPlayer();
 
     }
@@ -30,7 +32,11 @@ public class BasicShoot_State : FiniteState
     {
         Transform boss = transform.parent;
 
-        Instantiate(bullet, shootPos.position, boss.transform.rotation);
+        if (shootTimer > fireRate)
+        {
+            shootTimer = 0;
+            Instantiate(bullet, shootPos.position, boss.transform.rotation);
+        }
     }
 
     void faceTarget()
