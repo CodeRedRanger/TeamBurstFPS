@@ -110,6 +110,9 @@ public class gameManager : MonoBehaviour
     public GameObject playerSpawnPos;
     public GameObject checkpointPopup;
 
+    //Interactables variables
+    public GameObject leverPopup; 
+
     //Powerup variables
     public GameObject speedboostPopup;
     public GameObject jumpboostPopup;
