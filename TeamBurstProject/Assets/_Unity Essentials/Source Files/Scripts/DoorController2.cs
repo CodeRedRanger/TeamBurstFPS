@@ -11,7 +11,7 @@ public class DoorController2 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Open the door");
+        //Debug.Log("Open the door");
         doorAnimator.SetTrigger("Door_Open");
         
     }

@@ -11,7 +11,7 @@ public class UpdateCollectibleCount : MonoBehaviour
         collectibleText = GetComponent<TextMeshProUGUI>();
         if (collectibleText == null)
         {
-            Debug.LogError("UpdateCollectibleCount script requires a TextMeshProUGUI component on the same GameObject.");
+            //Debug.LogError("UpdateCollectibleCount script requires a TextMeshProUGUI component on the same GameObject.");
             return;
         }
         UpdateCollectibleDisplay(); // Initial update on start

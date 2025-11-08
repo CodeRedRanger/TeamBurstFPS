@@ -277,7 +277,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
                     }
                 }
 
-                Debug.Log(hit.collider.name);
+                //Debug.Log(hit.collider.name);
             }
         }
     }

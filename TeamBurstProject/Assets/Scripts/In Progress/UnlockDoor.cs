@@ -94,7 +94,7 @@ public class UnlockDoor : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            Debug.Log("in range");
+            //Debug.Log("in range");
             inRange = true;
         }
     }
