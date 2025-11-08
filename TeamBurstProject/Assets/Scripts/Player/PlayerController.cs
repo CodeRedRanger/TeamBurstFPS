@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
     [SerializeField] ParticleSystem ps;
     [SerializeField] ParticleSystem ps1;
     [SerializeField] ParticleSystem ps2;
+    [SerializeField] ParticleSystem psFlameThrower;
 
     private Vector3 moveDir;
     //changed below from private to public for jetpack
@@ -241,6 +242,10 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
             else if (gunList[gunListPos].type == GunType.cannon)
             {
                 ps2.Play();
+            }
+            else if (gunList[gunListPos].type == GunType.flamethrower)
+            {
+                psFlameThrower.Play();
             }
             else
             {
