@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class GeneralDamage : MonoBehaviour, IDamage
 {
+    [SerializeField] GameObject finalGoal;
     [SerializeField] int health;
     public void Heal(int amount)
     {
@@ -12,6 +13,9 @@ public class GeneralDamage : MonoBehaviour, IDamage
     {
         health -= amount;
         if (health < 0)
+        {
+            finalGoal.SetActive(true);
             GameObject.Destroy(gameObject);
+        }
     }
 }

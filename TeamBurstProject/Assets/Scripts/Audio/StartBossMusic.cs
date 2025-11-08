@@ -7,7 +7,8 @@ public class StartBossMusic : MonoBehaviour
 {
     [SerializeField] public AudioMixer musicMixer;
     [SerializeField] public AudioClip bossMusic;
-    [SerializeField] GameObject musicTrigger; 
+    [SerializeField] GameObject musicTrigger;
+    [SerializeField] GameObject boss; 
     public string volumParamName = "MusicVolume";
     public float fadeDuration = 2.0f;
     private float currentVolume;
@@ -68,6 +69,9 @@ public class StartBossMusic : MonoBehaviour
         musicMixer.SetFloat(volumParamName, currentVolume);
         SoundManager.Instance.PlayMusic(bossMusic);
         musicTrigger.SetActive(false);
+
+        if (boss != null)
+            boss.SetActive(true);
 
     }
 
