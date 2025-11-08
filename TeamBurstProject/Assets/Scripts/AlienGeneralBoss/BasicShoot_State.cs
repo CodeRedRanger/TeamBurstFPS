@@ -35,7 +35,8 @@ public class BasicShoot_State : FiniteState
         if (shootTimer > fireRate)
         {
             shootTimer = 0;
-            Instantiate(bullet, shootPos.position, boss.transform.rotation);
+            Quaternion rot = Quaternion.LookRotation(gameManager.instance.player.transform.position - shootPos.transform.position);
+            Instantiate(bullet, shootPos.position, rot);
         }
     }
 
