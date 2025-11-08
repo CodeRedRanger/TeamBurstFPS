@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour, IDamage, IPickupGun
+public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
 {
     [SerializeField] LayerMask ignoreLayer;
     [SerializeField] CharacterController controller;
@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
 
     bool isSprinting;
     bool isInvincible;
+
+    int numOfKeys;
 
 
     //Audio
@@ -534,5 +536,11 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun
         isInvincible = false;
         TakeDamage(HP);
     }
-    
+
+    public void pickupKey(int amount)
+    {
+        numOfKeys += amount;
+    }
+
+    public int getNumOfKeys() { return  numOfKeys; }
 }

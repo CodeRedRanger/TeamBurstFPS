@@ -84,6 +84,7 @@ GameObject:
   - component: {fileID: 8117672910702117576}
   - component: {fileID: 3766213055148900322}
   - component: {fileID: 746436681482015733}
+  - component: {fileID: 9156527616288633245}
   m_Layer: 7
   m_Name: Hitbox
   m_TagString: Untagged
@@ -157,8 +158,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.1, y: 0.5, z: 1.1}
-  m_Center: {x: 0, y: 0.25, z: 0}
+  m_Size: {x: 1.1, y: 0.25, z: 1.1}
+  m_Center: {x: 0, y: 0.125, z: 0}
 --- !u!65 &746436681482015733
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -178,7 +179,28 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.75, y: 0.75, z: 1.5}
+  m_Size: {x: 0.2, y: 0.5, z: 0.2}
+  m_Center: {x: 0, y: 0.25, z: 0}
+--- !u!65 &9156527616288633245
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755688984843218096}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.5, y: 0.5, z: 1.2}
   m_Center: {x: 0, y: 0.75, z: 0.25}
 --- !u!1 &1754325570217940781
 GameObject:

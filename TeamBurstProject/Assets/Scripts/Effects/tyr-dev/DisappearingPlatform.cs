@@ -66,7 +66,7 @@ public class DisappearingPlatform : MonoBehaviour
     {
         foreach (var collider in colliders) { collider.enabled = state; }
     }
-    private System.Collections.IEnumerator LoopingCycle()
+    private IEnumerator LoopingCycle()
     {
         isRunningCycle = true;
 
