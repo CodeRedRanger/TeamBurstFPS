@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+
+/*
 public class Destructible : MonoBehaviour, IDamage
 {
     [SerializeField] int maxHP;
@@ -44,4 +46,4 @@ public class Destructible : MonoBehaviour, IDamage
     {
         Destroy(objectToDestroy);
     }
-}
+}*/
