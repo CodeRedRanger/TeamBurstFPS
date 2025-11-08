@@ -31,12 +31,12 @@ public class FollowTurret_State : FiniteState
         if (fireTimer >= durationBetweenFiring)
             Fire();
 
-        /*RaycastHit hit;
+        RaycastHit hit;
         Physics.Raycast(objectToRotate.transform.position, directionToTarget, out hit, maxSightDistance, ~ignoreLayers);
         if(hit.collider == null || hit.collider.gameObject != gameManager.instance.player)
         {
             fsMachine.ChangeToState(targetLostState);
-        }*/
+        }
     }
 
     public void Fire()
