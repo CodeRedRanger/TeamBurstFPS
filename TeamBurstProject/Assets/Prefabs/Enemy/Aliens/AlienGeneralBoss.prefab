@@ -64,6 +64,51 @@ Transform:
   - {fileID: 3901582144723588236}
   m_Father: {fileID: 1587878264708100870}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &614848070632891715
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5241849472923431176}
+  - component: {fileID: 1782656694056463061}
+  m_Layer: 0
+  m_Name: SpinShootState
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5241849472923431176
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614848070632891715}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1835734848629938367}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1782656694056463061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 614848070632891715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b683041045c7fe649827b5f167825499, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpinShoot_State
+  nextState: {fileID: 8232977868001493707}
 --- !u!1 &767668931184151283
 GameObject:
   m_ObjectHideFlags: 0
@@ -722,6 +767,10 @@ MonoBehaviour:
   shootPos: {fileID: 5903424088276851376}
   bullet: {fileID: 6709539129829562604, guid: f9296b7ad533abf4a89fc843970683cf, type: 3}
   fireRate: 2
+  shotsTillNextState: 6
+  states:
+  - {fileID: 1782656694056463061}
+  - {fileID: 8864038052424827583}
 --- !u!1 &3814693758389926730
 GameObject:
   m_ObjectHideFlags: 0
@@ -889,6 +938,8 @@ Transform:
   - {fileID: 2166351484539874360}
   - {fileID: 8734469704629078447}
   - {fileID: 4198750559341552381}
+  - {fileID: 5241849472923431176}
+  - {fileID: 2206308308688932598}
   - {fileID: 866945514485888579}
   - {fileID: 5721407178405468290}
   m_Father: {fileID: 0}
@@ -1359,6 +1410,51 @@ Transform:
   - {fileID: 8847610297652039790}
   m_Father: {fileID: 3300355216706776671}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6250347045813888181
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2206308308688932598}
+  - component: {fileID: 8864038052424827583}
+  m_Layer: 0
+  m_Name: LavaAttackState
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2206308308688932598
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6250347045813888181}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1835734848629938367}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8864038052424827583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6250347045813888181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4ec31407350ce94188251489534038b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LavaAttack_State
+  nextState: {fileID: 8232977868001493707}
 --- !u!1 &6324397796481994395
 GameObject:
   m_ObjectHideFlags: 0

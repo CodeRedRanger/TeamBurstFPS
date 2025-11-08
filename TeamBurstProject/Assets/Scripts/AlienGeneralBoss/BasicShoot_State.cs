@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BasicShoot_State : FiniteState
@@ -6,13 +7,18 @@ public class BasicShoot_State : FiniteState
     [SerializeField] Transform shootPos;
     [SerializeField] GameObject bullet;
     [SerializeField] float fireRate;
+    [SerializeField] int shotsTillNextState;
+    [SerializeField] List<FiniteState> states;
 
     Vector3 playerDir;
     float shootTimer;
+    int shootCount;
+    FiniteState lastState = null;
 
     public override void OnEnter(FiniteStateMachine _calledByMachine) {
         base.OnEnter(_calledByMachine);
         shootTimer = 0;
+        shootCount = 0;
     }
     public override void OnUpdate()
     {
@@ -37,7 +43,24 @@ public class BasicShoot_State : FiniteState
             shootTimer = 0;
             Quaternion rot = Quaternion.LookRotation(gameManager.instance.player.transform.position - shootPos.transform.position);
             Instantiate(bullet, shootPos.position, rot);
+            if (shootCount > shotsTillNextState)
+            {
+                ChangeToRandomState();
+            }
+            shootCount++;
         }
+    }
+
+    private void ChangeToRandomState()
+    {
+
+        int randomIndex = Random.Range(0, states.Count);
+
+        while (states[randomIndex] == lastState)
+            randomIndex = Random.Range(0, states.Count);
+
+        lastState = states[randomIndex];
+        fsMachine.ChangeToState(states[randomIndex]);
     }
 
     void faceTarget()
