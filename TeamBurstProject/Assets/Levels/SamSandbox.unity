@@ -1034,11 +1034,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1513416337 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5903424088276851376, guid: 8d6462732dc7def4aa05101302a543aa, type: 3}
-  m_PrefabInstance: {fileID: 1443124167912393380}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1519792599
 GameObject:
   m_ObjectHideFlags: 0
@@ -1277,7 +1272,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5229722593354934625, guid: 5f625baddc2eb4542ac677d1113ca517, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.52789
+      value: 36.25
       objectReference: {fileID: 0}
     - target: {fileID: 5229722593354934625, guid: 5f625baddc2eb4542ac677d1113ca517, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1425,66 +1420,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AlienGeneralBoss
       objectReference: {fileID: 0}
-    - target: {fileID: 7698822206259642481, guid: 8d6462732dc7def4aa05101302a543aa, type: 3}
-      propertyPath: events.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7698822206259642481, guid: 8d6462732dc7def4aa05101302a543aa, type: 3}
-      propertyPath: events.Array.data[0].m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7698822206259642481, guid: 8d6462732dc7def4aa05101302a543aa, type: 3}
-      propertyPath: events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7698822206259642481, guid: 8d6462732dc7def4aa05101302a543aa, type: 3}
-      propertyPath: events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1443124167912393381}
-    - target: {fileID: 7698822206259642481, guid: 8d6462732dc7def4aa05101302a543aa, type: 3}
-      propertyPath: events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7698822206259642481, guid: 8d6462732dc7def4aa05101302a543aa, type: 3}
-      propertyPath: events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: MoveToNextState
-      objectReference: {fileID: 0}
-    - target: {fileID: 7698822206259642481, guid: 8d6462732dc7def4aa05101302a543aa, type: 3}
-      propertyPath: events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: PlayAnimation_State, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 7698822206259642481, guid: 8d6462732dc7def4aa05101302a543aa, type: 3}
-      propertyPath: events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 8232977868001493707, guid: 8d6462732dc7def4aa05101302a543aa, type: 3}
-      propertyPath: headPos
-      value: 
-      objectReference: {fileID: 1513416337}
-    - target: {fileID: 8232977868001493707, guid: 8d6462732dc7def4aa05101302a543aa, type: 3}
-      propertyPath: faceTargetSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9218268590186955195, guid: 8d6462732dc7def4aa05101302a543aa, type: 3}
-      propertyPath: nextState
-      value: 
-      objectReference: {fileID: 1443124167912393381}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d6462732dc7def4aa05101302a543aa, type: 3}
---- !u!114 &1443124167912393381 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8417149252299283089, guid: 8d6462732dc7def4aa05101302a543aa, type: 3}
-  m_PrefabInstance: {fileID: 1443124167912393380}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9626d3e832a78484098bed8c66c626c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayAnimation_State
 --- !u!1001 &4373099935849229141
 PrefabInstance:
   m_ObjectHideFlags: 0
