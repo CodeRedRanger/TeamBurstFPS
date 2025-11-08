@@ -30,6 +30,12 @@ public class InventoryManager : MonoBehaviour
         }
 
 
+
+    }
+
+    private void Start()
+    {
+
         if (gameManager.instance.LoadItemStatus(gameManager.instance.bomb))
         {
             if (gameManager.instance.bombObj != null)
@@ -53,8 +59,6 @@ public class InventoryManager : MonoBehaviour
                 AddItem(gameManager.instance.stunnerObj);
             }
         }
-
-
     }
 
     public void AddItem(ItemData item)

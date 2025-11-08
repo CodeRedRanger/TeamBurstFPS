@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
     [SerializeField] ParticleSystem ps;
     [SerializeField] ParticleSystem ps1;
     [SerializeField] ParticleSystem ps2;
+    [SerializeField] ParticleSystem psFlameThrower;
 
     private Vector3 moveDir;
     //changed below from private to public for jetpack
@@ -242,6 +243,10 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
             {
                 ps2.Play();
             }
+            else if (gunList[gunListPos].type == GunType.flamethrower)
+            {
+                psFlameThrower.Play();
+            }
             else
             {
                 ps.Play();
@@ -258,6 +263,12 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
                 if (dmg != null)
                 {
                     dmg.TakeDamage(shootDamage);
+
+                    if (gunList[gunListPos].type == GunType.flamethrower && hit.collider.GetComponent<Flammable>())
+                    {
+                        Fire _newFire = Instantiate(gunList[gunListPos].specialPrefab, hit.point, Quaternion.identity).GetComponent<Fire>();
+                        _newFire.Ignite(hit.collider.gameObject);
+                    }
                 }
 
                 Debug.Log(hit.collider.name);
@@ -525,9 +536,11 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
     IEnumerator invincible()
     {
         isInvincible = true;
+        gameManager.instance.playerInvincibleFlash.SetActive(true);
         //enable visual indicator here
         yield return new WaitForSeconds(invincibleDur);
         //disable visual indicator here
+        gameManager.instance.playerInvincibleFlash.SetActive(false);
         isInvincible = false;
     }
 

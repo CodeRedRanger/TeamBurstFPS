@@ -9,6 +9,7 @@ public class Destructible : MonoBehaviour, IDamage
 
     //Robb added
     [SerializeField] Renderer model;
+    [SerializeField] Renderer model2;
     private Color colorOrig;
     [SerializeField] AudioClip damageSound;
     [SerializeField] AudioClip destroySound;
@@ -17,7 +18,10 @@ public class Destructible : MonoBehaviour, IDamage
     [SerializeField] UnityEvent destroyedEvent;
     [SerializeField] UnityEvent takeDamageEvent;
 
-    
+    [SerializeField] ParticleSystem destroyEffect;
+    [SerializeField] GameObject damagedObject;
+
+
 
     private void Start()
     {
@@ -54,6 +58,16 @@ public class Destructible : MonoBehaviour, IDamage
 
         if (currentHP <= 0)
         {
+            if(damagedObject != null)
+            {
+                damagedObject.SetActive(true);
+            }
+
+            if (destroyEffect != null)
+            {
+                Instantiate(destroyEffect, transform.position, Quaternion.identity);
+            }
+
             SoundManager.Instance.PlayEffect(destroySound, 1f);
             SimpleDestroy();
         }
@@ -71,8 +85,18 @@ public class Destructible : MonoBehaviour, IDamage
     private IEnumerator flashDamage()
     {
         model.material.color = Color.blue;
+        if (model2 != null)
+        {
+            model2.material.color = Color.blue;
+        }
+
         yield return new WaitForSeconds(0.3f); //0.1f
         model.material.color = colorOrig;
+        if (model2 != null)
+        {
+            model2.material.color = colorOrig;
+        }
+
     }
 
 
