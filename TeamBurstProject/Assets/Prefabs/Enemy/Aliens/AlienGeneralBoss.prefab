@@ -957,6 +957,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1835734848629938367}
+  - component: {fileID: 7787791359261552602}
   - component: {fileID: 7828375980629241221}
   - component: {fileID: 7250790695020229841}
   - component: {fileID: 7698822206259642481}
@@ -991,6 +992,19 @@ Transform:
   - {fileID: 5721407178405468290}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7787791359261552602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4303270353441691964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2e574aed8827f74290f8fff704b7f05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GeneralDamage
+  health: 50
 --- !u!136 &7828375980629241221
 CapsuleCollider:
   m_ObjectHideFlags: 0
