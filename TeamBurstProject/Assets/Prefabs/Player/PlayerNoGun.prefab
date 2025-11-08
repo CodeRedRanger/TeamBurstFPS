@@ -82,7 +82,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c96c4a96f355a6c49be986a53f6077ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::cameraController
-  mouseSens: 500
+  mouseSens: 250
   vertLimitLow: -90
   vertLimitHigh: 90
   invertY: 0
@@ -10130,6 +10130,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1773322340140157144}
+  - component: {fileID: 1695006302476392772}
   - component: {fileID: 6758465522708456511}
   - component: {fileID: 4286662896927773134}
   - component: {fileID: 7052283457906838696}
@@ -10137,6 +10138,7 @@ GameObject:
   - component: {fileID: 7639070497355642571}
   - component: {fileID: 5023131673898383478}
   - component: {fileID: 4303995708361711129}
+  - component: {fileID: 5750982051429336567}
   m_Layer: 3
   m_Name: PlayerNoGun
   m_TagString: Player
@@ -10160,6 +10162,18 @@ Transform:
   - {fileID: 7038583633695499166}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 210, z: 0}
+--- !u!114 &1695006302476392772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4104817386659849295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98259f09290b6c44b8f5986b1b79456a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractionManager
 --- !u!114 &6758465522708456511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10186,7 +10200,7 @@ MonoBehaviour:
   shootDamage: 1
   shootDist: 18
   shootRate: 0.5
-  invincibleDur: 0
+  invincibleDur: 0.5
   ps: {fileID: 6524170564279636751}
   ps1: {fileID: 5831822897527706475}
   ps2: {fileID: 7442722401587001415}
@@ -10338,6 +10352,23 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5750982051429336567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4104817386659849295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 778c37b90b63833469777ea2dd174cd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BlockPusher
+  pushLayers:
+    serializedVersion: 2
+    m_Bits: 16384
+  canPush: 1
+  strength: 2
 --- !u!1 &4857354596902830145
 GameObject:
   m_ObjectHideFlags: 0

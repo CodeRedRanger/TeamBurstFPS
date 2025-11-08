@@ -78,6 +78,11 @@ public class gameManager : MonoBehaviour
     [HideInInspector] public int keysCount;
     [SerializeField] TMP_Text keysCollectedText;
 
+    //Keys collected for lunchroom level
+    public GameObject tryDoorPopup;
+    [HideInInspector] public int keysFor3KeyDoor = 3;
+    public TMP_Text keysFor3KeyDoorText;
+
     //Level 0: Main Menu; Level 1: Playground; Level 2: Hall/Library; Level 3: Credits; Level 4: Alien Ship
     //Level 5: Lunchroom, Level 6: Launchpad, Leve 7: Options, Level 8: Company
     //Rearrange all levels so that 0 is company, 1 is main menu, 2 is options, 3 is credits

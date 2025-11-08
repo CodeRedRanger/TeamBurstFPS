@@ -9,6 +9,9 @@ public class UnlockDoor : MonoBehaviour
     [SerializeField] GameObject doorHinge;
     [SerializeField] float openSpeed = 180;
     [SerializeField] bool openOutward;
+    [SerializeField] AudioClip cantOpen;
+    [SerializeField] AudioClip keyInserted; 
+    [SerializeField] AudioClip open; 
 
     int nextLock;
     float rotated;
@@ -33,21 +36,29 @@ public class UnlockDoor : MonoBehaviour
             if (controller.getNumOfKeys() > 0)
             {
                 controller.pickupKey(-1);
+                gameManager.instance.keysFor3KeyDoor -= 1;
+                gameManager.instance.keysFor3KeyDoorText.text = gameManager.instance.keysFor3KeyDoor.ToString("F0");
 
                 GameObject key = Instantiate(keyPrefab, keyPositions[nextLock].transform);
                 key.transform.localPosition = Vector3.zero;
                 //play lock click sound
+                SoundManager.Instance.PlayEffect(keyInserted, 1);
                 nextLock++;
                 if(nextLock >= keyPositions.Length)
                 {
-                    Debug.Log("open");
+                    gameManager.instance.tryDoorPopup.SetActive(false);
+                    //Debug.Log("open");
                     //play open sound effect
+                    SoundManager.Instance.PlayEffect(open, 1);
                     opening = true;
                 }
             }
             else
             {
+                gameManager.instance.tryDoorPopup.SetActive(true);
+                gameManager.instance.keysFor3KeyDoorText.text = gameManager.instance.keysFor3KeyDoor.ToString("F0");
                 //error sound effect plays
+                SoundManager.Instance.PlayEffect(cantOpen, 1);
             }
         }
 
