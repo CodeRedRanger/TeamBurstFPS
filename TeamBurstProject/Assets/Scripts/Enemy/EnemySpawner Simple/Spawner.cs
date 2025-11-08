@@ -49,7 +49,7 @@ public class Spawner : MonoBehaviour
         }
     }*/
 
-    void spawn()
+    public void spawn()
     {
         //fill up the position list. 
         //check if the array position equals any position in the list
