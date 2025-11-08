@@ -48,8 +48,20 @@ public class Spawner : MonoBehaviour
             Destroy(gameObject); 
         }
     }*/
+    public void StartSpawning()
+    {
+        startSpawning = true;
+    }
 
-    public void spawn()
+    public void ResetSpawning()
+    {
+        spawnCount = 0;
+        startSpawning = false;
+        uniquePosition = false;
+        posList = new List<int>();
+    }
+
+    private void spawn()
     {
         //fill up the position list. 
         //check if the array position equals any position in the list
