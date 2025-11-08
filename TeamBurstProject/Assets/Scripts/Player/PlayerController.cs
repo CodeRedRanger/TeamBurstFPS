@@ -525,9 +525,11 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
     IEnumerator invincible()
     {
         isInvincible = true;
+        gameManager.instance.playerInvincibleFlash.SetActive(true);
         //enable visual indicator here
         yield return new WaitForSeconds(invincibleDur);
         //disable visual indicator here
+        gameManager.instance.playerInvincibleFlash.SetActive(false);
         isInvincible = false;
     }
 

@@ -105,6 +105,7 @@ public class gameManager : MonoBehaviour
     public Image playerHPBarUp;
     public Image playerHPBarDown;
     public GameObject playerDamageFlash;
+    public GameObject playerInvincibleFlash;
 
     //Spawn point variables 
     public GameObject playerSpawnPos;
