@@ -316,7 +316,7 @@ GameObject:
   - component: {fileID: 2166351484539874360}
   - component: {fileID: 9218268590186955195}
   - component: {fileID: 5771373893627286506}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: WaitForPlayerState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -370,7 +370,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 2.03
+  m_Radius: 7
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1845811227021332000
 GameObject:
@@ -968,7 +968,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1835734848629938367
 Transform:
   m_ObjectHideFlags: 0
@@ -1004,6 +1004,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2e574aed8827f74290f8fff704b7f05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GeneralDamage
+  finalGoal: {fileID: 0}
   health: 50
 --- !u!136 &7828375980629241221
 CapsuleCollider:
