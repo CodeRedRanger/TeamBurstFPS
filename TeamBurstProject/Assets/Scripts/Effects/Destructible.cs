@@ -4,20 +4,26 @@ using System.Collections;
 
 public class Destructible : MonoBehaviour, IDamage
 {
+
+    /* README
+     * This script is meant to be as extensible as possible with plug and play functionality in the editor
+     * To add new functionality, please write new functions under the "Damage Events" or "Destroyed Events" sections of the script.
+     * The default functionality has been added as an if statement for when there is no other event specified in the inspector to preserve existing enemies
+     */
+
     [SerializeField] int maxHP;
     [SerializeField] GameObject objectToDestroy;
+    int currentHP;
+    [SerializeField] UnityEvent destroyedEvent;
+    [SerializeField] UnityEvent takeDamageEvent;
 
+    [Header("extra fields")]
     //Robb added
     [SerializeField] Renderer model;
     [SerializeField] Renderer model2;
     private Color colorOrig;
     [SerializeField] AudioClip damageSound;
     [SerializeField] AudioClip destroySound;
-
-    int currentHP;
-    [SerializeField] UnityEvent destroyedEvent;
-    [SerializeField] UnityEvent takeDamageEvent;
-
     [SerializeField] ParticleSystem destroyEffect;
     [SerializeField] GameObject damagedObject;
 
@@ -39,37 +45,19 @@ public class Destructible : MonoBehaviour, IDamage
 
     public void TakeDamage(int amount)
     {
-        //Robb added
-        //SimpleDamageFlash(); 
-        StartCoroutine(flashDamage());
-        SoundManager.Instance.PlayEffect(damageSound, 1f);
-
         currentHP -= amount;
 
-        if (takeDamageEvent != null)
+        if (takeDamageEvent.GetPersistentEventCount() > 0)
             takeDamageEvent.Invoke();
-
-        //Robb added: if and else wrapper
-        //if (destroyedEvent != null)
-        //{
-        //    if (currentHP <= 0) destroyedEvent.Invoke();
-        //}
-        //else
+        else
+            SimpleDamageFlash();
 
         if (currentHP <= 0)
         {
-            if(damagedObject != null)
-            {
-                damagedObject.SetActive(true);
-            }
-
-            if (destroyEffect != null)
-            {
-                Instantiate(destroyEffect, transform.position, Quaternion.identity);
-            }
-
-            SoundManager.Instance.PlayEffect(destroySound, 1f);
-            SimpleDestroy();
+            if (destroyedEvent.GetPersistentEventCount() > 0)
+                destroyedEvent.Invoke();
+            else
+                RobbDestroy();
         }
     }
 
@@ -79,7 +67,12 @@ public class Destructible : MonoBehaviour, IDamage
 
     public void SimpleDamageFlash()
     {
-        
+        StartCoroutine(flashDamage());
+    }
+
+    public void PlayDamageSound()
+    {
+        SoundManager.Instance.PlayEffect(damageSound, 1f);
     }
 
     private IEnumerator flashDamage()
@@ -98,6 +91,11 @@ public class Destructible : MonoBehaviour, IDamage
         }
 
     }
+    public void RobbDamage()
+    {
+        flashDamage();
+        PlayDamageSound();
+    }
 
 
 
@@ -106,5 +104,22 @@ public class Destructible : MonoBehaviour, IDamage
     public void SimpleDestroy()
     {
         Destroy(objectToDestroy);
+    }
+
+    public void RobbDestroy()
+    {
+        if (damagedObject != null)
+        {
+            damagedObject.SetActive(true);
+        }
+
+        if (destroyEffect != null)
+        {
+            Instantiate(destroyEffect, transform.position, Quaternion.identity);
+        }
+
+        SoundManager.Instance.PlayEffect(destroySound, 1f);
+
+        SimpleDestroy();
     }
 }
