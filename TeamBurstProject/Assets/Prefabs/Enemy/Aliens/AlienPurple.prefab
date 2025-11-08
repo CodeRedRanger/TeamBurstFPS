@@ -1038,6 +1038,7 @@ GameObject:
   - component: {fileID: 1130966907663610782}
   - component: {fileID: 6711667498193509555}
   - component: {fileID: 573424560472112122}
+  - component: {fileID: 5871912113476709216}
   m_Layer: 7
   m_Name: AlienPurple
   m_TagString: Enemy
@@ -1060,6 +1061,7 @@ Transform:
   m_Children:
   - {fileID: 1168481956193735346}
   - {fileID: 4069723113279796481}
+  - {fileID: 8475066324809168887}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &4453733410250272204
@@ -1176,6 +1178,23 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 10
   m_Center: {x: 0.009468883, y: 0.8597729, z: 0.05926037}
+--- !u!114 &5871912113476709216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8360401713814996041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b514faa1cb898844b86c638c5fa524e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Flammable
+  isOnFire: 0
+  flameParticles: {fileID: 4536855008763858435}
+  flammability: 0.75
+  durationMinMax: {x: 2, y: 2}
+  spreadRadius: 3
 --- !u!1 &8467968098607631163
 GameObject:
   m_ObjectHideFlags: 0
@@ -1620,3 +1639,82 @@ Transform:
   - {fileID: 4737036588818750443}
   m_Father: {fileID: 7507325286444634777}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &7669086368372056003
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2419970718338169425}
+    m_Modifications:
+    - target: {fileID: 2302300932651313204, guid: 3fd6ae825590d21468f24fd92bf2a885, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2302300932651313204, guid: 3fd6ae825590d21468f24fd92bf2a885, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2302300932651313204, guid: 3fd6ae825590d21468f24fd92bf2a885, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2302300932651313204, guid: 3fd6ae825590d21468f24fd92bf2a885, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2302300932651313204, guid: 3fd6ae825590d21468f24fd92bf2a885, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2302300932651313204, guid: 3fd6ae825590d21468f24fd92bf2a885, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2302300932651313204, guid: 3fd6ae825590d21468f24fd92bf2a885, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2302300932651313204, guid: 3fd6ae825590d21468f24fd92bf2a885, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2302300932651313204, guid: 3fd6ae825590d21468f24fd92bf2a885, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2302300932651313204, guid: 3fd6ae825590d21468f24fd92bf2a885, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6521820755725744727, guid: 3fd6ae825590d21468f24fd92bf2a885, type: 3}
+      propertyPath: m_Name
+      value: Flammable Particles
+      objectReference: {fileID: 0}
+    - target: {fileID: 6521820755725744727, guid: 3fd6ae825590d21468f24fd92bf2a885, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9095654676378869227, guid: 3fd6ae825590d21468f24fd92bf2a885, type: 3}
+      propertyPath: m_Range
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 9095654676378869227, guid: 3fd6ae825590d21468f24fd92bf2a885, type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3fd6ae825590d21468f24fd92bf2a885, type: 3}
+--- !u!198 &4536855008763858435 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6095680355674165696, guid: 3fd6ae825590d21468f24fd92bf2a885, type: 3}
+  m_PrefabInstance: {fileID: 7669086368372056003}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8475066324809168887 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2302300932651313204, guid: 3fd6ae825590d21468f24fd92bf2a885, type: 3}
+  m_PrefabInstance: {fileID: 7669086368372056003}
+  m_PrefabAsset: {fileID: 0}
