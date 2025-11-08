@@ -258,6 +258,12 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
                 if (dmg != null)
                 {
                     dmg.TakeDamage(shootDamage);
+
+                    if (gunList[gunListPos].type == GunType.flamethrower && hit.collider.GetComponent<Flammable>())
+                    {
+                        Fire _newFire = Instantiate(gunList[gunListPos].specialPrefab, hit.point, Quaternion.identity).GetComponent<Fire>();
+                        _newFire.Ignite(hit.collider.gameObject);
+                    }
                 }
 
                 //Debug.Log(hit.collider.name);

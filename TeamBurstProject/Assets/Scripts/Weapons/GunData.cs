@@ -26,5 +26,6 @@ public class GunData : ScriptableObject
     public AudioClip[] shootSound;
     [Range(0, 1)] public float shootSoundVol;
 
-
+    // not every weapon needs these. First added for the flamethrower to store the Fire Prefab
+    public GameObject specialPrefab;
 }

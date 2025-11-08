@@ -2,9 +2,14 @@ using UnityEngine;
 
 public class Flammable : MonoBehaviour
 {
-    public bool isOnFire;
-    [SerializeField] public IDamage damageScript;
+    [HideInInspector] public bool isOnFire;
+    public IDamage damageScript;
     [SerializeField] public ParticleSystem flameParticles;
+
+    private void Start()
+    {
+        damageScript = GetComponent<IDamage>();
+    }
 
     public void Ignite(bool _shouldIgnite)
     {

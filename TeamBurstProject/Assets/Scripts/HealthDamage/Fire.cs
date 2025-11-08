@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Fire : MonoBehaviour
 {
-    [HideInInspector] public GameObject flamingObject;
+    [HideInInspector] public GameObject flamingObject = null;
     public int damage;
     public float timeBetweenDamage;
     [SerializeField] float spreadRadius;
@@ -10,15 +10,22 @@ public class Fire : MonoBehaviour
     [SerializeField] Vector2 durationMinMax;
     [SerializeField][Range(0, 1)] float spreadChance;
     float damageTimer;
-    float lifeTimer;
+    float lifeTimer = 10;
+    bool hasIgnited;
 
-    private void Start()
+    public void Ignite(GameObject _flammableObject)
     {
+        flamingObject = _flammableObject;
+        transform.parent = _flammableObject.transform;
+        flamingObject.GetComponent<Flammable>().Ignite(true);
         lifeTimer = Random.Range(durationMinMax.x, durationMinMax.y);
+        hasIgnited = true;
     }
 
     private void Update()
     {
+        if(!hasIgnited) return;
+
         lifeTimer -= Time.deltaTime;
         if (lifeTimer <= 0) Die();
 
@@ -29,23 +36,29 @@ public class Fire : MonoBehaviour
         {
             flamingObject.GetComponent<Flammable>().damageScript.TakeDamage(damage);
             damageTimer = 0;
-            Collider[] hits = Physics.OverlapSphere(transform.position, spreadRadius);
-            foreach(Collider _nextHit in hits)
+            Spread();
+        }
+    }
+
+    private void Spread()
+    {
+        Collider[] hits = Physics.OverlapSphere(transform.position, spreadRadius, spreadLayers);
+        foreach (Collider _nextHit in hits)
+        {
+            Flammable _nextFlammable = _nextHit.GetComponent<Flammable>();
+            if (_nextFlammable != null && !_nextFlammable.isOnFire)
             {
-                Flammable _nextFlammable = _nextHit.GetComponent<Flammable>();
-                if(_nextFlammable != null && !_nextFlammable.isOnFire)
-                {
-                    _nextFlammable.Ignite(true);
-                    Fire newFire = Instantiate(this);
-                    newFire.flamingObject = _nextHit.gameObject;
-                }
+                _nextFlammable.Ignite(true);
+                Fire _newFire = Instantiate(this);
+                _newFire.Ignite(_nextFlammable.gameObject);
             }
         }
     }
 
     private void Die()
     {
-        flamingObject.GetComponent<Flammable>().isOnFire = false;
+        if(flamingObject != null)
+            flamingObject.GetComponent<Flammable>().Ignite(false);
         Destroy(gameObject);
     }
 }
