@@ -36,8 +36,6 @@ public class BasicShoot_State : FiniteState
 
     private void ShootPlayer()
     {
-        Transform boss = transform.parent;
-
         if (shootTimer > fireRate)
         {
             shootTimer = 0;
