@@ -122,27 +122,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Destructible
   maxHP: 5
   objectToDestroy: {fileID: 6693065669167918445}
-  model: {fileID: 2362262875198093996}
-  damageSound: {fileID: 8300000, guid: e4b229d1cd4c5954c982c44b6f42eb27, type: 3}
-  destroySound: {fileID: 8300000, guid: 4e7a9f408abdba8459fdccbeaea95215, type: 3}
   destroyedEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8117672910702117576}
-        m_TargetAssemblyTypeName: Destructible, Assembly-CSharp
-        m_MethodName: SimpleDestroy
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   takeDamageEvent:
     m_PersistentCalls:
       m_Calls: []
+  model: {fileID: 2362262875198093996}
+  model2: {fileID: 8889230480855622682}
+  damageSound: {fileID: 8300000, guid: e4b229d1cd4c5954c982c44b6f42eb27, type: 3}
+  destroySound: {fileID: 8300000, guid: 4e7a9f408abdba8459fdccbeaea95215, type: 3}
+  destroyEffect: {fileID: 0}
+  damagedObject: {fileID: 0}
 --- !u!65 &3766213055148900322
 BoxCollider:
   m_ObjectHideFlags: 0
