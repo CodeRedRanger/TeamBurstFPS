@@ -116,7 +116,10 @@ public class Climb : MonoBehaviour
 
     void dismount()
     {
-        gameManager.instance.player.GetComponent<PlayerController>().speed = wasSprinting ? speedOrig * gameManager.instance.player.GetComponent<PlayerController>().sprintMod : speedOrig;
+        PlayerController playerController = gameManager.instance.player.GetComponent<PlayerController>();
+        bool isCurrentlySprinting = playerController.isSprinting;
+
+        gameManager.instance.player.GetComponent<PlayerController>().speed = isCurrentlySprinting ? speedOrig * gameManager.instance.player.GetComponent<PlayerController>().sprintMod : speedOrig;
         gameManager.instance.player.GetComponent<PlayerController>().setGravity(gravOrig);
         //Debug.Log(gameManager.instance.player.GetComponent<PlayerController>().speed);
         onLadder = false;
