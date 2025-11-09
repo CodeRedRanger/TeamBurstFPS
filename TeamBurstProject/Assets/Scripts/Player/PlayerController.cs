@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
 
     [SerializeField] int HP;
     public int speed;
-    [SerializeField] int sprintMod;
+    [SerializeField] public int sprintMod;
     [SerializeField] int jumpSpeed; 
     [SerializeField] float maxJumpSpeed;
     private float origMaxJumpSpeed;
@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
     [SerializeField] int shootDist;
     [SerializeField] float shootRate;
     [SerializeField] float invincibleDur;
+    [HideInInspector] public bool invinciblePowerupActive = false;
 
     [SerializeField] ParticleSystem ps;
     [SerializeField] ParticleSystem ps1;
@@ -36,7 +37,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
 
     float shootTimer;
 
-    bool isSprinting;
+    [HideInInspector] public bool isSprinting;
     bool isInvincible;
 
     int numOfKeys;
@@ -277,7 +278,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
                     }
                 }
 
-                Debug.Log(hit.collider.name);
+                //Debug.Log(hit.collider.name);
             }
         }
     }
@@ -295,7 +296,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
 
     public void TakeDamage(int damage)
     {
-        if (!isInvincible)
+        if (!isInvincible && !invinciblePowerupActive)
         {       
             HP -= damage;
             loseHealth = true; 

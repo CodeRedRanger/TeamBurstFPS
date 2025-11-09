@@ -116,10 +116,10 @@ public class SoundManager : MonoBehaviour
         //mixer.SetFloat(volumeParameter, Mathf.Log10(value) * multiplier);
         if (!result)
         {
-            Debug.LogError("Failed to set MasterVolume on AudioMixer");
+            //Debug.LogError("Failed to set MasterVolume on AudioMixer");
         }
         else
-            Debug.Log("MasterVolume set to " + volume);
+            //Debug.Log("MasterVolume set to " + volume);
         PlayerPrefs.Save();
 
     }

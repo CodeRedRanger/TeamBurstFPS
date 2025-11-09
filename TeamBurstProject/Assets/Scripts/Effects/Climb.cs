@@ -9,16 +9,19 @@ public class Climb : MonoBehaviour
     [SerializeField] bool stickToClimb = true;
     //[SerializeField] bool isRope;
  
-
     bool onLadder;
     int speedOrig;
     int gravOrig;
+    int sprintSpeed; 
+    bool wasSprinting; 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         speedOrig = gameManager.instance.player.GetComponent<PlayerController>().speed;
         gravOrig = gameManager.instance.player.GetComponent<PlayerController>().getGravity();
+        sprintSpeed = gameManager.instance.player.GetComponent<PlayerController>().speed *
+            gameManager.instance.player.GetComponent<PlayerController>().sprintMod; 
         //Debug.Log(speedOrig);
     }
 
@@ -63,6 +66,8 @@ public class Climb : MonoBehaviour
         //Debug.Log("enter");
         if (other.CompareTag("Player"))
         {
+            
+
             if (other.TryGetComponent<Jetpack>(out Jetpack jp))
             {
                 jp.enabled = false; //then reenable on exit
@@ -72,8 +77,10 @@ public class Climb : MonoBehaviour
             {
                 //Debug.Log("no jetpack assigned");
             }
-                PlayerController playerController = other.GetComponent<PlayerController>();
+            PlayerController playerController = other.GetComponent<PlayerController>();
             CharacterController characterController = other.GetComponent<CharacterController>();
+            wasSprinting = playerController.isSprinting;
+
             playerController.speed = 0;
             if (stickToClimb)
             {
@@ -109,7 +116,10 @@ public class Climb : MonoBehaviour
 
     void dismount()
     {
-        gameManager.instance.player.GetComponent<PlayerController>().speed = speedOrig;
+        PlayerController playerController = gameManager.instance.player.GetComponent<PlayerController>();
+        bool isCurrentlySprinting = playerController.isSprinting;
+
+        gameManager.instance.player.GetComponent<PlayerController>().speed = isCurrentlySprinting ? speedOrig * gameManager.instance.player.GetComponent<PlayerController>().sprintMod : speedOrig;
         gameManager.instance.player.GetComponent<PlayerController>().setGravity(gravOrig);
         //Debug.Log(gameManager.instance.player.GetComponent<PlayerController>().speed);
         onLadder = false;

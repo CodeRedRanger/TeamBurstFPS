@@ -23,12 +23,12 @@ public class DisappearingPlatform : MonoBehaviour
         // Warn in the Console if required components are missing so you know what to add
         if (renderers == null || renderers.Length == 0)
         {
-            Debug.LogWarning("DisappearingPlatform: No Renderer found. Add a MeshRenderer to this platform.");
+            //Debug.LogWarning("DisappearingPlatform: No Renderer found. Add a MeshRenderer to this platform.");
         }
 
         if (colliders == null || colliders.Length == 0)
         {
-            Debug.LogWarning("DisappearingPlatform: No Collider found. Add a Collider (like BoxCollider) to this platform.");
+            //Debug.LogWarning("DisappearingPlatform: No Collider found. Add a Collider (like BoxCollider) to this platform.");
         }
 
         // Save the starting colors for each renderer so we can restore alpha later

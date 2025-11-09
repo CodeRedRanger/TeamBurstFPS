@@ -33,7 +33,7 @@ public class DamageTarget : MonoBehaviour, IDamage
         _health = Mathf.Max(0f, _health - dmg);
 
         // Simple console feedback so you can SEE it's working while testing.
-        Debug.Log($"{name} took {dmg} damage. HP: {_health}/{maxHealth}");
+        //Debug.Log($"{name} took {dmg} damage. HP: {_health}/{maxHealth}");
 
         // If health reached 0, we "die".
         if (_health <= 0f)
@@ -44,7 +44,7 @@ public class DamageTarget : MonoBehaviour, IDamage
 
     private void OnDeath()
     {
-        Debug.Log($"{name} died.");
+        //Debug.Log($"{name} died.");
 
         if (destroyOnDeath)
         {
@@ -65,7 +65,7 @@ public class DamageTarget : MonoBehaviour, IDamage
         // if (!IsAlive) return; // no healing if already dead (change if we add revive)
         float heal = Mathf.Max(0f, amount);
         _health = Mathf.Min(maxHealth, _health + heal);
-        Debug.Log($"{name} healed {heal}. HP: {_health}/{maxHealth}");
+        //Debug.Log($"{name} healed {heal}. HP: {_health}/{maxHealth}");
     }
 
     // Expose read-only values for UI bars later.

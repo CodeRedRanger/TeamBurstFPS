@@ -11,7 +11,8 @@ public class UnlockDoor : MonoBehaviour
     [SerializeField] bool openOutward;
     [SerializeField] AudioClip cantOpen;
     [SerializeField] AudioClip keyInserted; 
-    [SerializeField] AudioClip open; 
+    [SerializeField] AudioClip open;
+    [SerializeField] GameObject openDoorPopup;
 
     int nextLock;
     float rotated;
@@ -93,8 +94,11 @@ public class UnlockDoor : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
-        {
-            Debug.Log("in range");
+        {   
+            if(!opening)
+            openDoorPopup.SetActive(true);
+
+            //Debug.Log("in range");
             inRange = true;
         }
     }
@@ -103,6 +107,7 @@ public class UnlockDoor : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            openDoorPopup.SetActive(false);
             inRange = false;
         }
     }

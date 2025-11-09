@@ -53,6 +53,7 @@ public class StartBossMusic : MonoBehaviour
         musicMixer.GetFloat(volumParamName, out currentVolume);
 
         float timer = 0f;
+        float updateInterval = 1f; 
 
         while (timer < fadeDuration)
         {
@@ -60,7 +61,8 @@ public class StartBossMusic : MonoBehaviour
             float newVolume = Mathf.Lerp(currentVolume, -80f, timer / fadeDuration);
             musicMixer.SetFloat(volumParamName, newVolume);
 
-            timer += Time.deltaTime;
+            //timer += Time.deltaTime;
+            timer += updateInterval;
             yield return null;
         }
 
