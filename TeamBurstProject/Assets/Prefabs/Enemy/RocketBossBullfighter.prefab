@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 5902091177564814376}
   - component: {fileID: 2992080968967259050}
   - component: {fileID: 5548220979187191518}
-  - component: {fileID: 3333606711972889237}
   - component: {fileID: 4982681674520320145}
   m_Layer: 7
   m_Name: RocketBossBullfighter
@@ -31,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3000937290683550600}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -12.316759, y: -1.2020702, z: 18.13232}
   m_LocalScale: {x: 4.0380034, y: 4.0380034, z: 4.0380034}
   m_ConstrainProportionsScale: 0
@@ -135,7 +134,7 @@ NavMeshAgent:
   m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 200
-  m_StoppingDistance: 2
+  m_StoppingDistance: 3
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
@@ -165,29 +164,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!136 &3333606711972889237
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3000937290683550600}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.3811352
-  m_Height: 1.5277932
-  m_Direction: 1
-  m_Center: {x: 0.00000011920929, y: 0.11620098, z: -0.086000636}
 --- !u!135 &4982681674520320145
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -207,7 +183,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 3
+  m_Radius: 2
   m_Center: {x: 0.00000011920929, y: 0.11620098, z: -0.086000636}
 --- !u!1 &5952390471043712884
 GameObject:

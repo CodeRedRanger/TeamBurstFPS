@@ -49531,38 +49531,10 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 10, y: 5, z: 12}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &477624675
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 477624672}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6a9e7d9199a92d4e8b257ba2f0ba55e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TriggerDisappearObject2
-  objectToDisappear: {fileID: 785117525}
-  delay: 1
---- !u!114 &477624676
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 477624672}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6a9e7d9199a92d4e8b257ba2f0ba55e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TriggerDisappearObject2
-  objectToDisappear: {fileID: 2138619863}
-  delay: 1
 --- !u!114 &477624680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80433,11 +80405,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 784693286}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &785117525 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2540461700098837754, guid: 3322ee030e13330488af56a200cb8138, type: 3}
-  m_PrefabInstance: {fileID: 3898258269020323945}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &785191025
 GameObject:
   m_ObjectHideFlags: 0
@@ -219445,11 +219412,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2137364231}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &2138619863 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4434939682605200048, guid: 3322ee030e13330488af56a200cb8138, type: 3}
-  m_PrefabInstance: {fileID: 3898258269020323945}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2138692708
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -225090,12 +225052,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1617794068198932813, guid: 3322ee030e13330488af56a200cb8138, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 477624676}
-    - targetCorrespondingSourceObject: {fileID: 1617794068198932813, guid: 3322ee030e13330488af56a200cb8138, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 477624675}
     - targetCorrespondingSourceObject: {fileID: 1617794068198932813, guid: 3322ee030e13330488af56a200cb8138, type: 3}
       insertIndex: -1
       addedObject: {fileID: 477624674}

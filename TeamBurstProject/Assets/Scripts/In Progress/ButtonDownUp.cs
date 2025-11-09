@@ -6,7 +6,8 @@ public class ButtonDownUp : MonoBehaviour
     public GameObject buttonModel;
     public float pressDistance = 0.1f;
     public float moveSpeed = 2f;
-    [SerializeField] GameObject buttonResult; 
+    [SerializeField] GameObject buttonResult;
+    [SerializeField] AudioClip pressSound;
 
     private Vector3 startPosition;
     private Vector3 pressedPosition;
@@ -29,6 +30,7 @@ public class ButtonDownUp : MonoBehaviour
         if(other.CompareTag("Player") && !isPressed)
         {
             isPressed = true;
+            SoundManager.Instance.PlayEffect(pressSound, 1);
             StartCoroutine(MoveButton(pressedPosition));
             if(buttonResult != null)
             {
