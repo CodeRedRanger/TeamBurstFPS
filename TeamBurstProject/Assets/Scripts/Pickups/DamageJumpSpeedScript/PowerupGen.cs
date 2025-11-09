@@ -60,6 +60,7 @@ private void OnTriggerEnter(Collider other)
                 gameManager.instance.playerScript.AddJumpSpeed(boostAmount);
                 break;
             case PowerupType.Invincible:
+                gameManager.instance.playerScript.invinciblePowerupActive = true;
                 gameManager.instance.playerScript.SetInvincibility(true);
                 StartCoroutine(invincibleFeedback());
                 break;
@@ -88,6 +89,7 @@ private void OnTriggerEnter(Collider other)
                 gameManager.instance.playerScript.AddJumpSpeed(-boostAmount);
                 break;
             case PowerupType.Invincible:
+                gameManager.instance.playerScript.invinciblePowerupActive = false;
                 gameManager.instance.playerScript.SetInvincibility(false);
                 break;
         }
