@@ -35,6 +35,7 @@ public class ItemPickupRobb : MonoBehaviour, IPickup
                 item.type == ItemType.grenade && gameManager.instance.enableGrenade ||
                 item.type == ItemType.stunner && gameManager.instance.enableStunner)
             {
+                Destroy(gameObject); 
                 return;
             }
                
@@ -44,7 +45,8 @@ public class ItemPickupRobb : MonoBehaviour, IPickup
             {
                 gameManager.instance.enableBomb = true;
                 gameManager.instance.flashBombUI = true;
-                gameManager.instance.flashItemUI(); 
+                gameManager.instance.flashItemUI();
+                
             }
             if (item.type == ItemType.grenade && !gameManager.instance.enableGrenade)
             {

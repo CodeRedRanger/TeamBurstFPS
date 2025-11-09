@@ -53,7 +53,7 @@ public class StartBossMusic : MonoBehaviour
         musicMixer.GetFloat(volumParamName, out currentVolume);
 
         float timer = 0f;
-        float updateInterval = 0.8f; 
+        float updateInterval = 1f; 
 
         while (timer < fadeDuration)
         {
