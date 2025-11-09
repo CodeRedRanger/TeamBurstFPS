@@ -38,6 +38,7 @@ public class EnemyAIRoam : MonoBehaviour, IDamage, IStunnable
 
     private Animator animator;
 
+
     //for roaming
     [SerializeField] int roamDist;
     [SerializeField] float roamPauseTime;
