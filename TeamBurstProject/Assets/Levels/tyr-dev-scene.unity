@@ -5362,6 +5362,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1234605175988507768, guid: c19392e9d5a2bb04aadff92dd7d4c60f, type: 3}
   m_PrefabInstance: {fileID: 372104297}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1859176653 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4104817386659849295, guid: 511026fba2ede33448c0b22e5379ebfa, type: 3}
+  m_PrefabInstance: {fileID: 7942141664779378967}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1859176661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859176653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3de45093bb671e49b7d9af796d2f0a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GrappleHook
+  currentState: 0
+  lockoutTimer: 0.5
+  aimKey: 324
+  attachKey: 323
+  detachKey: 32
+  aimCamera: {fileID: 0}
+  grappleLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  maxGrappleDistance: 35
+  reticleValid: {r: 0, g: 1, b: 1, a: 1}
+  reticleInvalid: {r: 1, g: 1, b: 1, a: 1}
+  reticleImage: {fileID: 0}
 --- !u!224 &1861763234 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4708870808545713825, guid: 1478023f47e9d9d4fb9bfff4a14bb3d0, type: 3}
@@ -12982,7 +13012,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4104817386659849295, guid: 511026fba2ede33448c0b22e5379ebfa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1859176661}
   m_SourcePrefab: {fileID: 100100000, guid: 511026fba2ede33448c0b22e5379ebfa, type: 3}
 --- !u!1001 &8034164603434725893
 PrefabInstance:

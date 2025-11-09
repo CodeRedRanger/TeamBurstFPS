@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using UnityEngine.UI;
 public class GrappleHook : MonoBehaviour
 {
     public enum GrappleState
@@ -14,6 +14,7 @@ public class GrappleHook : MonoBehaviour
     [SerializeField] private GrappleState currentState = GrappleState.Idle;
     private GrappleState previousState = GrappleState.Idle;
 
+    [Header("Lockout Timer")]
     [SerializeField] private float lockoutTimer = 0.5f; // How long we sit in Lockout State before returning to idle
     private float lockoutCount;
 
@@ -26,6 +27,29 @@ public class GrappleHook : MonoBehaviour
     [Tooltip("Tap to Detach while Attached.")]
     [SerializeField] private KeyCode detachKey = KeyCode.Space;  // Space bar
 
+    [Header("Aiming / Raycast")]
+    [Tooltip("Camera used to aim the grapple (usually the player's camera).")]
+    [SerializeField] private Camera aimCamera;
+    [Tooltip("Only these layers are valid grapple targets.")]
+    [SerializeField] private LayerMask grappleLayers;
+    [Tooltip("Maximum distance the grapple can reach.")]
+    [SerializeField] private float maxGrappleDistance = 35f;
+    [Tooltip("Reticle color when a valid grapple surface is under crosshair.")]
+    [SerializeField] private Color reticleValid = Color.cyan;
+    [Tooltip("Reticle color when nothing valid is under crosshair.")]
+    [SerializeField] private Color reticleInvalid = Color.white;
+    [Tooltip("Image that tints when a valid target is under the crosshair.")]
+    [SerializeField] private Image reticleImage;
+
+    // Internal aiming
+    private bool hasValidTarget = false;
+    private Vector3 lastHitPoint = Vector3.zero;
+    private Vector3 lastHitNormal = Vector3.up;
+
+    private void OnEnable()
+    {
+        aimCamera = GetComponent<Camera>();
+    }
     void Update()
     {
         switch (currentState)
@@ -69,11 +93,44 @@ public class GrappleHook : MonoBehaviour
             return;
         }
 
-        // TEMP: pretend we found a valid point and attached when left-clicked
-        if (Input.GetKeyDown(attachKey))
+        if (aimCamera == null)
         {
-            ChangeState(GrappleState.Attached);
+            Debug.LogWarning("[Grapple]: Aim Camera is not assigned");
+            hasValidTarget = false;
         }
+
+        Ray ray = new Ray(aimCamera.transform.position, aimCamera.transform.forward);
+
+        // 2) Raycast against allowed layers within max distance
+        if (Physics.Raycast(ray, out RaycastHit hit, maxGrappleDistance, grappleLayers, QueryTriggerInteraction.Ignore))
+        {
+            // We hit a valid grapple surface
+            hasValidTarget = true;
+            lastHitPoint = hit.point;
+            lastHitNormal = hit.normal;
+
+            // Optional: draw a small gizmo line in the Scene view for debugging
+            Debug.DrawLine(ray.origin, hit.point, Color.cyan);
+            Debug.DrawRay(hit.point, hit.normal * 0.5f, Color.yellow);
+
+            // Reticle feedback
+            TintReticle(true);
+
+            // 3) Attach only if a valid target exists AND player clicks attach
+            if (Input.GetKeyDown(attachKey))
+            {
+                ChangeState(GrappleState.Attached);
+            }
+        }
+        else
+        {
+            // No valid target under crosshair
+            hasValidTarget = false;
+            TintReticle(false);
+            Debug.DrawRay(ray.origin, ray.direction * maxGrappleDistance, Color.gray);
+        }
+
+
     }
 
     private void HandleFiring()
@@ -142,5 +199,11 @@ public class GrappleHook : MonoBehaviour
     {
         lockoutCount = lockoutTimer;
         ChangeState(GrappleState.Lockout);
+    }
+
+    private void TintReticle(bool valid)
+    {
+        if (reticleImage == null) return;
+        reticleImage.color = valid ? reticleValid : reticleInvalid;
     }
 }
