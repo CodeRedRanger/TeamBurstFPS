@@ -4,87 +4,119 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
 {
-    [SerializeField] LayerMask ignoreLayer;
+    //*********************** Input Members **********************
     [SerializeField] CharacterController controller;
 
-    [SerializeField] int HP;
-    public int speed;
-    [SerializeField] public int sprintMod;
-    [SerializeField] int jumpSpeed; 
-    [SerializeField] float maxJumpSpeed;
-    private float origMaxJumpSpeed;
-    [SerializeField] int jumpCountMax;
-    [SerializeField] int gravity; 
 
-    [SerializeField] int shootDamage;
-    [SerializeField] int shootDist;
-    [SerializeField] float shootRate;
+    //*********************** Update Logic Members **********************
+
+    //HEALTH AND DAMAGE
+    [SerializeField] int HP;
+    int HPOrig;
     [SerializeField] float invincibleDur;
     [HideInInspector] public bool invinciblePowerupActive = false;
-
-    [SerializeField] ParticleSystem ps;
-    [SerializeField] ParticleSystem ps1;
-    [SerializeField] ParticleSystem ps2;
-    [SerializeField] ParticleSystem psFlameThrower;
-
-    private Vector3 moveDir;
-    //changed below from private to public for jetpack
-    public Vector3 playerVel;  
-     
-
-    int jumpCount;
-    int HPOrig;
-
-    float shootTimer;
-
-    [HideInInspector] public bool isSprinting;
     bool isInvincible;
-
-    int numOfKeys;
-
-
-    //Audio
-    //can make these arrays
-    //public AudioClip shootSound;
-    public AudioClip damageSound;
-    public AudioClip deathSound;
-
-    //Jump audio
-    [SerializeField] AudioClip[] audJump;
-    [Range(0, 1)][SerializeField] float audJumpVol;
-    //steps audio
-    [SerializeField] AudioClip[] audSteps;
-    [Range(0, 1)][SerializeField] float audStepsVol;
-    bool isPlayingSteps;
-    //recharge audio
-    [SerializeField] AudioClip audRechargePrompt;
-    [Range(0, 1)][SerializeField] float audRechargePromptVol;
-
-    [SerializeField] public List<GunData> gunList = new List<GunData>();
-    [SerializeField] public GameObject gunModel;
-
-    [HideInInspector] public int gunListPos;
-    //[HideInInspector] public bool hasPistol;
-    //[HideInInspector] public bool hasSMG;
-    //[HideInInspector] public bool hasCannon;
-    //[HideInInspector] public bool hasFlameThrower;
-
-    //pushback
-    public Vector3 pushBack;
-    [SerializeField] int pushBackTime;
 
     //UI feedback
     bool gainHealth = false;
     bool loseHealth = false;
 
-    // For Variable Jump
-    bool isMaxJumpSpeed = false;
- 
+    //PLAYER STATS
+    [SerializeField] int shootDamage;
+    [SerializeField] int shootDist;
+    [SerializeField] float shootRate;
+    float shootTimer;
 
+
+    //ITEM TRACKING
+    int numOfKeys;
     //For gravity boots to work with variable jump
-    [HideInInspector] public bool gravityFlipped = false;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    //*********************** Physics Members **********************
+
+    //LAYERS
+    [SerializeField] LayerMask ignoreLayer;
+
+    //MOVEMENT
+    //Walk, run
+    public int speed;
+    [HideInInspector] public bool isSprinting;
+    [SerializeField] public int sprintMod;
+    private Vector3 moveDir;
+    //changed below from private to public for jetpack
+    public Vector3 playerVel;
+
+    //Jump
+    [SerializeField] int jumpSpeed;
+    [SerializeField] float maxJumpSpeed;
+    private float origMaxJumpSpeed;
+    [SerializeField] int jumpCountMax;
+    int jumpCount;
+    //For Variable Jump
+    bool isMaxJumpSpeed = false;
+
+    //Gravity
+    [SerializeField] int gravity;
+    [HideInInspector] public bool gravityFlipped = false;
+  
+ 
+    //Pushback
+    public Vector3 pushBack;
+    [SerializeField] int pushBackTime;
+
+
+    //EFFECTS
+    [SerializeField] ParticleSystem ps;
+    [SerializeField] ParticleSystem ps1;
+    [SerializeField] ParticleSystem ps2;
+    [SerializeField] ParticleSystem psFlameThrower;
+
+
+
+    //*********************** Audio Members **********************
+
+    //HEALTH AND DAMAGE
+    public AudioClip damageSound;
+    public AudioClip deathSound;
+
+    //MOVEMENT
+    //Jump
+    [SerializeField] AudioClip[] audJump;
+    [Range(0, 1)][SerializeField] float audJumpVol;
+    //Steps
+    [SerializeField] AudioClip[] audSteps;
+    [Range(0, 1)][SerializeField] float audStepsVol;
+    bool isPlayingSteps;
+
+    //GUNS
+    //can make these arrays
+    //public AudioClip shootSound;
+    //recharge audio
+    [SerializeField] AudioClip audRechargePrompt;
+    [Range(0, 1)][SerializeField] float audRechargePromptVol;
+
+
+
+    //*********************** Gun Members **********************
+
+    //GUN LIST
+    [SerializeField] public List<GunData> gunList = new List<GunData>();
+    [HideInInspector] public int gunListPos;
+
+    //Moved to Game Manager
+    //[HideInInspector] public bool hasPistol;
+    //[HideInInspector] public bool hasSMG;
+    //[HideInInspector] public bool hasCannon;
+    //[HideInInspector] public bool hasFlameThrower;
+
+    //GUN MODEL
+    [SerializeField] public GameObject gunModel;
+
+
+    //*********************** General Methods **********************
+
+
     void Start()
     {
 
@@ -95,7 +127,6 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.yellow);
@@ -112,7 +143,10 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
         SpawnBomb();
     }
 
-    //Added for jetpack and anti-gravity boots
+
+    //*********************** Physics Methods **********************
+
+    //Getters and setters (added for jetpack and anti-gravity boots)
     public void setGravity(int _gravity) { gravity = _gravity; }
     public void setJumpSpeed(int _jumpSpeed) { jumpSpeed = _jumpSpeed; }
 
@@ -216,6 +250,76 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
 
     }
 
+    public void CheckIfGrounded()
+    {
+        if (controller.isGrounded)
+        {
+            if (moveDir.normalized.magnitude > 0.3f && !isPlayingSteps)
+            {
+                StartCoroutine(playSteps());
+            }
+            playerVel = Vector3.zero;
+            jumpCount = 0;
+        }
+        else
+        {
+            playerVel.y -= gravity * Time.deltaTime;
+        }
+    }
+
+    public void resetJump()
+    {
+        {
+            if (moveDir.normalized.magnitude > 0.3f && !isPlayingSteps)
+            {
+                StartCoroutine(playSteps());
+            }
+            playerVel = Vector3.zero;
+            jumpCount = 0;
+        }
+    }
+
+
+    //*********************** Physics Methods: Powerups **********************
+    public void AddShootDamage(int amount)
+    {
+        shootDamage += amount;
+    }
+
+    public void AddJumpSpeed(int amount)
+    {
+        int prev = jumpSpeed;
+
+        jumpSpeed += amount;
+    }
+
+    public int GetJumpCountMax()
+    {
+        return jumpCountMax;
+    }
+
+    public void SetJumpCountMax(int count)
+    {
+        jumpCountMax = count;
+    }
+
+    public void SpeedBoost(int amt)
+    {
+
+        speed += amt;
+
+    }
+
+
+
+
+    //*********************** Update Logic Methods **********************
+    public void spawnPlayer()
+    {
+        controller.transform.position = gameManager.instance.playerSpawnPos.transform.position;
+        HP = HPOrig;
+        updatePlayerUI();
+    }
     void Shoot()
     {
         shootTimer = 0;
@@ -283,16 +387,6 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
         }
     }
 
-    void SpawnBomb()
-    {
-      
-        if (Input.GetKeyDown(KeyCode.E) && gameManager.instance.enableBomb == true)
-        {
-            Vector3 spawnPos = gameManager.instance.player.transform.position;
-            spawnPos.y -= gameManager.instance.player.GetComponent<CharacterController>().height / 2f;
-            this.GetComponent<BombSpawner>().SpawnBomb(spawnPos);
-        }
-    }
 
     public void TakeDamage(int damage)
     {
@@ -318,6 +412,25 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
         }
     }
 
+    IEnumerator flashDamage()
+    {
+        gameManager.instance.playerDamageFlash.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        gameManager.instance.playerDamageFlash.SetActive(false);
+    }
+
+    public void Heal(int amount)
+    {
+        HP += amount;
+        if (HP > HPOrig)
+        {
+            HP = HPOrig;
+        }
+        gainHealth = true;
+        updatePlayerUI();
+        gainHealth = false;
+    }
+
     public void updatePlayerUI()
     {
         gameManager.instance.playerHPBarUp.fillAmount = (float)HP / HPOrig;
@@ -338,56 +451,60 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
         }
     }
 
-    //Isaac scripts
-    public void AddShootDamage(int amount)
+
+    IEnumerator flashHPBarChange()
     {
-        shootDamage += amount;
-    }
-
-    public void AddJumpSpeed(int amount)
-    {
-        int prev = jumpSpeed;
-
-        jumpSpeed += amount;
-    }
-
-    public int GetJumpCountMax()
-    {
-        return jumpCountMax;
-    }
-
-    public void SetJumpCountMax(int count)
-    {
-        jumpCountMax = count;
-    }
-
-    public void SpeedBoost(int amt)
-    {
-
-        speed += amt;
-
-    }
-
-    IEnumerator flashDamage()
-    {
-        gameManager.instance.playerDamageFlash.SetActive(true);
-        yield return new WaitForSeconds(0.1f);
-        gameManager.instance.playerDamageFlash.SetActive(false);
-    }
-
-
-    public void Heal(int amount)
-    {
-        HP += amount;
-        if (HP > HPOrig)
+        if (loseHealth)
         {
-            HP = HPOrig;
+            gameManager.instance.playerHPBarDown.gameObject.SetActive(true);
+            yield return new WaitForSeconds(0.5f);
+            gameManager.instance.playerHPBarDown.gameObject.SetActive(false);
         }
-        gainHealth = true;
-        updatePlayerUI();
-        gainHealth = false;
+
+        if (gainHealth)
+        {
+            gameManager.instance.playerHPBarUp.gameObject.SetActive(true);
+            yield return new WaitForSeconds(0.5f);
+            gameManager.instance.playerHPBarUp.gameObject.SetActive(false);
+        }
+
     }
 
+    public void SetInvincibility(bool state)
+    {
+        isInvincible = state;
+    }
+
+    IEnumerator invincible()
+    {
+        isInvincible = true;
+        gameManager.instance.playerInvincibleFlash.SetActive(true);
+        //enable visual indicator here
+        yield return new WaitForSeconds(invincibleDur);
+        //disable visual indicator here
+        gameManager.instance.playerInvincibleFlash.SetActive(false);
+        isInvincible = false;
+    }
+
+    public void instantDeath()
+    {
+        isInvincible = false;
+        TakeDamage(HP);
+    }
+
+ 
+    //Keys
+    public void pickupKey(int amount)
+    {
+        numOfKeys += amount;
+    }
+
+    public int getNumOfKeys() { return numOfKeys; }
+
+
+
+
+    //*********************** Gun Methods **********************
     void reload()
     {
         if (Input.GetButtonDown("Reload"))
@@ -462,6 +579,21 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
         updatePlayerUI();
     }
 
+
+    //*********************** Input Methods **********************
+    void SpawnBomb()
+    {
+
+        if (Input.GetKeyDown(KeyCode.E) && gameManager.instance.enableBomb == true)
+        {
+            Vector3 spawnPos = gameManager.instance.player.transform.position;
+            spawnPos.y -= gameManager.instance.player.GetComponent<CharacterController>().height / 2f;
+            this.GetComponent<BombSpawner>().SpawnBomb(spawnPos);
+        }
+    }
+
+
+    ////*********************** Audio Methods **********************
     IEnumerator playSteps()
     {
         isPlayingSteps = true;
@@ -479,88 +611,8 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
         isPlayingSteps = false;
 
     }
-    public void spawnPlayer()
-    {
-        controller.transform.position = gameManager.instance.playerSpawnPos.transform.position;
-        HP = HPOrig;
-        updatePlayerUI();
-    }
+  
+ 
 
-
-    IEnumerator flashHPBarChange()
-    {
-        if (loseHealth)
-        {
-            gameManager.instance.playerHPBarDown.gameObject.SetActive(true);
-            yield return new WaitForSeconds(0.5f);
-            gameManager.instance.playerHPBarDown.gameObject.SetActive(false);
-        }
-
-        if (gainHealth)
-        {
-            gameManager.instance.playerHPBarUp.gameObject.SetActive(true);
-            yield return new WaitForSeconds(0.5f);
-            gameManager.instance.playerHPBarUp.gameObject.SetActive(false);
-        }
-        
-    }
-
-    
-    public void CheckIfGrounded()
-    {
-        if (controller.isGrounded)
-        {
-            if (moveDir.normalized.magnitude > 0.3f && !isPlayingSteps)
-            {
-                StartCoroutine(playSteps());
-            }
-            playerVel = Vector3.zero;
-            jumpCount = 0;
-        }
-        else
-        {
-            playerVel.y -= gravity * Time.deltaTime;
-        }
-    }
-
-    public void resetJump()
-    {
-        {
-            if (moveDir.normalized.magnitude > 0.3f && !isPlayingSteps)
-            {
-                StartCoroutine(playSteps());
-            }
-            playerVel = Vector3.zero;
-            jumpCount = 0;
-        }
-    }
-
-    public void SetInvincibility(bool state)
-    {
-        isInvincible = state;
-    }
-
-    IEnumerator invincible()
-    {
-        isInvincible = true;
-        gameManager.instance.playerInvincibleFlash.SetActive(true);
-        //enable visual indicator here
-        yield return new WaitForSeconds(invincibleDur);
-        //disable visual indicator here
-        gameManager.instance.playerInvincibleFlash.SetActive(false);
-        isInvincible = false;
-    }
-
-    public void instantDeath()
-    {
-        isInvincible = false;
-        TakeDamage(HP);
-    }
-
-    public void pickupKey(int amount)
-    {
-        numOfKeys += amount;
-    }
-
-    public int getNumOfKeys() { return  numOfKeys; }
+   
 }
