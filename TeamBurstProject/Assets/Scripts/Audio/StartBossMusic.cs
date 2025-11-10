@@ -33,10 +33,25 @@ public class StartBossMusic : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            FadeOutMusic();
+            //FadeOutMusic();
+            musicMixer.GetFloat(volumParamName, out currentVolume);
+            musicMixer.SetFloat(volumParamName, -80f);
+            StartCoroutine(PauseBeforeBossMusic());
+            //isFadingOut = false;
 
         }
 
+    }
+
+    public IEnumerator PauseBeforeBossMusic()
+    {
+        yield return new WaitForSeconds(0.5f);
+        musicMixer.SetFloat(volumParamName, currentVolume);
+        SoundManager.Instance.PlayMusic(bossMusic);
+        musicTrigger.SetActive(false);
+
+        if (boss != null)
+            boss.SetActive(true);
     }
 
     public void FadeOutMusic()
@@ -53,7 +68,7 @@ public class StartBossMusic : MonoBehaviour
         musicMixer.GetFloat(volumParamName, out currentVolume);
 
         float timer = 0f;
-        float updateInterval = 1f; 
+        float updateInterval = 2f; 
 
         while (timer < fadeDuration)
         {

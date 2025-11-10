@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections; 
 
 
 
@@ -22,8 +23,12 @@ public class YouWin : MonoBehaviour
             }
 
             triggered = true;
-            SoundManager.Instance.PlayEffect(youWin, 1);
-            SoundManager.Instance.StopMusic();
+           
+            //SoundManager.Instance.PlayEffect(youWin, 1);
+            SoundManager.Instance.musicSource.loop = false;
+            SoundManager.Instance.PlayMusic(youWin, 1);
+            //SoundManager.Instance.StopMusic();
+            
 
             if (gameOver == false)
             {
@@ -35,9 +40,13 @@ public class YouWin : MonoBehaviour
             {
                 gameManager.instance.youWinEnd(); 
             }
-
             
+
         }
     }
+
+   
+
+
 
    }
