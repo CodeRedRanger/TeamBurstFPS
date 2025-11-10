@@ -713,7 +713,8 @@ public class gameManager : MonoBehaviour
             //win condition
             if (LevelLunch == true)
             {
-                statePause();
+                //test
+                //statePause();
                 //menuActive = menuWin;
                 //menuActive.SetActive(true);
                 //SoundManager.Instance.PlayMusic(BGMusic, 0.2f);
