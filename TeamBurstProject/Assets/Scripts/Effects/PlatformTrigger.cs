@@ -6,12 +6,15 @@ public class PlatformTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //lets enemies and players ride the platform
         if (other.CompareTag("Player"))
         {
             other.gameObject.transform.parent = platform;
             //Debug.Log("Triggered");
         }
     }
+
+
 
     private void OnTriggerExit(Collider other)
     {
