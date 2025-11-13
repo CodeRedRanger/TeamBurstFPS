@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
     [SerializeField] int shootDamage;
     [SerializeField] int shootDist;
     [SerializeField] float shootRate;
-    float shootTimer;
+    [HideInInspector] public float shootTimer;
 
 
     //ITEM TRACKING
