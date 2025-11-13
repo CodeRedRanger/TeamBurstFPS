@@ -315,7 +315,7 @@ public class gameManager : MonoBehaviour
                 LevelLaunchpad = false;
                 LevelCompany = false;
                 BGMusic = LibraryMusic;
-                PopupManager.instance.ShowPopup("run");
+                StartCoroutine(FlashRunUI()); 
             }
 
             //Alien Ship
@@ -339,7 +339,7 @@ public class gameManager : MonoBehaviour
                 LevelLaunchpad = false;
                 LevelCompany = false;
                 BGMusic = LunchroomMusic;
-                PopupManager.instance.ShowPopup("kids");
+                StartCoroutine(FlashKidsUI());
             }
 
             if (currentScene.buildIndex == launchpad)
@@ -354,8 +354,7 @@ public class gameManager : MonoBehaviour
                 keysCollected.SetActive(true);
                 keysCount = 0;
                 keysRequired = 5; //UI updated below in UpdateKeysCollected
-                //StartCoroutine(FlashLaunchpadUI());
-                PopupManager.instance.ShowPopup("launchpad");
+                StartCoroutine(FlashLaunchpadUI());
             }
 
             /*
@@ -504,7 +503,6 @@ public class gameManager : MonoBehaviour
         Time.timeScale = 0;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        PopupManager.instance.HideAllPopups();
 
         if (continueMenu)
             EventSystem.current.SetSelectedGameObject(firstSelectedContinue);
@@ -840,24 +838,33 @@ public class gameManager : MonoBehaviour
 
     public void flashItemUI()
     {
+        StartCoroutine(PowerupFeedback()); 
+    }
+    public IEnumerator PowerupFeedback()
+   {
         if (flashBombUI)
         {
             flashBombUI = false;
-            PopupManager.instance.ShowPopup("bombs");
+            bombPopup.SetActive(true);
+            yield return new WaitForSeconds(3.0f);
+            bombPopup.SetActive(false);
         }
         if (flashGrenadeUI)
         {
             flashGrenadeUI = false;
-            PopupManager.instance.ShowPopup("grenade");
+            grenadePopup.SetActive(true);
+            yield return new WaitForSeconds(3.0f);
+            grenadePopup.SetActive(false);
         }
         if (flashStunnerUI)
         {
             flashStunnerUI = false;
-            PopupManager.instance.ShowPopup("stunner");
+            stunnerPopup.SetActive(true);
+            yield return new WaitForSeconds(3.0f);
+            stunnerPopup.SetActive(false);
         }
     }
 
-    // DELETE LATER
     public IEnumerator FlashRunUI()
     {
         SoundManager.Instance.PlayEffect(run, 1); 
@@ -867,7 +874,6 @@ public class gameManager : MonoBehaviour
         
     }
     
-    // DELETE LATER
     public IEnumerator FlashKidsUI()
     {
         kidsPopup.SetActive(true);
@@ -876,7 +882,6 @@ public class gameManager : MonoBehaviour
 
     }
 
-    // DELETE LATER
     public IEnumerator FlashLaunchpadUI()
     {
         launchpadPopup.SetActive(true);
@@ -885,7 +890,6 @@ public class gameManager : MonoBehaviour
 
     }
 
-    // DELETE LATER
     public IEnumerator WaitForKidsToSpawn()
     {
         if (!kidsSpawned)

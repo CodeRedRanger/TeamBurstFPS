@@ -327,8 +327,6 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
         //I added this if statement to lecture code
         if (gunList.Count > 0 && gunList[gunListPos].ammoCur > 0)
         {
-            Reticle.instance.PlayShoot(true);
-
             gunList[gunListPos].ammoCur--;
 
             if (gunList[gunListPos].ammoCur == 0)
@@ -382,16 +380,10 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
                     {
                         dmg.TakeDamage(shootDamage);
                     }
-
-                    Reticle.instance.PlayHit();
                 }
 
                 //Debug.Log(hit.collider.name);
             }
-        }
-        else
-        {
-            Reticle.instance.PlayShoot(false);
         }
     }
 
@@ -518,7 +510,6 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
         if (Input.GetButtonDown("Reload"))
         {
             gunList[gunListPos].ammoCur = gunList[gunListPos].ammoMax;
-            Reticle.instance.PlayReload();
             //I added to lecture code
             updatePlayerUI();
         }
@@ -584,7 +575,6 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
         gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[gunListPos].gunModel.GetComponent<MeshFilter>().sharedMesh;
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[gunListPos].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
 
-        Reticle.instance.SetGunData(gunList[gunListPos]);
 
         updatePlayerUI();
     }
