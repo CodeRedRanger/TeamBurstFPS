@@ -19,8 +19,6 @@ public class ButtonFunctions : MonoBehaviour
     //private int options = 7;
     private int company = 8;
 
-
-
     //below is not needed. You can just call current scene from game manager
     Scene currentScene;
     [SerializeField] AudioClip nonStartButtonSound;
@@ -35,6 +33,8 @@ public class ButtonFunctions : MonoBehaviour
 
     public void restartLevel()
     {
+        //resume looping after win screens
+        SoundManager.Instance.musicSource.loop = true;
         SoundManager.Instance.PlayEffect(nonStartButtonSound, 1f);
         //reloads the current scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -81,12 +81,17 @@ public class ButtonFunctions : MonoBehaviour
     {
         int lvl = gameManager.instance.currentScene.buildIndex; 
         lvl += 1;
+
+        //Coroutine to wait for end song to finish before loading next level
         loadLevel(lvl);
     }
 
 
     public void loadLevel(int lvl)
     {
+        //resume looping after win screens
+        SoundManager.Instance.musicSource.loop = true;
+
         //save your items
         gameManager.instance.SaveItemStatus(gameManager.instance.bomb, gameManager.instance.enableBomb);
         gameManager.instance.SaveItemStatus(gameManager.instance.grenade, gameManager.instance.enableGrenade);
@@ -113,8 +118,12 @@ public class ButtonFunctions : MonoBehaviour
             
         }*/
 
+       
         gameManager.instance.firstUnpause = true;
         gameManager.instance.stateUnpause(); //in case paused when changing level
+       
+    
+
 
 
     }
@@ -122,6 +131,10 @@ public class ButtonFunctions : MonoBehaviour
  
     IEnumerator WaitForSoundEffect(int lvl)
     {
+        //check if game paused
+        //if game unpaused, pause (then unpause after wait), do this only for continue button. 
+
+
         if (lvl == playground)
         {
             SoundManager.Instance.PlayEffect(StartButtonSound, 1f);

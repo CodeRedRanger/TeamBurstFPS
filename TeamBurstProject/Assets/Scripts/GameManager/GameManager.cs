@@ -174,6 +174,7 @@ public class gameManager : MonoBehaviour
     //from main menu, you don't need the actions of unpause the first time, even though it is
     //called as part of load scene. 
     [HideInInspector] public bool firstUnpause = true;
+    [HideInInspector] public bool fromContinueMenu = false;
 
     [HideInInspector] public Scene currentScene;
 
@@ -500,8 +501,6 @@ public class gameManager : MonoBehaviour
 
         isPaused = !isPaused;
         Time.timeScale = 0;
-        //ADDED THIS
-        //AudioListener.pause = true;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
@@ -514,8 +513,8 @@ public class gameManager : MonoBehaviour
         else
             EventSystem.current.SetSelectedGameObject(firstSelectedPause);
 
-        continueMenu = false;
-        endMenu = false;
+        //continueMenu = false;
+        //endMenu = false;
         loseMenu = false;
 
         if (currentScene.buildIndex != mainMenu && currentScene.buildIndex != credits)
@@ -530,11 +529,18 @@ public class gameManager : MonoBehaviour
 
                 //need to only change volume if scene is the same; need to stop it if going to a new scene
                 //SoundManager.Instance.ChangeVolumeMusic(0.2f);
-                SoundManager.Instance.LowerVolumeInstantly(); 
-                PlayerPrefs.SetFloat("MusicVolume", currentMusicVolume);
+                if (!continueMenu && !endMenu)
+                {
+                    SoundManager.Instance.LowerVolumeInstantly();
+                    PlayerPrefs.SetFloat("MusicVolume", currentMusicVolume);
+                }
+                
             }
         }
-        
+
+        continueMenu = false;
+        endMenu = false;
+
     }
 
     public void stateUnpause()
@@ -707,11 +713,14 @@ public class gameManager : MonoBehaviour
             //win condition
             if (LevelLunch == true)
             {
+                //test
                 //statePause();
                 //menuActive = menuWin;
                 //menuActive.SetActive(true);
                 //SoundManager.Instance.PlayMusic(BGMusic, 0.2f);
-                SoundManager.Instance.PlayEffect(winMusic, 1);
+                //SoundManager.Instance.PlayEffect(winMusic, 1);
+                SoundManager.Instance.musicSource.loop = false;
+                SoundManager.Instance.PlayMusic(winMusic, 1);
                 youWin();
             }
 
@@ -740,7 +749,9 @@ public class gameManager : MonoBehaviour
                 //menuActive = menuWin;
                 //menuActive.SetActive(true);
                 //SoundManager.Instance.PlayMusic(BGMusic, 0.2f);
-                SoundManager.Instance.PlayEffect(winMusic, 1);
+                //SoundManager.Instance.PlayEffect(winMusic, 1);
+                SoundManager.Instance.musicSource.loop = false;
+                SoundManager.Instance.PlayMusic(winMusic, 1);
                 youWin(); 
             }
 
@@ -774,16 +785,17 @@ public class gameManager : MonoBehaviour
         statePause();
         menuActive = menuWin;
         menuActive.SetActive(true);
-      
-       
 
         currentMusicVolume = PlayerPrefs.GetFloat("MusicVolume", 0.6f);
+ 
 
         //need to only change volume if scene is the same; need to stop it if going to a new scene
         //SoundManager.Instance.PlayMusic(BGMusic, 0.2f);
         //SoundManager.Instance.ChangeVolumeMusic(0.2f);
-        SoundManager.Instance.LowerVolumeInstantly();
-        PlayerPrefs.SetFloat("MusicVolume", currentMusicVolume);
+
+        //Don't need this because made winning sound effect into music
+        //SoundManager.Instance.LowerVolumeInstantly();
+        //PlayerPrefs.SetFloat("MusicVolume", currentMusicVolume);
 
     }
 
@@ -800,8 +812,8 @@ public class gameManager : MonoBehaviour
         //need to only change volume if scene is the same; need to stop it if going to a new scene
         //SoundManager.Instance.PlayMusic(BGMusic, 0.2f);
         //SoundManager.Instance.ChangeVolumeMusic(0.2f);
-        SoundManager.Instance.LowerVolumeInstantly();
-        PlayerPrefs.SetFloat("MusicVolume", currentMusicVolume);
+        //SoundManager.Instance.LowerVolumeInstantly();
+        //PlayerPrefs.SetFloat("MusicVolume", currentMusicVolume);
     }
 
     public void youLose()
