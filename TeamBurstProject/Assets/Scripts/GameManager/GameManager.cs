@@ -353,7 +353,7 @@ public class gameManager : MonoBehaviour
                 BGMusic = LaunchpadMusic;
                 keysCollected.SetActive(true);
                 keysCount = 0;
-                keysRequired = 3; //UI updated below in UpdateKeysCollected
+                keysRequired = 5; //UI updated below in UpdateKeysCollected
                 StartCoroutine(FlashLaunchpadUI());
             }
 
