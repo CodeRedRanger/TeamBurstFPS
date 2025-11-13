@@ -20,7 +20,7 @@ public class GunData : ScriptableObject
     [Range(5, 500)] public int shootDist;
     public int ammoCur;
     [Range(5, 50)] public int ammoMax;
-    [SerializeField] float reloadSpeed;
+    [SerializeField] float reloadDuration;
 
     public ParticleSystem hitEffect;
     //multiple shoot sounds to keep from getting annoying
@@ -32,6 +32,7 @@ public class GunData : ScriptableObject
     public Sprite fixedReticle;
     public Sprite dynamicReticle;
     public float reticleAnimSpeed = 1f;
+    public bool showFireRateIndicator = true;
 
     // not every weapon needs these. First added for the flamethrower to store the Fire Prefab
     [Header("optional")]
