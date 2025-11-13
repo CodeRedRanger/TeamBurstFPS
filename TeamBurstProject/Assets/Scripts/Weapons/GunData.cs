@@ -13,19 +13,27 @@ public enum GunType
 public class GunData : ScriptableObject
 {
     public GameObject gunModel;
-    public GunType type; 
+    public GunType type;
 
     [Range(0, 10)] public int shootDamage;
     [Range(0.1f, 3)] public float shootRate;
     [Range(5, 500)] public int shootDist;
     public int ammoCur;
     [Range(5, 50)] public int ammoMax;
+    [SerializeField] float reloadSpeed;
 
     public ParticleSystem hitEffect;
     //multiple shoot sounds to keep from getting annoying
     public AudioClip[] shootSound;
     [Range(0, 1)] public float shootSoundVol;
 
+
+    [Header("Reticle")]
+    public Sprite fixedReticle;
+    public Sprite dynamicReticle;
+    public float reticleAnimSpeed = 1f;
+
     // not every weapon needs these. First added for the flamethrower to store the Fire Prefab
+    [Header("optional")]
     public GameObject specialPrefab;
 }
