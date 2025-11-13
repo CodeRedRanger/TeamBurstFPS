@@ -8,9 +8,8 @@ public class Lava : MonoBehaviour
     [SerializeField] float scrollSpeedY;
     [SerializeField] bool scrollTexture = true;
 
-    //didn't use below
-    [SerializeField] AudioSource audioSource;
-    [SerializeField] AudioClip audioClip;
+    //[SerializeField] AudioSource audioSource;
+    //[SerializeField] AudioClip lavaClip;
     [SerializeField] ParticleSystem PS;
 
     Renderer rend;
@@ -26,8 +25,8 @@ public class Lava : MonoBehaviour
 
         shape.scale = new Vector3(transform.localScale.x - 0.5f, transform.localScale.z - 0.5f, transform.localScale.y);
 
-        audioSource.clip = audioClip;
-        audioSource.Play();
+        //audioSource.clip = lavaClip;
+        //audioSource.Play();
     }
 
     // Update is called once per frame

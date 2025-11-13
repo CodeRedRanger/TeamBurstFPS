@@ -568,6 +568,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
 
     void changeGun()
     {
+        gameManager.instance.reticle.SetActive(true); 
         shootDamage = gunList[gunListPos].shootDamage;
         shootDist = gunList[gunListPos].shootDist;
         shootRate = gunList[gunListPos].shootRate;
