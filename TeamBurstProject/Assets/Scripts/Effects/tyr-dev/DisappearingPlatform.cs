@@ -1,10 +1,15 @@
 using System.Collections;
+using Unity.XR.GoogleVr;
 using UnityEngine;
 
 public class DisappearingPlatform : MonoBehaviour
 {
     [SerializeField] bool disappearOnStep = false, startHidden = false;
     [SerializeField] float visibleTime = 3.0f, hiddenTime = 2.0f, fadeDuration = 0.5f;
+
+    [SerializeField] private AudioClip fadeOutClip;
+    [SerializeField] private AudioClip fadeInClip;
+    [SerializeField] private float volume = 1f;
 
     private Renderer[] renderers;
     private Collider[] colliders;
@@ -23,12 +28,12 @@ public class DisappearingPlatform : MonoBehaviour
         // Warn in the Console if required components are missing so you know what to add
         if (renderers == null || renderers.Length == 0)
         {
-            //Debug.LogWarning("DisappearingPlatform: No Renderer found. Add a MeshRenderer to this platform.");
+            Debug.LogWarning("DisappearingPlatform: No Renderer found. Add a MeshRenderer to this platform.");
         }
 
         if (colliders == null || colliders.Length == 0)
         {
-            //Debug.LogWarning("DisappearingPlatform: No Collider found. Add a Collider (like BoxCollider) to this platform.");
+            Debug.LogWarning("DisappearingPlatform: No Collider found. Add a Collider (like BoxCollider) to this platform.");
         }
 
         // Save the starting colors for each renderer so we can restore alpha later
@@ -47,12 +52,12 @@ public class DisappearingPlatform : MonoBehaviour
         if (startHidden)
         {
             SetAllMaterialsAlpha(0f);
-            setColliders(false);
+            SetColliders(false);
         }
         else
         {
             SetAllMaterialsAlpha(1f);
-            setColliders(true);
+            SetColliders(true);
             
         }
 
@@ -62,7 +67,7 @@ public class DisappearingPlatform : MonoBehaviour
             StartCoroutine(LoopingCycle());
         }
     }
-    private void setColliders(bool state)
+    private void SetColliders(bool state)
     {
         foreach (var collider in colliders) { collider.enabled = state; }
     }
@@ -74,13 +79,15 @@ public class DisappearingPlatform : MonoBehaviour
         while (true)
         {
             // Ensure fully visible and solid before waiting
+            CallAudio(fadeInClip);
             yield return StartCoroutine(FadeToAlpha(1f, fadeDuration));
-            setColliders(true);
+            SetColliders(true);
             yield return new WaitForSeconds(visibleTime);
 
             // Fade to invisible and then disable the collider
+            CallAudio(fadeOutClip);
             yield return StartCoroutine(FadeToAlpha(0f, fadeDuration));
-            setColliders(false);
+            SetColliders(false);
             yield return new WaitForSeconds(hiddenTime);
         }
     }
@@ -103,19 +110,19 @@ public class DisappearingPlatform : MonoBehaviour
 
         // Make sure we are fully visible and solid for the chosen time
         yield return StartCoroutine(FadeToAlpha(1f, fadeDuration));
-        setColliders(true);
+        SetColliders(true);
         yield return new WaitForSeconds(visibleTime);
 
         // Fade out to fully invisible, then disable the collider
         yield return StartCoroutine(FadeToAlpha(0f, fadeDuration));
-        setColliders(false);
+        SetColliders(false);
 
         // Stay invisible for the chosen time
         yield return new WaitForSeconds(hiddenTime);
 
         // Fade back in to fully visible, then re-enable the collider
         yield return StartCoroutine(FadeToAlpha(1f, fadeDuration));
-        setColliders(true);
+        SetColliders(true);
 
         isRunningCycle = false;
     }
@@ -172,5 +179,10 @@ public class DisappearingPlatform : MonoBehaviour
             // Write the new color back to the material
             renderers[i].material.color = c;
         }
+    }
+
+    private void CallAudio(AudioClip input) 
+    {
+        SoundManager.Instance.PlayEffect(input, volume);
     }
 }
