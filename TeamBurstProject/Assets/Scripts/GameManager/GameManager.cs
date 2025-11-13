@@ -160,6 +160,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GunData smgObj;
     [SerializeField] GunData cannonObj;
     [SerializeField] GunData flamethrowerObj;
+    [SerializeField] public GameObject reticle; 
    
 
 
@@ -503,6 +504,7 @@ public class gameManager : MonoBehaviour
         Time.timeScale = 0;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        reticle.SetActive(false);
 
         if (continueMenu)
             EventSystem.current.SetSelectedGameObject(firstSelectedContinue);
@@ -548,6 +550,14 @@ public class gameManager : MonoBehaviour
         //normal pause
        
         isPaused = !isPaused;
+
+        if (player != null)
+        {
+            if(playerScript.gunList.Count > 0)
+            {
+                reticle.SetActive(true); 
+            }
+        }
 
         Time.timeScale = timeScaleOrig;
         Cursor.visible = false;
