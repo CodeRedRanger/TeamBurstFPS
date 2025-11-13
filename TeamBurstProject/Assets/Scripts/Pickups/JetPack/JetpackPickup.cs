@@ -24,7 +24,7 @@ public class JetpackPickup : MonoBehaviour
                 // Optionally play pickup FX or sound here
 
                 //UI Popup
-                gameManager.instance.jetpackPopup.SetActive(true);
+                PopupManager.instance.ShowPopup("jet pack");
 
                 // Destroy the pickup object
                 Destroy(gameObject);

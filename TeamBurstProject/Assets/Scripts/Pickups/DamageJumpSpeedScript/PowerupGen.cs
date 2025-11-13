@@ -49,7 +49,7 @@ private void OnTriggerEnter(Collider other)
         {
             case PowerupType.Speed:
                 gameManager.instance.playerScript.SpeedBoost(boostAmount);
-                StartCoroutine(speedboostFeedback());
+                PopupManager.instance.ShowPopup("speed boost", length);
                 break;
 
             case PowerupType.Damage:
@@ -62,7 +62,7 @@ private void OnTriggerEnter(Collider other)
             case PowerupType.Invincible:
                 gameManager.instance.playerScript.invinciblePowerupActive = true;
                 gameManager.instance.playerScript.SetInvincibility(true);
-                StartCoroutine(invincibleFeedback());
+                PopupManager.instance.ShowPopup("invincibility", length);
                 break;
         }
 
@@ -107,6 +107,7 @@ private void OnTriggerEnter(Collider other)
 
     }
 
+    // DELETE LATER
     IEnumerator speedboostFeedback()
     {
         gameManager.instance.speedboostPopup.SetActive(true);
@@ -114,6 +115,7 @@ private void OnTriggerEnter(Collider other)
         gameManager.instance.speedboostPopup.SetActive(false);
     }
 
+    // DELETE LATER
     IEnumerator invincibleFeedback()
     {
         gameManager.instance.invinciblePopup.SetActive(true);
