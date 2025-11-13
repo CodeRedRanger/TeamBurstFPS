@@ -13,7 +13,7 @@ public enum GunType
 public class GunData : ScriptableObject
 {
     public GameObject gunModel;
-    public GunType type; 
+    public GunType type;
 
     [Range(0, 10)] public int shootDamage;
     [Range(0.1f, 3)] public float shootRate;
@@ -26,7 +26,7 @@ public class GunData : ScriptableObject
     //multiple shoot sounds to keep from getting annoying
     public AudioClip[] shootSound;
     [Range(0, 1)] public float shootSoundVol;
-   
+
 
     [Header("Reticle")]
     public Sprite fixedReticle;

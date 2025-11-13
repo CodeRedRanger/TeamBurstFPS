@@ -323,12 +323,11 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
     void Shoot()
     {
         shootTimer = 0;
+        Reticle.instance.PlayShoot();
 
         //I added this if statement to lecture code
         if (gunList.Count > 0 && gunList[gunListPos].ammoCur > 0)
         {
-            Reticle.instance.PlayShoot(true);
-
             gunList[gunListPos].ammoCur--;
 
             if (gunList[gunListPos].ammoCur == 0)
@@ -369,6 +368,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
 
                 if (dmg != null)
                 {
+                    Reticle.instance.PlayHit();
                     
                     if (gunList[gunListPos].type == GunType.flamethrower && hit.collider.GetComponent<Flammable>())
                     {
@@ -382,16 +382,10 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
                     {
                         dmg.TakeDamage(shootDamage);
                     }
-
-                    Reticle.instance.PlayHit();
                 }
 
                 //Debug.Log(hit.collider.name);
             }
-        }
-        else
-        {
-            Reticle.instance.PlayShoot(false);
         }
     }
 
@@ -518,9 +512,10 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
         if (Input.GetButtonDown("Reload"))
         {
             gunList[gunListPos].ammoCur = gunList[gunListPos].ammoMax;
-            Reticle.instance.PlayReload();
             //I added to lecture code
             updatePlayerUI();
+
+            Reticle.instance.PlayReload();
         }
     }
 
@@ -577,6 +572,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
 
     void changeGun()
     {
+        gameManager.instance.reticle.SetActive(true); 
         shootDamage = gunList[gunListPos].shootDamage;
         shootDist = gunList[gunListPos].shootDist;
         shootRate = gunList[gunListPos].shootRate;
