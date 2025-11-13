@@ -21,9 +21,9 @@ public class Reticle : MonoBehaviour
         instance = this;
     }
 
-    public void PlayShoot(bool _hasAmmo)
+    public void PlayShoot()
     {
-        if (_hasAmmo)
+        if (currentGunData != null && currentGunData.ammoCur > 0)
         {
             PlayAnimation("Shoot", currentGunData.reticleAnimSpeed);
         }
@@ -59,6 +59,7 @@ public class Reticle : MonoBehaviour
 
     public void Refresh()
     {
+        if (currentGunData == null) return;
         bool _hasAmmo = currentGunData.ammoCur > 0;
         // set correct reticles visible
         reloadReticle.enabled = false;
@@ -92,6 +93,15 @@ public class Reticle : MonoBehaviour
     {
         anim.speed = _speed;
         anim.Play(_name);
+    }
+
+    public void Hide()
+    {
+        dynamicReticle.enabled = false;
+        fixedReticle.enabled = false;
+        hitReticle.enabled = false;
+        reloadReticle.enabled = false;
+        ammoDepletedReticle.enabled = false;
     }
 }
 

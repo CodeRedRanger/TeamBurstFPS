@@ -505,6 +505,7 @@ public class gameManager : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         reticle.SetActive(false);
+        Reticle.instance.Hide();
 
         if (continueMenu)
             EventSystem.current.SetSelectedGameObject(firstSelectedContinue);
@@ -550,6 +551,7 @@ public class gameManager : MonoBehaviour
         //normal pause
        
         isPaused = !isPaused;
+        Reticle.instance.Refresh();
 
         if (player != null)
         {
