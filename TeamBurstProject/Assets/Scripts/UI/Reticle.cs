@@ -15,10 +15,30 @@ public class Reticle : MonoBehaviour
     public Image ammoDepletedReticle;
     public Image reloadReticle;
     public Image hitReticle;
+    public Image fireRateIndicator;
 
     private void Awake()
     {
         instance = this;
+    }
+
+    private void Update()
+    {
+        if (fireRateIndicator.enabled)
+        {
+            UpdateFireRateIndicator();
+        }
+    }
+
+    public void UpdateFireRateIndicator()
+    {
+        if (currentGunData != null && gameManager.instance.playerScript.shootTimer < currentGunData.shootRate)
+        {
+            fireRateIndicator.transform.localScale = new Vector3(gameManager.instance.playerScript.shootTimer / currentGunData.shootRate, 1, 1);
+            fireRateIndicator.enabled = true;
+        }
+        else
+            fireRateIndicator.enabled = false;
     }
 
     public void PlayShoot()
@@ -26,6 +46,7 @@ public class Reticle : MonoBehaviour
         if (currentGunData != null && currentGunData.ammoCur > 0)
         {
             PlayAnimation("Shoot", currentGunData.reticleAnimSpeed);
+            if(currentGunData.showFireRateIndicator) fireRateIndicator.enabled = true;
         }
         else
         {
@@ -62,6 +83,7 @@ public class Reticle : MonoBehaviour
         if (currentGunData == null) return;
         bool _hasAmmo = currentGunData.ammoCur > 0;
         // set correct reticles visible
+        fireRateIndicator.enabled = true;
         reloadReticle.enabled = false;
         fixedReticle.enabled = _hasAmmo;
         dynamicReticle.enabled = _hasAmmo;
@@ -97,6 +119,7 @@ public class Reticle : MonoBehaviour
 
     public void Hide()
     {
+        fireRateIndicator.enabled = false;
         dynamicReticle.enabled = false;
         fixedReticle.enabled = false;
         hitReticle.enabled = false;
