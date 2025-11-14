@@ -97,18 +97,18 @@ public class gameManager : MonoBehaviour
     //4 is playground, 5 is hall/library, 6 is lunchroom, 7 is launchpad, 8 is alien ship
     //Will have to change all instances in this script and other scripts for currentScene.buildIndex
     [HideInInspector] public bool Level1, Level2, Level3, LevelLunch, LevelLaunchpad, LevelOptions, LevelCompany;
-    private int mainMenu = 0;
-    private int playground = 1;
-    private int library = 2;
-    private int lunchroom = 3;
+    private int mainMenu = 1;
+    private int playground = 2;
+    private int library = 3;
+    private int lunchroom = 4;
     //launch pad 6 to 4
-    private int launchpad = 4;
+    private int launchpad = 5;
     //alienship 4 to 5
-    private int alienship = 5;
+    private int alienship = 6;
     //credits 5 to 6
-    private int credits = 6;
-    private int options = 7;
-    private int company = 8;
+    private int credits = 7;
+    private int options = 8;
+    private int company = 0;
 
     //HUD variables
     [SerializeField] TMP_Text gameGoalCountText;
@@ -239,8 +239,8 @@ public class gameManager : MonoBehaviour
         //Need if statement so this doesn't fire during main menu
         //But is needed if testing, starting from level 1
 
-        if (currentScene.buildIndex == mainMenu || currentScene.buildIndex == credits || currentScene.buildIndex == options
-            || currentScene.buildIndex == company)
+        if (currentScene.buildIndex == mainMenu || currentScene.buildIndex == credits || currentScene.buildIndex == options)
+            //|| currentScene.buildIndex == company)
         {
 
             
@@ -475,6 +475,7 @@ public class gameManager : MonoBehaviour
         {
             if (Input.GetButtonDown("Cancel")) //cancel is escape key by default
             {
+              
                 if (menuActive == null)
                 {
                     statePause();
