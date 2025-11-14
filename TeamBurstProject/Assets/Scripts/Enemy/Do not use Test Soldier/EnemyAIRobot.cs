@@ -187,6 +187,12 @@ public class EnemyAIRobot : MonoBehaviour, IDamage, IStunnable
         {
             SoundManager.Instance.PlayEffect(deathSound, 1);
 
+            if (TryGetComponent<Level5FinalRoom>(out Level5FinalRoom level5))
+            {
+                gameManager.instance.UpdateSoldiersKilled(-1);
+
+            }
+
             if (itemSpawner && itemToSpawn != null)
             {
                 Instantiate(itemToSpawn, transform.position + Vector3.up, Quaternion.identity);
