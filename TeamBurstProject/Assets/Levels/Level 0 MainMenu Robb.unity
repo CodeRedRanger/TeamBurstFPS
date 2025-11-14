@@ -484,6 +484,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 192958220580903902, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 290020444605640206, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -764,6 +768,18 @@ PrefabInstance:
       propertyPath: m_Colors.m_HighlightedColor.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4535158018395258141, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535158018395258141, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4535158018395258141, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 209
+      objectReference: {fileID: 0}
     - target: {fileID: 4998969205941902043, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
       propertyPath: m_Name
       value: UI
@@ -771,6 +787,18 @@ PrefabInstance:
     - target: {fileID: 5092604542718860236, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6288040673166768833, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6520304430648929355, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6888389044968712684, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7435594426047343861, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
       propertyPath: m_IsActive
@@ -952,6 +980,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1372633477338307886, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2025122143}
     - targetCorrespondingSourceObject: {fileID: 4794572733938046491, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1511223920}
@@ -1836,6 +1867,47 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2025122141 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1372633477338307886, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
+  m_PrefabInstance: {fileID: 229112760}
+  m_PrefabAsset: {fileID: 0}
+--- !u!328 &2025122143
+VideoPlayer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2025122141}
+  m_Enabled: 1
+  m_VideoClip: {fileID: 32900000, guid: ef2b7a10a31afbd47a10b22f57d17abd, type: 3}
+  m_TargetCameraAlpha: 1
+  m_TargetCamera3DLayout: 0
+  m_TargetCamera: {fileID: 211402794}
+  m_TargetTexture: {fileID: 0}
+  m_TimeReference: 0
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: <noninit>
+  m_RenderMode: 0
+  m_AspectRatio: 2
+  m_DataSource: 0
+  m_TimeUpdateMode: 2
+  m_PlaybackSpeed: 1
+  m_AudioOutputMode: 2
+  m_TargetAudioSources:
+  - {fileID: 0}
+  m_DirectAudioVolumes:
+  - 1
+  m_Url: 
+  m_EnabledAudioTracks: 01
+  m_DirectAudioMutes: 00
+  m_ControlledAudioTrackCount: 1
+  m_PlayOnAwake: 1
+  m_SkipOnDrop: 1
+  m_Looping: 1
+  m_WaitForFirstFrame: 1
+  m_FrameReadyEventEnabled: 0
+  m_VideoShaders: []
 --- !u!1 &2084741379 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4042161702002626982, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
