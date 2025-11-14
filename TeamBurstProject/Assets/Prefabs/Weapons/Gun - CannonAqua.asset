@@ -17,9 +17,10 @@ MonoBehaviour:
   shootDamage: 3
   shootRate: 1.5
   shootDist: 60
-  ammoCur: 4
+  ammoCur: 5
   ammoMax: 5
-  reloadSpeed: 0
+  ammoIcon: {fileID: 21300000, guid: 758f6e6c62551c4499b32a5e2c7d847f, type: 3}
+  reloadSpeed: 1
   hitEffect: {fileID: 2740321307519119334, guid: 5bc9a0bf98f67d240a936bf476ba2082, type: 3}
   shootSound:
   - {fileID: 8300000, guid: b7a05b3dce39e524abb2b2f9dfa0decf, type: 3}
@@ -27,4 +28,5 @@ MonoBehaviour:
   fixedReticle: {fileID: 21300000, guid: cc4e77980115f254b9f1052ca2e9eb2f, type: 3}
   dynamicReticle: {fileID: 21300000, guid: 331734cbca4261b4c9e1527a946798ec, type: 3}
   reticleAnimSpeed: 1
+  showFireRateIndicator: 1
   specialPrefab: {fileID: 0}

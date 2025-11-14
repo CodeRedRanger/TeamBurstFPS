@@ -20,7 +20,8 @@ public class GunData : ScriptableObject
     [Range(5, 500)] public int shootDist;
     public int ammoCur;
     [Range(5, 50)] public int ammoMax;
-    [SerializeField] float reloadDuration;
+    [SerializeField] public Sprite ammoIcon;
+    public float reloadSpeed = 1f;
 
     public ParticleSystem hitEffect;
     //multiple shoot sounds to keep from getting annoying
