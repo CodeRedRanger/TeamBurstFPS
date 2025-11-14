@@ -582,6 +582,8 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
 
         Reticle.instance.SetGunData(gunList[gunListPos]);
 
+        gameManager.instance.SetAmmoIcon(gunList[gunListPos].ammoIcon);
+
         updatePlayerUI();
     }
 

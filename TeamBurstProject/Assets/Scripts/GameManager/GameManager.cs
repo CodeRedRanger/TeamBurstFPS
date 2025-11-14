@@ -160,7 +160,10 @@ public class gameManager : MonoBehaviour
     [SerializeField] GunData smgObj;
     [SerializeField] GunData cannonObj;
     [SerializeField] GunData flamethrowerObj;
-    [SerializeField] public GameObject reticle; 
+
+    // Reticle stuff
+    [SerializeField] public GameObject reticle;
+    [SerializeField] private Image ammoIcon;
    
 
 
@@ -911,5 +914,9 @@ public class gameManager : MonoBehaviour
         kidsSpawned = true;
     }
 
-
+    public void SetAmmoIcon(Sprite _newSprite)
+    {
+        ammoIcon.sprite = _newSprite;
+        ammoIcon.SetNativeSize();
+    }
 }
