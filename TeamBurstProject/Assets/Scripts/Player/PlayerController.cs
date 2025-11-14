@@ -124,6 +124,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
         //updatePlayerUI(); //called in spawn player
         spawnPlayer();
         origMaxJumpSpeed = maxJumpSpeed;
+        Reticle.instance.Refresh();
 
     }
 
