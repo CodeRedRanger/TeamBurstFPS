@@ -7,6 +7,7 @@ public class Lava : MonoBehaviour
     [SerializeField] float scrollSpeedX = 0.04f;
     [SerializeField] float scrollSpeedY;
     [SerializeField] bool scrollTexture = true;
+
     //[SerializeField] AudioSource audioSource;
     //[SerializeField] AudioClip lavaClip;
     [SerializeField] ParticleSystem PS;

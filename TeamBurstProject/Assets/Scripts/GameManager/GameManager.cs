@@ -164,7 +164,10 @@ public class gameManager : MonoBehaviour
     [SerializeField] GunData smgObj;
     [SerializeField] GunData cannonObj;
     [SerializeField] GunData flamethrowerObj;
-    [SerializeField] public GameObject reticle; 
+
+    // Reticle stuff
+    [SerializeField] public GameObject reticle;
+    [SerializeField] private Image ammoIcon;
    
 
 
@@ -509,6 +512,7 @@ public class gameManager : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         reticle.SetActive(false);
+        Reticle.instance.Hide();
 
         if (continueMenu)
             EventSystem.current.SetSelectedGameObject(firstSelectedContinue);
@@ -554,6 +558,7 @@ public class gameManager : MonoBehaviour
         //normal pause
        
         isPaused = !isPaused;
+        Reticle.instance.Refresh();
 
         if (player != null)
         {
@@ -926,5 +931,9 @@ public class gameManager : MonoBehaviour
         kidsSpawned = true;
     }
 
-
+    public void SetAmmoIcon(Sprite _newSprite)
+    {
+        ammoIcon.sprite = _newSprite;
+        ammoIcon.SetNativeSize();
+    }
 }

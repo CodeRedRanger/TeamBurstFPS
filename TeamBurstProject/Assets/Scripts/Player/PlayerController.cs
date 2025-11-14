@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
     [SerializeField] int shootDamage;
     [SerializeField] int shootDist;
     [SerializeField] float shootRate;
-    float shootTimer;
+    [HideInInspector] public float shootTimer;
 
 
     //ITEM TRACKING
@@ -323,6 +323,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
     void Shoot()
     {
         shootTimer = 0;
+        Reticle.instance.PlayShoot();
 
         //I added this if statement to lecture code
         if (gunList.Count > 0 && gunList[gunListPos].ammoCur > 0)
@@ -367,6 +368,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
 
                 if (dmg != null)
                 {
+                    Reticle.instance.PlayHit();
                     
                     if (gunList[gunListPos].type == GunType.flamethrower && hit.collider.GetComponent<Flammable>())
                     {
@@ -512,6 +514,8 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
             gunList[gunListPos].ammoCur = gunList[gunListPos].ammoMax;
             //I added to lecture code
             updatePlayerUI();
+
+            Reticle.instance.PlayReload();
         }
     }
 
@@ -576,6 +580,9 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
         gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[gunListPos].gunModel.GetComponent<MeshFilter>().sharedMesh;
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[gunListPos].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
 
+        Reticle.instance.SetGunData(gunList[gunListPos]);
+
+        gameManager.instance.SetAmmoIcon(gunList[gunListPos].ammoIcon);
 
         updatePlayerUI();
     }
