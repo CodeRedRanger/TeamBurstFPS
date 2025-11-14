@@ -7,6 +7,7 @@ public class GravityBoots : MonoBehaviour
     [SerializeField] int rotSpeed;
     [SerializeField] KeyCode useKey;
     [SerializeField] bool rotatePlayer;
+    [SerializeField] GameObject gravityBoots; 
     
     private bool flipping;
     private bool gravityFlipped;
@@ -25,6 +26,8 @@ public class GravityBoots : MonoBehaviour
 
     void Update()
     {
+
+
         if (bootsActivated)
         {
             if (Input.GetKeyDown(useKey) && !flipping)
@@ -127,12 +130,20 @@ public class GravityBoots : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        GameObject player = gameManager.instance.player;
+        PlayerController playerScript = gameManager.instance.playerScript;
+
 
         if (other.CompareTag("Player")) 
         {
+
+            gravityBoots.GetComponent<GravityBoots>().enabled = true;
             gameManager.instance.gravityBootsPopup.SetActive(true);
             bootsActivated = true;
         }
+
+
+
 
     }
 
