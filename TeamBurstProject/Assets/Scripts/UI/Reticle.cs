@@ -60,7 +60,7 @@ public class Reticle : MonoBehaviour
         dynamicReticle.enabled = false;
         ammoDepletedReticle.enabled = false;
         reloadReticle.enabled = true;
-        PlayAnimation("Reload");
+        PlayAnimation("Reload", currentGunData.reloadSpeed);
     }
 
     public void SetGunData(GunData _newGun)
