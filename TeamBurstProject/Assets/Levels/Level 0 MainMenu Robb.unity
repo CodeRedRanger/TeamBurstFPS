@@ -119,128 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &33354332 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1504153892264009366, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-  m_PrefabInstance: {fileID: 229112760}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &33354335 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3544955487915769449, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-  m_PrefabInstance: {fileID: 229112760}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 33354332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
---- !u!114 &33354338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 33354332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1107440232}
-          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-          m_MethodName: PlayButtonSelectedSound
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 3f5b28e7ca076894aa2e106a594c5ad5, type: 3}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 9
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1107440232}
-          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-          m_MethodName: PlayButtonSelectedSound
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 3f5b28e7ca076894aa2e106a594c5ad5, type: 3}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!1 &61442496 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7170492240469871340, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-  m_PrefabInstance: {fileID: 229112760}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &61442499 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7568441256428965376, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-  m_PrefabInstance: {fileID: 229112760}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 61442496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
---- !u!114 &61442502
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 61442496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1107440232}
-          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-          m_MethodName: PlayButtonSelectedSound
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 3f5b28e7ca076894aa2e106a594c5ad5, type: 3}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 9
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1107440232}
-          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-          m_MethodName: PlayButtonSelectedSound
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 3f5b28e7ca076894aa2e106a594c5ad5, type: 3}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &211402791
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,386 +362,98 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8364947577020908, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1107440232}
+    - target: {fileID: 8364947577020908, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1107440232}
+    - target: {fileID: 150328237307473871, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1107440232}
+    - target: {fileID: 150328237307473871, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1107440232}
     - target: {fileID: 290020444605640206, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1337691436590754392, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Navigation.m_Mode
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1337691436590754392, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Navigation.m_SelectOnUp
-      value: 
-      objectReference: {fileID: 1494988393}
-    - target: {fileID: 1337691436590754392, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_SelectedColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1337691436590754392, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_SelectedColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1337691436590754392, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_SelectedColor.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1337691436590754392, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Navigation.m_SelectOnDown
-      value: 
-      objectReference: {fileID: 1018755764}
-    - target: {fileID: 1337691436590754392, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Navigation.m_SelectOnLeft
-      value: 
-      objectReference: {fileID: 2084741382}
-    - target: {fileID: 1337691436590754392, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Navigation.m_SelectOnRight
-      value: 
-      objectReference: {fileID: 33354335}
-    - target: {fileID: 1337691436590754392, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1337691436590754392, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1337691436590754392, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.r
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1372633477338307886, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1646557933604044183, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Navigation.m_Mode
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1646557933604044183, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Navigation.m_SelectOnUp
+    - target: {fileID: 1684902498441976785, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 61442499}
-    - target: {fileID: 1646557933604044183, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_SelectedColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1646557933604044183, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_SelectedColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1646557933604044183, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_SelectedColor.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1646557933604044183, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Navigation.m_SelectOnDown
+      objectReference: {fileID: 1107440232}
+    - target: {fileID: 1684902498441976785, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 306125531}
-    - target: {fileID: 1646557933604044183, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Navigation.m_SelectOnLeft
+      objectReference: {fileID: 1107440232}
+    - target: {fileID: 2036431447784677200, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 61442499}
-    - target: {fileID: 1646557933604044183, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Navigation.m_SelectOnRight
+      objectReference: {fileID: 1107440232}
+    - target: {fileID: 2036431447784677200, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 306125531}
-    - target: {fileID: 1646557933604044183, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1646557933604044183, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1646557933604044183, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874396776111253407, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Navigation.m_Mode
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874396776111253407, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Navigation.m_SelectOnUp
-      value: 
-      objectReference: {fileID: 1885843049}
-    - target: {fileID: 1874396776111253407, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_SelectedColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874396776111253407, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_SelectedColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874396776111253407, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_SelectedColor.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874396776111253407, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Navigation.m_SelectOnDown
-      value: 
-      objectReference: {fileID: 61442499}
-    - target: {fileID: 1874396776111253407, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Navigation.m_SelectOnLeft
-      value: 
-      objectReference: {fileID: 33354335}
-    - target: {fileID: 1874396776111253407, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Navigation.m_SelectOnRight
-      value: 
-      objectReference: {fileID: 61442499}
-    - target: {fileID: 1874396776111253407, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874396776111253407, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1874396776111253407, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2570726862473359697, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Navigation.m_Mode
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 2570726862473359697, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Navigation.m_SelectOnUp
-      value: 
-      objectReference: {fileID: 306125531}
-    - target: {fileID: 2570726862473359697, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_SelectedColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2570726862473359697, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_SelectedColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2570726862473359697, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_SelectedColor.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2570726862473359697, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Navigation.m_SelectOnDown
-      value: 
-      objectReference: {fileID: 33354335}
-    - target: {fileID: 2570726862473359697, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Navigation.m_SelectOnLeft
-      value: 
-      objectReference: {fileID: 1494988393}
-    - target: {fileID: 2570726862473359697, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Navigation.m_SelectOnRight
-      value: 
-      objectReference: {fileID: 1885843049}
-    - target: {fileID: 2570726862473359697, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2570726862473359697, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2570726862473359697, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.r
-      value: 1
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1107440232}
     - target: {fileID: 3335101712964208371, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3544955487915769449, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Navigation.m_Mode
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3544955487915769449, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Navigation.m_SelectOnUp
-      value: 
-      objectReference: {fileID: 2084741382}
-    - target: {fileID: 3544955487915769449, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_SelectedColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3544955487915769449, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_SelectedColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3544955487915769449, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_SelectedColor.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3544955487915769449, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Navigation.m_SelectOnDown
-      value: 
-      objectReference: {fileID: 61442499}
-    - target: {fileID: 3544955487915769449, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Navigation.m_SelectOnLeft
-      value: 
-      objectReference: {fileID: 1885843049}
-    - target: {fileID: 3544955487915769449, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Navigation.m_SelectOnRight
-      value: 
-      objectReference: {fileID: 1018755764}
-    - target: {fileID: 3544955487915769449, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3544955487915769449, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3544955487915769449, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.r
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3630788045220638853, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4435526467485097817, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Navigation.m_Mode
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4435526467485097817, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Navigation.m_SelectOnUp
-      value: 
-      objectReference: {fileID: 1511223916}
-    - target: {fileID: 4435526467485097817, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_SelectedColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4435526467485097817, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_SelectedColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4435526467485097817, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_SelectedColor.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4435526467485097817, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Navigation.m_SelectOnDown
-      value: 
-      objectReference: {fileID: 2084741382}
-    - target: {fileID: 4435526467485097817, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Navigation.m_SelectOnLeft
-      value: 
-      objectReference: {fileID: 1511223916}
-    - target: {fileID: 4435526467485097817, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Navigation.m_SelectOnRight
-      value: 
-      objectReference: {fileID: 1494988393}
-    - target: {fileID: 4435526467485097817, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4435526467485097817, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4435526467485097817, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4998969205941902043, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 5001174191483160423, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1107440232}
+    - target: {fileID: 5001174191483160423, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1107440232}
     - target: {fileID: 5092604542718860236, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6366498839076504575, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1107440232}
+    - target: {fileID: 6366498839076504575, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1107440232}
     - target: {fileID: 7435594426047343861, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7568441256428965376, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Navigation.m_Mode
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7568441256428965376, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Navigation.m_SelectOnUp
+    - target: {fileID: 7708916636859086244, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 33354335}
-    - target: {fileID: 7568441256428965376, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_SelectedColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7568441256428965376, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_SelectedColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7568441256428965376, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_SelectedColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7568441256428965376, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Navigation.m_SelectOnDown
+      objectReference: {fileID: 1107440232}
+    - target: {fileID: 7708916636859086244, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1511223916}
-    - target: {fileID: 7568441256428965376, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Navigation.m_SelectOnLeft
+      objectReference: {fileID: 1107440232}
+    - target: {fileID: 7967288718657127190, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1018755764}
-    - target: {fileID: 7568441256428965376, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Navigation.m_SelectOnRight
+      objectReference: {fileID: 1107440232}
+    - target: {fileID: 7967288718657127190, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1511223916}
-    - target: {fileID: 7568441256428965376, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7568441256428965376, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7568441256428965376, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7779898439253580691, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Navigation.m_Mode
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7779898439253580691, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Navigation.m_SelectOnUp
-      value: 
-      objectReference: {fileID: 1511223916}
-    - target: {fileID: 7779898439253580691, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_SelectedColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7779898439253580691, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_SelectedColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7779898439253580691, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_SelectedColor.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7779898439253580691, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Navigation.m_SelectOnDown
-      value: 
-      objectReference: {fileID: 1885843049}
-    - target: {fileID: 7779898439253580691, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Navigation.m_SelectOnLeft
-      value: 
-      objectReference: {fileID: 306125531}
-    - target: {fileID: 7779898439253580691, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Navigation.m_SelectOnRight
-      value: 
-      objectReference: {fileID: 2084741382}
-    - target: {fileID: 7779898439253580691, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7779898439253580691, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7779898439253580691, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.r
-      value: 1
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1107440232}
     - target: {fileID: 8926391022362217718, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -951,93 +541,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4794572733938046491, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1511223920}
-    - targetCorrespondingSourceObject: {fileID: 6605088956033929320, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 306125534}
-    - targetCorrespondingSourceObject: {fileID: 7828859325038599391, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1494988396}
-    - targetCorrespondingSourceObject: {fileID: 4042161702002626982, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2084741385}
-    - targetCorrespondingSourceObject: {fileID: 8201177895271045608, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1885843052}
-    - targetCorrespondingSourceObject: {fileID: 62658067990645159, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1018755767}
-    - targetCorrespondingSourceObject: {fileID: 1504153892264009366, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 33354338}
-    - targetCorrespondingSourceObject: {fileID: 7170492240469871340, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 61442502}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
---- !u!1 &306125528 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6605088956033929320, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-  m_PrefabInstance: {fileID: 229112760}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &306125531 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4435526467485097817, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-  m_PrefabInstance: {fileID: 229112760}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 306125528}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
---- !u!114 &306125534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 306125528}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1107440232}
-          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-          m_MethodName: PlayButtonSelectedSound
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 3f5b28e7ca076894aa2e106a594c5ad5, type: 3}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 9
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1107440232}
-          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-          m_MethodName: PlayButtonSelectedSound
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 3f5b28e7ca076894aa2e106a594c5ad5, type: 3}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1001 &770614098
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1224,67 +729,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1018755761 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 62658067990645159, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-  m_PrefabInstance: {fileID: 229112760}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1018755764 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1874396776111253407, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-  m_PrefabInstance: {fileID: 229112760}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1018755761}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
---- !u!114 &1018755767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1018755761}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1107440232}
-          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-          m_MethodName: PlayButtonSelectedSound
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 3f5b28e7ca076894aa2e106a594c5ad5, type: 3}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 9
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1107440232}
-          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-          m_MethodName: PlayButtonSelectedSound
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 3f5b28e7ca076894aa2e106a594c5ad5, type: 3}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!114 &1107440232 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4522461006613265888, guid: a3a9177f637b8474a9d4c93b6f1ee50e, type: 3}
@@ -1484,128 +928,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b18cb33aecc6a83418cade223793805f, type: 3}
---- !u!1 &1494988390 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7828859325038599391, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-  m_PrefabInstance: {fileID: 229112760}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1494988393 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7779898439253580691, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-  m_PrefabInstance: {fileID: 229112760}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1494988390}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
---- !u!114 &1494988396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1494988390}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1107440232}
-          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-          m_MethodName: PlayButtonSelectedSound
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 3f5b28e7ca076894aa2e106a594c5ad5, type: 3}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 9
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1107440232}
-          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-          m_MethodName: PlayButtonSelectedSound
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 3f5b28e7ca076894aa2e106a594c5ad5, type: 3}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
---- !u!1 &1511223914 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4794572733938046491, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-  m_PrefabInstance: {fileID: 229112760}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1511223916 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1646557933604044183, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-  m_PrefabInstance: {fileID: 229112760}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1511223914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
---- !u!114 &1511223920
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1511223914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1107440232}
-          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-          m_MethodName: PlayButtonSelectedSound
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 3f5b28e7ca076894aa2e106a594c5ad5, type: 3}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 9
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1107440232}
-          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-          m_MethodName: PlayButtonSelectedSound
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 3f5b28e7ca076894aa2e106a594c5ad5, type: 3}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1001 &1561119752
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1663,67 +985,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3a9177f637b8474a9d4c93b6f1ee50e, type: 3}
---- !u!1 &1885843046 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8201177895271045608, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-  m_PrefabInstance: {fileID: 229112760}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1885843049 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1337691436590754392, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-  m_PrefabInstance: {fileID: 229112760}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1885843046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
---- !u!114 &1885843052
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1885843046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1107440232}
-          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-          m_MethodName: PlayButtonSelectedSound
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 3f5b28e7ca076894aa2e106a594c5ad5, type: 3}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 9
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1107440232}
-          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-          m_MethodName: PlayButtonSelectedSound
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 3f5b28e7ca076894aa2e106a594c5ad5, type: 3}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &2021560747
 GameObject:
   m_ObjectHideFlags: 0
@@ -1836,67 +1097,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2084741379 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4042161702002626982, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-  m_PrefabInstance: {fileID: 229112760}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2084741382 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2570726862473359697, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
-  m_PrefabInstance: {fileID: 229112760}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2084741379}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
---- !u!114 &2084741385
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2084741379}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.EventSystems.EventTrigger
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1107440232}
-          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-          m_MethodName: PlayButtonSelectedSound
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 3f5b28e7ca076894aa2e106a594c5ad5, type: 3}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 9
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1107440232}
-          m_TargetAssemblyTypeName: SoundManager, Assembly-CSharp
-          m_MethodName: PlayButtonSelectedSound
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 3f5b28e7ca076894aa2e106a594c5ad5, type: 3}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
