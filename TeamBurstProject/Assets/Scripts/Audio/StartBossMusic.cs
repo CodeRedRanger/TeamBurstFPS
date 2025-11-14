@@ -34,10 +34,12 @@ public class StartBossMusic : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             //FadeOutMusic();
-            musicMixer.GetFloat(volumParamName, out currentVolume);
-            musicMixer.SetFloat(volumParamName, -80f);
+           musicMixer.GetFloat(volumParamName, out currentVolume);
+           musicMixer.SetFloat(volumParamName, -80f);
+            
+            
             StartCoroutine(PauseBeforeBossMusic());
-            //isFadingOut = false;
+            isFadingOut = false;
 
         }
 
@@ -48,10 +50,14 @@ public class StartBossMusic : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         musicMixer.SetFloat(volumParamName, currentVolume);
         SoundManager.Instance.PlayMusic(bossMusic);
-        musicTrigger.SetActive(false);
 
         if (boss != null)
             boss.SetActive(true);
+
+
+        musicTrigger.SetActive(false);
+
+        
     }
 
     public void FadeOutMusic()
@@ -67,9 +73,11 @@ public class StartBossMusic : MonoBehaviour
         isFadingOut = true;
         musicMixer.GetFloat(volumParamName, out currentVolume);
 
-        float timer = 0f;
-        float updateInterval = 2f; 
+        //float timer = 0f;
+        //float timer = 0f;
+        float updateInterval = 1f; //2f; 
 
+        /*
         while (timer < fadeDuration)
         {
             
@@ -79,16 +87,20 @@ public class StartBossMusic : MonoBehaviour
             //timer += Time.deltaTime;
             timer += updateInterval;
             yield return null;
-        }
-
+        }*/
+        
         musicMixer.SetFloat(volumParamName, -80f); 
         isFadingOut = false;
+        yield return new WaitForSeconds(updateInterval);
         musicMixer.SetFloat(volumParamName, currentVolume);
         SoundManager.Instance.PlayMusic(bossMusic);
-        musicTrigger.SetActive(false);
 
         if (boss != null)
             boss.SetActive(true);
+
+        musicTrigger.SetActive(false);
+
+       
 
     }
 

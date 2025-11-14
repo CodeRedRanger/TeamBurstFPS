@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DisappearingPlatform : MonoBehaviour
@@ -9,11 +10,21 @@ public class DisappearingPlatform : MonoBehaviour
     private Renderer[] renderers;
     private Collider[] colliders;
     private Color[] originalColors;
+    
+    //simplified script
+    private Color colorOrig;
+    [SerializeField] Renderer model;
+    [SerializeField] GameObject platform;
+   
 
     private bool isRunningCycle = false;
 
     private void Awake()
     {
+        //Robb added
+        if (model != null) 
+        colorOrig = model.material.color;
+
         // Get the Renderer so we can turn the platform's visibility on/off
         renderers = GetComponentsInChildren<Renderer>();
 
@@ -78,14 +89,17 @@ public class DisappearingPlatform : MonoBehaviour
             setColliders(true);
             yield return new WaitForSeconds(visibleTime);
 
+            
             // Fade to invisible and then disable the collider
             yield return StartCoroutine(FadeToAlpha(0f, fadeDuration));
             setColliders(false);
             yield return new WaitForSeconds(hiddenTime);
+
         }
     }
     private void OnTriggerEnter(Collider other)
     {
+   
         // Only do anything if we are using the "disappear when stepped on" mode
         if (!disappearOnStep) return;
 
@@ -106,9 +120,25 @@ public class DisappearingPlatform : MonoBehaviour
         setColliders(true);
         yield return new WaitForSeconds(visibleTime);
 
+        StartCoroutine(flashRed());
+
         // Fade out to fully invisible, then disable the collider
         yield return StartCoroutine(FadeToAlpha(0f, fadeDuration));
         setColliders(false);
+
+        //Robb added
+        if (platform != null)
+        {
+            if (model != null)
+            {
+                
+               model.enabled = false;
+               
+               
+            }
+        }
+
+
 
         // Stay invisible for the chosen time
         yield return new WaitForSeconds(hiddenTime);
@@ -116,6 +146,17 @@ public class DisappearingPlatform : MonoBehaviour
         // Fade back in to fully visible, then re-enable the collider
         yield return StartCoroutine(FadeToAlpha(1f, fadeDuration));
         setColliders(true);
+
+        //Robb added
+        if (platform != null)
+        {
+            if (model != null)
+            {
+
+                model.enabled = true;
+
+            }
+        }
 
         isRunningCycle = false;
     }
@@ -149,6 +190,9 @@ public class DisappearingPlatform : MonoBehaviour
 
                 // Write color back to the material
                 renderers[i].material.color = c;
+
+           
+                
             }
 
             // Wait until the next frame and continue the loop
@@ -157,6 +201,10 @@ public class DisappearingPlatform : MonoBehaviour
 
         // After the loop, force the exact final alpha value (avoids tiny rounding errors)
         SetAllMaterialsAlpha(alpha);
+
+    
+ 
+
     }
 
     private void SetAllMaterialsAlpha(float alpha)
@@ -173,4 +221,19 @@ public class DisappearingPlatform : MonoBehaviour
             renderers[i].material.color = c;
         }
     }
+
+    //Added to make a simple flashing platform, that then disappears
+    IEnumerator flashRed()
+    {
+        if (model != null)
+        {
+
+             model.material.color = Color.red;
+             yield return new WaitForSeconds(0.2f);
+             model.material.color = colorOrig;
+            
+        }
+    }
+
+
 }
