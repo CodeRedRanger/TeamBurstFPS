@@ -32,6 +32,7 @@ public class gameManager : MonoBehaviour
     public GameObject firstSelectedMain;
     public GameObject firstSelectedOptions;
     public GameObject firstSelectedCredits;
+    public GameObject backButton; 
 
 
 
@@ -67,6 +68,9 @@ public class gameManager : MonoBehaviour
 
     //Game goal variables
     int gameGoalCount;
+
+    //credits screen
+    [SerializeField] public GameObject assetsPopup; 
 
     //Kids rescued for lunchroom
     int kidsRescued;
@@ -808,6 +812,18 @@ public class gameManager : MonoBehaviour
                 finalDoor.SetActive(false);
             }
         }
+    }
+
+    //Credits screen
+    public void EnableAssets()
+    {
+        assetsPopup.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(backButton);
+    }
+    public void DisableAssets()
+    {
+        EventSystem.current.SetSelectedGameObject(firstSelectedCredits);
+        assetsPopup.SetActive(false);
     }
 
     public void youWin()
