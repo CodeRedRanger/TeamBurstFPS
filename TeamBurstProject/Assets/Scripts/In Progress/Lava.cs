@@ -22,8 +22,8 @@ public class Lava : MonoBehaviour
         offset = rend.material.mainTextureOffset;
 
         shape = PS.shape;
-
         shape.scale = new Vector3(transform.localScale.x - 0.5f, transform.localScale.z - 0.5f, transform.localScale.y);
+        PS.Play();
 
         //audioSource.clip = lavaClip;
         //audioSource.Play();
