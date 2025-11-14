@@ -43,14 +43,11 @@ public class Reticle : MonoBehaviour
 
     public void PlayShoot()
     {
+        Refresh();
         if (currentGunData != null && currentGunData.ammoCur > 0)
         {
             PlayAnimation("Shoot", currentGunData.reticleAnimSpeed);
             if(currentGunData.showFireRateIndicator) fireRateIndicator.enabled = true;
-        }
-        else
-        {
-            Refresh();
         }
     }
 
@@ -80,6 +77,7 @@ public class Reticle : MonoBehaviour
 
     public void Refresh()
     {
+        if (currentGunData == null) TryFetchGunData();
         if (currentGunData == null) return;
         bool _hasAmmo = currentGunData.ammoCur > 0;
         // set correct reticles visible
@@ -88,6 +86,15 @@ public class Reticle : MonoBehaviour
         fixedReticle.enabled = _hasAmmo;
         dynamicReticle.enabled = _hasAmmo;
         ammoDepletedReticle.enabled = !_hasAmmo;
+    }
+
+    public void TryFetchGunData()
+    {
+        PlayerController _playerScript = gameManager.instance.playerScript;
+        if (_playerScript.gunList.Count > 0)
+        {
+            SetGunData(_playerScript.gunList[_playerScript.gunListPos]);
+        }
     }
 
     public void PlayHit()

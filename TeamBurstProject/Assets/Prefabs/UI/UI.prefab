@@ -9846,6 +9846,7 @@ MonoBehaviour:
   flamethrowerObj: {fileID: 11400000, guid: 55b29d2f26cf98d4d9788dfb12e7a274, type: 2}
   reticle: {fileID: 3630788045220638853}
   ammoIcon: {fileID: 5543744585159195237}
+  reticleScript: {fileID: 3872542849108674948}
   runPopup: {fileID: 3526446517850400675}
   kidsPopup: {fileID: 596298000330588023}
   launchpadPopup: {fileID: 8465227102289539731}
@@ -13886,6 +13887,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 5915946056395548966}
+  - {fileID: 4690965523614936651}
+  - {fileID: 6413924269692739586}
+  - {fileID: 582894211239847027}
   - {fileID: 5522117920934088512}
   - {fileID: 6770216352211671675}
   - {fileID: 1841183915028450462}
@@ -13915,10 +13920,6 @@ RectTransform:
   - {fileID: 646130204219100806}
   - {fileID: 1879586054426840799}
   - {fileID: 2389237280759565483}
-  - {fileID: 5915946056395548966}
-  - {fileID: 4690965523614936651}
-  - {fileID: 6413924269692739586}
-  - {fileID: 582894211239847027}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -27392,6 +27393,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7bfcb213d3d3c84d9b4990d27ec665f, type: 3}
+--- !u!114 &3872542849108674948 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8228171667453684470, guid: f7bfcb213d3d3c84d9b4990d27ec665f, type: 3}
+  m_PrefabInstance: {fileID: 5156163890066269042}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ec13652d450cd94da8a3eda667c6fa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Reticle
 --- !u!224 &5915946056395548966 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1555982836912933460, guid: f7bfcb213d3d3c84d9b4990d27ec665f, type: 3}
