@@ -81960,7 +81960,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 737534467}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8d01a1ccb5f21d45902088fe43cb885, type: 3}
   m_Name: 
@@ -81973,7 +81973,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 737534467}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a0595f333284624ea27e2d32d6cce8b, type: 3}
   m_Name: 
@@ -81986,7 +81986,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 737534467}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 213195bbc9f040149b5f96eb3328ac7e, type: 3}
   m_Name: 
@@ -82020,7 +82020,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 737534467}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 406ced3709ca1e945a70b041524aaac6, type: 3}
   m_Name: 
@@ -142901,7 +142901,7 @@ PrefabInstance:
     - target: {fileID: 1720564077915953616, guid: 28def9dff249a534fb9d9f0c846fc73b, type: 3}
       propertyPath: onEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1553789737}
+      objectReference: {fileID: 1741946728}
     - target: {fileID: 1720564077915953616, guid: 28def9dff249a534fb9d9f0c846fc73b, type: 3}
       propertyPath: onEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -142909,7 +142909,7 @@ PrefabInstance:
     - target: {fileID: 1720564077915953616, guid: 28def9dff249a534fb9d9f0c846fc73b, type: 3}
       propertyPath: offEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1553789738}
+      objectReference: {fileID: 1741946727}
     - target: {fileID: 1720564077915953616, guid: 28def9dff249a534fb9d9f0c846fc73b, type: 3}
       propertyPath: offEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -170174,12 +170174,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3937740531320347613, guid: 7724fdc9f5533cf4ab18bca660ad8fff, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5208161026005919396, guid: 7724fdc9f5533cf4ab18bca660ad8fff, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5418520051375445711, guid: 7724fdc9f5533cf4ab18bca660ad8fff, type: 3}
+      propertyPath: platform
+      value: 
+      objectReference: {fileID: 737534468}
     - target: {fileID: 5418520051375445711, guid: 7724fdc9f5533cf4ab18bca660ad8fff, type: 3}
       propertyPath: movementSpeed
       value: 4
@@ -170232,8 +170236,7 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5418520051375445711, guid: 7724fdc9f5533cf4ab18bca660ad8fff, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8450266445718850345, guid: 7724fdc9f5533cf4ab18bca660ad8fff, type: 3}
     m_AddedGameObjects:
@@ -170281,7 +170284,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1553789736}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad4ab34b00b56814bb519c7592ec6c86, type: 3}
   m_Name: 
@@ -170294,7 +170297,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1553789736}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01a23d9e40a109e4c9407fc07b6d479c, type: 3}
   m_Name: 
@@ -246848,7 +246851,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &6358950626030543290
 MonoBehaviour:
   m_ObjectHideFlags: 0
