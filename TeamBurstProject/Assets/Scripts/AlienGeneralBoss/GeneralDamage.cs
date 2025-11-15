@@ -45,11 +45,14 @@ public class GeneralDamage : MonoBehaviour, IDamage
     public void MakeInvulnerable()
     {
         isInvulnerable = true;
+        gameObject.GetComponentInChildren<Renderer>().material.color = new Color(0, 0, 1);
     }
 
     public void MakeVulnerable()
     {
         isInvulnerable = false;
+        gameObject.GetComponentInChildren<Renderer>().material.color = colorOrig;
+        Debug.Log("Called MakeVulnerable");
     }
 
     IEnumerator flashRed()
