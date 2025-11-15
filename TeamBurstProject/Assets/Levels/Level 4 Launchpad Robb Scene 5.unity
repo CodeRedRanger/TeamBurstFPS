@@ -14677,6 +14677,10 @@ MonoBehaviour:
   moveDownTime: 0.8
   moveUpTime: 0.1
   height: 2.8
+  moveUpSound: {fileID: 0}
+  moveUpVol: 0
+  moveDownSound: {fileID: 0}
+  moveDownVol: 0
 --- !u!4 &111202575
 Transform:
   m_ObjectHideFlags: 0
@@ -76429,6 +76433,10 @@ MonoBehaviour:
   moveDownTime: 0.8
   moveUpTime: 0.1
   height: 2.8
+  moveUpSound: {fileID: 0}
+  moveUpVol: 0
+  moveDownSound: {fileID: 0}
+  moveDownVol: 0
 --- !u!4 &543248221
 Transform:
   m_ObjectHideFlags: 0
@@ -89788,6 +89796,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1893407954010209477, guid: 511026fba2ede33448c0b22e5379ebfa, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 18431
+      objectReference: {fileID: 0}
     - target: {fileID: 4104817386659849295, guid: 511026fba2ede33448c0b22e5379ebfa, type: 3}
       propertyPath: m_Name
       value: PlayerNoGun
@@ -97965,10 +97977,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Pit
   killPlayerDelay: 0.5
-  playerFalling: {fileID: 0}
+  playerFalling: {fileID: 8300000, guid: 38eaf5b28c107554ba0904ae0dd30ba4, type: 3}
   playerFallingVol: 0.5
-  objectFalling: {fileID: 0}
-  objectFallingVol: 0.5
+  objectFalling: {fileID: 8300000, guid: e018b90cb588e8d43ab695c7aee9d7d9, type: 3}
+  objectFallingVol: 1
 --- !u!1001 &682449252
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -108222,7 +108234,7 @@ GameObject:
   - component: {fileID: 752201286}
   - component: {fileID: 752201285}
   - component: {fileID: 752201284}
-  - component: {fileID: 752201283}
+  - component: {fileID: 752201288}
   m_Layer: 0
   m_Name: FloorPitBottom
   m_TagString: Untagged
@@ -108230,23 +108242,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &752201283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 752201282}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c30c7a0aba2616b43b03463f7970cc9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Pit
-  killPlayerDelay: 0.5
-  playerFalling: {fileID: 0}
-  playerFallingVol: 0.5
-  objectFalling: {fileID: 0}
-  objectFallingVol: 0.5
 --- !u!65 &752201284
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -108339,6 +108334,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1828650334}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &752201288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752201282}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c30c7a0aba2616b43b03463f7970cc9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Pit
+  killPlayerDelay: 0.5
+  playerFalling: {fileID: 8300000, guid: 38eaf5b28c107554ba0904ae0dd30ba4, type: 3}
+  playerFallingVol: 0.5
+  objectFalling: {fileID: 8300000, guid: e018b90cb588e8d43ab695c7aee9d7d9, type: 3}
+  objectFallingVol: 0.5
 --- !u!43 &753092876
 Mesh:
   m_ObjectHideFlags: 0
@@ -222318,6 +222330,63 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3, y: 3.15, z: 1.3}
   m_Center: {x: 0, y: -1.425, z: -0.9}
+--- !u!1001 &1535290941
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7795866038152537838, guid: d0a47d018e3039a42955746ab3d57829, type: 3}
+      propertyPath: m_Name
+      value: Movable crate
+      objectReference: {fileID: 0}
+    - target: {fileID: 8168177694938369921, guid: d0a47d018e3039a42955746ab3d57829, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 8168177694938369921, guid: d0a47d018e3039a42955746ab3d57829, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.35
+      objectReference: {fileID: 0}
+    - target: {fileID: 8168177694938369921, guid: d0a47d018e3039a42955746ab3d57829, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -336.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 8168177694938369921, guid: d0a47d018e3039a42955746ab3d57829, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8168177694938369921, guid: d0a47d018e3039a42955746ab3d57829, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8168177694938369921, guid: d0a47d018e3039a42955746ab3d57829, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8168177694938369921, guid: d0a47d018e3039a42955746ab3d57829, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8168177694938369921, guid: d0a47d018e3039a42955746ab3d57829, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8168177694938369921, guid: d0a47d018e3039a42955746ab3d57829, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8168177694938369921, guid: d0a47d018e3039a42955746ab3d57829, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d0a47d018e3039a42955746ab3d57829, type: 3}
 --- !u!1 &1535659350
 GameObject:
   m_ObjectHideFlags: 0
@@ -310794,3 +310863,4 @@ SceneRoots:
   - {fileID: 9425072}
   - {fileID: 1369687488}
   - {fileID: 824408342}
+  - {fileID: 1535290941}
