@@ -14922,26 +14922,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8210c8ca0f82e249988a2f10204e884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  controller: {fileID: 7639070497355642571}
+  HP: 10
+  invincibleDur: 0.5
+  invinciblePowerupActive: 0
+  shootDamage: 1
+  shootDist: 18
+  shootRate: 0.5
+  shootTimer: 0
   ignoreLayer:
     serializedVersion: 2
     m_Bits: 28680
-  controller: {fileID: 7639070497355642571}
-  HP: 10
   speed: 4
+  isSprinting: 0
   sprintMod: 3
+  playerVel: {x: 0, y: 0, z: 0}
   jumpSpeed: 5
   maxJumpSpeed: 12
   jumpCountMax: 1
   gravity: 35
-  shootDamage: 1
-  shootDist: 18
-  shootRate: 0.5
-  invincibleDur: 0.5
+  gravityFlipped: 0
+  pushBack: {x: 0, y: 0, z: 0}
+  pushBackTime: 0
   ps: {fileID: 6524170564279636751}
   ps1: {fileID: 5831822897527706475}
   ps2: {fileID: 7442722401587001415}
   psFlameThrower: {fileID: 7850026235322667138}
-  playerVel: {x: 0, y: 0, z: 0}
   damageSound: {fileID: 8300000, guid: d14c998d6540344f89d98403b8d12b97, type: 3}
   deathSound: {fileID: 8300000, guid: 7ec679ad50c30444590b96f230b41938, type: 3}
   audJump:
@@ -14959,11 +14965,8 @@ MonoBehaviour:
   audRechargePrompt: {fileID: 8300000, guid: cb777a2a8bd3b844ab1265a8cd5f01d0, type: 3}
   audRechargePromptVol: 1
   gunList: []
-  gunModel: {fileID: 4857354596902830145}
   gunListPos: 0
-  pushBack: {x: 0, y: 0, z: 0}
-  pushBackTime: 0
-  gravityFlipped: 0
+  gunModel: {fileID: 4857354596902830145}
 --- !u!114 &4286662896927773134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15101,11 +15104,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 778c37b90b63833469777ea2dd174cd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BlockPusher
-  pushLayers:
+  layerTopush:
     serializedVersion: 2
-    m_Bits: 16384
+    m_Bits: 0
   canPush: 1
-  strength: 2
+  power: 2
 --- !u!1 &4857354596902830145
 GameObject:
   m_ObjectHideFlags: 0
@@ -15134,9 +15137,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4857354596902830145}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.82045734, y: -0.024109215, z: -0.028477743, w: 0.5704888}
-  m_LocalPosition: {x: 0.09, y: -0.331, z: 0.561}
-  m_LocalScale: {x: 100, y: 99.99998, z: 100}
+  m_LocalRotation: {x: -0.7118666, y: -0.007231215, z: -0.0071334383, w: 0.7022412}
+  m_LocalPosition: {x: 0.15, y: -0.155, z: 0.531}
+  m_LocalScale: {x: 75, y: 75, z: 75}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2265069185859297257}
@@ -15144,7 +15147,7 @@ Transform:
   - {fileID: 1092146428366365798}
   - {fileID: 8572843292869768516}
   m_Father: {fileID: 7038583633695499166}
-  m_LocalEulerAnglesHint: {x: -110.365, y: -3.1660156, z: -1.1640015}
+  m_LocalEulerAnglesHint: {x: -90.78, y: 0, z: -1.1640015}
 --- !u!33 &8011674240478915050
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -15298,7 +15301,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -25235,7 +25238,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 1000
-  field of view: 60
+  field of view: 45
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
