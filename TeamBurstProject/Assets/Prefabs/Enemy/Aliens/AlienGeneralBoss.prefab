@@ -986,7 +986,7 @@ MonoBehaviour:
   shootPos: {fileID: 5903424088276851376}
   bullet: {fileID: 6709539129829562604, guid: f9296b7ad533abf4a89fc843970683cf, type: 3}
   fireRate: 2
-  shotsTillNextState: 6
+  shotsTillNextState: 3
   states:
   - {fileID: 1095652683969185774}
   - {fileID: 1782656694056463061}
@@ -1235,7 +1235,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1835734848629938367
 Transform:
   m_ObjectHideFlags: 0
@@ -1400,6 +1400,34 @@ MonoBehaviour:
       - m_Target: {fileID: 1095652683969185774}
         m_TargetAssemblyTypeName: SpawnEnemy_State, Assembly-CSharp
         m_MethodName: MoveToNextState
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7787791359261552602}
+        m_TargetAssemblyTypeName: GeneralDamage, Assembly-CSharp
+        m_MethodName: MakeInvulnerable
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7787791359261552602}
+        m_TargetAssemblyTypeName: GeneralDamage, Assembly-CSharp
+        m_MethodName: MakeVulnerable
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4557,7 +4585,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8388859145008326119, guid: 2b6e70f3b4f0c2b4e9b4ed66557bc3c5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8985992957465585216, guid: 2b6e70f3b4f0c2b4e9b4ed66557bc3c5, type: 3}
@@ -4572,13 +4601,67 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8985992957465585216, guid: 2b6e70f3b4f0c2b4e9b4ed66557bc3c5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8321610397891747288}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5680079023319193929, guid: 2b6e70f3b4f0c2b4e9b4ed66557bc3c5, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 5583696047545250286}
   m_SourcePrefab: {fileID: 100100000, guid: 2b6e70f3b4f0c2b4e9b4ed66557bc3c5, type: 3}
+--- !u!4 &335172899877758246 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2361982443502054841, guid: 2b6e70f3b4f0c2b4e9b4ed66557bc3c5, type: 3}
+  m_PrefabInstance: {fileID: 2621578212536944799}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1281589663796593304 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3866525534104291847, guid: 2b6e70f3b4f0c2b4e9b4ed66557bc3c5, type: 3}
+  m_PrefabInstance: {fileID: 2621578212536944799}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1398449260663466009 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3965979466503282822, guid: 2b6e70f3b4f0c2b4e9b4ed66557bc3c5, type: 3}
+  m_PrefabInstance: {fileID: 2621578212536944799}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1575631412817234014 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3583865927256506561, guid: 2b6e70f3b4f0c2b4e9b4ed66557bc3c5, type: 3}
+  m_PrefabInstance: {fileID: 2621578212536944799}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6401057091717361375 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8985992957465585216, guid: 2b6e70f3b4f0c2b4e9b4ed66557bc3c5, type: 3}
   m_PrefabInstance: {fileID: 2621578212536944799}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7688214908134855126 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5680079023319193929, guid: 2b6e70f3b4f0c2b4e9b4ed66557bc3c5, type: 3}
+  m_PrefabInstance: {fileID: 2621578212536944799}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5583696047545250286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7688214908134855126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38af42786e8e06840800a2a346d25f25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossSoldierSpawner
+  enemiesToSpawn:
+  - {fileID: 5332202705837608988, guid: e6a8e9bb0246c3042a824b9793410304, type: 3}
+  - {fileID: 1101656888531140347, guid: 23d6add96bec52c4f84d6e1f2f37ef66, type: 3}
+  numToSpawn: 8
+  spawnRate: 0
+  spawnPos:
+  - {fileID: 1575631412817234014}
+  - {fileID: 1398449260663466009}
+  - {fileID: 1281589663796593304}
+  - {fileID: 335172899877758246}
+  - {fileID: 3638532773158256417}
+  - {fileID: 1545648762320716641}
+  - {fileID: 3515091889178886475}
+  - {fileID: 8321610397891747288}
 --- !u!1001 &2743535813282474492
 PrefabInstance:
   m_ObjectHideFlags: 0
