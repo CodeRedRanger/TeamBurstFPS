@@ -10,6 +10,7 @@ public class GeneralDamage : MonoBehaviour, IDamage
     [SerializeField] AudioClip deathSound;
 
     private Color colorOrig;
+    private bool isInvulnerable = false;
 
     void Start()
     {
@@ -22,6 +23,9 @@ public class GeneralDamage : MonoBehaviour, IDamage
 
     public void TakeDamage(int amount)
     {
+        if (isInvulnerable)
+            return;
+
         health -= amount;
 
         if (health <= 0)
@@ -36,6 +40,16 @@ public class GeneralDamage : MonoBehaviour, IDamage
             SoundManager.Instance.PlayEffect(damageSound, 1);
         }
 
+    }
+
+    public void MakeInvulnerable()
+    {
+        isInvulnerable = true;
+    }
+
+    public void MakeVulnerable()
+    {
+        isInvulnerable = false;
     }
 
     IEnumerator flashRed()
