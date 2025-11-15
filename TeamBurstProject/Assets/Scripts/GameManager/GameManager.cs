@@ -87,6 +87,9 @@ public class gameManager : MonoBehaviour
     [HideInInspector] public int keysFor3KeyDoor = 3;
     public TMP_Text keysFor3KeyDoorText;
 
+    //For launchpad boss
+    [HideInInspector] public bool launchpadBossKilled; 
+
     //Soldiers killed for alien spaceship
     [HideInInspector] public int soldiersToKill;
     [SerializeField] GameObject finalDoor; 
@@ -826,6 +829,11 @@ public class gameManager : MonoBehaviour
                 finalDoor.SetActive(false);
             }
         }
+    }
+
+    public void LaunchpadBossKilled()
+    {
+        launchpadBossKilled = true; 
     }
 
     //Credits screen

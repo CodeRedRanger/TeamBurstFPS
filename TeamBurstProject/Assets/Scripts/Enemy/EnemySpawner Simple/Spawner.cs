@@ -1,5 +1,6 @@
-using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] int numToSpawn;
     [SerializeField] int spawnRate;
     [SerializeField] Transform[] spawnPos;
+    [SerializeField] GameObject spawnEffect; 
 
     float spawnTimer;
     int spawnCount;
@@ -92,7 +94,16 @@ public class Spawner : MonoBehaviour
 
         if (uniquePosition || posList.Count == 0)
         {
+
             Instantiate(objectToSpawn, spawnPos[arrayPos].position, spawnPos[arrayPos].rotation);
+
+            if (spawnEffect != null)
+            {
+                Instantiate(spawnEffect, spawnPos[arrayPos].position, spawnPos[arrayPos].rotation);
+            }
+
+
+
             spawnCount++;
             spawnTimer = 0;
             uniquePosition = false;
@@ -105,4 +116,6 @@ public class Spawner : MonoBehaviour
         }
 
     }
+
+   
 }

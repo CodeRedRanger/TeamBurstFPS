@@ -193,6 +193,13 @@ public class EnemyAIRobot : MonoBehaviour, IDamage, IStunnable
 
             }
 
+            if (TryGetComponent<LaunchPadBoss>(out LaunchPadBoss launchPadBoss))
+            {
+                gameManager.instance.LaunchpadBossKilled(); 
+            }
+
+
+
             if (itemSpawner && itemToSpawn != null)
             {
                 Instantiate(itemToSpawn, transform.position + Vector3.up, Quaternion.identity);

@@ -8,7 +8,8 @@ public class YouWin : MonoBehaviour
 
     [SerializeField] AudioClip youWin;
     [SerializeField] bool gameOver;
-    bool triggered = false; 
+    bool triggered = false;
+    int launchpadLevel = 5; 
     private void OnTriggerEnter(Collider other)
     {
 
@@ -17,7 +18,8 @@ public class YouWin : MonoBehaviour
 
         if (other.CompareTag("Player") && triggered == false)
         {
-            if (gameManager.instance.currentScene.buildIndex == 4 && gameManager.instance.keysRequired > gameManager.instance.keysCount)
+            if (gameManager.instance.currentScene.buildIndex == launchpadLevel && (gameManager.instance.keysRequired > gameManager.instance.keysCount 
+                || gameManager.instance.launchpadBossKilled == false))
             {
                 return; 
             }
