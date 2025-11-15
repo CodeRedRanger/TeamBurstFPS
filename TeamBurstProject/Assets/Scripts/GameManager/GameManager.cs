@@ -474,7 +474,7 @@ public class gameManager : MonoBehaviour
         if (currentScene.buildIndex != mainMenu && currentScene.buildIndex != credits && currentScene.buildIndex != options
             && currentScene.buildIndex != company)
         {
-            if (Input.GetButtonDown("Cancel")) //cancel is escape key by default
+            if (Input.GetButtonDown("Cancel") || Input.GetButtonDown("Pause")) //cancel is escape key by default
             {
               
                 if (menuActive == null)

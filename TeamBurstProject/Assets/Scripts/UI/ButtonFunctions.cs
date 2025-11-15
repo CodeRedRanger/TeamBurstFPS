@@ -72,11 +72,12 @@ public class ButtonFunctions : MonoBehaviour
 
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
-#else
+#elif UNITY_STANDALONE
            //For Windows build
            Application.Quit(); //note: won't work in editor, only in build  
-           //for web build
-           //SceneManager.LoadScene(0);
+#elif UNITY_WEBGL
+           //for web build, go to main menu
+           SceneManager.LoadScene(1);
 #endif
     }
 
