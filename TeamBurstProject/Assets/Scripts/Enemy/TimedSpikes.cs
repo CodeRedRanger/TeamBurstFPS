@@ -12,6 +12,7 @@ public class TimedSpikes : MonoBehaviour
     [Range(0,1)][SerializeField] float moveUpVol;
     [SerializeField] AudioClip moveDownSound;
     [Range(0, 1)][SerializeField] float moveDownVol;
+    [SerializeField] GameObject alertBox; 
 
     float timer;
     float t;
@@ -30,13 +31,22 @@ public class TimedSpikes : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if (!isUp && timer >= downDuration && !moving)
+
+        if (!isUp && (timer >= downDuration/1.15 && timer < downDuration)) // && !moving)
         {
+            alertBox.SetActive(true);
+        }
+
+
+        else if (!isUp && timer >= downDuration && !moving)
+        {
+            alertBox.SetActive(false);
             origPos = transform.position;
             newPos = origPos + new Vector3(0, height, 0);
             moving = true;
             if (audSource)
             {
+                
                 audSource.PlayOneShot(moveUpSound, moveUpVol);
             }
         }
