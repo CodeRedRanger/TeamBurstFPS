@@ -68,7 +68,7 @@ public class ButtonFunctions : MonoBehaviour
     public void quit()
     {
         //reset you items
-        gameManager.instance.ResetAllItems(); 
+        gameManager.instance.ResetAllItems();
 
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
@@ -76,7 +76,8 @@ public class ButtonFunctions : MonoBehaviour
            //For Windows build
            Application.Quit(); //note: won't work in editor, only in build  
 #elif UNITY_WEBGL
-           //for web build, go to main menu
+           //for web build, go to main menu (scene 1), optionally can do nothing
+           //be sure to set dimensions on itch to 1024 x 768 or auto detect for unity project
            SceneManager.LoadScene(1);
 #endif
     }
