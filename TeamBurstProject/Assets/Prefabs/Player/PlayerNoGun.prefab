@@ -14875,6 +14875,8 @@ GameObject:
   - component: {fileID: 5023131673898383478}
   - component: {fileID: 4303995708361711129}
   - component: {fileID: 5750982051429336567}
+  - component: {fileID: 8267205543149958235}
+  - component: {fileID: 9003358100776337323}
   m_Layer: 3
   m_Name: PlayerNoGun
   m_TagString: Player
@@ -14966,6 +14968,7 @@ MonoBehaviour:
   audRechargePromptVol: 1
   gunList: []
   gunListPos: 0
+  weaponAnim: {fileID: 9003358100776337323}
   gunModel: {fileID: 4857354596902830145}
 --- !u!114 &4286662896927773134
 MonoBehaviour:
@@ -15109,6 +15112,41 @@ MonoBehaviour:
     m_Bits: 0
   canPush: 1
   power: 2
+--- !u!95 &8267205543149958235
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4104817386659849295}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8a4cc44766d92fb49ab94b924a63f28a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &9003358100776337323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4104817386659849295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f806440a03971d24c8d3d92def331865, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponAnimator
+  anim: {fileID: 8267205543149958235}
 --- !u!1 &4857354596902830145
 GameObject:
   m_ObjectHideFlags: 0

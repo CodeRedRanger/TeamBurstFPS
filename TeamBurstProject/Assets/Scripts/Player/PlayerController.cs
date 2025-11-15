@@ -103,6 +103,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
     //GUN LIST
     [SerializeField] public List<GunData> gunList = new List<GunData>();
     [HideInInspector] public int gunListPos;
+    [SerializeField] WeaponAnimator weaponAnim;
 
     //Moved to Game Manager
     //[HideInInspector] public bool hasPistol;
@@ -329,6 +330,8 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
         //I added this if statement to lecture code
         if (gunList.Count > 0 && gunList[gunListPos].ammoCur > 0)
         {
+            weaponAnim.OnShoot();
+
             gunList[gunListPos].ammoCur--;
 
             if (gunList[gunListPos].ammoCur == 0)
