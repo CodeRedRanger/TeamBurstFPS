@@ -238,11 +238,17 @@ public class gameManager : MonoBehaviour
         timeScaleOrig = Time.timeScale;
         currentScene = SceneManager.GetActiveScene();
 
+        if (currentScene.buildIndex == company)
+        {
+            ResetAllItems();
+        }
+
+
         //Need if statement so this doesn't fire during main menu
         //But is needed if testing, starting from level 1
 
         if (currentScene.buildIndex == mainMenu || currentScene.buildIndex == credits || currentScene.buildIndex == options)
-            //|| currentScene.buildIndex == company)
+            //|| currentScene.buildIndex == company) //Must have delta time for company menu for fade in
         {
 
             
@@ -398,7 +404,12 @@ public class gameManager : MonoBehaviour
             SoundManager.Instance.masterMixer.SetFloat("MusicVolume", currentMusicVolume);
 
             if (currentScene.buildIndex != mainMenu && currentScene.buildIndex != credits && currentScene.buildIndex != options)
-            SoundManager.Instance.PlayMusic(BGMusic);
+            {
+                if (BGMusic != null)
+                {
+                    SoundManager.Instance.PlayMusic(BGMusic);
+                }
+            }
 
         }
         else
