@@ -570,6 +570,7 @@ public class gameManager : MonoBehaviour
             if(playerScript.gunList.Count > 0)
             {
                 reticle.SetActive(true); 
+                reticleScript.Refresh();
             }
         }
 
