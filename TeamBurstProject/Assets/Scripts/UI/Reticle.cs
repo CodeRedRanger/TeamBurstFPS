@@ -134,5 +134,10 @@ public class Reticle : MonoBehaviour
         reloadReticle.enabled = false;
         ammoDepletedReticle.enabled = false;
     }
+
+    public bool IsReloading()
+    {
+        return anim.GetCurrentAnimatorStateInfo(0).IsName("Reload");
+    }
 }
 

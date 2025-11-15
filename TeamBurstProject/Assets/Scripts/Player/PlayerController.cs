@@ -324,6 +324,8 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
     }
     void Shoot()
     {
+        if (Reticle.instance.IsReloading()) return;
+
         shootTimer = 0;
         Reticle.instance.PlayShoot();
 
@@ -560,6 +562,8 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
 
     void selectGun()
     {
+        if (Reticle.instance.IsReloading()) return;
+
         if (Input.GetAxis("Mouse ScrollWheel") > 0 && gunListPos < gunList.Count - 1)
         {
             gunListPos++;
