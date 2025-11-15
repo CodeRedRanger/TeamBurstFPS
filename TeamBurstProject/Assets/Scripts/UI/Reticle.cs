@@ -32,7 +32,7 @@ public class Reticle : MonoBehaviour
 
     public void UpdateFireRateIndicator()
     {
-        if (currentGunData != null && gameManager.instance.playerScript.shootTimer < currentGunData.shootRate)
+        if (currentGunData != null && gameManager.instance.playerScript.shootTimer < currentGunData.shootRate && !ammoDepletedReticle.enabled)
         {
             fireRateIndicator.transform.localScale = new Vector3(gameManager.instance.playerScript.shootTimer / currentGunData.shootRate, 1, 1);
             fireRateIndicator.enabled = true;
@@ -47,7 +47,7 @@ public class Reticle : MonoBehaviour
         if (currentGunData != null && currentGunData.ammoCur > 0)
         {
             PlayAnimation("Shoot", currentGunData.reticleAnimSpeed);
-            if(currentGunData.showFireRateIndicator) fireRateIndicator.enabled = true;
+            if(currentGunData.showFireRateIndicator && !ammoDepletedReticle.enabled) fireRateIndicator.enabled = true;
         }
     }
 
