@@ -8,16 +8,22 @@ public class TimedSpikes : MonoBehaviour
     [SerializeField] float moveUpTime = 0.1f;
     [SerializeField] float height = 2.8f;
 
+    [SerializeField] AudioClip moveUpSound;
+    [Range(0,1)][SerializeField] float moveUpVol;
+    [SerializeField] AudioClip moveDownSound;
+    [Range(0, 1)][SerializeField] float moveDownVol;
+
     float timer;
     float t;
     bool isUp;
     bool moving;
     Vector3 origPos;
     Vector3 newPos;
+    AudioSource audSource;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        audSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -29,12 +35,20 @@ public class TimedSpikes : MonoBehaviour
             origPos = transform.position;
             newPos = origPos + new Vector3(0, height, 0);
             moving = true;
+            if (audSource && audSource.clip)
+            {
+                audSource.PlayOneShot(moveUpSound, moveUpVol);
+            }
         }
         else if (isUp && timer >= upDuration && !moving)
         {
             origPos = transform.position;
             newPos = origPos + new Vector3(0, -height, 0);
             moving = true;
+            if (audSource && audSource.clip)
+            {
+                audSource.PlayOneShot(moveDownSound, moveDownVol);
+            }
         }
 
         if (moving)
