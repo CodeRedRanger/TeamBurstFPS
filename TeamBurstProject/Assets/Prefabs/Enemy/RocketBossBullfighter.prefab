@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2992080968967259050}
   - component: {fileID: 5548220979187191518}
   - component: {fileID: 4982681674520320145}
+  - component: {fileID: 8013278059264783627}
   m_Layer: 7
   m_Name: RocketBossBullfighter
   m_TagString: Enemy
@@ -183,7 +184,30 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 2
+  m_Radius: 20
+  m_Center: {x: 0.00000011920929, y: 0.11620098, z: -0.086000636}
+--- !u!136 &8013278059264783627
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3000937290683550600}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.3811352
+  m_Height: 1.5277932
+  m_Direction: 1
   m_Center: {x: 0.00000011920929, y: 0.11620098, z: -0.086000636}
 --- !u!1 &5952390471043712884
 GameObject:
@@ -196,7 +220,7 @@ GameObject:
   - component: {fileID: 6051927077214612514}
   - component: {fileID: 3494123879230861051}
   - component: {fileID: 8869334364256880416}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: DOT Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}

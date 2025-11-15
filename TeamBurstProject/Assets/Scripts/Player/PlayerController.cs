@@ -515,7 +515,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
     //*********************** Gun Methods **********************
     void reload()
     {
-        if (Input.GetButtonDown("Reload") && gunList[gunListPos].ammoCur < gunList[gunListPos].ammoMax)
+        if (Input.GetButtonDown("Reload") && gunList.Count > 0 && gunList[gunListPos].ammoCur < gunList[gunListPos].ammoMax)
         {
             gunList[gunListPos].ammoCur = gunList[gunListPos].ammoMax;
             //I added to lecture code

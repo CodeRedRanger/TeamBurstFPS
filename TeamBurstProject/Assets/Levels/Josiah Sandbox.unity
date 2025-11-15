@@ -119,6 +119,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &121453356
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2419970718338169425, guid: ded1fb2b9bd90e8409310dab4bab8d0f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.22160244
+      objectReference: {fileID: 0}
+    - target: {fileID: 2419970718338169425, guid: ded1fb2b9bd90e8409310dab4bab8d0f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 2419970718338169425, guid: ded1fb2b9bd90e8409310dab4bab8d0f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.5526466
+      objectReference: {fileID: 0}
+    - target: {fileID: 2419970718338169425, guid: ded1fb2b9bd90e8409310dab4bab8d0f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2419970718338169425, guid: ded1fb2b9bd90e8409310dab4bab8d0f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2419970718338169425, guid: ded1fb2b9bd90e8409310dab4bab8d0f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2419970718338169425, guid: ded1fb2b9bd90e8409310dab4bab8d0f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2419970718338169425, guid: ded1fb2b9bd90e8409310dab4bab8d0f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2419970718338169425, guid: ded1fb2b9bd90e8409310dab4bab8d0f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2419970718338169425, guid: ded1fb2b9bd90e8409310dab4bab8d0f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8360401713814996041, guid: ded1fb2b9bd90e8409310dab4bab8d0f, type: 3}
+      propertyPath: m_Name
+      value: AlienPurple
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ded1fb2b9bd90e8409310dab4bab8d0f, type: 3}
 --- !u!4 &257164694 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3428128738423174884, guid: 261811ece5f5b1d4794b029171a2f229, type: 3}
@@ -524,6 +581,70 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6981667708146631894, guid: c30f7420983094f44bc278d874031452, type: 3}
   m_PrefabInstance: {fileID: 1206061349}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &738036452
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 738036454}
+  - component: {fileID: 738036453}
+  m_Layer: 0
+  m_Name: NavMesh Surface
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &738036453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738036452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: e5cb8934b42c34447a305fe025eabd1a, type: 2}
+  m_BuildHeightMesh: 0
+--- !u!4 &738036454
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738036452}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &782884184
 GameObject:
   m_ObjectHideFlags: 0
@@ -1214,6 +1335,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fixed Rotation Turret
       objectReference: {fileID: 0}
+    - target: {fileID: 6693065669167918445, guid: b8b2258b83f75a2419b34d021ee257a3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9200626107055582051, guid: b8b2258b83f75a2419b34d021ee257a3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -500.93933
@@ -1898,3 +2023,5 @@ SceneRoots:
   - {fileID: 294149442}
   - {fileID: 782884185}
   - {fileID: 917740543}
+  - {fileID: 121453356}
+  - {fileID: 738036454}

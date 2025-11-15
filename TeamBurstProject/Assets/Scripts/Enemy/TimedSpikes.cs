@@ -35,7 +35,7 @@ public class TimedSpikes : MonoBehaviour
             origPos = transform.position;
             newPos = origPos + new Vector3(0, height, 0);
             moving = true;
-            if (audSource && audSource.clip)
+            if (audSource)
             {
                 audSource.PlayOneShot(moveUpSound, moveUpVol);
             }
@@ -45,7 +45,7 @@ public class TimedSpikes : MonoBehaviour
             origPos = transform.position;
             newPos = origPos + new Vector3(0, -height, 0);
             moving = true;
-            if (audSource && audSource.clip)
+            if (audSource)
             {
                 audSource.PlayOneShot(moveDownSound, moveDownVol);
             }
