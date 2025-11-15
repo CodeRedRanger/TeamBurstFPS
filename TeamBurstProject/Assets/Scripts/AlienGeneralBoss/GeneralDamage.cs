@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class GeneralDamage : MonoBehaviour, IDamage
 {
@@ -12,9 +13,12 @@ public class GeneralDamage : MonoBehaviour, IDamage
     private Color colorOrig;
     private bool isInvulnerable = false;
 
+    private int maxHealth;
+
     void Start()
     {
         colorOrig = model.material.color;
+        maxHealth = health;
     }
     public void Heal(int amount)
     {
@@ -32,12 +36,16 @@ public class GeneralDamage : MonoBehaviour, IDamage
         {
             finalGoal.SetActive(true);
             SoundManager.Instance.PlayEffect(deathSound, 1);
+            gameManager.instance.bossHPBar.transform.parent.gameObject.SetActive(false);
             Destroy(gameObject);
         }
         else
         {
             StartCoroutine(flashRed());
             SoundManager.Instance.PlayEffect(damageSound, 1);
+            float normalizedHealth = (float)health / maxHealth;
+            Debug.Log(normalizedHealth);
+            gameManager.instance.bossHPBar.GetComponent<Image>().fillAmount = normalizedHealth;
         }
 
     }
@@ -46,13 +54,14 @@ public class GeneralDamage : MonoBehaviour, IDamage
     {
         isInvulnerable = true;
         gameObject.GetComponentInChildren<Renderer>().material.color = new Color(0, 0, 1);
+        gameManager.instance.bossHPBar.GetComponent<Image>().color = new Color(0, 0, 1);
     }
 
     public void MakeVulnerable()
     {
         isInvulnerable = false;
         gameObject.GetComponentInChildren<Renderer>().material.color = colorOrig;
-        Debug.Log("Called MakeVulnerable");
+        gameManager.instance.bossHPBar.GetComponent<Image>().color = new Color(1, 0, 0);
     }
 
     IEnumerator flashRed()
