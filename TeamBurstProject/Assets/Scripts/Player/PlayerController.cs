@@ -103,6 +103,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
     //GUN LIST
     [SerializeField] public List<GunData> gunList = new List<GunData>();
     [HideInInspector] public int gunListPos;
+    [SerializeField] WeaponAnimator weaponAnim;
 
     //Moved to Game Manager
     //[HideInInspector] public bool hasPistol;
@@ -323,12 +324,16 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
     }
     void Shoot()
     {
+        if (Reticle.instance.IsReloading()) return;
+
         shootTimer = 0;
         Reticle.instance.PlayShoot();
 
         //I added this if statement to lecture code
         if (gunList.Count > 0 && gunList[gunListPos].ammoCur > 0)
         {
+            weaponAnim.OnShoot();
+
             gunList[gunListPos].ammoCur--;
 
             if (gunList[gunListPos].ammoCur == 0)
@@ -557,6 +562,8 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
 
     void selectGun()
     {
+        if (Reticle.instance.IsReloading()) return;
+
         if (Input.GetAxis("Mouse ScrollWheel") > 0 && gunListPos < gunList.Count - 1)
         {
             gunListPos++;
