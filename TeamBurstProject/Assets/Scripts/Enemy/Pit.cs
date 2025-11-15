@@ -24,7 +24,10 @@ public class Pit : MonoBehaviour
 
     IEnumerator killPlayer()
     {
-        SoundManager.Instance.PlayEffect(playerFalling, playerFallingVol);
+        if (playerFalling != null)
+        {
+            SoundManager.Instance.PlayEffect(playerFalling, playerFallingVol);
+        }
         yield return new WaitForSeconds(killPlayerDelay);
         gameManager.instance.player.GetComponent<PlayerController>().instantDeath();
     }
@@ -33,8 +36,15 @@ public class Pit : MonoBehaviour
     {
         AudioSource tempAudSource = other.AddComponent<AudioSource>();
         tempAudSource.spatialBlend = 1f;
-        tempAudSource.PlayOneShot(objectFalling, objectFallingVol);
-        yield return new WaitForSeconds(objectFalling.length);
+
+
+        //Need to add audiosource to objects?
+        if (objectFalling != null)
+        {
+            tempAudSource.PlayOneShot(objectFalling, objectFallingVol);
+
+            yield return new WaitForSeconds(objectFalling.length);
+        }
         Destroy(other);
     }
         

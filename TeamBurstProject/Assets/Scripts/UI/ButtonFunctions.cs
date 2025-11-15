@@ -9,20 +9,31 @@ using System.Collections;
 public class ButtonFunctions : MonoBehaviour
 {
     //make enum later
-    private int mainMenu = 0;
-    private int playground = 1;
-    //private int library = 2;
-    //private int lunchroom = 5;
-    //private int launchpad = 6;
-    //private int alienship = 4;
-    private int credits = 6;
-    //private int options = 7;
-    private int company = 8;
+    private int mainMenu = 1;
+    private int playground = 2;
+    //private int library = 3;
+    //private int lunchroom = 4;
+    //private int launchpad = 5;
+    //private int alienship = 6;
+    private int credits = 7;
+    //private int options = 8;
+    private int company = 0;
 
     //below is not needed. You can just call current scene from game manager
     Scene currentScene;
     [SerializeField] AudioClip nonStartButtonSound;
     [SerializeField] AudioClip StartButtonSound;
+
+    void Update()
+    {
+        
+        if(gameManager.instance.currentScene.buildIndex == company && Input.GetButtonDown("Cancel"))
+        {
+            loadLevel(mainMenu);
+        }
+
+
+    }
 
 
     public void resume()
@@ -57,15 +68,17 @@ public class ButtonFunctions : MonoBehaviour
     public void quit()
     {
         //reset you items
-        gameManager.instance.ResetAllItems(); 
+        gameManager.instance.ResetAllItems();
 
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
-#else
+#elif UNITY_STANDALONE
            //For Windows build
            Application.Quit(); //note: won't work in editor, only in build  
-           //for web build
-           //SceneManager.LoadScene(0);
+#elif UNITY_WEBGL
+           //for web build, go to main menu (scene 1), optionally can do nothing
+           //be sure to set dimensions on itch to 1024 x 768 or auto detect for unity project
+           SceneManager.LoadScene(1);
 #endif
     }
 
@@ -145,9 +158,11 @@ public class ButtonFunctions : MonoBehaviour
         else if (lvl == mainMenu)
         {
 
-           
-            SoundManager.Instance.PlayEffect(nonStartButtonSound, 1f);
-            yield return new WaitForSeconds(0.2f);
+            if (gameManager.instance.currentScene.buildIndex != company)
+            {
+                SoundManager.Instance.PlayEffect(nonStartButtonSound, 1f);
+                yield return new WaitForSeconds(0.2f);
+            }
 
             if (gameManager.instance.currentScene.buildIndex != credits)
                 SoundManager.Instance.StopMusic();
@@ -158,10 +173,10 @@ public class ButtonFunctions : MonoBehaviour
         }
         else if (lvl != company)
         {
-            SoundManager.Instance.PlayEffect(nonStartButtonSound, 1f);
-            yield return new WaitForSeconds(0.2f);
-            SceneManager.LoadScene(lvl);
-
+          
+                SoundManager.Instance.PlayEffect(nonStartButtonSound, 1f);
+                yield return new WaitForSeconds(0.2f);
+                SceneManager.LoadScene(lvl);
         }
         else
         {
