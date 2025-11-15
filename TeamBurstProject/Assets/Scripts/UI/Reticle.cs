@@ -81,6 +81,7 @@ public class Reticle : MonoBehaviour
         if (currentGunData == null) return;
         bool _hasAmmo = currentGunData.ammoCur > 0;
         // set correct reticles visible
+        gameManager.instance.SetAmmoIcon(gameManager.instance.playerScript.gunList[gameManager.instance.playerScript.gunListPos].ammoIcon);
         fireRateIndicator.enabled = true;
         reloadReticle.enabled = false;
         fixedReticle.enabled = _hasAmmo;
