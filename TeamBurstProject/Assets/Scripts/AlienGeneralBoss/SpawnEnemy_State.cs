@@ -14,12 +14,12 @@ public class SpawnEnemy_State : FiniteState
 
     public void SpawnEnemies()
     {
-        gameObject.GetComponentInChildren<Spawner>().StartSpawning();
+        gameObject.GetComponentInChildren<BossSoldierSpawner>().StartSpawning();
     }
 
     public void MoveToNextState()
     {
-        gameObject.GetComponentInChildren<Spawner>().ResetSpawning();
+        gameObject.GetComponentInChildren<BossSoldierSpawner>().ResetSpawning();
         fsMachine.ChangeToState(nextState);
     }
 }

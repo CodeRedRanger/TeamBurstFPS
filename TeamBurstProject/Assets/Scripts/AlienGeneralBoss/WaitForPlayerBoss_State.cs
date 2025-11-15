@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WaitForPlayerBoss_State : FiniteState
 {
@@ -10,6 +11,8 @@ public class WaitForPlayerBoss_State : FiniteState
 
         if (other.CompareTag("Player"))
         {
+            gameManager.instance.bossHPBar.transform.parent.gameObject.SetActive(true);
+            gameManager.instance.bossHPBar.GetComponent<Image>().fillAmount = 1;
             fsMachine.ChangeToState(nextState);
         }
     }
