@@ -27,7 +27,7 @@ public class ButtonFunctions : MonoBehaviour
     void Update()
     {
         
-        if(gameManager.instance.currentScene.buildIndex == company && Input.GetButtonDown("Cancel"))
+        if(gameManager.instance.currentScene.buildIndex == company && (Input.GetButtonDown("Cancel") || Input.GetButtonDown("Pause")))
         {
             loadLevel(mainMenu);
         }
