@@ -11,6 +11,7 @@ public class fpsCap : MonoBehaviour
 #if UNITY_EDITOR
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = frameRate;
+
 #endif
     }
 }
