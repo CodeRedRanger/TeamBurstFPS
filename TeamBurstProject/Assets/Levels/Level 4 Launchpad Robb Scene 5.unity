@@ -89867,6 +89867,7 @@ Transform:
   m_LocalScale: {x: 4.0380034, y: 4.0380034, z: 4.0380034}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1734321774}
   - {fileID: 3816938924209841558}
   - {fileID: 1280521573}
   - {fileID: 5971841330451052441}
@@ -173892,7 +173893,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6911949012190218168, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7960765845458495462, guid: d79747c924bccd14fb09e1492d95b20e, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -250653,7 +250654,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 621818833}
     m_Modifications:
     - target: {fileID: 2174359848878980, guid: 8c4159b364bc7da44a753e0a2bfa4373, type: 3}
       propertyPath: m_Name
@@ -250661,27 +250662,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3694635292742387304, guid: 8c4159b364bc7da44a753e0a2bfa4373, type: 3}
       propertyPath: m_LocalScale.x
-      value: 5
+      value: 1.2382356
       objectReference: {fileID: 0}
     - target: {fileID: 3694635292742387304, guid: 8c4159b364bc7da44a753e0a2bfa4373, type: 3}
       propertyPath: m_LocalScale.y
-      value: 5
+      value: 1.2382357
       objectReference: {fileID: 0}
     - target: {fileID: 3694635292742387304, guid: 8c4159b364bc7da44a753e0a2bfa4373, type: 3}
       propertyPath: m_LocalScale.z
-      value: 5
+      value: 1.2382356
       objectReference: {fileID: 0}
     - target: {fileID: 3694635292742387304, guid: 8c4159b364bc7da44a753e0a2bfa4373, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -199.23
+      value: -50.125584
       objectReference: {fileID: 0}
     - target: {fileID: 3694635292742387304, guid: 8c4159b364bc7da44a753e0a2bfa4373, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 761.3249
+      value: 187.83414
       objectReference: {fileID: 0}
     - target: {fileID: 3694635292742387304, guid: 8c4159b364bc7da44a753e0a2bfa4373, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -254.14935
+      value: -54.01531
       objectReference: {fileID: 0}
     - target: {fileID: 3694635292742387304, guid: 8c4159b364bc7da44a753e0a2bfa4373, type: 3}
       propertyPath: m_LocalRotation.w
@@ -250736,6 +250737,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d66c8d5a01528dc438bb027403fc7fce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LaunchPadBoss
+--- !u!4 &1734321774 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3694635292742387304, guid: 8c4159b364bc7da44a753e0a2bfa4373, type: 3}
+  m_PrefabInstance: {fileID: 1734321771}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1735359604
 GameObject:
   m_ObjectHideFlags: 0
@@ -312821,4 +312827,3 @@ SceneRoots:
   - {fileID: 1369687488}
   - {fileID: 824408342}
   - {fileID: 1535290941}
-  - {fileID: 1734321771}
