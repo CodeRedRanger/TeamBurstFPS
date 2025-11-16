@@ -16,7 +16,7 @@ public class PlayerPickupRobb : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * range, Color.red);
+        //Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * range, Color.red);
         detectItem();
     }
 

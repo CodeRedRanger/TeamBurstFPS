@@ -18,7 +18,7 @@ public class SpinShoot_State : FiniteState
     {
         base.OnEnter(_calledByMachine);
         shootTimer = 0;
-        Debug.Log("Entered Spin Shoot State");
+        //Debug.Log("Entered Spin Shoot State");
         anim.Play(animationToPlay);
     }
 

@@ -44,7 +44,7 @@ public class GeneralDamage : MonoBehaviour, IDamage
             StartCoroutine(flashRed());
             SoundManager.Instance.PlayEffect(damageSound, 1);
             float normalizedHealth = (float)health / maxHealth;
-            Debug.Log(normalizedHealth);
+            //Debug.Log(normalizedHealth);
             gameManager.instance.bossHPBar.GetComponent<Image>().fillAmount = normalizedHealth;
         }
 

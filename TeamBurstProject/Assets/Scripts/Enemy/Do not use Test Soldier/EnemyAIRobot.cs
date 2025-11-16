@@ -103,7 +103,7 @@ public class EnemyAIRobot : MonoBehaviour, IDamage, IStunnable
         playerDir = gameManager.instance.player.transform.position - headPos.position;
         angleToPlayer = Vector3.Angle(playerDir, transform.forward);
         //Debug.Log("Drawing a ray"); 
-        Debug.DrawRay(headPos.position, playerDir, Color.red, 2f);
+        //Debug.DrawRay(headPos.position, playerDir, Color.red, 2f);
 
         RaycastHit hit;
 

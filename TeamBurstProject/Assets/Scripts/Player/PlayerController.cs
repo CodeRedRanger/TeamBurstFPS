@@ -131,7 +131,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
 
     void Update()
     {
-        Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.yellow);
+        //Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.yellow);
 
         shootTimer += Time.deltaTime;
 

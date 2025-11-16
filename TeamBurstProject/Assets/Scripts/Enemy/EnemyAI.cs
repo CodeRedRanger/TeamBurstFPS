@@ -99,7 +99,7 @@ public class EnemyAI : MonoBehaviour, IDamage, IStunnable
     {
         playerDir = gameManager.instance.player.transform.position - headPos.position;
         angleToPlayer = Vector3.Angle(playerDir, transform.forward);
-        Debug.DrawRay(headPos.position, playerDir, Color.red);
+        //Debug.DrawRay(headPos.position, playerDir, Color.red);
 
         RaycastHit hit;
 
