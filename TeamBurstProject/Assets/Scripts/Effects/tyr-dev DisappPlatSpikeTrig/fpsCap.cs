@@ -12,6 +12,10 @@ public class fpsCap : MonoBehaviour
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = frameRate;
 
+#else
+    //added to eliminate warning for unused variable. 
+    frameRate = 60; 
+
 #endif
     }
 }

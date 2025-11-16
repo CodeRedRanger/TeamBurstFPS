@@ -76,9 +76,9 @@ public class ButtonFunctions : MonoBehaviour
            //For Windows build
            Application.Quit(); //note: won't work in editor, only in build  
 #elif UNITY_WEBGL
-           //for web build, go to main menu (scene 1), optionally can do nothing
+           //for web build, do nothing; optionally can go to main menu (scene 1), but then need to play main menu song
            //be sure to set dimensions on itch to 1024 x 768 or auto detect for unity project
-           SceneManager.LoadScene(1);
+           //SceneManager.LoadScene(1);
 #endif
     }
 
