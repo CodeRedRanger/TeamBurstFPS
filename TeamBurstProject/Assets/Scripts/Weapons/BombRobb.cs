@@ -57,7 +57,28 @@ public class BombRobb : MonoBehaviour
 
     IEnumerator BombTimer()
     {
-        yield return new WaitForSeconds(timer);
+       
+        Renderer [] bombRenderer = GetComponentsInChildren<Renderer>();
+        Color origColor;  
+
+        if(bombRenderer != null)
+        {
+            foreach (Renderer renderer in bombRenderer)
+                origColor = renderer.material.color;
+            
+            yield return new WaitForSeconds(timer * 0.75f);
+            
+            foreach (Renderer renderer in bombRenderer)
+                renderer.material.color = Color.red;
+            
+            yield return new WaitForSeconds(timer * 0.25f);
+
+        }
+        else 
+        {
+            yield return new WaitForSeconds(timer);
+        }
+        
         Explode();
     }
 }
