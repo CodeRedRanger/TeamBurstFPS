@@ -11,7 +11,7 @@ public class ButtonFunctions : MonoBehaviour
     //make enum later
     private int mainMenu = 1;
     private int playground = 2;
-    //private int library = 3;
+    private int library = 3;
     //private int lunchroom = 4;
     //private int launchpad = 5;
     //private int alienship = 6;
@@ -84,9 +84,16 @@ public class ButtonFunctions : MonoBehaviour
 
     public void respawn()
     {
-        SoundManager.Instance.PlayEffect(nonStartButtonSound, 1f);
-        gameManager.instance.playerScript.spawnPlayer();
-        gameManager.instance.stateUnpause();
+        if (gameManager.instance.currentScene.buildIndex == library && gameManager.instance.libraryCheckpoint == false)
+        {
+            restartLevel();
+        }
+        else
+        {
+            SoundManager.Instance.PlayEffect(nonStartButtonSound, 1f);
+            gameManager.instance.playerScript.spawnPlayer();
+            gameManager.instance.stateUnpause();
+        }
     }
 
     //continue button

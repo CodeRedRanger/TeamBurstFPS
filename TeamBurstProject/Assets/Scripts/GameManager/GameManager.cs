@@ -70,7 +70,10 @@ public class gameManager : MonoBehaviour
     int gameGoalCount;
 
     //credits screen
-    [SerializeField] public GameObject assetsPopup; 
+    [SerializeField] public GameObject assetsPopup;
+
+    //library variable
+    [HideInInspector] public bool libraryCheckpoint = false;
 
     //Kids rescued for lunchroom
     int kidsRescued;

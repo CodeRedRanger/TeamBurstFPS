@@ -49,8 +49,12 @@ public class EnemyAIRoam : MonoBehaviour, IDamage, IStunnable
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        //Renderer renderer = model.GetComponent<Renderer>();
+
+        //if (renderer != null)
+          //colorOrig = renderer.material.color; 
         colorOrig = model.material.color;
+
         gameManager.instance.updateGameGoal(1);
         animator = GetComponent<Animator>();
         stoppingDistOrig = agent.stoppingDistance; //store original stopping distance

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Jetpack : MonoBehaviour
 {
@@ -28,7 +29,7 @@ public class Jetpack : MonoBehaviour
     private float verticalSpeed = 0f;
 
     //Restrictions
-    //[SerializeField] private float maxHeight = 250f; // Maximum height the player can reach
+    private float maxHeight = 950f; // Maximum height the player can reach
     //private Transform playerTransform;
 
     private PlayerController playerScript;
@@ -84,14 +85,14 @@ public class Jetpack : MonoBehaviour
     {
         if (isThrusting)
         {
-            //if (playerTransform.position.y < maxHeight)
+            if (transform.position.y < maxHeight)
             {
                 verticalSpeed += thrustSpeed * Time.fixedDeltaTime;
                 verticalSpeed = Mathf.Clamp(verticalSpeed, 0, maxUpwardSpeed);
             }
-           // else
+            else
             {
-                //verticalSpeed = Mathf.Min(verticalSpeed, 0); // Prevent further upward movement
+                verticalSpeed = Mathf.Min(verticalSpeed, 0); // Prevent further upward movement
             }
         }
         else

@@ -6,7 +6,8 @@ public class checkpoint : MonoBehaviour
     [SerializeField] Renderer model;
     Color colorOrg;
 
-    [SerializeField] AudioClip checkpointSound; 
+    [SerializeField] AudioClip checkpointSound;
+    private int libraryLevel = 3; 
 
     private void Start()
     {
@@ -16,8 +17,13 @@ public class checkpoint : MonoBehaviour
     {
         if(other.CompareTag("Player") && gameManager.instance.playerSpawnPos.transform.position != transform.position)
         {
+            if (gameManager.instance.currentScene.buildIndex == libraryLevel)
+            {
+                gameManager.instance.libraryCheckpoint = true;
+            }
+
             gameManager.instance.playerSpawnPos.transform.position = transform.position;
-            SoundManager.Instance.PlayEffect(checkpointSound, 1); 
+            SoundManager.Instance.PlayEffect(checkpointSound, 1);
             StartCoroutine(checkpointFeedback());
         }
     }
