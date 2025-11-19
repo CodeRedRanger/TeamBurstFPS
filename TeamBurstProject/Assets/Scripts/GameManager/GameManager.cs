@@ -183,7 +183,9 @@ public class gameManager : MonoBehaviour
     [SerializeField] public GameObject reticle;
     [SerializeField] private Image ammoIcon;
     [SerializeField] Reticle reticleScript;
-   
+    [SerializeField] public GameObject rechargePopup; 
+
+
 
 
     //Level specific popups

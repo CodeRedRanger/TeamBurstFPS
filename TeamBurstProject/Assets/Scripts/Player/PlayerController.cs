@@ -332,6 +332,8 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
         //I added this if statement to lecture code
         if (gunList.Count > 0 && gunList[gunListPos].ammoCur > 0)
         {
+            gameManager.instance.rechargePopup.SetActive(false);
+
             weaponAnim.OnShoot();
 
             gunList[gunListPos].ammoCur--;
@@ -339,6 +341,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
             if (gunList[gunListPos].ammoCur == 0)
             {
                 SoundManager.Instance.PlayEffect(audRechargePrompt, audRechargePromptVol);
+                gameManager.instance.rechargePopup.SetActive(true); 
 
             }
 
