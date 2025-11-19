@@ -79,19 +79,22 @@ public class gameManager : MonoBehaviour
     int kidsRescued;
     [SerializeField] TMP_Text kidsRescuedText;
 
-    //Keys collected for launchpad level
-    public GameObject keysCollected;
-    [HideInInspector] public int keysRequired; //set below in Awake for launchpad level
-    [HideInInspector] public int keysCount;
-    [SerializeField] TMP_Text keysCollectedText;
 
     //Keys collected for lunchroom level
     public GameObject tryDoorPopup;
     [HideInInspector] public int keysFor3KeyDoor = 3;
     public TMP_Text keysFor3KeyDoorText;
 
+    //Keys collected for launchpad level
+    public GameObject keysCollected;
+    [HideInInspector] public int keysRequired; //set below in Awake for launchpad level
+    [HideInInspector] public int keysCount;
+    [SerializeField] TMP_Text keysCollectedText;
+    public GameObject moreKeysNeededPopup;
     //For launchpad boss
-    [HideInInspector] public bool launchpadBossKilled; 
+    [HideInInspector] public bool launchpadBossKilled;
+    
+
 
     //Soldiers killed for alien spaceship
     [HideInInspector] public int soldiersToKill;

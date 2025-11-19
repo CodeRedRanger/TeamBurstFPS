@@ -21,6 +21,11 @@ public class YouWin : MonoBehaviour
             if (gameManager.instance.currentScene.buildIndex == launchpadLevel && (gameManager.instance.keysRequired > gameManager.instance.keysCount 
                 || gameManager.instance.launchpadBossKilled == false))
             {
+                if (gameManager.instance.keysRequired > gameManager.instance.keysCount)
+                {
+                    StartCoroutine(NotEnoughKeys()); 
+                }
+
                 return; 
             }
 
@@ -42,13 +47,22 @@ public class YouWin : MonoBehaviour
             {
                 gameManager.instance.youWinEnd(); 
             }
-            
 
         }
-    }
 
    
 
+    }
+
+    public IEnumerator NotEnoughKeys()
+    {
+
+        gameManager.instance.moreKeysNeededPopup.SetActive(true);
+        yield return new WaitForSeconds(2.0f);
+        gameManager.instance.moreKeysNeededPopup.SetActive(false);
+
+    }
 
 
-   }
+
+}
