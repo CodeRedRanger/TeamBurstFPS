@@ -520,6 +520,8 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
     {
         if (Input.GetButtonDown("Reload") && gunList.Count > 0 && gunList[gunListPos].ammoCur < gunList[gunListPos].ammoMax)
         {
+            gameManager.instance.rechargePopup.SetActive(false);
+
             gunList[gunListPos].ammoCur = gunList[gunListPos].ammoMax;
             //I added to lecture code
             updatePlayerUI();
