@@ -346,7 +346,7 @@ public class gameManager : MonoBehaviour
                 LevelLaunchpad = false;
                 LevelCompany = false;
                 BGMusic = LibraryMusic;
-                StartCoroutine(FlashRunUI()); 
+                //StartCoroutine(FlashRunUI()); 
             }
 
             //Alien Ship
@@ -445,6 +445,12 @@ public class gameManager : MonoBehaviour
         {
             if (SoundManager.Instance != null)
                 SoundManager.Instance.PlayEffectDelayed(MainMenuSFX, 1, 0.5f);
+        }
+
+        if (currentScene.buildIndex == library)
+        {
+            if (SoundManager.Instance != null)  
+                StartCoroutine(FlashRunUI());
         }
 
         /*
@@ -945,10 +951,12 @@ public class gameManager : MonoBehaviour
 
     public IEnumerator FlashRunUI()
     {
+        
         SoundManager.Instance.PlayEffect(run, 1); 
-         runPopup.SetActive(true);
-         yield return new WaitForSeconds(3.0f);
-         runPopup.SetActive(false);
+        
+        runPopup.SetActive(true);
+        yield return new WaitForSeconds(3.0f);
+        runPopup.SetActive(false);
         
     }
     
