@@ -50,7 +50,8 @@ public class Destructible : MonoBehaviour, IDamage
         if (takeDamageEvent.GetPersistentEventCount() > 0)
             takeDamageEvent.Invoke();
         else
-            SimpleDamageFlash();
+            //SimpleDamageFlash();
+            RobbDamage(); 
 
         if (currentHP <= 0)
         {
@@ -72,7 +73,8 @@ public class Destructible : MonoBehaviour, IDamage
 
     public void PlayDamageSound()
     {
-        SoundManager.Instance.PlayEffect(damageSound, 1f);
+        if(damageSound != null) 
+            SoundManager.Instance.PlayEffect(damageSound, 1f);
     }
 
     private IEnumerator flashDamage()
@@ -93,7 +95,7 @@ public class Destructible : MonoBehaviour, IDamage
     }
     public void RobbDamage()
     {
-        flashDamage();
+        StartCoroutine(flashDamage());
         PlayDamageSound();
     }
 
@@ -118,7 +120,8 @@ public class Destructible : MonoBehaviour, IDamage
             Instantiate(destroyEffect, transform.position, Quaternion.identity);
         }
 
-        SoundManager.Instance.PlayEffect(destroySound, 1f);
+        if (destroySound != null)
+            SoundManager.Instance.PlayEffect(destroySound, 1f);
 
         SimpleDestroy();
     }
