@@ -92,6 +92,7 @@ public class ButtonFunctions : MonoBehaviour
         {
             SoundManager.Instance.PlayEffect(nonStartButtonSound, 1f);
             gameManager.instance.playerScript.spawnPlayer();
+            gameManager.instance.OnRespawn();
             gameManager.instance.stateUnpause();
         }
     }

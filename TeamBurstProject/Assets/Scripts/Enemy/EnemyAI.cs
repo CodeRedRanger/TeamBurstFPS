@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.AI;
 
-public class EnemyAI : MonoBehaviour, IDamage, IStunnable
+public class EnemyAI : MonoBehaviour, IDamage, IStunnable, ITrigger
 {
 
     public AudioClip shootSound;
@@ -14,8 +14,8 @@ public class EnemyAI : MonoBehaviour, IDamage, IStunnable
     [SerializeField] Renderer model;
     [SerializeField] NavMeshAgent agent;
     [SerializeField] int HP;
-    [SerializeField] int faceTargetSpeed; 
-
+    [SerializeField] int faceTargetSpeed;
+    [SerializeField] LayerMask canSeeLayers;
 
     [SerializeField] Transform shootPos;
     [SerializeField] GameObject bullet;
@@ -28,7 +28,7 @@ public class EnemyAI : MonoBehaviour, IDamage, IStunnable
     Color colorOrig;
 
     float shootTimer;
-
+    float raycastDistance = 100;
     float angleToPlayer; 
 
     bool playerInRange;
@@ -103,7 +103,7 @@ public class EnemyAI : MonoBehaviour, IDamage, IStunnable
 
         RaycastHit hit;
 
-        if (Physics.Raycast(headPos.position, playerDir, out hit))
+        if (Physics.Raycast(headPos.position, playerDir, out hit, raycastDistance, canSeeLayers))
         {
             //Debug.Log("Enemy is hitting " + hit.collider.name); 
 
@@ -132,7 +132,7 @@ public class EnemyAI : MonoBehaviour, IDamage, IStunnable
 
         return false; 
     }
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
@@ -140,11 +140,19 @@ public class EnemyAI : MonoBehaviour, IDamage, IStunnable
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    public void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
+        }
+    }
+
+    public void OnTriggerStay(Collider other)
+    {
+        if (!playerInRange && other.CompareTag("Player"))
+        {
+            playerInRange = true;
         }
     }
 

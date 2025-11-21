@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4985839111781579677}
   - component: {fileID: 5327962686329474742}
   - component: {fileID: 5825463684383542350}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: JetPackPickUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,10 +130,9 @@ MonoBehaviour:
   maxFuel: 100
   burnRate: 10
   regenRate: 5
+  gravity: -9.81
   jetpackFX: {fileID: 0}
-  jetpackAudio: {fileID: 5825463684383542350}
-  player: {fileID: 0}
-  playerScript: {fileID: 0}
+  jetpackClip: {fileID: 0}
 --- !u!82 &5825463684383542350
 AudioSource:
   m_ObjectHideFlags: 0

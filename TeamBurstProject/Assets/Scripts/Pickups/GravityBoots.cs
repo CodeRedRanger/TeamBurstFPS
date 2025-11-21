@@ -139,6 +139,7 @@ public class GravityBoots : MonoBehaviour
 
             gravityBoots.GetComponent<GravityBoots>().enabled = true;
             gameManager.instance.gravityBootsPopup.SetActive(true);
+            gameManager.instance.gravityBoots = gravityBoots.GetComponent<GravityBoots>();
             bootsActivated = true;
         }
 

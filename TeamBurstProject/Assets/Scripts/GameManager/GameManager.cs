@@ -194,6 +194,7 @@ public class gameManager : MonoBehaviour
     public GameObject launchpadPopup;
 
 
+    [HideInInspector] public GravityBoots gravityBoots;
     
 
     //from main menu, you don't need the actions of unpause the first time, even though it is
@@ -632,6 +633,14 @@ public class gameManager : MonoBehaviour
          firstUnpause = false;
      
 
+    }
+
+    public void OnRespawn()
+    {
+        if(gravityBoots != null)
+        {
+            gravityBoots.ResetGravity();
+        }
     }
 
 
