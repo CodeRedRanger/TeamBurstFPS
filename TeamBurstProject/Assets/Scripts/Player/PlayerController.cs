@@ -127,6 +127,16 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
         origMaxJumpSpeed = maxJumpSpeed;
         Reticle.instance.Refresh();
 
+        //Take out if causes problems
+       
+        if (gunList.Count > 0 && gunList[gunListPos].ammoCur == 0)
+        {
+            //SoundManager.Instance.PlayEffect(audRechargePrompt, audRechargePromptVol);
+            gameManager.instance.rechargePopup.SetActive(true);
+
+        }
+
+
     }
 
     void Update()
@@ -585,7 +595,19 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
 
     void changeGun()
     {
-        gameManager.instance.reticle.SetActive(true); 
+
+        if (gunList.Count > 0 && gunList[gunListPos].ammoCur == 0)
+        {
+            //SoundManager.Instance.PlayEffect(audRechargePrompt, audRechargePromptVol);
+            gameManager.instance.rechargePopup.SetActive(true);
+
+        }
+        else if (gunList.Count > 0 && gunList[gunListPos].ammoCur != 0)
+        {
+            gameManager.instance.rechargePopup.SetActive(false);
+        }
+
+            gameManager.instance.reticle.SetActive(true); 
         shootDamage = gunList[gunListPos].shootDamage;
         shootDist = gunList[gunListPos].shootDist;
         shootRate = gunList[gunListPos].shootRate;
