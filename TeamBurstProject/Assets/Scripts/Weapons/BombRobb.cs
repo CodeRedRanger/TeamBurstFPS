@@ -40,7 +40,7 @@ public class BombRobb : MonoBehaviour
             {
                 //Debug.Log("Damaging");
                 float distance = Vector3.Distance(hit.transform.position, transform.position);
-                if (distance <= explosionRadius)
+                if (distance <= explosionRadius || (hit.CompareTag("UFO") && distance <= 20))
                 {
                     damageable.TakeDamage(damage);
                     damagedEnemies.Add(damageable);
