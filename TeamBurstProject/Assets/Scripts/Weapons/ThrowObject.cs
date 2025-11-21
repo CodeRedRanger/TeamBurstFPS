@@ -9,6 +9,10 @@ public class ThrowObject : MonoBehaviour
     public KeyCode key;
     public float throwForce;
 
+    //added so can get player speed
+    public GameObject player; //reference to player object
+    public PlayerController playerScript; //reference to player script
+
     private void Start()
     {
         objectToThrowPrefab = null;
@@ -41,6 +45,13 @@ public class ThrowObject : MonoBehaviour
 
     void Throw()
     {
+        //added
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerScript = player.GetComponent<PlayerController>();
+        float playerSpeed = playerScript.speed;
+        float origThrowForce = throwForce; 
+        throwForce += playerSpeed; 
+
         GameObject thrownObject = Instantiate(objectToThrowPrefab, throwPoint.position, throwPoint.rotation);
 
         Rigidbody rb = thrownObject.GetComponent<Rigidbody>();
@@ -49,5 +60,7 @@ public class ThrowObject : MonoBehaviour
         {
             rb.AddForce(throwPoint.forward * throwForce, ForceMode.Impulse);
         }
+
+        throwForce = origThrowForce;
     }
 }
