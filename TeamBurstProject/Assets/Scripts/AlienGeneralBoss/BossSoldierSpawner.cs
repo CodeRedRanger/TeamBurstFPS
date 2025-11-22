@@ -16,7 +16,6 @@ public class BossSoldierSpawner : MonoBehaviour
     bool uniquePosition = false;
 
     //to limit on screen enemies
-    //test is 10, actual will be 18; 
     private int enemyLimit = 16;
 
 
