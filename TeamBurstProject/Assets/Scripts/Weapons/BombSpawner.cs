@@ -6,7 +6,7 @@ public class BombSpawner : MonoBehaviour
 
     public void SpawnBomb(Vector3 spawnPos)
     {
-        if (gameManager.instance.numberBombsGrenades < 5)
+        if (gameManager.instance.GetNumberBombsGrenades() < 5)
         {
             Instantiate(bombPrefab, spawnPos, Quaternion.identity);
             //update numberBombGrenade +1

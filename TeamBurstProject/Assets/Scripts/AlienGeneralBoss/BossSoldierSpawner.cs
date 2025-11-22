@@ -15,6 +15,10 @@ public class BossSoldierSpawner : MonoBehaviour
     List<int> posList = new List<int>();
     bool uniquePosition = false;
 
+    //to limit on screen enemies
+    //test is 10, actual will be 18; 
+    private int enemyLimit = 16;
+
 
     void Start()
     {
@@ -25,10 +29,13 @@ public class BossSoldierSpawner : MonoBehaviour
     {
         if (startSpawning)
         {
-            spawnTimer += Time.deltaTime;
-            if (spawnCount < numToSpawn && spawnTimer >= spawnRate)
+            if (gameManager.instance.GetGameGoalCount() < enemyLimit)
             {
-                spawn();
+                spawnTimer += Time.deltaTime;
+                if (spawnCount < numToSpawn && spawnTimer >= spawnRate)
+                {
+                    spawn();
+                }
             }
         }
     }

@@ -50,7 +50,7 @@ public class ThrowObject : MonoBehaviour
     void Throw()
     {
 
-        if (gameManager.instance.numberBombsGrenades < 5)
+        if (gameManager.instance.GetNumberBombsGrenades() < 5)
         {
 
             //added

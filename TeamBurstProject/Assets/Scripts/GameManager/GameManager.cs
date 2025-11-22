@@ -94,11 +94,9 @@ public class gameManager : MonoBehaviour
     //For launchpad boss
     [HideInInspector] public bool launchpadBossKilled;
     
-
-
     //Soldiers killed for alien spaceship
     [HideInInspector] public int soldiersToKill;
-    [SerializeField] GameObject finalDoor; 
+    [SerializeField] GameObject finalDoor;
 
     //Level 0: Main Menu; Level 1: Playground; Level 2: Hall/Library; Level 3: Credits; Level 4: Alien Ship
     //Level 5: Lunchroom, Level 6: Launchpad, Leve 7: Options, Level 8: Company
@@ -156,7 +154,7 @@ public class gameManager : MonoBehaviour
     [HideInInspector] public bool enableGrenade = false;
     [HideInInspector] public bool enableStunner = false;
 
-    [HideInInspector] public int numberBombsGrenades = 0;
+    private int numberBombsGrenades = 0;
 
     [SerializeField] public ItemData bombObj;
     [SerializeField] public ItemData grenadeObj;
@@ -878,6 +876,11 @@ public class gameManager : MonoBehaviour
 
         numberBombsGrenades += amount; 
         
+    }
+
+    public int GetNumberBombsGrenades()
+    {
+        return numberBombsGrenades;
     }
     public void youWin()
     {
