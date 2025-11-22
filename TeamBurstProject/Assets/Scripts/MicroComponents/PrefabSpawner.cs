@@ -4,7 +4,9 @@ public class PrefabSpawner : MonoBehaviour
 {
     [SerializeField] GameObject prefabToSpawn;
     [SerializeField] Transform spawnPoint;
-    [SerializeField] AudioClip spawnSound; 
+    [SerializeField] AudioSource audSource;
+    [SerializeField] AudioClip spawnSound;
+    private float volume; 
     
     public void Spawn()
     {
@@ -12,7 +14,9 @@ public class PrefabSpawner : MonoBehaviour
         Instantiate(prefabToSpawn, spawnPoint.position, spawnPoint.rotation);
         if (spawnSound != null)
         {
-            SoundManager.Instance.PlayEffect(spawnSound, 0.3f);
+            volume = PlayerPrefs.GetFloat("SFXVolume", volume);
+            //SoundManager.Instance.PlayEffect(spawnSound, 0.3f);
+            audSource.PlayOneShot(spawnSound, volume); 
         }
 
         

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class JetpackPickup : MonoBehaviour
 {
+    [SerializeField] AudioClip jetpackPickupSound; 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -25,6 +26,9 @@ public class JetpackPickup : MonoBehaviour
 
                 //UI Popup
                 gameManager.instance.jetpackPopup.SetActive(true);
+
+                //Pickup sound effect
+                SoundManager.Instance.PlayEffect(jetpackPickupSound, 1); 
 
                 // Destroy the pickup object
                 Destroy(gameObject);

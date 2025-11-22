@@ -7,7 +7,7 @@ public class EnemyAIRobot : MonoBehaviour, IDamage, IStunnable, ITrigger
 {
     //public AudioClip[] shootSounds;
     public AudioClip shootSound;
-    //SoundManager.Instance.PlayEffect(shootSounds[Random.Range(0, shootSounds.Length)], 1);
+    
 
     public AudioClip damageSound;
     public AudioClip deathSound;
@@ -128,6 +128,7 @@ public class EnemyAIRobot : MonoBehaviour, IDamage, IStunnable, ITrigger
                 if (shootTimer > shootRate && !isStunned)
                 {
                     SoundManager.Instance.PlayEffect(shootSound, 1);
+                    //SoundManager.Instance.PlayEffect(shootSounds[Random.Range(0, shootSounds.Length)], 1);
                     shoot();
                 }
                 //comment out to here

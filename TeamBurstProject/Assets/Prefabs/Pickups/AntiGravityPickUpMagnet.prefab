@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 133152224253959021}
   - component: {fileID: 2739677011686820882}
   - component: {fileID: 4727865697618560288}
+  - component: {fileID: 5583682759350992198}
   m_Layer: 10
   m_Name: AntiGravityPickUpMagnet
   m_TagString: Untagged
@@ -99,7 +100,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4074233956069331431}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 845c415f3181b4840ab566c40e714752, type: 3}
   m_Name: 
@@ -110,13 +111,13 @@ MonoBehaviour:
   rotateZ: 0
   rotationSpeed: 85.67
   isFloating: 0
-  useEasingForFloating: 1
+  useEasingForFloating: 0
   floatHeight: 1.93
   floatSpeed: 0.4
   startScale: {x: 1, y: 1, z: 1}
   endScale: {x: 1.3000001, y: 1.3000001, z: 1.3000001}
   isScaling: 0
-  useEasingForScaling: 1
+  useEasingForScaling: 0
   scaleLerpSpeed: 1.11
 --- !u!135 &2739677011686820882
 SphereCollider:
@@ -151,7 +152,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a786dffe3cd571844a51e1c1e5ec0eb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GravityBoots
-  rotSpeed: 500
+  rotSpeed: 400
   useKey: 49
   rotatePlayer: 1
-  gravityBoots: {fileID: 0}
+  gravityBoots: {fileID: 4074233956069331431}
+--- !u!114 &5583682759350992198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4074233956069331431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b8d5d9776f76ff45bcf3d3872e8a21b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Rotator
+  rotationSpeed: 90
+  rotateX: 0
+  rotateY: 1
+  rotateZ: 0

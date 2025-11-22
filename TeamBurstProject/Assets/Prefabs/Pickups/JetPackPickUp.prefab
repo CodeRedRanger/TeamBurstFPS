@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5950094364988634145}
   - component: {fileID: 4985839111781579677}
   - component: {fileID: 5327962686329474742}
+  - component: {fileID: 7085866951236600806}
   - component: {fileID: 5825463684383542350}
   m_Layer: 10
   m_Name: JetPackPickUp
@@ -111,7 +112,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 1
   m_Center: {x: 0, y: 0.24408148, z: -0.024197068}
 --- !u!114 &5327962686329474742
 MonoBehaviour:
@@ -133,6 +134,19 @@ MonoBehaviour:
   gravity: -9.81
   jetpackFX: {fileID: 0}
   jetpackClip: {fileID: 0}
+--- !u!114 &7085866951236600806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7113877690921916760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da69c3a6fae879488450aed6dc30f6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JetpackPickup
+  jetpackPickupSound: {fileID: 8300000, guid: 56e995de80b61f54e8dfb5484158cb3f, type: 3}
 --- !u!82 &5825463684383542350
 AudioSource:
   m_ObjectHideFlags: 0

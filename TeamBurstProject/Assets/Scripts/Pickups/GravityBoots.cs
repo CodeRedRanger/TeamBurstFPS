@@ -13,7 +13,10 @@ public class GravityBoots : MonoBehaviour
     private bool gravityFlipped;
   
     private float rotated;
-    private bool bootsActivated = false; 
+    private bool bootsActivated = false;
+
+    private bool playedPickupSound = false;
+    [SerializeField] AudioClip gravityBootsPickupSound; 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -141,6 +144,16 @@ public class GravityBoots : MonoBehaviour
             gameManager.instance.gravityBootsPopup.SetActive(true);
             gameManager.instance.gravityBoots = gravityBoots.GetComponent<GravityBoots>();
             bootsActivated = true;
+
+            if (playedPickupSound == false)
+            {
+                if(gravityBootsPickupSound != null)
+                    SoundManager.Instance.PlayEffect(gravityBootsPickupSound, 1);
+
+                playedPickupSound = true;
+            }
+
+
         }
 
 
