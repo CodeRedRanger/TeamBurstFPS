@@ -12,10 +12,14 @@ public class ThrowObject : MonoBehaviour
     //added so can get player speed
     public GameObject player; //reference to player object
     public PlayerController playerScript; //reference to player script
+    private float playerSpeed; 
+    private float origThrowForce;
 
     private void Start()
     {
         objectToThrowPrefab = null;
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerScript = player.GetComponent<PlayerController>();
     }
 
     void Update()
@@ -45,22 +49,36 @@ public class ThrowObject : MonoBehaviour
 
     void Throw()
     {
-        //added
-        player = GameObject.FindGameObjectWithTag("Player");
-        playerScript = player.GetComponent<PlayerController>();
-        float playerSpeed = playerScript.speed;
-        float origThrowForce = throwForce; 
-        throwForce += playerSpeed; 
 
-        GameObject thrownObject = Instantiate(objectToThrowPrefab, throwPoint.position, throwPoint.rotation);
-
-        Rigidbody rb = thrownObject.GetComponent<Rigidbody>();
-
-        if (rb != null)
+        if (gameManager.instance.numberBombsGrenades < 5)
         {
-            rb.AddForce(throwPoint.forward * throwForce, ForceMode.Impulse);
-        }
 
-        throwForce = origThrowForce;
+            //added
+            //moved player variable initialization to start
+            //player = GameObject.FindGameObjectWithTag("Player");
+            //playerScript = player.GetComponent<PlayerController>();
+            playerSpeed = playerScript.speed;
+            origThrowForce = throwForce;
+            throwForce += playerSpeed;
+
+
+
+            GameObject thrownObject = Instantiate(objectToThrowPrefab, throwPoint.position, throwPoint.rotation);
+
+            //Update number bomb/grenades +1
+            //can take out if statement after implement -1 into stun grenade explode
+            //if (objectToThrowPrefab == grenadePrefab)
+            gameManager.instance.UpdateNumberBombsGrenades(1);
+
+
+            Rigidbody rb = thrownObject.GetComponent<Rigidbody>();
+
+            if (rb != null)
+            {
+                rb.AddForce(throwPoint.forward * throwForce, ForceMode.Impulse);
+            }
+
+            throwForce = origThrowForce;
+        }
     }
 }

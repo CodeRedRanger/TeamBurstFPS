@@ -52,6 +52,10 @@ public class BombRobb : MonoBehaviour
         }
         if (explosionSound != null)
             SoundManager.Instance.PlayEffect(explosionSound, 1);
+
+        //Update numberBombGrenade -1
+        gameManager.instance.UpdateNumberBombsGrenades(-1);
+
         Destroy(gameObject);
     }
 

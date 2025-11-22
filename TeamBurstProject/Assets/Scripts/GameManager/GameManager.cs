@@ -156,6 +156,8 @@ public class gameManager : MonoBehaviour
     [HideInInspector] public bool enableGrenade = false;
     [HideInInspector] public bool enableStunner = false;
 
+    [HideInInspector] public int numberBombsGrenades = 0;
+
     [SerializeField] public ItemData bombObj;
     [SerializeField] public ItemData grenadeObj;
     [SerializeField] public ItemData stunnerObj;
@@ -871,6 +873,12 @@ public class gameManager : MonoBehaviour
         assetsPopup.SetActive(false);
     }
 
+    public void UpdateNumberBombsGrenades(int amount)
+    {
+
+        numberBombsGrenades += amount; 
+        
+    }
     public void youWin()
     {
         //win condition

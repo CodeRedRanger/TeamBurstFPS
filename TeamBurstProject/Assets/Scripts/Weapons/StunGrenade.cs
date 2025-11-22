@@ -39,6 +39,8 @@ public class StunGrenade : MonoBehaviour
             }
         }
 
+        //Update bombs/grenades(-1)
+        gameManager.instance.UpdateNumberBombsGrenades(-1); 
         Destroy(gameObject);
     }
 
