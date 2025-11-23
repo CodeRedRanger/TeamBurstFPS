@@ -63,9 +63,10 @@ public class SoundManager : MonoBehaviour
         musicSource.Play();
     }
 
-    public void PlayEffect(AudioClip clip, float volume) //= 1.0f)
+    public void PlayEffect(AudioClip clip, float volumeMod) //= 1.0f)
     {
-        volume = PlayerPrefs.GetFloat("SFXVolume", volume); 
+        float volSet = PlayerPrefs.GetFloat("SFXVolume", 1);
+        float volume = volSet * volumeMod;
         //oneshot is for sound effects that may overlap each other
         effectsSource.PlayOneShot(clip, volume);
     }
