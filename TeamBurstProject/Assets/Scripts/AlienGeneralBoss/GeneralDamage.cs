@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class GeneralDamage : MonoBehaviour, IDamage
 {
     [SerializeField] GameObject finalGoal;
+    [SerializeField] GameObject bossLava; 
     [SerializeField] int health;
     [SerializeField] Renderer model;
     [SerializeField] AudioClip damageSound;
@@ -35,6 +36,7 @@ public class GeneralDamage : MonoBehaviour, IDamage
         if (health <= 0)
         {
             finalGoal.SetActive(true);
+            bossLava.SetActive(false); 
             SoundManager.Instance.PlayEffect(deathSound, 1);
             gameManager.instance.bossHPBar.transform.parent.gameObject.SetActive(false);
             Destroy(gameObject);
