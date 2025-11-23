@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
@@ -51,6 +52,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
     [SerializeField] int jumpSpeed;
     [SerializeField] float maxJumpSpeed;
     private float origMaxJumpSpeed;
+    private float origNegMaxJumpSpeed;
     [SerializeField] int jumpCountMax;
     int jumpCount;
     //For Variable Jump
@@ -125,6 +127,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
         //updatePlayerUI(); //called in spawn player
         spawnPlayer();
         origMaxJumpSpeed = maxJumpSpeed;
+        origNegMaxJumpSpeed = -maxJumpSpeed;
         Reticle.instance.Refresh();
 
         //Take out if causes problems
@@ -229,7 +232,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
             
             if (gravityFlipped)
             {
-                maxJumpSpeed = -maxJumpSpeed;
+                maxJumpSpeed = origNegMaxJumpSpeed;
             }
             else
             {
@@ -237,7 +240,7 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
             }
 
 
-                playerVel.y = jumpSpeed;
+            playerVel.y = jumpSpeed;
             jumpCount++;
 
             isMaxJumpSpeed = false;
@@ -253,8 +256,18 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
             else
                 playerVel.y += 2;
 
-            if (playerVel.y > maxJumpSpeed)
-                isMaxJumpSpeed = true;
+            if (gravityFlipped)
+            {
+                if (playerVel.y < maxJumpSpeed)
+                {
+                    isMaxJumpSpeed = true;
+                }
+            }
+            else if (!gravityFlipped)
+            {
+                if (playerVel.y > maxJumpSpeed)
+                    isMaxJumpSpeed = true;
+            }
         }
 
         if (Input.GetButtonUp("Jump"))
