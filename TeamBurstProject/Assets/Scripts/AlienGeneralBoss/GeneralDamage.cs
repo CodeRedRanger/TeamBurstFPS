@@ -15,7 +15,7 @@ public class GeneralDamage : MonoBehaviour, IDamage
     private bool isInvulnerable = false;
 
     private int maxHealth;
-
+   
     void Start()
     {
         colorOrig = model.material.color;
@@ -35,8 +35,32 @@ public class GeneralDamage : MonoBehaviour, IDamage
 
         if (health <= 0)
         {
+            //make final victim appear
             finalGoal.SetActive(true);
-            bossLava.SetActive(false); 
+
+            //make lava go away so can reach victim
+            bossLava.SetActive(false);
+
+            //Makes all extra enemies go away and makes the game goal zero since game is won
+            EnemyAI[] enemies = FindObjectsByType<EnemyAI>(FindObjectsSortMode.None);
+
+            gameManager.instance.updateGameGoal(-(enemies.Length));
+
+            foreach (EnemyAI enemy in enemies)
+            {
+                Destroy(enemy.gameObject);
+                
+            }
+
+            
+            EnemyAIRobot[] robots = FindObjectsByType<EnemyAIRobot>(FindObjectsSortMode.None);
+            gameManager.instance.updateGameGoal(-(robots.Length));
+
+            foreach (EnemyAIRobot robot in robots)
+            { 
+                Destroy(robot.gameObject); 
+            }
+
             SoundManager.Instance.PlayEffect(deathSound, 1);
             gameManager.instance.bossHPBar.transform.parent.gameObject.SetActive(false);
             Destroy(gameObject);
