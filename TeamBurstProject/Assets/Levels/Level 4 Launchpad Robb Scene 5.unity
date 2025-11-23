@@ -96805,7 +96805,6 @@ GameObject:
   - component: {fileID: 752201286}
   - component: {fileID: 752201285}
   - component: {fileID: 752201284}
-  - component: {fileID: 752201288}
   m_Layer: 0
   m_Name: FloorPitBottom
   m_TagString: Untagged
@@ -96905,23 +96904,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1828650334}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &752201288
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 752201282}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c30c7a0aba2616b43b03463f7970cc9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Pit
-  killPlayerDelay: 0.5
-  playerFalling: {fileID: 8300000, guid: 38eaf5b28c107554ba0904ae0dd30ba4, type: 3}
-  playerFallingVol: 0.5
-  objectFalling: {fileID: 8300000, guid: e018b90cb588e8d43ab695c7aee9d7d9, type: 3}
-  objectFallingVol: 0.5
 --- !u!43 &753092876
 Mesh:
   m_ObjectHideFlags: 0
