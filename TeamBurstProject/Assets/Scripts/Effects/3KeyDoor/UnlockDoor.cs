@@ -18,6 +18,7 @@ public class UnlockDoor : MonoBehaviour
     float rotated;
     bool inRange;
     bool opening;
+    private bool opened = false; 
     Quaternion origRot;
     Quaternion rotateDir;
     PlayerController controller;
@@ -66,6 +67,7 @@ public class UnlockDoor : MonoBehaviour
         if(opening)
         {
             openDoor();
+            opened = true; 
         }
     }
 
@@ -95,8 +97,8 @@ public class UnlockDoor : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {   
-            if(!opening)
-            openDoorPopup.SetActive(true);
+            if(!opened)
+                openDoorPopup.SetActive(true);
 
             //Debug.Log("in range");
             inRange = true;
