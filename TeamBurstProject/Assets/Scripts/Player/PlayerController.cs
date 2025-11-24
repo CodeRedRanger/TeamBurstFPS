@@ -212,6 +212,11 @@ public class PlayerController : MonoBehaviour, IDamage, IPickupGun, IPickupKey
     }
     void Sprint()
     {
+
+        //Better way would be to set the sprint speed directly without a modifier
+        //if sprint down speed = sprint speed
+        //if sprint up speed = walk speed (both sprint and walk speeds can be serialized field: 4 and 12)
+        //avoids missing and up between two fast downs
         if (Input.GetButtonDown("Sprint"))
         {
             speed *= sprintMod;
